@@ -1,0 +1,63 @@
+{
+  "_comment": "Manual IDX saved-search overrides. Run `npm run idx:sync-searches` to populate from the IDX API after creating saved links in the Control Panel. Keys match community slugs from communities.ts.",
+  "_general": {
+    "savedSearchId": "3794",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/general"
+  },
+  "_military": {
+    "savedSearchId": "3793",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/military"
+  },
+  "la-jolla": {
+    "savedSearchId": "3780",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/la-jolla"
+  },
+  "pacific-beach": {
+    "savedSearchId": "3781",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/pacific-beach"
+  },
+  "clairemont": {
+    "savedSearchId": "3783",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/clairemont"
+  },
+  "mission-valley": {
+    "savedSearchId": "3784",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/mission-valley"
+  },
+  "del-mar": {
+    "savedSearchId": "3785",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/del-mar"
+  },
+  "carmel-valley": {
+    "savedSearchId": "3786",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/carmel-valley"
+  },
+  "point-loma": {
+    "savedSearchId": "3787",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/point-loma"
+  },
+  "bay-park": {
+    "savedSearchId": "3789",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/bay-park"
+  },
+  "ocean-beach": {
+    "savedSearchId": "3790",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/ocean-beach"
+  },
+  "hillcrest": {
+    "savedSearchId": "3791",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/hillcrest"
+  },
+  "north-park": {
+    "savedSearchId": "3792",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/north-park"
+  },
+  "university-city": {
+    "savedSearchId": "3782",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/university-city"
+  },
+  "sorrento-valley": {
+    "savedSearchId": "3788",
+    "savedSearchUrl": "https://search.sandiegorelocationhomeguide.com/i/sorrento-valley"
+  }
+}

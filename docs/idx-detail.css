@@ -1,0 +1,223 @@
+/*
+ * IDX Listing Detail page — full CSS swap
+ * Paste entire file into: IDX Control Panel → Designs → Details → Custom CSS
+ *
+ * Pairs with: docs/idx-wrapper.html (static wrapper header/footer)
+ *             docs/idx-results.css (results-page styling — shares the same tokens)
+ * Brand: BHHS Traditional — cabernet #670038, pearl #f5f1f2
+ *
+ * Targets the standard IDX detail DOM (#IDX-detailsWrapper and friends). Selector names
+ * vary slightly across IDX template versions; verify against the live detail page after
+ * the wrapper is set as the primary search domain.
+ */
+
+@charset "UTF-8";
+
+:root {
+  --sd-cabernet: #670038;
+  --sd-cabernet-hover: #52002c;
+  --sd-espresso: #2a2223;
+  --sd-earth: #72595e;
+  --sd-dove: #aa979c;
+  --sd-pearl: #f5f1f2;
+  --sd-rose: #ece3e5;
+  --sd-white: #ffffff;
+  --sd-shadow: 0 1px 3px rgba(42, 34, 35, 0.08), 0 4px 12px rgba(42, 34, 35, 0.06);
+  --sd-radius: 12px;
+  --sd-radius-sm: 8px;
+  --sd-max: 1120px;
+}
+
+/* ---- Page shell ---- */
+.IDX-wrapper-standard,
+.IDX-wrapper-standard #IDX-detailsWrapper,
+.IDX-wrapper-standard #IDX-detailsContainer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--sd-espresso);
+  background: var(--sd-pearl);
+}
+
+.IDX-wrapper-standard #IDX-detailsContainer {
+  max-width: var(--sd-max);
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  float: none;
+}
+
+/* ---- Photo gallery ---- */
+.IDX-wrapper-standard #IDX-detailsGallery,
+.IDX-wrapper-standard #IDX-mainPhotos,
+.IDX-wrapper-standard .IDX-galleryWrap {
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  box-shadow: var(--sd-shadow);
+  background: var(--sd-white);
+}
+
+.IDX-wrapper-standard .IDX-galleryImage,
+.IDX-wrapper-standard #IDX-mainPhotos img {
+  border-radius: var(--sd-radius);
+}
+
+/* ---- Price + address header ---- */
+.IDX-wrapper-standard #IDX-detailsPrice,
+.IDX-wrapper-standard .IDX-detailsPrice {
+  color: var(--sd-cabernet);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 8px 0;
+}
+
+.IDX-wrapper-standard #IDX-detailsAddress,
+.IDX-wrapper-standard .IDX-detailsAddress {
+  color: var(--sd-espresso);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.IDX-wrapper-standard .IDX-detailsCityStateZip {
+  color: var(--sd-earth);
+  font-size: 15px;
+}
+
+/* ---- Key facts / details table ---- */
+.IDX-wrapper-standard .IDX-detailsTablesWrap,
+.IDX-wrapper-standard #IDX-detailsFeatured,
+.IDX-wrapper-standard .IDX-panel {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.IDX-wrapper-standard .IDX-detailsFieldName,
+.IDX-wrapper-standard .IDX-field-label {
+  color: var(--sd-earth);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.IDX-wrapper-standard .IDX-detailsFieldValue,
+.IDX-wrapper-standard .IDX-field-value {
+  color: var(--sd-espresso);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.IDX-wrapper-standard .IDX-detailsTable tr:nth-child(even) {
+  background: var(--sd-pearl);
+}
+
+/* ---- Description ---- */
+.IDX-wrapper-standard #IDX-detailsDescription,
+.IDX-wrapper-standard .IDX-detailsDescription {
+  color: var(--sd-espresso);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.IDX-wrapper-standard .IDX-panelHeading,
+.IDX-wrapper-standard #IDX-detailsWrapper h2,
+.IDX-wrapper-standard #IDX-detailsWrapper h3 {
+  color: var(--sd-cabernet);
+  font-weight: 700;
+}
+
+/* ---- Buttons / actions ---- */
+.IDX-wrapper-standard .IDX-btn,
+.IDX-wrapper-standard .IDX-detailsActions a,
+.IDX-wrapper-standard #IDX-detailsContact button {
+  background: var(--sd-cabernet);
+  color: var(--sd-white);
+  border: none;
+  border-radius: var(--sd-radius-sm);
+  padding: 12px 20px;
+  font-weight: 600;
+  min-height: 44px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.IDX-wrapper-standard .IDX-btn:hover,
+.IDX-wrapper-standard .IDX-detailsActions a:hover,
+.IDX-wrapper-standard #IDX-detailsContact button:hover {
+  background: var(--sd-cabernet-hover);
+  color: var(--sd-white);
+}
+
+.IDX-wrapper-standard .IDX-btn-secondary {
+  background: var(--sd-white);
+  color: var(--sd-cabernet);
+  border: 1px solid var(--sd-cabernet);
+}
+
+/* ---- Contact / request-a-showing form ---- */
+.IDX-wrapper-standard #IDX-detailsContact,
+.IDX-wrapper-standard .IDX-detailsContactForm {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-top: 3px solid var(--sd-cabernet);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow);
+  padding: 24px;
+}
+
+.IDX-wrapper-standard #IDX-detailsContact input,
+.IDX-wrapper-standard #IDX-detailsContact textarea,
+.IDX-wrapper-standard #IDX-detailsContact select {
+  border: 1px solid var(--sd-dove);
+  border-radius: var(--sd-radius-sm);
+  padding: 10px 12px;
+  min-height: 44px;
+  width: 100%;
+  color: var(--sd-espresso);
+  background: var(--sd-white);
+}
+
+.IDX-wrapper-standard #IDX-detailsContact input:focus,
+.IDX-wrapper-standard #IDX-detailsContact textarea:focus {
+  outline: 2px solid var(--sd-cabernet);
+  outline-offset: 1px;
+}
+
+/* ---- Links ---- */
+.IDX-wrapper-standard #IDX-detailsWrapper a {
+  color: var(--sd-cabernet);
+}
+
+.IDX-wrapper-standard #IDX-detailsWrapper a:hover {
+  color: var(--sd-cabernet-hover);
+}
+
+/* ---- Disclaimers / MLS attribution ---- */
+.IDX-wrapper-standard #IDX-detailsListingDisclaimer,
+.IDX-wrapper-standard .IDX-detailsDisclaimer,
+.IDX-wrapper-standard .IDX-mlsDisclaimer {
+  color: var(--sd-earth);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 24px;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 767px) {
+  .IDX-wrapper-standard #IDX-detailsContainer {
+    padding: 16px 12px 40px;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsPrice,
+  .IDX-wrapper-standard .IDX-detailsPrice {
+    font-size: 24px;
+  }
+
+  .IDX-wrapper-standard .IDX-btn,
+  .IDX-wrapper-standard .IDX-detailsActions a {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}

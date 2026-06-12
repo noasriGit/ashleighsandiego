@@ -1,0 +1,152 @@
+<!--
+  Static wrapper for the IDX Broker subdomain (search.sandiegorelocationhomeguide.com).
+
+  How to use:
+  1. IDX Control Panel -> Designs -> Wrapper -> create a NEW (static) wrapper.
+  2. Paste the <header> and <footer> blocks below into the wrapper's header/footer areas
+     (or the whole template if the Control Panel takes one HTML field).
+  3. Leave IDX's content insertion point between the header and footer.
+  4. Replace every [PLACEHOLDER] with the client's real values (agent name, DRE #, phone,
+     email, brokerage license, office address, current year).
+  5. All links are absolute on purpose — relative links break on the IDX subdomain.
+
+  Notes:
+  - Plain HTML/CSS only. No framework tags, no relative URLs.
+  - Brand colors mirror src/app/globals.css (BHHS Traditional theme).
+-->
+<style>
+  :root {
+    --cabernet: #670038;
+    --espresso: #2a2223;
+    --earth: #72595e;
+    --dove: #aa979c;
+    --pearl: #f5f1f2;
+    --rose: #ece3e5;
+    --white: #ffffff;
+  }
+  .sd-wrap * { box-sizing: border-box; }
+  .sd-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--espresso);
+  }
+  .sd-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--rose);
+  }
+  .sd-header-inner {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .sd-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cabernet);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .sd-logo span { display: block; font-size: 11px; font-weight: 500; color: var(--earth); }
+  .sd-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+  .sd-nav a {
+    font-size: 14px;
+    color: var(--espresso);
+    text-decoration: none;
+  }
+  .sd-nav a:hover { color: var(--cabernet); }
+  .sd-cta {
+    background: var(--cabernet);
+    color: var(--white) !important;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .sd-footer {
+    background: var(--espresso);
+    color: var(--pearl);
+    margin-top: 40px;
+  }
+  .sd-footer-inner {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .sd-footer a { color: var(--pearl); text-decoration: underline; }
+  .sd-footer-links { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 16px; }
+  .sd-disclaimer { color: var(--dove); margin-top: 12px; }
+  .sd-eho { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--dove); }
+  .sd-eho svg { flex-shrink: 0; }
+</style>
+
+<div class="sd-wrap">
+  <!-- ============================== HEADER ============================== -->
+  <header class="sd-header">
+    <div class="sd-header-inner">
+      <a class="sd-logo" href="https://sandiegorelocationhomeguide.com/">
+        San Diego Relocation Home Guide
+        <span>Berkshire Hathaway HomeServices California Properties</span>
+      </a>
+      <nav class="sd-nav">
+        <a href="https://sandiegorelocationhomeguide.com/relocating-to-san-diego">Relocating</a>
+        <a href="https://sandiegorelocationhomeguide.com/moving-to-la-jolla">La Jolla</a>
+        <a href="https://sandiegorelocationhomeguide.com/neighborhoods">Neighborhoods</a>
+        <a href="https://sandiegorelocationhomeguide.com/search-homes">Search Homes</a>
+        <a href="https://sandiegorelocationhomeguide.com/military-va-relocation-san-diego">Military / VA</a>
+        <a href="https://sandiegorelocationhomeguide.com/first-time-home-buyer-san-diego">First-Time Buyers</a>
+      </nav>
+      <a class="sd-cta" href="https://sandiegorelocationhomeguide.com/contact">Book a Strategy Call</a>
+    </div>
+  </header>
+
+  <!-- IDX inserts its search/results/detail content directly below this line. -->
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="sd-footer">
+    <div class="sd-footer-inner">
+      <div class="sd-footer-links">
+        <a href="https://sandiegorelocationhomeguide.com/">Home</a>
+        <a href="https://sandiegorelocationhomeguide.com/neighborhoods">Neighborhoods</a>
+        <a href="https://sandiegorelocationhomeguide.com/contact">Contact</a>
+        <a href="https://sandiegorelocationhomeguide.com/privacy-policy">Privacy Policy</a>
+        <a href="https://sandiegorelocationhomeguide.com/terms">Terms</a>
+      </div>
+
+      <p>
+        [Agent Name], California DRE #[DRE Number]<br />
+        Berkshire Hathaway HomeServices California Properties &middot; License #[Brokerage License]<br />
+        [Office Address] &middot; [Phone] &middot; [agent@email.com]
+      </p>
+
+      <div class="sd-eho">
+        <!-- Equal Housing Opportunity mark -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 11.5 12 4l9 7.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M5 10.5V20h14v-9.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9.5 20v-4a2.5 2.5 0 0 1 5 0v4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Equal Housing Opportunity</span>
+      </div>
+
+      <p class="sd-disclaimer">
+        &copy;[Year] BHH Affiliates, LLC. An independently operated subsidiary of HomeServices of
+        America, Inc., a Berkshire Hathaway affiliate, and a franchisee of BHH Affiliates, LLC.
+        Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are
+        registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate.
+        Equal Housing Opportunity.
+      </p>
+      <p class="sd-disclaimer">
+        All information is deemed reliable but not guaranteed. Listing data is provided via IDX
+        from the applicable MLS. Not intended as legal, tax, lending, or financial advice. If your
+        home is currently listed with a Broker, this is not intended as a solicitation.
+      </p>
+    </div>
+  </footer>
+</div>

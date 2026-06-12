@@ -1,26 +1,247 @@
 @import "tailwindcss";
 
+/*
+ * BHHS brand tokens — see src/data/brand-guidelines.ts
+ * Default site theme: Traditional (Cabernet primary)
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core */
+  --bhhs-cabernet: #670038;
+  --bhhs-black: #000000;
+  --bhhs-white: #ffffff;
+  --bhhs-neutral-tint: #f2f2f2;
+
+  /* Traditional theme */
+  --bhhs-espresso: #2a2223;
+  --bhhs-earth: #72595e;
+  --bhhs-dove: #aa979c;
+  --bhhs-pearl: #f5f1f2;
+  --bhhs-rose: #ece3e5;
+  --bhhs-blush: #c299af;
+
+  /* Semantic site tokens */
+  --background: var(--bhhs-pearl);
+  --foreground: var(--bhhs-espresso);
+  --primary: var(--bhhs-cabernet);
+  --primary-foreground: var(--bhhs-white);
+  --muted: var(--bhhs-dove);
+  --muted-foreground: var(--bhhs-earth);
+  --accent: var(--bhhs-blush);
+  --surface: var(--bhhs-white);
+  --surface-muted: var(--bhhs-neutral-tint);
+
+  /*
+   * Legacy aliases — existing Tailwind classes (navy, ocean, etc.)
+   * map to BHHS Traditional palette values.
+   */
+  --navy: var(--bhhs-cabernet);
+  --ocean: var(--bhhs-earth);
+  --sand: var(--bhhs-rose);
+  --charcoal: var(--bhhs-espresso);
+  --gray-light: var(--bhhs-neutral-tint);
+  --gray-muted: var(--bhhs-dove);
 }
 
 @theme inline {
+  /* BHHS palette */
+  --color-cabernet: var(--bhhs-cabernet);
+  --color-espresso: var(--bhhs-espresso);
+  --color-earth: var(--bhhs-earth);
+  --color-dove: var(--bhhs-dove);
+  --color-pearl: var(--bhhs-pearl);
+  --color-rose: var(--bhhs-rose);
+  --color-blush: var(--bhhs-blush);
+  --color-bhhs-black: var(--bhhs-black);
+  --color-bhhs-white: var(--bhhs-white);
+
+  /* Semantic */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Legacy (backward compatible) */
+  --color-navy: var(--navy);
+  --color-ocean: var(--ocean);
+  --color-sand: var(--sand);
+  --color-charcoal: var(--charcoal);
+  --color-gray-light: var(--gray-light);
+  --color-gray-muted: var(--gray-muted);
+
+  /* Typography — Marcellus display, Manrope body */
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-marcellus);
+  --font-display: var(--font-marcellus);
+  --font-body: var(--font-manrope);
+
+  /*
+   * Brand headline scale (§6.0) — responsive clamps from guide px values.
+   * Marcellus: sentence case. Manrope subheads use component classes.
+   */
+  --text-title: clamp(0.6875rem, 0.6rem + 0.3vw, 0.75rem); /* 12px */
+  --text-h1: clamp(2rem, 1.5rem + 2vw, 3.5625rem); /* 57px */
+  --text-h2: clamp(2.25rem, 1.75rem + 2.5vw, 4.75rem); /* 76px */
+  --text-h3: clamp(1.75rem, 1.4rem + 1.5vw, 2.6875rem); /* 43px */
+  --text-h3-serif: clamp(1.5rem, 1.25rem + 1vw, 2rem); /* 32px Marcellus */
+  --text-h4: clamp(1.5rem, 1.25rem + 1vw, 2rem); /* 32px Manrope Semibold */
+  --text-h5: clamp(1.125rem, 1rem + 0.5vw, 1.5rem); /* 24px Manrope Bold */
+  --text-h6: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* 18px Manrope Extrabold */
+
+  --leading-title: 1.5;
+  --leading-h1: 1.3;
+  --leading-h2: 1.2;
+  --leading-h3: 1.3;
+  --leading-h4: 1.3;
+  --leading-h5: 1.3;
+  --leading-h6: 1.3;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), Arial, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-marcellus), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+}
+
+h4 {
+  font-family: var(--font-manrope), Arial, system-ui, sans-serif;
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: var(--leading-h4);
+}
+
+h5 {
+  font-family: var(--font-manrope), Arial, system-ui, sans-serif;
+  font-size: var(--text-h5);
+  font-weight: 700;
+  line-height: var(--leading-h5);
+}
+
+h6 {
+  font-family: var(--font-manrope), Arial, system-ui, sans-serif;
+  font-size: var(--text-h6);
+  font-weight: 800;
+  line-height: var(--leading-h6);
+}
+
+/*
+ * Brand heading scale utilities (§6.0).
+ * The bare h1/h2 element sizes above are display-scale (hero only).
+ * These classes apply sensible Marcellus sizes for in-page headings
+ * so components stop hardcoding text-2xl / text-3xl.
+ */
+.heading-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  font-weight: 400;
+}
+
+.heading-hero {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 4rem);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.heading-section {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--text-h3-serif);
+  line-height: var(--leading-h3);
+  font-weight: 400;
+}
+
+.heading-card {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--text-h5);
+  line-height: var(--leading-h5);
+  font-weight: 400;
+}
+
+/* Manrope uppercase label that sits above a Marcellus headline. */
+.kicker {
+  font-family: var(--font-body), Arial, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Sticky table-of-contents sidebar on long guides. */
+.sidebar-sticky {
+  position: sticky;
+  top: 6rem;
+}
+
+/*
+ * Subtle premium motion. Sections fade/rise into view on scroll.
+ * Falls back to fully visible if JS or IntersectionObserver is unavailable,
+ * and is disabled for users who prefer reduced motion.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Accordion (FAQ) open/close animation using a grid-rows trick. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-panel > div {
+  overflow: hidden;
 }

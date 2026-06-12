@@ -1,0 +1,674 @@
+/*
+ * IDX Results page — full CSS swap (v2)
+ * Paste entire file into: IDX Control Panel → Designs → Results → Custom CSS
+ *
+ * Pairs with: docs/idx-wrapper.html (static wrapper header/footer)
+ * Brand: BHHS Traditional — cabernet #670038, pearl #f5f1f2
+ */
+
+@charset "UTF-8";
+
+:root {
+  --sd-cabernet: #670038;
+  --sd-cabernet-hover: #52002c;
+  --sd-espresso: #2a2223;
+  --sd-earth: #72595e;
+  --sd-dove: #aa979c;
+  --sd-pearl: #f5f1f2;
+  --sd-rose: #ece3e5;
+  --sd-white: #ffffff;
+  --sd-shadow: 0 1px 3px rgba(42, 34, 35, 0.08), 0 4px 12px rgba(42, 34, 35, 0.06);
+  --sd-radius: 12px;
+  --sd-radius-sm: 8px;
+  --sd-max: 1120px;
+}
+
+/* ---- Page shell ---- */
+.IDX-wrapper-standard,
+.IDX-wrapper-standard #IDX-resultsRow,
+.IDX-wrapper-standard #IDX-resultsContainer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--sd-espresso);
+  background: var(--sd-pearl);
+}
+
+.IDX-wrapper-standard #IDX-resultsContainer.IDX-pageContainer {
+  max-width: var(--sd-max);
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  float: none;
+}
+
+.IDX-wrapper-standard #IDX-resultsHeader,
+.IDX-wrapper-standard #IDX-resultsContent,
+.IDX-wrapper-standard #IDX-resultsFooter {
+  background: transparent;
+}
+
+/* ---- Hide noisy defaults ---- */
+.IDX-wrapper-standard .IDX-hopoZoning {
+  display: none !important;
+}
+
+/* ---- MLS commingle tabs ---- */
+.IDX-wrapper-standard #IDX-resultsHeader .IDX-nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.IDX-wrapper-standard #IDX-resultsHeader .IDX-nav-pills > li {
+  margin: 0;
+}
+
+.IDX-wrapper-standard #IDX-resultsHeader .IDX-nav-pills a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--sd-dove);
+  background: var(--sd-white);
+  color: var(--sd-espresso);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.IDX-wrapper-standard #IDX-resultsHeader .IDX-nav-pills .IDX-active a,
+.IDX-wrapper-standard #IDX-resultsHeader .IDX-nav-pills li.IDX-active a {
+  background: var(--sd-cabernet);
+  border-color: var(--sd-cabernet);
+  color: var(--sd-white);
+}
+
+.IDX-wrapper-standard #IDX-resultsHeader hr {
+  border: none;
+  border-top: 1px solid var(--sd-rose);
+  margin: 16px 0;
+}
+
+/* ---- Pagination ---- */
+.IDX-wrapper-standard #IDX-resultsPager-header,
+.IDX-wrapper-standard #IDX-resultsPager-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: auto;
+  margin: 16px 0;
+}
+
+.IDX-wrapper-standard .IDX-pagination-action {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.IDX-wrapper-standard .IDX-pagination-action a.IDX-btn {
+  min-width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sd-radius-sm);
+  border: 1px solid var(--sd-dove);
+  background: var(--sd-white);
+  color: var(--sd-espresso);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.IDX-wrapper-standard .IDX-pagination-action a.IDX-btn:hover:not(.IDX-disabled) {
+  border-color: var(--sd-cabernet);
+  color: var(--sd-cabernet);
+}
+
+.IDX-wrapper-standard .IDX-pagination-action a.IDX-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.IDX-wrapper-standard #IDX-pagination {
+  width: auto;
+  min-width: 120px;
+}
+
+.IDX-wrapper-standard #IDX-pagination-pagers-header,
+.IDX-wrapper-standard #IDX-pagination-pagers-footer {
+  height: 44px;
+  border-radius: var(--sd-radius-sm);
+  border: 1px solid var(--sd-dove);
+  background: var(--sd-white);
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+/* ---- Results count (kill the green bootstrap alert) ---- */
+.IDX-wrapper-standard #IDX-resultsCountWrap {
+  background: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: var(--sd-radius-sm) !important;
+  color: var(--sd-espresso) !important;
+  padding: 12px 16px !important;
+  margin: 16px 0 !important;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: none !important;
+}
+
+.IDX-wrapper-standard #IDX-resultsCountWrap .IDX-resultsCount {
+  color: var(--sd-cabernet);
+  font-weight: 700;
+}
+
+.IDX-wrapper-standard #IDX-noResultsMessage,
+.IDX-wrapper-standard #IDX-resultsCountMessage {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-radius: var(--sd-radius-sm);
+  padding: 16px;
+  margin: 16px 0;
+  color: var(--sd-earth);
+  line-height: 1.6;
+}
+
+.IDX-wrapper-standard #IDX-noResultsMessage a {
+  color: var(--sd-cabernet);
+  font-weight: 600;
+}
+
+/* ---- Top actions (Save / New / Modify) ---- */
+.IDX-wrapper-standard #IDX-resultsTopActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.IDX-wrapper-standard .IDX-topAction {
+  width: auto !important;
+  float: none !important;
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
+.IDX-wrapper-standard .IDX-topAction a,
+.IDX-wrapper-standard #IDX-saveSearch,
+.IDX-wrapper-standard #IDX-newSearch,
+.IDX-wrapper-standard #IDX-modifySearch,
+.IDX-wrapper-standard #IDX-refineSearchFormToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px !important;
+  border-radius: var(--sd-radius-sm) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-decoration: none;
+  background: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  box-shadow: none !important;
+}
+
+.IDX-wrapper-standard .IDX-topAction a:hover,
+.IDX-wrapper-standard #IDX-saveSearch:hover:not(.IDX-disabled),
+.IDX-wrapper-standard #IDX-newSearch:hover,
+.IDX-wrapper-standard #IDX-modifySearch:hover,
+.IDX-wrapper-standard #IDX-refineSearchFormToggle:hover {
+  background: var(--sd-cabernet-hover) !important;
+  border-color: var(--sd-cabernet-hover) !important;
+}
+
+.IDX-wrapper-standard #IDX-saveSearch.IDX-disabled {
+  background: var(--sd-earth) !important;
+  border-color: var(--sd-earth) !important;
+  opacity: 1;
+}
+
+/* ---- Refine search panel ---- */
+.IDX-wrapper-standard #IDX-resultsRefineSearchToggle button {
+  width: 100%;
+  min-height: 44px;
+  border-radius: var(--sd-radius-sm);
+}
+
+.IDX-wrapper-standard #IDX-resultsRefineSearchWrap {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-radius: var(--sd-radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--sd-shadow);
+}
+
+.IDX-wrapper-standard #IDX-resultsRefineSubmit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  border-radius: var(--sd-radius-sm) !important;
+  background: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.IDX-wrapper-standard .IDX-controls input[type="text"],
+.IDX-wrapper-standard .IDX-controls input[type="number"],
+.IDX-wrapper-standard .IDX-select {
+  border: 1px solid var(--sd-dove);
+  border-radius: var(--sd-radius-sm);
+  padding: 10px 12px;
+  font-size: 14px;
+  background: var(--sd-white);
+}
+
+.IDX-wrapper-standard .IDX-controls input:focus,
+.IDX-wrapper-standard .IDX-select:focus {
+  outline: 2px solid var(--sd-cabernet);
+  outline-offset: 1px;
+  border-color: var(--sd-cabernet);
+}
+
+.IDX-wrapper-standard .IDX-label {
+  color: var(--sd-earth);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* ---- Map ---- */
+.IDX-wrapper-standard #IDX-resultsMap {
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  border: 1px solid var(--sd-rose);
+  margin-bottom: 24px;
+  box-shadow: var(--sd-shadow);
+}
+
+/* ---- Section headers ---- */
+.IDX-wrapper-standard .IDX-resultsSeparatorText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sd-cabernet);
+  margin: 32px 0 8px;
+  text-transform: none;
+}
+
+.IDX-wrapper-standard .IDX-resultsSeparator {
+  border: none;
+  border-top: 2px solid var(--sd-rose);
+  margin-bottom: 20px;
+}
+
+.IDX-wrapper-standard .IDX-propertyTypeHeader {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sd-espresso);
+  border-bottom: 1px solid var(--sd-rose);
+  padding-bottom: 8px;
+  margin: 24px 0 16px;
+}
+
+/* ---- Listing cards ---- */
+.IDX-wrapper-standard .IDX-resultsCellsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.IDX-wrapper-standard .IDX-resultsCell {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: var(--sd-radius);
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+  box-shadow: var(--sd-shadow);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.IDX-wrapper-standard .IDX-resultsCell:hover {
+  box-shadow: 0 4px 16px rgba(42, 34, 35, 0.1);
+  border-color: var(--sd-dove) !important;
+}
+
+.IDX-wrapper-standard .IDX-cellInnerWrapper {
+  padding: 0;
+}
+
+.IDX-wrapper-standard .IDX-resultsCell > .IDX-row-content,
+.IDX-wrapper-standard .IDX-resultsCell .IDX-row-content:first-of-type {
+  display: block;
+}
+
+/* Photo — full-width banner on card */
+.IDX-wrapper-standard .IDX-resultsPhoto {
+  width: 100% !important;
+  float: none !important;
+  display: block;
+  margin: 0;
+  background: var(--sd-pearl);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.IDX-wrapper-standard .IDX-resultsPhotoLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.IDX-wrapper-standard .IDX-resultsPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-width: none;
+  border-radius: 0;
+}
+
+/* Card body padding */
+.IDX-wrapper-standard .IDX-resultsAddress,
+.IDX-wrapper-standard .IDX-resultsMainInfo,
+.IDX-wrapper-standard .IDX-resultsDescription,
+.IDX-wrapper-standard .IDX-mlsContainer,
+.IDX-wrapper-standard .IDX-resultsCell .IDX-row-content:last-child {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.IDX-wrapper-standard .IDX-resultsAddress {
+  width: 100% !important;
+  display: block;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.IDX-wrapper-standard .IDX-resultsAddress a {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--sd-cabernet);
+  text-decoration: none;
+  line-height: 1.35;
+  width: auto;
+  display: inline;
+}
+
+.IDX-wrapper-standard .IDX-resultsAddress a:hover {
+  color: var(--sd-cabernet-hover);
+  text-decoration: underline;
+}
+
+.IDX-wrapper-standard .IDX-resultsAddressState {
+  display: inline;
+}
+
+/* Price + stats panel — flatten bootstrap panel */
+.IDX-wrapper-standard .IDX-resultsMainInfo.IDX-panel-default {
+  width: 100% !important;
+  float: none !important;
+  display: block;
+  margin: 12px 0 0;
+  padding: 0 20px;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+.IDX-wrapper-standard .IDX-resultsMainInfo .IDX-panel-heading,
+.IDX-wrapper-standard .IDX-resultsMainInfo .IDX-panel-body {
+  width: 100% !important;
+  float: none !important;
+  display: block;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.IDX-wrapper-standard .IDX-field-price .IDX-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sd-cabernet);
+}
+
+.IDX-wrapper-standard .IDX-resultsMainInfoLeft,
+.IDX-wrapper-standard .IDX-resultsMainInfoRight {
+  width: 100%;
+  float: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+
+.IDX-wrapper-standard .IDX-field {
+  font-size: 14px;
+}
+
+.IDX-wrapper-standard .IDX-resultsText {
+  text-transform: none;
+  color: var(--sd-espresso);
+}
+
+.IDX-wrapper-standard .IDX-market {
+  font-size: 12px;
+  color: var(--sd-dove);
+  margin-top: 4px;
+}
+
+/* Description — truncate long remarks */
+.IDX-wrapper-standard .IDX-resultsDescription {
+  width: 100%;
+  display: block;
+  margin: 12px 0;
+  padding-bottom: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--sd-earth);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* MLS block — smaller, not floating awkwardly */
+.IDX-wrapper-standard .IDX-mlsContainer {
+  clear: both;
+  overflow: hidden;
+  padding: 12px 20px;
+  margin: 0;
+  border-top: 1px solid var(--sd-pearl);
+  background: var(--sd-pearl);
+}
+
+.IDX-wrapper-standard .IDX-MLSLogo {
+  float: none;
+  margin: 0 0 8px;
+}
+
+.IDX-wrapper-standard .IDX-MLSLogo img {
+  max-height: 32px;
+  width: auto;
+}
+
+.IDX-wrapper-standard .IDX-MLSCourtesy {
+  float: none;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--sd-dove);
+}
+
+/* ---- Listing action buttons ---- */
+.IDX-wrapper-standard .IDX-resultsCellActions {
+  float: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--sd-pearl);
+}
+
+.IDX-wrapper-standard .IDX-resultsCellAction {
+  width: auto !important;
+  float: none !important;
+}
+
+.IDX-wrapper-standard .IDX-resultsDetailsLink a {
+  background: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  border-radius: var(--sd-radius-sm);
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.IDX-wrapper-standard .IDX-resultsDetailsLink a:hover {
+  background: var(--sd-cabernet-hover) !important;
+  border-color: var(--sd-cabernet-hover) !important;
+}
+
+.IDX-wrapper-standard .IDX-resultsPhotogallery a,
+.IDX-wrapper-standard .IDX-resultsVirtualTour a,
+.IDX-wrapper-standard .IDX-resultsOpenHouse a,
+.IDX-wrapper-standard .IDX-resultsSaveProperty a,
+.IDX-wrapper-standard .IDX-resultsCustomLink a {
+  background: var(--sd-white) !important;
+  border: 1px solid var(--sd-dove) !important;
+  color: var(--sd-espresso) !important;
+  border-radius: var(--sd-radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.IDX-wrapper-standard .IDX-resultsPhotogallery a:hover,
+.IDX-wrapper-standard .IDX-resultsVirtualTour a:hover,
+.IDX-wrapper-standard .IDX-resultsOpenHouse a:hover,
+.IDX-wrapper-standard .IDX-resultsSaveProperty a:hover,
+.IDX-wrapper-standard .IDX-resultsCustomLink a:hover {
+  border-color: var(--sd-cabernet) !important;
+  color: var(--sd-cabernet) !important;
+}
+
+.IDX-wrapper-standard .IDX-resultsCellSaved {
+  color: #288235 !important;
+}
+
+/* ---- Footer MLS rights ---- */
+.IDX-wrapper-standard #IDX-resultsMLSRights {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-radius: var(--sd-radius-sm);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--sd-dove);
+}
+
+/* ---- Guide CTA (optional Twig insert) ---- */
+.IDX-wrapper-standard .IDX-sd-guide-cta {
+  background: var(--sd-white);
+  border: 1px solid var(--sd-rose);
+  border-radius: var(--sd-radius-sm);
+  padding: 14px 18px;
+  margin: 16px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.IDX-wrapper-standard .IDX-sd-guide-cta a {
+  color: var(--sd-cabernet);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.IDX-wrapper-standard .IDX-sd-guide-cta a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Desktop: side-by-side stats, optional 2-col refine ---- */
+@media only screen and (min-width: 768px) {
+  .IDX-wrapper-standard #IDX-resultsContainer {
+    padding: 32px 24px 64px;
+  }
+
+  .IDX-wrapper-standard .IDX-topAction {
+    flex: 0 1 auto;
+    min-width: 160px;
+  }
+
+  .IDX-wrapper-standard #IDX-resultsRefineSearchWrap .IDX-control-group {
+    width: 48%;
+  }
+
+  .IDX-wrapper-standard #IDX-resultsRefineSearchWrap .IDX-control-group:nth-of-type(2n) {
+    margin-left: 4%;
+  }
+
+  /* Card layout: photo left, content right */
+  .IDX-wrapper-standard .IDX-resultsCell > .IDX-cellInnerWrapper > .IDX-row-content:first-child {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 0;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsPhoto {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    aspect-ratio: auto;
+    min-height: 220px;
+    border-radius: var(--sd-radius) 0 0 0;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsAddress {
+    grid-column: 2;
+    padding-top: 20px;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsMainInfo.IDX-panel-default {
+    grid-column: 2;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsDescription {
+    grid-column: 2;
+  }
+
+  .IDX-wrapper-standard .IDX-mlsContainer {
+    grid-column: 1 / -1;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsCell > .IDX-cellInnerWrapper > .IDX-row-content:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .IDX-wrapper-standard .IDX-topAction {
+    flex: 1 1 100%;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsMainInfoLeft,
+  .IDX-wrapper-standard .IDX-resultsMainInfoRight {
+    grid-template-columns: 1fr;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsCellActions {
+    flex-direction: column;
+  }
+
+  .IDX-wrapper-standard .IDX-resultsCellActions a {
+    width: 100%;
+    text-align: center;
+  }
+}
