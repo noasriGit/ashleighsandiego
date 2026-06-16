@@ -10,7 +10,6 @@ import { Hero } from "@/components/marketing/Hero";
 import { Timeline } from "@/components/marketing/Timeline";
 import { LeadMagnet } from "@/components/marketing/LeadMagnet";
 import { CTABanner } from "@/components/marketing/CTABanner";
-import { IdxSearchModule } from "@/components/idx/IdxSearchModule";
 import { CommunityListings } from "@/components/idx/CommunityListings";
 import { FaqSection } from "@/components/marketing/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -305,16 +304,6 @@ export default async function HomePage() {
         viewAllUrl={getIdxBrowseUrl() ?? undefined}
         variant="sand"
       />
-
-      <Section id="search" variant="pearl">
-        <IdxSearchModule
-          title="Search Homes Near La Jolla"
-          description="Browse available homes within the La Jolla area and surrounding San Diego neighborhoods."
-          variant={generalListings.length > 0 ? "api-preview" : "link"}
-          listings={generalListings}
-          count={generalCount}
-        />
-      </Section>
 
       <Section>
         <FaqSection faqs={homeFaqs} />
