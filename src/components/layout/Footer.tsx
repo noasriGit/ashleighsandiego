@@ -54,8 +54,25 @@ export function Footer() {
             {agent.name} | California DRE #{agent.dreNumber}
           </p>
           <p className="mt-1">{brokerage.name}</p>
+          <p className="mt-1">{brokerage.officeAddress}</p>
+          <p className="mt-2">
+            <a href={`tel:${agent.phone.replace(/[^0-9+]/g, "")}`} className="text-white/80 hover:text-white">
+              {agent.phone}
+            </a>
+            {" · "}
+            <a href={`mailto:${agent.email}`} className="text-white/80 hover:text-white">
+              {agent.email}
+            </a>
+          </p>
           <p className="mt-1">
-            {brokerage.licenseNumber} | {brokerage.officeAddress}
+            <a
+              href={agent.instagram.url}
+              className="text-white/80 hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {agent.instagram.handle}
+            </a>
           </p>
           <p className="mt-4 text-xs leading-relaxed text-white/60">{franchiseText}</p>
           <p className="mt-3 text-xs leading-relaxed text-white/60">{sdmlsText}</p>

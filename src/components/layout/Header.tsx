@@ -3,8 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { siteConfig } from "@/data/site-config";
-import { Button } from "@/components/ui/Button";
 import { IdxSearchBar } from "@/components/idx/IdxSearchBar";
+import {
+  HeaderContactNavSlot,
+  HeaderContactPanel,
+  HeaderContactProvider,
+} from "@/components/layout/HeaderContactCard";
 import { cn } from "@/lib/utils";
 
 function navLinkLabel(item: (typeof siteConfig.nav)[number], compact = false) {
@@ -18,7 +22,8 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b border-surface-muted bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <HeaderContactProvider>
+      <header className="site-header sticky top-0 z-50 border-b border-surface-muted bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex max-w-6xl items-center px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -50,9 +55,7 @@ export function Header() {
             </Link>
           ))}
           <div className="shrink-0 px-4 xl:px-5">
-            <Button href="/contact" size="sm" className="whitespace-nowrap">
-              Book a Call
-            </Button>
+            <HeaderContactNavSlot />
           </div>
         </nav>
 
@@ -73,11 +76,13 @@ export function Header() {
         </button>
       </div>
 
-      <div className="hidden border-t border-surface-muted lg:block">
+      <div className="hidden overflow-visible border-t border-surface-muted lg:block">
         <div className="mx-auto flex max-w-6xl justify-center px-4 py-2 sm:px-6 lg:px-8">
           <IdxSearchBar variant="header" />
         </div>
       </div>
+
+      <HeaderContactPanel />
 
       <nav
         className={cn(
@@ -103,13 +108,9 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <div className="px-3 py-2.5">
-            <Button href="/contact" className="w-full" size="sm">
-              {siteConfig.ctas.strategyCall}
-            </Button>
-          </div>
         </div>
       </nav>
     </header>
+    </HeaderContactProvider>
   );
 }

@@ -13,22 +13,27 @@ export const siteConfig = {
     "Moving to San Diego? Get clear neighborhood guidance, home search tools, and a step-by-step buyer plan before you start touring homes.",
 
   agent: {
-    name: "[Agent Name]",
-    dreNumber: "[DRE Number]",
-    email: "[agent@email.com]",
-    phone: "[(555) 555-5555]",
-    photo: "/images/agent-placeholder.jpg",
+    name: "Ashleigh Dodero",
+    dreNumber: "02351643",
+    email: "AshleighDodero@bhhscal.com",
+    phone: "703-229-2810",
+    photo: "/images/hero2.JPG",
+    bio: "Independent buyer guidance for relocating, military/VA, and first-time buyers across the La Jolla area and coastal San Diego.",
+    instagram: {
+      handle: "@ashleighdodero_realestate",
+      url: "https://www.instagram.com/ashleighdodero_realestate/",
+    },
   },
 
   brokerage: {
     name: "Berkshire Hathaway HomeServices California Properties",
-    licenseNumber: "[Brokerage License Number if required]",
-    officeAddress: "[Office Address if required]",
+    licenseNumber: "",
+    officeAddress: "1299 Prospect St, La Jolla, California 92037",
   },
 
   // Agent-level operating note (shown alongside the required BHHS franchise disclaimer).
   disclaimer:
-    "This website is independently operated by [Agent Name], California DRE #[DRE Number], a sales professional affiliated with Berkshire Hathaway HomeServices California Properties. All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your home is currently listed with a Broker, this is not intended as a solicitation.",
+    "This website is independently operated by Ashleigh Dodero, California DRE #02351643, a sales professional affiliated with Berkshire Hathaway HomeServices California Properties. All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your home is currently listed with a Broker, this is not intended as a solicitation.",
 
   // BHHS-required franchise disclaimer (HomeServices of America-owned variant).
   // {year} is replaced at render time. Source: brand-guidelines.ts

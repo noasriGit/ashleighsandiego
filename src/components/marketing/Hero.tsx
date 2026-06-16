@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { AgentContactCard } from "@/components/layout/AgentContactCard";
 import { cn } from "@/lib/utils";
 
 type HeroProps = {
@@ -31,6 +32,8 @@ type HeroProps = {
   size?: "default" | "display";
   /** Fill the viewport below the sticky site header (homepage-style heroes). */
   fullViewport?: boolean;
+  /** Show agent contact card under the headline on mobile. */
+  mobileContactCard?: boolean;
   className?: string;
 };
 
@@ -76,18 +79,21 @@ export function Hero({
   layout = "centered",
   size = "default",
   fullViewport = false,
+  mobileContactCard = false,
   className,
 }: HeroProps) {
   const hasImage = Boolean(backgroundImage);
   const viewportHeight = "min-h-[calc(100dvh-var(--site-header-height))]";
   const isSideLayout = layout === "left" || layout === "right";
+  const showMobileGradient = hasImage;
 
   return (
     <section
+      data-page-hero
       className={cn(
         "relative overflow-hidden text-white [&_h1]:text-white",
         fullViewport && viewportHeight,
-        !hasImage && (gradientClassName ?? DEFAULT_GRADIENT),
+        (!hasImage || showMobileGradient) && (gradientClassName ?? DEFAULT_GRADIENT),
         className,
       )}
     >
@@ -95,7 +101,7 @@ export function Hero({
         backgroundImageWidth &&
         backgroundImageHeight &&
         backgroundImageFit === "contain" ? (
-          <div className="hero-enter-bg absolute inset-0 overflow-hidden">
+          <div className="hero-enter-bg absolute inset-0 hidden overflow-hidden lg:block">
             <Image
               src={backgroundImage as string}
               alt={backgroundImageAlt}
@@ -108,7 +114,7 @@ export function Hero({
             />
           </div>
         ) : (
-          <div className="hero-enter-bg absolute inset-0 overflow-hidden">
+          <div className="hero-enter-bg absolute inset-0 hidden overflow-hidden lg:block">
             {backgroundImagePanX != null ? (
               <div
                 className="absolute left-0 top-0 h-full w-[114%] max-w-none"
@@ -146,6 +152,10 @@ export function Hero({
         <div className="absolute inset-0 bg-[url('/images/coastal-pattern.svg')] opacity-10" />
       )}
 
+      {showMobileGradient && (
+        <div className="absolute inset-0 bg-[url('/images/coastal-pattern.svg')] opacity-10 lg:hidden" />
+      )}
+
       <Container
         className={cn(
           "relative",
@@ -154,7 +164,7 @@ export function Hero({
                 "flex flex-col justify-center py-12 sm:py-16",
                 viewportHeight,
                 layout === "left" && "items-start",
-                layout === "right" && "items-end",
+                layout === "right" && "max-lg:items-start lg:items-end",
               )
             : size === "display"
               ? "py-24 sm:py-36"
@@ -166,15 +176,16 @@ export function Hero({
             isSideLayout
               ? "w-full max-w-xl sm:max-w-2xl lg:max-w-[34rem]"
               : "max-w-3xl",
-            layout === "right" && "ml-auto text-right",
+            layout === "right" && "max-lg:mr-auto max-lg:text-left lg:ml-auto lg:text-right",
             hasImage &&
               cn(
                 "rounded-2xl p-8 shadow-lg backdrop-blur-sm sm:p-10",
+                "max-lg:bg-gradient-to-br max-lg:from-espresso/95 max-lg:via-cabernet/90 max-lg:to-cabernet/85",
                 layout === "left"
-                  ? "bg-gradient-to-r from-espresso/92 via-cabernet/88 to-cabernet/80"
+                  ? "lg:bg-gradient-to-r lg:from-espresso/92 lg:via-cabernet/88 lg:to-cabernet/80"
                   : layout === "right"
-                    ? "bg-gradient-to-l from-espresso/92 via-cabernet/88 to-cabernet/80"
-                    : "bg-gradient-to-br from-espresso/90 via-cabernet/85 to-cabernet/80",
+                    ? "lg:bg-gradient-to-l lg:from-espresso/92 lg:via-cabernet/88 lg:to-cabernet/80"
+                    : "lg:bg-gradient-to-br lg:from-espresso/90 lg:via-cabernet/85 lg:to-cabernet/80",
               ),
             "hero-enter-up hero-enter-up--panel",
           )}
@@ -193,10 +204,28 @@ export function Hero({
           >
             {headline}
           </h1>
+
+          {mobileContactCard && (
+            <div
+              className={cn(
+                "hero-enter-up mt-5 lg:hidden",
+                kicker ? "hero-enter-up--3" : "hero-enter-up--2",
+              )}
+            >
+              <AgentContactCard variant="inline" />
+            </div>
+          )}
+
           <p
             className={cn(
               "hero-enter-up mt-6 text-lg leading-relaxed text-white/90 sm:text-xl",
-              kicker ? "hero-enter-up--3" : "hero-enter-up--2",
+              mobileContactCard
+                ? kicker
+                  ? "hero-enter-up--4"
+                  : "hero-enter-up--3"
+                : kicker
+                  ? "hero-enter-up--3"
+                  : "hero-enter-up--2",
             )}
           >
             {subheadline}
@@ -206,7 +235,7 @@ export function Hero({
               className={cn(
                 "hero-enter-up mt-6 flex flex-wrap gap-2",
                 kicker ? "hero-enter-up--4" : "hero-enter-up--3",
-                layout === "right" && "justify-end",
+                layout === "right" && "max-lg:justify-start lg:justify-end",
               )}
             >
               {badges.map((badge) => (
@@ -222,13 +251,16 @@ export function Hero({
           {(primaryCta || secondaryCta) && (
             <div
               className={cn(
-                "hero-enter-up mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center",
+                "hero-enter-up mt-8 flex flex-col gap-4",
+                layout === "right"
+                  ? "max-lg:items-start lg:flex-row lg:justify-center lg:text-center"
+                  : "sm:flex-row sm:justify-center",
                 badges && badges.length > 0
                   ? "hero-enter-up--5"
                   : kicker
                     ? "hero-enter-up--4"
                     : "hero-enter-up--3",
-                isSideLayout && "text-center",
+                isSideLayout && layout !== "right" && "text-center",
               )}
             >
               {primaryCta && (

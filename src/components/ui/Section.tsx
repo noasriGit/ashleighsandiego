@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 
@@ -19,6 +20,9 @@ type SectionProps = {
   spacing?: SectionSpacing;
   /** Manrope uppercase label rendered above the section content. */
   kicker?: string;
+  /** Full-bleed background photo with a dark variant overlay. */
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
 };
 
 const variantStyles: Record<SectionVariant, string> = {
@@ -46,13 +50,45 @@ export function Section({
   variant = "default",
   spacing = "default",
   kicker,
+  backgroundImage,
+  backgroundImageAlt,
 }: SectionProps) {
+  const hasBackgroundImage = Boolean(backgroundImage);
+  const isDarkText = variant === "navy" || variant === "cabernet" || variant === "espresso";
+
   return (
     <section
       id={id}
-      className={cn(spacingStyles[spacing], variantStyles[variant], className)}
+      className={cn(
+        spacingStyles[spacing],
+        hasBackgroundImage && isDarkText
+          ? "relative overflow-hidden text-white [&_h2]:text-white [&_h3]:text-white"
+          : variantStyles[variant],
+        className,
+      )}
     >
-      <Container className={containerClassName}>
+      {hasBackgroundImage && (
+        <>
+          <Image
+            src={backgroundImage as string}
+            alt={backgroundImageAlt ?? ""}
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div
+            className={cn(
+              "absolute inset-0",
+              variant === "espresso" && "bg-espresso/90",
+              variant === "cabernet" && "bg-cabernet/90",
+              variant === "navy" && "bg-cabernet/90",
+              !isDarkText && "bg-espresso/90",
+            )}
+            aria-hidden
+          />
+        </>
+      )}
+      <Container className={cn(hasBackgroundImage && "relative z-10", containerClassName)}>
         {kicker && <p className="kicker mb-3">{kicker}</p>}
         {children}
       </Container>

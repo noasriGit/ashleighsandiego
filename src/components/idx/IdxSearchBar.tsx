@@ -6,6 +6,7 @@ import { communities, launchCommunitySlugs } from "@/data/communities";
 import { GENERAL_KEY, getIdxSearchConfig } from "@/data/idx-search-config";
 import { IDX_BASE_URL } from "@/data/idx-links";
 import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
+import { SearchSelect } from "@/components/ui/SearchSelect";
 import { cn } from "@/lib/utils";
 
 const PRICE_PRESETS = [
@@ -33,9 +34,6 @@ type IdxSearchBarProps = {
 const idxEnabled =
   process.env.NEXT_PUBLIC_IDX_ENABLED === "true" && Boolean(IDX_BASE_URL);
 
-const selectClassName =
-  "w-full min-w-0 appearance-none bg-transparent py-2 pl-3 pr-8 text-sm text-espresso outline-none focus-visible:ring-2 focus-visible:ring-cabernet/30 rounded-md";
-
 function SearchIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -51,21 +49,6 @@ function SearchIcon({ className }: { className?: string }) {
         strokeLinejoin="round"
         d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
       />
-    </svg>
-  );
-}
-
-function ChevronDown({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
     </svg>
   );
 }
@@ -111,6 +94,18 @@ export function IdxSearchBar({
   };
 
   const isHeader = variant === "header";
+  const areaOptions = AREA_OPTIONS.map((option) => ({
+    value: option.slug,
+    label: option.label,
+  }));
+  const priceOptions = PRICE_PRESETS.map((preset) => ({
+    value: preset.value,
+    label: preset.label,
+  }));
+  const bedOptions = [
+    { value: "", label: "Any beds" },
+    ...[1, 2, 3, 4, 5].map((n) => ({ value: String(n), label: `${n}+ beds` })),
+  ];
 
   return (
     <form
@@ -124,58 +119,40 @@ export function IdxSearchBar({
     >
       <div
         className={cn(
-          "flex flex-1 flex-col divide-y divide-dove/25 sm:flex-row sm:divide-x sm:divide-y-0",
-          "rounded-2xl border border-dove/30 bg-white/90 shadow-md backdrop-blur-md sm:rounded-full",
+          "relative z-10 flex flex-1 flex-col gap-1 overflow-visible p-1.5 sm:flex-row sm:items-stretch sm:gap-0 sm:p-1",
+          "rounded-2xl border border-dove/30 bg-white/95 shadow-md backdrop-blur-md sm:rounded-full",
         )}
       >
-        <label className="relative flex min-w-0 flex-1 items-center">
-          <span className="sr-only">Area</span>
-          <select
-            value={areaSlug}
-            onChange={(e) => setAreaSlug(e.target.value)}
-            className={cn(selectClassName, isHeader && "sm:rounded-l-full")}
-          >
-            {AREA_OPTIONS.map((option) => (
-              <option key={option.slug} value={option.slug}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-2 h-4 w-4 text-earth" />
-        </label>
+        <SearchSelect
+          label="Area"
+          fieldLabel="Area"
+          value={areaSlug}
+          onChange={setAreaSlug}
+          options={areaOptions}
+          className="sm:min-w-[9rem] sm:flex-[1.4]"
+        />
 
-        <label className="relative flex min-w-0 flex-1 items-center sm:max-w-[9.5rem]">
-          <span className="sr-only">Price</span>
-          <select
-            value={pricePreset}
-            onChange={(e) => setPricePreset(e.target.value)}
-            className={selectClassName}
-          >
-            {PRICE_PRESETS.map((preset) => (
-              <option key={preset.value || "any"} value={preset.value}>
-                {preset.label}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-2 h-4 w-4 text-earth" />
-        </label>
+        <div className="hidden w-px shrink-0 self-stretch bg-dove/25 sm:block" aria-hidden="true" />
 
-        <label className="relative flex min-w-0 flex-1 items-center sm:max-w-[6.5rem]">
-          <span className="sr-only">Minimum bedrooms</span>
-          <select
-            value={minBed}
-            onChange={(e) => setMinBed(e.target.value)}
-            className={selectClassName}
-          >
-            <option value="">Any beds</option>
-            {[1, 2, 3, 4, 5].map((n) => (
-              <option key={n} value={String(n)}>
-                {n}+ beds
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-2 h-4 w-4 text-earth" />
-        </label>
+        <SearchSelect
+          label="Price"
+          fieldLabel="Price"
+          value={pricePreset}
+          onChange={setPricePreset}
+          options={priceOptions}
+          className="sm:max-w-[9.5rem]"
+        />
+
+        <div className="hidden w-px shrink-0 self-stretch bg-dove/25 sm:block" aria-hidden="true" />
+
+        <SearchSelect
+          label="Minimum bedrooms"
+          fieldLabel="Beds"
+          value={minBed}
+          onChange={setMinBed}
+          options={bedOptions}
+          className="sm:max-w-[7.5rem]"
+        />
       </div>
 
       <button

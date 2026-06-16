@@ -1,4 +1,6 @@
 import { Section } from "@/components/ui/Section";
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { BentoGrid } from "@/components/ui/BentoGrid";
 import { StatBand } from "@/components/ui/StatBand";
@@ -78,6 +80,7 @@ export default async function HomePage() {
         fullViewport
         layout="right"
         size="display"
+        mobileContactCard
       />
 
       <StatBand
@@ -105,6 +108,8 @@ export default async function HomePage() {
                 eyebrow: "Start here",
                 span: "feature",
                 highlight: true,
+                imageSrc: "/images/san-diego-dawn-early-morning-with-palm-tree-silhouette.jpg",
+                imageAlt: "San Diego dawn with palm tree silhouettes",
               },
               {
                 title: "Military / VA Buyers",
@@ -201,7 +206,11 @@ export default async function HomePage() {
         imagePosition="left"
       />
 
-      <Section variant="espresso">
+      <Section
+        variant="espresso"
+        backgroundImage="/images/lajolla.jpg"
+        backgroundImageAlt="Aerial view of La Jolla coastline, beach, and Pacific Ocean"
+      >
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="kicker mb-3 text-white/70">Coverage Area</p>
@@ -261,15 +270,24 @@ export default async function HomePage() {
               Whether you&apos;re moving for military orders, a new job, or a lifestyle change — I&apos;m here to provide guidance, resources, and responsive support throughout your search.
             </p>
             <div className="mt-6 flex items-center gap-4">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cabernet to-espresso text-pearl/80">
-                <svg className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.25} aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0" />
-                </svg>
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-cabernet/20">
+                <Image
+                  src={siteConfig.agent.photo}
+                  alt={siteConfig.agent.name}
+                  fill
+                  sizes="80px"
+                  className="object-cover object-center"
+                />
               </div>
               <div className="text-sm text-espresso/80">
                 <p className="font-semibold text-espresso">{siteConfig.agent.name}</p>
                 <p>California DRE #{siteConfig.agent.dreNumber}</p>
                 <p>{siteConfig.brokerage.name}</p>
+                <p className="mt-1">
+                  <Link href={`tel:${siteConfig.agent.phone.replace(/[^0-9+]/g, "")}`} className="text-cabernet hover:underline">
+                    {siteConfig.agent.phone}
+                  </Link>
+                </p>
               </div>
             </div>
             <Button href="/contact" className="mt-6 self-start">

@@ -9,6 +9,7 @@ export function realEstateAgentSchema() {
     url: siteConfig.url,
     email: siteConfig.agent.email,
     telephone: siteConfig.agent.phone,
+    sameAs: [siteConfig.agent.instagram.url],
     areaServed: {
       "@type": "City",
       name: "San Diego",
@@ -30,8 +31,10 @@ export function localBusinessSchema() {
     url: siteConfig.url,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "San Diego",
+      streetAddress: "1299 Prospect St",
+      addressLocality: "La Jolla",
       addressRegion: "CA",
+      postalCode: "92037",
       addressCountry: "US",
     },
   };

@@ -321,4 +321,8 @@ h6 {
   :root {
     --site-header-height: 6.25rem;
   }
+
+  html.site-header--contact-open {
+    --site-header-height: 18rem;
+  }
 }

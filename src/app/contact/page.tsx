@@ -1,6 +1,7 @@
 import { PageHero } from "@/components/marketing/PageHero";
 import { BuyerQuestionnaire } from "@/components/forms/BuyerQuestionnaire";
 import { CustomSearchForm } from "@/components/forms/CustomSearchForm";
+import { AgentContactCard } from "@/components/layout/AgentContactCard";
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -47,35 +48,6 @@ function BookingEmbed() {
   );
 }
 
-function AgentCard() {
-  return (
-    <Card variant="filled" accent="cabernet" className="sidebar-sticky">
-      <div className="flex h-32 w-full items-center justify-center rounded-lg bg-gradient-to-br from-cabernet to-espresso text-pearl/80">
-        <svg className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.25} aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0" />
-        </svg>
-      </div>
-      <h2 className="mt-5 heading-card text-cabernet">{siteConfig.agent.name}</h2>
-      <p className="mt-1 text-sm text-espresso/80">California DRE #{siteConfig.agent.dreNumber}</p>
-      <p className="mt-1 text-sm text-espresso/80">{siteConfig.brokerage.name}</p>
-      <dl className="mt-5 space-y-2 text-sm text-espresso/90">
-        <div>
-          <dt className="kicker mb-0.5">Email</dt>
-          <dd>{siteConfig.agent.email}</dd>
-        </div>
-        <div>
-          <dt className="kicker mb-0.5">Phone</dt>
-          <dd>{siteConfig.agent.phone}</dd>
-        </div>
-      </dl>
-      <p className="mt-5 text-sm leading-relaxed text-espresso/80">
-        Independent buyer guidance for relocating, military/VA, and first-time buyers across the
-        La Jolla area and coastal San Diego.
-      </p>
-    </Card>
-  );
-}
-
 export default function ContactPage() {
   return (
     <>
@@ -115,7 +87,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div>
-            <AgentCard />
+            <AgentContactCard variant="sidebar" className="sidebar-sticky" />
           </div>
         </div>
       </Section>
