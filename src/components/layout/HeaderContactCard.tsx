@@ -137,26 +137,26 @@ export function HeaderContactPanel() {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute inset-x-0 top-full z-50 hidden overflow-hidden border-t border-surface-muted bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90 transition-[max-height,opacity] duration-300 ease-out motion-reduce:transition-none lg:block",
-        open
-          ? "pointer-events-auto max-h-[18rem] opacity-100"
-          : "max-h-0 opacity-0",
+        "pointer-events-none absolute inset-x-0 top-full z-50 hidden overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none lg:grid",
+        open ? "pointer-events-auto grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
       )}
       aria-hidden={!open}
     >
-      <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
-        <div className="relative">
-          <AgentContactCard id="header-contact-card" />
-          <button
-            type="button"
-            onClick={handleDismiss}
-            className="absolute right-2 top-2 rounded-full bg-white/90 p-1.5 text-earth shadow-sm transition-colors hover:text-cabernet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet"
-            aria-label="Hide contact card"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
+      <div className="min-h-0 overflow-hidden border-t border-surface-muted bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90">
+        <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
+          <div className="relative">
+            <AgentContactCard id="header-contact-card" />
+            <button
+              type="button"
+              onClick={handleDismiss}
+              className="absolute right-2 top-2 rounded-full bg-white/90 p-1.5 text-earth shadow-sm transition-colors hover:text-cabernet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet"
+              aria-label="Hide contact card"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
