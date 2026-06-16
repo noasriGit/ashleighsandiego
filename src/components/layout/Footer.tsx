@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { siteConfig } from "@/data/site-config";
+import { getSdmlsIdxDisclaimer, siteConfig } from "@/data/site-config";
 import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   const { agent, brokerage, disclaimer, franchiseDisclaimer } = siteConfig;
   const year = new Date().getFullYear();
   const franchiseText = franchiseDisclaimer.replace("{year}", String(year));
+  const sdmlsText = getSdmlsIdxDisclaimer();
 
   return (
     <footer className="mt-auto border-t border-surface-muted bg-cabernet text-white">
@@ -57,6 +58,7 @@ export function Footer() {
             {brokerage.licenseNumber} | {brokerage.officeAddress}
           </p>
           <p className="mt-4 text-xs leading-relaxed text-white/60">{franchiseText}</p>
+          <p className="mt-3 text-xs leading-relaxed text-white/60">{sdmlsText}</p>
           <p className="mt-3 text-xs leading-relaxed text-white/60">{disclaimer}</p>
           <p className="mt-4 text-xs text-white/50">
             &copy; {year} {siteConfig.name}. All rights reserved.

@@ -30,6 +30,9 @@
   --surface: var(--bhhs-white);
   --surface-muted: var(--bhhs-neutral-tint);
 
+  /* Sticky header height — used by full-viewport heroes */
+  --site-header-height: 4.5rem;
+
   /*
    * Legacy aliases — existing Tailwind classes (navy, ocean, etc.)
    * map to BHHS Traditional palette values.
@@ -231,6 +234,73 @@ h6 {
   }
 }
 
+/*
+ * Hero mount animations — above-the-fold, CSS-only.
+ * Background fades in; content fades/rises in stagger.
+ */
+@keyframes hero-enter-bg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-enter-bg {
+  animation: hero-enter-bg 1.4s ease-out both;
+}
+
+.hero-enter-up {
+  animation: hero-enter-up 0.65s ease both;
+  will-change: opacity, transform;
+}
+
+.hero-enter-up--panel {
+  animation-duration: 0.75s;
+  animation-delay: 0.15s;
+}
+
+.hero-enter-up--1 {
+  animation-delay: 0.25s;
+}
+
+.hero-enter-up--2 {
+  animation-delay: 0.35s;
+}
+
+.hero-enter-up--3 {
+  animation-delay: 0.45s;
+}
+
+.hero-enter-up--4 {
+  animation-delay: 0.55s;
+}
+
+.hero-enter-up--5 {
+  animation-delay: 0.65s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter-bg,
+  .hero-enter-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Accordion (FAQ) open/close animation using a grid-rows trick. */
 .accordion-panel {
   display: grid;
@@ -244,4 +314,11 @@ h6 {
 
 .accordion-panel > div {
   overflow: hidden;
+}
+
+/* Two-row header (nav + IDX search bar) on desktop */
+@media (min-width: 1024px) {
+  :root {
+    --site-header-height: 6.25rem;
+  }
 }

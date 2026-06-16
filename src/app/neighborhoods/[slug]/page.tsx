@@ -226,10 +226,6 @@ export default async function CommunityPage({ params }: PageProps) {
               idxBaseUrl={IDX_BASE_URL}
               className="mt-0"
             />
-            <p className="mt-4 text-xs text-espresso/60">
-              Listing data provided via IDX. Information is deemed reliable but not guaranteed.
-              Equal Housing Opportunity.
-            </p>
           </Section>
         )}
 

@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import { communities } from "@/data/communities";
+import { marketingHeroes } from "@/data/page-images";
 import { generatePageMetadata } from "@/lib/metadata";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -41,6 +42,8 @@ export default function NeighborhoodsPage() {
         subheadline={`Browse neighborhood guides within a ${siteConfig.geo.radiusMiles}-mile radius of ${siteConfig.geo.center}. Filter by lifestyle to find areas that match your commute, budget, and priorities.`}
         primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
+        backgroundImage={marketingHeroes.neighborhoods.src}
+        backgroundImageAlt={marketingHeroes.neighborhoods.alt}
       />
 
       <Section kicker="Coastal to Inland">

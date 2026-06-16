@@ -66,7 +66,7 @@ try {
   console.warn("No idx-search-overrides.json found — saved search IDs not synced yet.");
 }
 
-const idxBase = process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.example.com";
+const idxBase = process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.sdcommunities.com";
 
 console.log("\nIDX Community Search Config Report\n");
 console.log(`Base URL: ${idxBase}\n`);

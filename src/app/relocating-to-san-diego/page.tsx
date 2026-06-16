@@ -16,6 +16,7 @@ import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
+import { marketingHeroes } from "@/data/page-images";
 import { relocationFaqs } from "@/data/faqs";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -134,6 +135,8 @@ export default async function RelocatingPage() {
         subheadline="Compare communities near La Jolla, understand budget and commute trade-offs, and build a buyer plan before you tour homes."
         primaryCta={{ label: "Book a Relocation Strategy Call", href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
+        heroImage={marketingHeroes.relocating.src}
+        heroImageAlt={marketingHeroes.relocating.alt}
       />
 
       <StatBand

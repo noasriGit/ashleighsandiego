@@ -15,6 +15,12 @@ export type CommunityContent = {
   heroImage?: string;
   heroImageAlt?: string;
   /**
+   * Card thumbnail for directory/homepage grids.
+   * Expected path: `/images/neighborhoods/{slug}-thumb.jpg` (800×450).
+   */
+  thumbnail?: string;
+  thumbnailAlt?: string;
+  /**
    * Optional headline stats (e.g. walk score, parks, school count).
    * Only include verifiable, non-misleading figures. Rendered as a StatBand
    * when present; the page omits the band entirely when absent.
@@ -25,6 +31,10 @@ export type CommunityContent = {
 export const communityContent: Record<string, CommunityContent> = {
   "la-jolla": {
     slug: "la-jolla",
+    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
+    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
+    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
+    thumbnailAlt: "La Jolla Cove rocks and shoreline",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -55,6 +65,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "pacific-beach": {
     slug: "pacific-beach",
+    heroImage: "/images/neighborhoods/pacific-beach-hero.jpg",
+    heroImageAlt: "Pacific Beach pier and shoreline, San Diego",
+    thumbnail: "/images/neighborhoods/pacific-beach-thumb.jpg",
+    thumbnailAlt: "Pacific Beach boardwalk and ocean on a sunny day",
     stats: [
       { value: "92109", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -85,6 +99,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "university-city": {
     slug: "university-city",
+    heroImage: "/images/neighborhoods/university-city-hero.jpg",
+    heroImageAlt: "Geisel Library at UC San Diego in University City",
+    thumbnail: "/images/neighborhoods/university-city-thumb.jpg",
+    thumbnailAlt: "UC San Diego Geisel Library exterior",
     stats: [
       { value: "92122", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -115,6 +133,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "clairemont": {
     slug: "clairemont",
+    heroImage: "/images/neighborhoods/clairemont-hero.jpg",
+    heroImageAlt: "Residential street with palm trees in central San Diego",
+    thumbnail: "/images/neighborhoods/clairemont-thumb.jpg",
+    thumbnailAlt: "Palm-lined neighborhood street in San Diego",
     stats: [
       { value: "92117", label: "ZIP Code" },
       { value: "I-5 · I-805 · I-8", label: "Freeway Access" },
@@ -145,6 +167,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "mission-valley": {
     slug: "mission-valley",
+    heroImage: "/images/neighborhoods/mission-valley-hero.jpg",
+    heroImageAlt: "San Diego downtown skyline and bay",
+    thumbnail: "/images/neighborhoods/mission-valley-thumb.jpg",
+    thumbnailAlt: "San Diego-Coronado Bridge and downtown skyline",
     stats: [
       { value: "92108", label: "ZIP Code" },
       { value: "I-8 · I-805 · I-15", label: "Freeway Access" },
@@ -175,6 +201,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "del-mar": {
     slug: "del-mar",
+    heroImage: "/images/neighborhoods/del-mar-hero.jpg",
+    heroImageAlt: "Del Mar coastline with beach and bluffs, San Diego County",
+    thumbnail: "/images/neighborhoods/del-mar-thumb.jpg",
+    thumbnailAlt: "Surfer walking on Del Mar beach",
     stats: [
       { value: "92014", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -205,6 +235,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "carmel-valley": {
     slug: "carmel-valley",
+    heroImage: "/images/neighborhoods/carmel-valley-hero.jpg",
+    heroImageAlt: "Hillside San Diego neighborhood overlooking the Pacific Ocean",
+    thumbnail: "/images/neighborhoods/carmel-valley-thumb.jpg",
+    thumbnailAlt: "San Diego hillside neighborhood with ocean views",
     stats: [
       { value: "92130", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -235,6 +269,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "point-loma": {
     slug: "point-loma",
+    heroImage: "/images/neighborhoods/point-loma-hero.jpg",
+    heroImageAlt: "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
+    thumbnail: "/images/neighborhoods/point-loma-thumb.jpg",
+    thumbnailAlt: "Point Loma lighthouse overlooking the Pacific",
     stats: [
       { value: "92106", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -265,6 +303,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "sorrento-valley": {
     slug: "sorrento-valley",
+    heroImage: "/images/neighborhoods/sorrento-valley-hero.jpg",
+    heroImageAlt: "Geisel Library and UC San Diego campus near Sorrento Valley",
+    thumbnail: "/images/neighborhoods/sorrento-valley-thumb.jpg",
+    thumbnailAlt: "Geisel Library at UC San Diego",
     stats: [
       { value: "92121", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -295,6 +337,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "bay-park": {
     slug: "bay-park",
+    heroImage: "/images/neighborhoods/bay-park-hero.jpg",
+    heroImageAlt: "Mission Bay waterfront near Bay Park, San Diego",
+    thumbnail: "/images/neighborhoods/bay-park-thumb.jpg",
+    thumbnailAlt: "Mission Bay resort area near Bay Park",
     stats: [
       { value: "92110", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -325,6 +371,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "ocean-beach": {
     slug: "ocean-beach",
+    heroImage: "/images/neighborhoods/ocean-beach-hero.jpg",
+    heroImageAlt: "Sunset at Ocean Beach Pier, San Diego",
+    thumbnail: "/images/neighborhoods/ocean-beach-thumb.jpg",
+    thumbnailAlt: "Ocean Beach shoreline and waves, San Diego",
     stats: [
       { value: "92107", label: "ZIP Code" },
       { value: "I-8", label: "Freeway Access" },
@@ -355,6 +405,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "hillcrest": {
     slug: "hillcrest",
+    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
+    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
+    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
+    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
     stats: [
       { value: "92103", label: "ZIP Code" },
       { value: "I-805 · SR-163", label: "Freeway Access" },
@@ -385,6 +439,10 @@ export const communityContent: Record<string, CommunityContent> = {
   },
   "north-park": {
     slug: "north-park",
+    heroImage: "/images/neighborhoods/north-park-hero.jpg",
+    heroImageAlt: "Walkable street with shops and restaurants in San Diego",
+    thumbnail: "/images/neighborhoods/north-park-thumb.jpg",
+    thumbnailAlt: "Walkable commercial street in San Diego",
     stats: [
       { value: "92104", label: "ZIP Code" },
       { value: "SR-163 · I-805", label: "Freeway Access" },

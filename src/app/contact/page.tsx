@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
+import { marketingHeroes } from "@/data/page-images";
 import { generatePageMetadata } from "@/lib/metadata";
 import { realEstateAgentSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -98,6 +99,8 @@ export default function ContactPage() {
         kicker="Let's Talk"
         headline="Book a Free San Diego Buyer Strategy Call"
         subheadline="Share your relocation timeline, budget, and neighborhood preferences. We'll help you build a clear home-buying plan."
+        heroImage={marketingHeroes.contact.src}
+        heroImageAlt={marketingHeroes.contact.alt}
       />
 
       <Section>

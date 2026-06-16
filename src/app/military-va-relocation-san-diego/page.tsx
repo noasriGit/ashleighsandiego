@@ -16,6 +16,7 @@ import { Tabs } from "@/components/ui/Tabs";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
+import { marketingHeroes, splitSections } from "@/data/page-images";
 import { militaryFaqs } from "@/data/faqs";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -103,6 +104,8 @@ export default async function MilitaryPage() {
         subheadline="Neighborhood guidance for military and VA buyers — commute to bases, housing options, and buyer support without the hard sell."
         primaryCta={{ label: "Build Your PCS Buyer Plan", href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
+        heroImage={marketingHeroes.militaryVa.src}
+        heroImageAlt={marketingHeroes.militaryVa.alt}
       />
 
       <StatBand
@@ -145,6 +148,7 @@ export default async function MilitaryPage() {
       </Section>
 
       <SplitSection
+        id="va-buyer-education"
         variant="sand"
         kicker="VA Loans"
         heading="VA Buyer Education"
@@ -152,6 +156,8 @@ export default async function MilitaryPage() {
           "VA loans offer significant benefits for eligible military buyers — but eligibility, entitlement, and terms depend on your service history and lender guidelines. We guide you through the home search and purchase process.",
           "For VA loan eligibility, funding fees, and financing advice, consult a licensed VA-approved lender. We can provide lender introductions upon request.",
         ]}
+        imageSrc={splitSections["military-va-relocation-san-diego/va-buyer-education"].src}
+        imageAlt={splitSections["military-va-relocation-san-diego/va-buyer-education"].alt}
         imagePosition="right"
       >
         <CalloutBlock type="tip" label="Important">

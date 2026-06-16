@@ -14,6 +14,8 @@ import { FaqSection } from "@/components/marketing/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import { getLaunchCommunities } from "@/data/communities";
+import { communityContent } from "@/data/community-content";
+import { splitSections } from "@/data/page-images";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
 import { homeFaqs, buyerRoadmapSteps } from "@/data/faqs";
@@ -68,6 +70,13 @@ export default async function HomePage() {
         subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego — including first-time buyers, military/VA buyers, and out-of-area movers."
         primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
+        backgroundImage="/images/hero1.jpg"
+        backgroundImageAlt="San Diego coastal homes and neighborhoods"
+        backgroundImageFit="cover"
+        backgroundImagePosition="object-top"
+        backgroundImagePanX={-8}
+        fullViewport
+        layout="right"
         size="display"
       />
 
@@ -139,9 +148,17 @@ export default async function HomePage() {
           Explore buyer guides for communities within a {siteConfig.geo.radiusMiles}-mile radius of {siteConfig.geo.center}.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredCommunities.map((community) => (
-            <CommunityCard key={community.slug} community={community} />
-          ))}
+          {featuredCommunities.map((community) => {
+            const content = communityContent[community.slug];
+            return (
+              <CommunityCard
+                key={community.slug}
+                community={community}
+                thumbnail={content?.thumbnail}
+                thumbnailAlt={content?.thumbnailAlt}
+              />
+            );
+          })}
         </div>
         <Button href="/neighborhoods" variant="outline" className="mt-8">
           {siteConfig.ctas.compareNeighborhoods}
@@ -156,6 +173,7 @@ export default async function HomePage() {
       />
 
       <SplitSection
+        id="military-va"
         variant="sand"
         kicker="Military & VA"
         heading="Military & VA Relocation Support"
@@ -164,10 +182,13 @@ export default async function HomePage() {
           "Consult a licensed lender for VA loan eligibility and financing advice. We focus on neighborhood education, home search, and buyer guidance.",
         ]}
         cta={{ label: "Build Your PCS Buyer Plan", href: "/military-va-relocation-san-diego" }}
+        imageSrc={splitSections["home/military-va"].src}
+        imageAlt={splitSections["home/military-va"].alt}
         imagePosition="right"
       />
 
       <SplitSection
+        id="first-time-buyer"
         kicker="First-Time Buyers"
         heading="First-Time Buyer Support"
         body={[
@@ -175,6 +196,8 @@ export default async function HomePage() {
           "Whether you're relocating or buying locally, a clear roadmap helps you avoid costly mistakes.",
         ]}
         cta={{ label: "First-Time Buyer Guide", href: "/first-time-home-buyer-san-diego" }}
+        imageSrc={splitSections["home/first-time-buyer"].src}
+        imageAlt={splitSections["home/first-time-buyer"].alt}
         imagePosition="left"
       />
 

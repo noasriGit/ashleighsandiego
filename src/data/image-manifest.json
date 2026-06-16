@@ -1,0 +1,785 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-16",
+  "slots": [
+    {
+      "slotId": "hero/home",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/",
+      "filePath": "/images/heroes/home.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "San Diego skyline across the bay on a clear day",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
+          "license": "Unsplash License",
+          "photographer": "Hakan Toker"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/neighborhoods",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/neighborhoods",
+      "filePath": "/images/heroes/neighborhoods.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Coastal San Diego neighborhood hills overlooking the Pacific Ocean",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/search-homes",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/search-homes",
+      "filePath": "/images/heroes/search-homes.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Palm-lined residential street in San Diego at golden hour",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+          "license": "Unsplash License",
+          "photographer": "Kevin Schmid"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/contact",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/contact",
+      "filePath": "/images/heroes/contact.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Balboa Park California Tower and gardens in San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
+          "license": "Unsplash License",
+          "photographer": "Jeremy Huang"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/relocating",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/relocating-to-san-diego",
+      "filePath": "/images/heroes/relocating.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "San Diego skyline viewed across the bay",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/moving-to-la-jolla",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/moving-to-la-jolla",
+      "filePath": "/images/heroes/moving-to-la-jolla.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Ocean waves at La Jolla Cove, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/hTSD1SN8k8o/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/hTSD1SN8k8o",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/military-va",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/military-va-relocation-san-diego",
+      "filePath": "/images/heroes/military-va.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "San Diego-Coronado Bridge over the bay",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "hero/first-time-buyer",
+      "phase": 2,
+      "category": "marketing-hero",
+      "route": "/first-time-home-buyer-san-diego",
+      "filePath": "/images/heroes/first-time-buyer.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Pacific Beach shoreline on a sunny San Diego day",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/la-jolla",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/la-jolla",
+      "filePath": "/images/neighborhoods/la-jolla-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "La Jolla Cove coastline and Pacific Ocean, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/hTSD1SN8k8o/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/hTSD1SN8k8o",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/pacific-beach",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/pacific-beach",
+      "filePath": "/images/neighborhoods/pacific-beach-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Pacific Beach pier and shoreline, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/yARug8j9dYY/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/yARug8j9dYY",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/del-mar",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/del-mar",
+      "filePath": "/images/neighborhoods/del-mar-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Del Mar coastline with beach and bluffs, San Diego County",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/aVbPtUinKXU/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/aVbPtUinKXU",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/point-loma",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/point-loma",
+      "filePath": "/images/neighborhoods/point-loma-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/VF0HUhocN_4/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/VF0HUhocN_4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/ocean-beach",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/ocean-beach",
+      "filePath": "/images/neighborhoods/ocean-beach-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Sunset at Ocean Beach Pier, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/JcVmixOBaW4/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/JcVmixOBaW4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/university-city",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/university-city",
+      "filePath": "/images/neighborhoods/university-city-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Geisel Library at UC San Diego in University City",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/V6SB2FADGmU/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/V6SB2FADGmU",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/clairemont",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/clairemont",
+      "filePath": "/images/neighborhoods/clairemont-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Residential street with palm trees in central San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+          "license": "Unsplash License",
+          "photographer": "Kevin Schmid"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/mission-valley",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/mission-valley",
+      "filePath": "/images/neighborhoods/mission-valley-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "San Diego downtown skyline and bay",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
+          "license": "Unsplash License",
+          "photographer": "Hakan Toker"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/carmel-valley",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/carmel-valley",
+      "filePath": "/images/neighborhoods/carmel-valley-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Hillside San Diego neighborhood overlooking the Pacific Ocean",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/sorrento-valley",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/sorrento-valley",
+      "filePath": "/images/neighborhoods/sorrento-valley-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Geisel Library and UC San Diego campus near Sorrento Valley",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/NRvDcp5v6IY/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/NRvDcp5v6IY",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/bay-park",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/bay-park",
+      "filePath": "/images/neighborhoods/bay-park-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Mission Bay waterfront near Bay Park, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/c3mDifd49y8/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/c3mDifd49y8",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/hillcrest",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/hillcrest",
+      "filePath": "/images/neighborhoods/hillcrest-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Balboa Park architecture near Hillcrest, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/POtCTjgoiTY/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/POtCTjgoiTY",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-hero/north-park",
+      "phase": 1,
+      "category": "neighborhood-hero",
+      "route": "/neighborhoods/north-park",
+      "filePath": "/images/neighborhoods/north-park-hero.jpg",
+      "targetDimensions": "1920x1080",
+      "altText": "Walkable street with shops and restaurants in San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/7OBq594bcvQ/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/7OBq594bcvQ",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/la-jolla",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/la-jolla",
+      "filePath": "/images/neighborhoods/la-jolla-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "La Jolla Cove rocks and shoreline",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/pacific-beach",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/pacific-beach",
+      "filePath": "/images/neighborhoods/pacific-beach-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Pacific Beach boardwalk and ocean on a sunny day",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/del-mar",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/del-mar",
+      "filePath": "/images/neighborhoods/del-mar-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Surfer walking on Del Mar beach",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/LBCIMRXifP8/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/LBCIMRXifP8",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/point-loma",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/point-loma",
+      "filePath": "/images/neighborhoods/point-loma-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Point Loma lighthouse overlooking the Pacific",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/VF0HUhocN_4/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/VF0HUhocN_4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/ocean-beach",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/ocean-beach",
+      "filePath": "/images/neighborhoods/ocean-beach-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Ocean Beach shoreline and waves, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/JvmYnjpxA8M/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/JvmYnjpxA8M",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/university-city",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/university-city",
+      "filePath": "/images/neighborhoods/university-city-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "UC San Diego Geisel Library exterior",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/NRvDcp5v6IY/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/NRvDcp5v6IY",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/clairemont",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/clairemont",
+      "filePath": "/images/neighborhoods/clairemont-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Palm-lined neighborhood street in San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+          "license": "Unsplash License",
+          "photographer": "Kevin Schmid"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/mission-valley",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/mission-valley",
+      "filePath": "/images/neighborhoods/mission-valley-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "San Diego-Coronado Bridge and downtown skyline",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/carmel-valley",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/carmel-valley",
+      "filePath": "/images/neighborhoods/carmel-valley-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "San Diego hillside neighborhood with ocean views",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/sorrento-valley",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/sorrento-valley",
+      "filePath": "/images/neighborhoods/sorrento-valley-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Geisel Library at UC San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/V6SB2FADGmU/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/V6SB2FADGmU",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/bay-park",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/bay-park",
+      "filePath": "/images/neighborhoods/bay-park-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Mission Bay resort area near Bay Park",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/c3mDifd49y8/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/c3mDifd49y8",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/hillcrest",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/hillcrest",
+      "filePath": "/images/neighborhoods/hillcrest-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Balboa Park California Tower near Hillcrest",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
+          "license": "Unsplash License",
+          "photographer": "Jeremy Huang"
+        }
+      ]
+    },
+    {
+      "slotId": "neighborhood-thumb/north-park",
+      "phase": 1,
+      "category": "neighborhood-thumb",
+      "route": "/neighborhoods/north-park",
+      "filePath": "/images/neighborhoods/north-park-thumb.jpg",
+      "targetDimensions": "800x450",
+      "altText": "Walkable commercial street in San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/7OBq594bcvQ/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/7OBq594bcvQ",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "split/home/military-va",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/",
+      "filePath": "/images/sections/home/military-va.jpg",
+      "targetDimensions": "800x600",
+      "altText": "San Diego-Coronado Bridge connecting to naval installations",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "split/home/first-time-buyer",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/",
+      "filePath": "/images/sections/home/first-time-buyer.jpg",
+      "targetDimensions": "800x600",
+      "altText": "Residential palm-lined street in San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+          "license": "Unsplash License",
+          "photographer": "Kevin Schmid"
+        }
+      ]
+    },
+    {
+      "slotId": "split/moving-to-la-jolla/village",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/moving-to-la-jolla",
+      "filePath": "/images/sections/moving-to-la-jolla/village.jpg",
+      "targetDimensions": "800x600",
+      "altText": "La Jolla Cove sandy beach and coastal cliffs",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "split/moving-to-la-jolla/subareas",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/moving-to-la-jolla",
+      "filePath": "/images/sections/moving-to-la-jolla/subareas.jpg",
+      "targetDimensions": "800x600",
+      "altText": "Waves crashing near La Jolla pier and coastline",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/E1wZal9CIaM/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/E1wZal9CIaM",
+          "license": "Unsplash License",
+          "photographer": "James Lee"
+        }
+      ]
+    },
+    {
+      "slotId": "split/moving-to-la-jolla/housing",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/moving-to-la-jolla",
+      "filePath": "/images/sections/moving-to-la-jolla/housing.jpg",
+      "targetDimensions": "800x600",
+      "altText": "Modern architecture and housing near UC San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/NRvDcp5v6IY/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/NRvDcp5v6IY",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "split/moving-to-la-jolla/lifestyle",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/moving-to-la-jolla",
+      "filePath": "/images/sections/moving-to-la-jolla/lifestyle.jpg",
+      "targetDimensions": "800x600",
+      "altText": "Sunset ocean waves at La Jolla Cove",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/5PUidNQ6ZX4/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/5PUidNQ6ZX4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    },
+    {
+      "slotId": "split/military-va-relocation-san-diego/va-buyer-education",
+      "phase": 3,
+      "category": "split-section",
+      "route": "/military-va-relocation-san-diego",
+      "filePath": "/images/sections/military-va-relocation-san-diego/va-buyer-education.jpg",
+      "targetDimensions": "800x600",
+      "altText": "Point Loma lighthouse and coastal peninsula, San Diego",
+      "selectedCandidateIndex": 0,
+      "status": "downloaded",
+      "candidates": [
+        {
+          "downloadUrl": "https://unsplash.com/photos/VF0HUhocN_4/download?force=true&w=1200",
+          "sourcePageUrl": "https://unsplash.com/photos/VF0HUhocN_4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor"
+        }
+      ]
+    }
+  ]
+}

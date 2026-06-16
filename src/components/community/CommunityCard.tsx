@@ -8,6 +8,7 @@ type CommunityCardProps = {
   community: Community;
   /** Optional real photo. When absent, a brand-tinted placeholder header shows. */
   thumbnail?: string;
+  thumbnailAlt?: string;
 };
 
 const lifestyleGradient: Record<LifestyleTag, string> = {
@@ -20,7 +21,7 @@ const lifestyleGradient: Record<LifestyleTag, string> = {
   "Military/commute considerations": "from-espresso to-earth",
 };
 
-export function CommunityCard({ community, thumbnail }: CommunityCardProps) {
+export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityCardProps) {
   const hasPage = community.hasGuide;
   const gradient =
     lifestyleGradient[community.lifestyles[0]] ?? "from-cabernet to-espresso";
@@ -35,7 +36,7 @@ export function CommunityCard({ community, thumbnail }: CommunityCardProps) {
         {thumbnail ? (
           <Image
             src={thumbnail}
-            alt={`${community.name}, San Diego`}
+            alt={thumbnailAlt ?? `${community.name}, San Diego`}
             fill
             sizes="(max-width: 1024px) 100vw, 33vw"
             className="object-cover"

@@ -4,39 +4,61 @@ import Link from "next/link";
 import { useState } from "react";
 import { siteConfig } from "@/data/site-config";
 import { Button } from "@/components/ui/Button";
+import { IdxSearchBar } from "@/components/idx/IdxSearchBar";
 import { cn } from "@/lib/utils";
+
+function navLinkLabel(item: (typeof siteConfig.nav)[number], compact = false) {
+  if (compact && "shortLabel" in item && item.shortLabel) {
+    return item.shortLabel;
+  }
+  return item.label;
+}
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-surface-muted bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex flex-col">
-          <span className="font-serif text-lg font-semibold text-cabernet sm:text-xl">
-            San Diego Relocation
-          </span>
-          <span className="text-xs text-muted-foreground sm:text-sm">Home Guide</span>
+    <header className="site-header sticky top-0 z-50 border-b border-surface-muted bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="mx-auto flex max-w-6xl items-center px-4 py-4 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="mr-6 flex shrink-0 items-center lg:mr-10"
+          aria-label={`${siteConfig.name} home`}
+        >
+          <img
+            src="/images/berkshirelogo.png"
+            alt="Berkshire Hathaway HomeServices California Properties"
+            width={4074}
+            height={960}
+            className="block h-9 w-auto max-w-[190px] object-contain object-left sm:h-10 sm:max-w-[220px]"
+            decoding="async"
+            fetchPriority="high"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
+        <nav
+          className="ml-auto hidden min-w-0 items-center divide-x divide-espresso/15 lg:flex"
+          aria-label="Main navigation"
+        >
           {siteConfig.nav.slice(0, 5).map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-espresso transition-colors hover:text-cabernet"
+              className="shrink-0 whitespace-nowrap px-4 text-sm text-espresso transition-colors hover:text-cabernet xl:px-5"
             >
-              {item.label}
+              {navLinkLabel(item, true)}
             </Link>
           ))}
-          <Button href="/contact" size="sm">
-            {siteConfig.ctas.strategyCall}
-          </Button>
+          <div className="shrink-0 px-4 xl:px-5">
+            <Button href="/contact" size="sm" className="whitespace-nowrap">
+              Book a Call
+            </Button>
+          </div>
         </nav>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-cabernet lg:hidden"
+          className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-cabernet lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label="Toggle menu"
@@ -51,6 +73,12 @@ export function Header() {
         </button>
       </div>
 
+      <div className="hidden border-t border-surface-muted lg:block">
+        <div className="mx-auto flex max-w-6xl justify-center px-4 py-2 sm:px-6 lg:px-8">
+          <IdxSearchBar variant="header" />
+        </div>
+      </div>
+
       <nav
         className={cn(
           "border-t border-surface-muted bg-background lg:hidden",
@@ -58,20 +86,28 @@ export function Header() {
         )}
         aria-label="Mobile navigation"
       >
-        <div className="flex flex-col gap-1 px-4 py-4">
+        <div className="flex flex-col divide-y divide-espresso/10 px-4 py-2">
+          <div className="py-3">
+            <IdxSearchBar
+              variant="header"
+              onSearch={() => setMobileOpen(false)}
+            />
+          </div>
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-2 text-espresso hover:bg-rose"
+              className="rounded-lg px-3 py-2.5 text-espresso hover:bg-rose"
               onClick={() => setMobileOpen(false)}
             >
               {item.label}
             </Link>
           ))}
-          <Button href="/contact" className="mt-2 w-full" size="sm">
-            {siteConfig.ctas.strategyCall}
-          </Button>
+          <div className="px-3 py-2.5">
+            <Button href="/contact" className="w-full" size="sm">
+              {siteConfig.ctas.strategyCall}
+            </Button>
+          </div>
         </div>
       </nav>
     </header>

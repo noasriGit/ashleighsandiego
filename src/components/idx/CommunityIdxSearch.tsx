@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import type { IdxSearchConfig } from "@/data/idx-search-config";
-import { buildIdxSearchUrl, resolveIdxBrowseUrl } from "@/lib/idx-search-url";
+import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
 
 type CommunityIdxSearchProps = {
   communityName: string;
@@ -25,18 +25,12 @@ export function CommunityIdxSearch({
   const [minBed, setMinBed] = useState("");
   const [minBath, setMinBath] = useState("");
 
-  const hasFilters = Boolean(minPrice || maxPrice || minBed || minBath);
-
-  // With filters, build a dynamic zip-filtered results URL so the filters actually apply.
-  // Without filters, prefer the branded saved-search URL for a cleaner /i/{slug} landing.
-  const searchUrl = hasFilters
-    ? (buildIdxSearchUrl(idxBaseUrl, config, {
-        minPrice: minPrice ? Number(minPrice) : undefined,
-        maxPrice: maxPrice ? Number(maxPrice) : undefined,
-        minBed: minBed ? Number(minBed) : undefined,
-        minBath: minBath ? Number(minBath) : undefined,
-      }) ?? idxBaseUrl)
-    : (resolveIdxBrowseUrl(idxBaseUrl, config) ?? idxBaseUrl);
+  const searchUrl = resolveIdxSearchFromFilters(idxBaseUrl, config, {
+    minPrice: minPrice ? Number(minPrice) : undefined,
+    maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    minBed: minBed ? Number(minBed) : undefined,
+    minBath: minBath ? Number(minBath) : undefined,
+  });
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();

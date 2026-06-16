@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getLaunchCommunities } from "@/data/communities";
+import { marketingHeroes } from "@/data/page-images";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getAllSavedSearchCounts } from "@/lib/idx-api";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -54,6 +55,8 @@ export default async function SearchHomesPage() {
         subheadline="Browse available homes in La Jolla and surrounding San Diego neighborhoods — or request a custom search tailored to your criteria."
         primaryCta={{ label: "Request a Custom Home Search", href: "/contact" }}
         secondaryCta={{ label: "Book a Strategy Call", href: "/contact" }}
+        backgroundImage={marketingHeroes.searchHomes.src}
+        backgroundImageAlt={marketingHeroes.searchHomes.alt}
       />
 
       <Section>

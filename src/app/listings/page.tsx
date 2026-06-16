@@ -106,10 +106,14 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
 
       {/* Hero band */}
       <Section variant="cabernet" spacing="tight">
-        <p className="kicker text-white/70">Browse homes</p>
-        <h1 className="heading-section">{pageTitle}</h1>
+        <p className="hero-enter-up hero-enter-up--1 kicker text-white/70">
+          Browse homes
+        </p>
+        <h1 className="hero-enter-up hero-enter-up--2 heading-section">
+          {pageTitle}
+        </h1>
         {total !== undefined && (
-          <p className="mt-2 text-white/80">
+          <p className="hero-enter-up hero-enter-up--3 mt-2 text-white/80">
             {total.toLocaleString()} featured {total === 1 ? "listing" : "listings"}
           </p>
         )}
@@ -211,14 +215,6 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
                 Search all MLS listings
               </Button>
             </div>
-          </Section>
-
-          <Section spacing="tight">
-            <p className="text-xs text-espresso/55 leading-relaxed">
-              Featured listing data provided via IDX. Information is deemed reliable but not
-              guaranteed. Equal Housing Opportunity. These listings represent a curated subset
-              of available inventory, not the complete MLS.
-            </p>
           </Section>
         </>
       )}

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { CommunityCard } from "./CommunityCard";
 import type { Community, LifestyleTag } from "@/data/communities";
 import { LIFESTYLE_TAGS } from "@/data/communities";
+import { communityContent } from "@/data/community-content";
 
 type CommunityGridProps = {
   communities: Community[];
@@ -38,9 +39,17 @@ export function CommunityGrid({ communities, showFilters = true }: CommunityGrid
         </div>
       )}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((community) => (
-          <CommunityCard key={community.slug} community={community} />
-        ))}
+        {filtered.map((community) => {
+          const content = communityContent[community.slug];
+          return (
+            <CommunityCard
+              key={community.slug}
+              community={community}
+              thumbnail={content?.thumbnail}
+              thumbnailAlt={content?.thumbnailAlt}
+            />
+          );
+        })}
       </div>
     </div>
   );

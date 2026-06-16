@@ -90,3 +90,27 @@ export function resolveIdxBrowseUrl(
   }
   return buildIdxSearchUrl(baseUrl, config, options);
 }
+
+/**
+ * Pick the IDX destination for a filtered search form.
+ * With filters, build a dynamic results URL so criteria apply.
+ * Without filters, prefer the branded saved-search landing when available.
+ */
+export function resolveIdxSearchFromFilters(
+  baseUrl: string,
+  config: IdxSearchConfig,
+  filters: IdxSearchUrlOptions,
+): string {
+  const hasFilters = Boolean(
+    filters.minPrice != null ||
+      filters.maxPrice != null ||
+      filters.minBed != null ||
+      filters.minBath != null,
+  );
+
+  if (hasFilters) {
+    return buildIdxSearchUrl(baseUrl, config, filters) ?? baseUrl;
+  }
+
+  return resolveIdxBrowseUrl(baseUrl, config) ?? baseUrl;
+}

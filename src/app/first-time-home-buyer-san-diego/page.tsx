@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { firstTimeBuyerFaqs, firstTimeBuyerRoadmapSteps } from "@/data/faqs";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
+import { marketingHeroes } from "@/data/page-images";
 import { faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
@@ -81,6 +82,8 @@ export default function FirstTimeBuyerPage() {
         subheadline="Understand affordability, property types, and neighborhoods before you start touring — whether you're relocating or buying locally."
         primaryCta={{ label: "Book a Buyer Readiness Call", href: "/contact" }}
         secondaryCta={{ label: "Explore Neighborhoods", href: "/neighborhoods" }}
+        heroImage={marketingHeroes.firstTimeBuyer.src}
+        heroImageAlt={marketingHeroes.firstTimeBuyer.alt}
       />
 
       <Timeline

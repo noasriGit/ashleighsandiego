@@ -15,7 +15,7 @@ type PageHeroProps = {
   gradientClassName?: string;
   /** Small pills under the subheadline (e.g. lifestyle tags). */
   badges?: string[];
-  layout?: "centered" | "asymmetric";
+  layout?: "centered" | "left" | "right";
   size?: "default" | "display";
   className?: string;
 };

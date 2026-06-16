@@ -34,7 +34,7 @@ if (!API_KEY) {
 }
 
 const idxBaseUrl =
-  process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.example.com";
+  process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.sdcommunities.com";
 
 const targets = loadCommunitySearchTargets(root);
 const links = await fetchSavedLinks(API_KEY);

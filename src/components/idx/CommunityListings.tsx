@@ -99,12 +99,6 @@ export async function CommunityListings({
           {viewAllLabel}
         </Button>
       )}
-
-      <p className="mt-6 text-xs text-espresso/60">
-        {fromSavedLinks
-          ? "Listing data provided via IDX. Results are from the MLS and include all active listings matching this area. Information is deemed reliable but not guaranteed. Equal Housing Opportunity."
-          : "Featured listing data provided via IDX. Information is deemed reliable but not guaranteed. Equal Housing Opportunity."}
-      </p>
     </Section>
   );
 }

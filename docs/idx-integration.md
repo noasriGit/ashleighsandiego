@@ -66,8 +66,9 @@ See `.env.example` for the full list. IDX-specific:
 
 | Variable | Phase | Exposure | Purpose |
 |----------|-------|----------|---------|
+| `NEXT_PUBLIC_SITE_URL` | 1 | public | Canonical site URL, e.g. `https://sdcommunities.com`. Used for metadata, sitemap, JSON-LD, and canonical tags. |
 | `NEXT_PUBLIC_IDX_ENABLED` | 1 | public | Master switch. `"true"` activates live IDX; anything else shows the CustomSearchForm fallback. |
-| `NEXT_PUBLIC_IDX_BASE_URL` | 1 | public | Branded subdomain root, e.g. `https://search.sandiegorelocationhomeguide.com`. Used to build saved-search links. |
+| `NEXT_PUBLIC_IDX_BASE_URL` | 1 | public | Branded subdomain root, e.g. `https://search.sdcommunities.com`. Used to build saved-search links. |
 | `NEXT_PUBLIC_IDX_WIDGET_URL` | 1 | public | Omnibar embed script URL. Required only for the `/search-homes` widget. |
 | `IDX_API_KEY` | 3 | **server-only** | IDX API access key for community featured listings + live saved-search counts. Never prefix with `NEXT_PUBLIC_`. |
 | `IDX_API_ENABLED` | 3 | **server-only** | Optional kill switch for API calls. Defaults to on when `IDX_API_KEY` is set; `"false"` disables API-driven listings/counts only. |
@@ -121,7 +122,7 @@ plain HTML/CSS and renders reliably.
 
 ### Static wrapper requirements
 
-- All URLs **absolute** (`https://sandiegorelocationhomeguide.com/...`), never relative
+- All URLs **absolute** (`https://sdcommunities.com/...`), never relative
 - Plain `<a>` / `<img>` only — no framework tags
 - Includes header (logo + nav), footer (disclaimers, Equal Housing, Privacy/Terms links)
 - Inline `<style>` only (the wrapper cannot import the site's Tailwind build)

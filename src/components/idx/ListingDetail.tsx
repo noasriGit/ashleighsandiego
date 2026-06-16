@@ -224,13 +224,9 @@ export function ListingDetail({ listing }: ListingDetailProps) {
 
       {/* Disclaimers */}
       <footer className="mt-12 space-y-2 border-t border-dove/30 pt-6 text-xs text-espresso/55 leading-relaxed">
-        <p>
-          Listing data provided via IDX. Information is deemed reliable but not guaranteed.
-          Equal Housing Opportunity.{" "}
-          {listing.listingAgentId && (
-            <span>Listing agent ID: {listing.listingAgentId}. </span>
-          )}
-        </p>
+        {listing.listingAgentId && (
+          <p>Listing agent ID: {listing.listingAgentId}.</p>
+        )}
         <p>{franchiseText}</p>
         <p>{siteConfig.disclaimer}</p>
       </footer>

@@ -106,10 +106,6 @@ export function IdxSearchModule({
             idxBaseUrl={IDX_BASE_URL}
           />
         )}
-        <p className="mt-4 text-xs text-espresso/60">
-          Listing data provided via IDX. Information is deemed reliable but not guaranteed.
-          Equal Housing Opportunity.
-        </p>
         <div className="mt-10">
           <p className="text-sm font-medium text-espresso">
             Want us to do the searching for you?
