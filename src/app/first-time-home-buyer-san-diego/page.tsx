@@ -37,14 +37,14 @@ const sections = [
     kicker: "Financing",
     title: "Down Payment & Preapproval Basics",
     content:
-      "Down payment requirements vary by loan type — conventional, FHA, and VA each have different guidelines. Getting pre-approved clarifies your budget and shows sellers you're a serious buyer.\n\nWe can connect you with lender partners for an introduction. Your lender will explain options based on your credit, income, and savings.",
+      "Down payment requirements vary by loan type, conventional, FHA, and VA each have different guidelines. Getting pre-approved clarifies your budget and shows sellers you're a serious buyer.\n\nWe can connect you with lender partners for an introduction. Your lender will explain options based on your credit, income, and savings.",
   },
   {
     id: "before-touring",
     kicker: "Tour Smart",
     title: "What to Know Before Touring",
     content:
-      "Tour with a plan — not just open houses. Focus on neighborhoods that match your commute, budget, and lifestyle. Visit at different times of day. Research school boundaries if applicable.\n\nFirst-time buyers who clarify priorities before touring save time and reduce decision fatigue.",
+      "Tour with a plan, not just open houses. Focus on neighborhoods that match your commute, budget, and lifestyle. Visit at different times of day. Research school boundaries if applicable.\n\nFirst-time buyers who clarify priorities before touring save time and reduce decision fatigue.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function FirstTimeBuyerPage() {
       <PageHero
         kicker="First-Time Buyers"
         headline="First-Time Home Buyer Guide for San Diego"
-        subheadline="Understand affordability, property types, and neighborhoods before you start touring — whether you're relocating or buying locally."
+        subheadline="Understand affordability, property types, and neighborhoods before you start touring, whether you're relocating or buying locally."
         primaryCta={{ label: "Book a Buyer Readiness Call", href: "/contact" }}
         secondaryCta={{ label: "Explore Neighborhoods", href: "/neighborhoods" }}
         heroImage={marketingHeroes.firstTimeBuyer.src}

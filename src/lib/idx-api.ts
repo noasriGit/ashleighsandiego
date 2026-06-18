@@ -6,9 +6,9 @@
 // stay well within partner rate limits (~1,500 req/hr per client).
 //
 // IDX API constraints (documented):
-//   • /clients/featured      — agent's own featured listings; full payload; isOnSite=true
-//   • /clients/savedlinks/{id}/results — up to 250 community MLS listings; isOnSite=false
-//   • /clients/supplemental  — manually-added non-MLS listings; flat array; isOnSite=false
+//   • /clients/featured     , agent's own featured listings; full payload; isOnSite=true
+//   • /clients/savedlinks/{id}/results, up to 250 community MLS listings; isOnSite=false
+//   • /clients/supplemental , manually-added non-MLS listings; flat array; isOnSite=false
 //   • No single-listing MLS lookup by arbitrary ID exists in the API
 //   • Full MLS browse, registration, favorites, and alerts stay on the IDX subdomain
 //
@@ -16,7 +16,7 @@
 //   true  → /listings/[idxId]/[listingId] on the main domain (full on-site detail page)
 //   false → fullDetailsURL on the branded subdomain (wrapper-styled IDX page)
 //
-// IDX_API_KEY has no NEXT_PUBLIC_ prefix — never included in the client bundle.
+// IDX_API_KEY has no NEXT_PUBLIC_ prefix, never included in the client bundle.
 // Only import this module from Server Components / server code.
 
 import { getIdxSearchConfig } from "@/data/idx-search-config";
@@ -35,7 +35,7 @@ const MAX_FEATURED_PAGES = 10;
 // ─── Public types ────────────────────────────────────────────────────────────
 
 export type IdxListing = {
-  /** Composite key "{idxId}!{listingId}" — use as React key only. */
+  /** Composite key "{idxId}!{listingId}", use as React key only. */
   id: string;
   /** MLS prefix, e.g. "a000". Segment 1 of /listings/[idxId]/[listingId]. */
   idxId?: string;
@@ -65,7 +65,7 @@ export type IdxListing = {
 
   /** URL of the first listing photo. */
   imageUrl?: string;
-  /** All photo URLs in order — drives the on-site detail gallery. */
+  /** All photo URLs in order, drives the on-site detail gallery. */
   allImages?: string[];
 
   /** fullDetailsURL normalized to the branded subdomain. */
@@ -368,10 +368,10 @@ export async function getFeaturedListingsPage(
  * Featured listings filtered to a community's city IDs / zip codes.
  *
  * Priority:
- *   1. Saved-link results (/clients/savedlinks/{id}/results) when savedSearchId is set —
+ *   1. Saved-link results (/clients/savedlinks/{id}/results) when savedSearchId is set,
  *      returns real community MLS listings (up to 250, isOnSite=false).
- *   2. Featured listings filtered by zip/city — agent's own featured set (isOnSite=true).
- *   3. Empty [] — never falls through to the unfiltered featured set, so wrong-market
+ *   2. Featured listings filtered by zip/city, agent's own featured set (isOnSite=true).
+ *   3. Empty [], never falls through to the unfiltered featured set, so wrong-market
  *      demo listings never appear on a community page.
  */
 export async function getCommunityListings(
@@ -400,13 +400,13 @@ export async function getCommunityListings(
   const path = query ? `/clients/featured?${query}` : "/clients/featured";
   const data = await idxApiFetch(path, REVALIDATE_LISTINGS);
 
-  // Strict geo guard: return exactly what the filter matched — no fallthrough.
+  // Strict geo guard: return exactly what the filter matched, no fallthrough.
   return normalizeEnvelope(data, limit, true);
 }
 
 /**
  * Up to `limit` MLS listings from a saved search's result set.
- * These are real community listings (isOnSite=false — detail goes to branded subdomain).
+ * These are real community listings (isOnSite=false, detail goes to branded subdomain).
  *
  * Returns [] when savedLinkId is empty, the API is unavailable, or the saved search
  * has no results (e.g. before the real MLS feed is active).

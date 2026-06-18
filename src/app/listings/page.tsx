@@ -36,7 +36,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const label = communityLabel(community);
   const title =
     pageNum > 1
-      ? `${label} Homes for Sale — Page ${pageNum}`
+      ? `${label} Homes for Sale, Page ${pageNum}`
       : `${label} Homes for Sale`;
   const description = `Browse featured homes for sale in ${label}, San Diego.${pageNum > 1 ? ` Page ${pageNum}.` : ""} Listing data provided via IDX.`;
 
@@ -204,7 +204,7 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-medium text-espresso">
-                  These are featured listings only — the full MLS has many more.
+                  These are featured listings only, the full MLS has many more.
                 </p>
                 <p className="mt-1 text-sm text-espresso/70">
                   Search the complete active inventory with maps, filters, and saved-search

@@ -72,7 +72,7 @@ export function buildIdxSearchUrl(
   params.append("a_status[]", "active");
 
   if (params.toString() === "a_status%5B%5D=active") {
-    // No geographic filter — only useful for _general when no saved search exists.
+    // No geographic filter, only useful for _general when no saved search exists.
     if (zipCodes.length === 0 && config.cityIds.length === 0) return root;
   }
 

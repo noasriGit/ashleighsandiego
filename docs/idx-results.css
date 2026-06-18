@@ -1,9 +1,9 @@
 /*
- * IDX Results page — full CSS swap (v2)
+ * IDX Results page, full CSS swap (v2)
  * Paste entire file into: IDX Control Panel → Designs → Results → Custom CSS
  *
  * Pairs with: docs/idx-wrapper.html (static wrapper header/footer)
- * Brand: BHHS Traditional — cabernet #670038, pearl #f5f1f2
+ * Brand: BHHS Traditional, cabernet #670038, pearl #f5f1f2
  */
 
 @charset "UTF-8";
@@ -347,7 +347,7 @@
   display: block;
 }
 
-/* Photo — full-width banner on card */
+/* Photo, full-width banner on card */
 .IDX-wrapper-standard .IDX-resultsPhoto {
   width: 100% !important;
   float: none !important;
@@ -409,7 +409,7 @@
   display: inline;
 }
 
-/* Price + stats panel — flatten bootstrap panel */
+/* Price + stats panel, flatten bootstrap panel */
 .IDX-wrapper-standard .IDX-resultsMainInfo.IDX-panel-default {
   width: 100% !important;
   float: none !important;
@@ -462,7 +462,7 @@
   margin-top: 4px;
 }
 
-/* Description — truncate long remarks */
+/* Description, truncate long remarks */
 .IDX-wrapper-standard .IDX-resultsDescription {
   width: 100%;
   display: block;
@@ -477,7 +477,7 @@
   overflow: hidden;
 }
 
-/* MLS block — smaller, not floating awkwardly */
+/* MLS block, smaller, not floating awkwardly */
 .IDX-wrapper-standard .IDX-mlsContainer {
   clear: both;
   overflow: hidden;

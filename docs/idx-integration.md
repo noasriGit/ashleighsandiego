@@ -30,13 +30,13 @@ in production. None of these require code changes.
 
 ### Lead settings
 
-- [ ] Registration gate configured (recommended: prompt after 3–5 listing views — confirm with client)
+- [ ] Registration gate configured (recommended: prompt after 3–5 listing views, confirm with client)
 - [ ] Lead notification email routed to the agent
 - [ ] (Phase 3) CRM routing, if/when the client provides a CRM
 
 ### Saved searches
 
-- [ ] One saved search created per launch community (13 total — see section 3)
+- [ ] One saved search created per launch community (13 total, see section 3)
 - [ ] One general "all San Diego" saved search (`_general`)
 - [ ] One military-focused saved search (`_military`) covering base-adjacent areas
 - [ ] Run `npm run idx:sync-searches` to populate `data/idx-search-overrides.json` (do not hand-edit `src/data/idx-links.ts`)
@@ -82,7 +82,7 @@ See `.env.example` for the full list. IDX-specific:
 Each saved search created in the Control Panel is mapped to a community slug. The source of
 truth is `data/idx-search-overrides.json` (populated by `npm run idx:sync-searches`) merged
 with auto-generated zip config in `src/data/idx-search-config.ts`. `src/data/idx-links.ts`
-only resolves the browse URL from that config — do not hand-edit saved-search URLs there.
+only resolves the browse URL from that config, do not hand-edit saved-search URLs there.
 Keys match the `slug` values in `src/data/communities.ts`.
 
 Saved-search and listing detail URLs returned by the API or Control Panel are automatically
@@ -123,11 +123,11 @@ plain HTML/CSS and renders reliably.
 ### Static wrapper requirements
 
 - All URLs **absolute** (`https://sdcommunities.com/...`), never relative
-- Plain `<a>` / `<img>` only — no framework tags
+- Plain `<a>` / `<img>` only, no framework tags
 - Includes header (logo + nav), footer (disclaimers, Equal Housing, Privacy/Terms links)
 - Inline `<style>` only (the wrapper cannot import the site's Tailwind build)
 - Re-upload the wrapper whenever `siteConfig.nav`, agent/brokerage details, or the franchise
-  disclaimer change — the wrapper is a static copy and does not track the main site automatically
+  disclaimer change, the wrapper is a static copy and does not track the main site automatically
 
 ### CNAME steps
 
@@ -205,17 +205,17 @@ Every `IdxListing` carries `isOnSite: boolean`. `ListingCard` uses it for link r
 | `getSavedLinkResults(savedLinkId, limit)` | `GET /clients/savedlinks/{id}/results` | 15 min | Up to 250 real MLS listings per saved search |
 | `getSavedLinkCount(savedLinkId)` | `GET /clients/savedlinks/{id}/count` | 1 hr | Per-link live count (preferred over bulk endpoint) |
 | `getSavedSearchCount(id)` | (wraps `getSavedLinkCount`) | 1 hr | Community page stat band count |
-| `getAllSavedSearchCounts()` | `GET /clients/savedlinkstotalpropertycount` | 1 hr | Bulk counts — returns 400 on demo/no-saved-search accounts |
+| `getAllSavedSearchCounts()` | `GET /clients/savedlinkstotalpropertycount` | 1 hr | Bulk counts, returns 400 on demo/no-saved-search accounts |
 | `getAvailableCities()` | `GET /clients/cities` | 24 hr | One-time setup: city IDs for config |
 | `getSavedLinksList()` | `GET /clients/savedlinks` | 24 hr | One-time setup: saved-search IDs/URLs |
 
 ### `getCommunityListings` priority
 
-1. `getSavedLinkResults(config.savedSearchId)` — real community MLS listings (up to 250,
+1. `getSavedLinkResults(config.savedSearchId)`, real community MLS listings (up to 250,
    `isOnSite=false`) when a saved search is configured. `CommunityListings` title: "Homes in {community}".
-2. `GET /clients/featured?zip[]=&city[]=` — agent's featured set filtered to community
+2. `GET /clients/featured?zip[]=&city[]=`, agent's featured set filtered to community
    (`isOnSite=true`). Title: "Featured Listings in {community}".
-3. Empty `[]` — **no fallthrough to the unfiltered featured set.** A La Jolla page will
+3. Empty `[]`, **no fallthrough to the unfiltered featured set.** A La Jolla page will
    never show demo Florida listings.
 
 ### On-site listing detail: `/listings/[idxId]/[listingId]`
@@ -228,8 +228,8 @@ Every `IdxListing` carries `isOnSite: boolean`. `ListingCard` uses it for link r
 
 ### Paginated browse: `/listings`
 
-- `?community=la-jolla` — filter by community zip/city codes.
-- `?page=N` — 50 listings per page. Pages > 1 excluded from search index.
+- `?community=la-jolla`, filter by community zip/city codes.
+- `?page=N`, 50 listings per page. Pages > 1 excluded from search index.
 - Prominent "Search all MLS listings" upsell to `/search-homes` (full MLS browse).
 
 ### `savedlinkstotalpropertycount` 400

@@ -51,7 +51,7 @@ let matched = 0;
 for (const { slug, name } of targets) {
   const hit = matchSavedLink(links, slug, name);
   if (!hit) {
-    console.log(`  ✗ ${slug} — no matching saved link found`);
+    console.log(`  ✗ ${slug}, no matching saved link found`);
     continue;
   }
   matched++;

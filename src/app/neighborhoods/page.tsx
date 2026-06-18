@@ -50,7 +50,7 @@ export default function NeighborhoodsPage() {
         <div className="max-w-3xl">
           <h2 className="heading-section text-cabernet">From the Coast to Central San Diego</h2>
           <p className="mt-4 leading-relaxed text-espresso/90">
-            Each community near La Jolla has its own character — upscale coastal villages, biotech-corridor
+            Each community near La Jolla has its own character, upscale coastal villages, biotech-corridor
             convenience, family-friendly master plans, and walkable urban neighborhoods. Use the filters to
             narrow by lifestyle, then open a guide to see who each area fits best.
           </p>

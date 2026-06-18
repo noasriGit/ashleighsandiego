@@ -1,7 +1,7 @@
 // Central IDX search registry. Auto-built from communities.ts + community-zips.ts.
 // Manual saved-search IDs/URLs live in data/idx-search-overrides.json (sync via npm run idx:sync-searches).
 //
-// IMPORTANT — IDX API constraint: the IDX Broker REST API does NOT return arbitrary MLS
+// IMPORTANT, IDX API constraint: the IDX Broker REST API does NOT return arbitrary MLS
 // search results. It only returns the agent's *featured* listings (filterable by city ID /
 // zip code) and *saved-search property counts*. Full MLS browse stays on the IDX subdomain.
 //
@@ -24,7 +24,7 @@ export type IdxSearchConfig = {
   savedSearchUrl: string;
   /** Short, human label for the browse CTA (e.g. "La Jolla homes"). */
   label: string;
-  /** Default price hints for UI copy only — not enforced against the API. */
+  /** Default price hints for UI copy only, not enforced against the API. */
   minPrice?: number;
   maxPrice?: number;
 };

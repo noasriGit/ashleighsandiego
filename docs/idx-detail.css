@@ -1,10 +1,10 @@
 /*
- * IDX Listing Detail page — full CSS swap
+ * IDX Listing Detail page, full CSS swap
  * Paste entire file into: IDX Control Panel → Designs → Details → Custom CSS
  *
  * Pairs with: docs/idx-wrapper.html (static wrapper header/footer)
- *             docs/idx-results.css (results-page styling — shares the same tokens)
- * Brand: BHHS Traditional — cabernet #670038, pearl #f5f1f2
+ *             docs/idx-results.css (results-page styling, shares the same tokens)
+ * Brand: BHHS Traditional, cabernet #670038, pearl #f5f1f2
  *
  * Targets the standard IDX detail DOM (#IDX-detailsWrapper and friends). Selector names
  * vary slightly across IDX template versions; verify against the live detail page after

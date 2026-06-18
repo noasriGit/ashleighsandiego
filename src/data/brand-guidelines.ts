@@ -4,7 +4,7 @@
  *
  * Use this file as the implementation reference for colors, typography,
  * disclaimers, and compliance rules on this site. Official logo assets
- * must be downloaded from the REsource Center — do not recreate logos.
+ * must be downloaded from the REsource Center, do not recreate logos.
  */
 
 export const brandGuidelines = {
@@ -18,7 +18,7 @@ export const brandGuidelines = {
 
   /** Core brand colors shared across all themes. */
   colors: {
-    /** Primary brand color — warm, bold, unique. Logo colorway option. */
+    /** Primary brand color, warm, bold, unique. Logo colorway option. */
     cabernet: {
       name: "Cabernet",
       hex: "#670038",
@@ -46,7 +46,7 @@ export const brandGuidelines = {
       hex: "#F2F2F2",
       rgb: { r: 242, g: 242, b: 242 },
       cmyk: { c: 0, m: 0, y: 0, k: 5 },
-      usage: "Neutral tint — mainly background color.",
+      usage: "Neutral tint, mainly background color.",
     },
   },
 
@@ -129,7 +129,7 @@ export const brandGuidelines = {
         family: "Marcellus",
         googleFontsUrl: "https://fonts.google.com/specimen/Marcellus",
         weights: [400],
-        usage: "Headlines and emphasis. Sentence case only — not all caps.",
+        usage: "Headlines and emphasis. Sentence case only, not all caps.",
       },
       body: {
         family: "Manrope",
@@ -185,7 +185,7 @@ export const brandGuidelines = {
       "Do not use non-approved colors or multiple colors on the lockup.",
       "Do not use unapproved typefaces or alter sizing/distance relationships.",
       "Do not change proportions or stretch the logo.",
-      "Do not typeset the logo — use official vector (.eps) files.",
+      "Do not typeset the logo, use official vector (.eps) files.",
       "Do not animate, use as wallpaper, or watermark.",
       "Do not incorporate into another logo or graphic.",
     ],
@@ -196,7 +196,7 @@ export const brandGuidelines = {
     ],
     qualitySeal: {
       mustAppearWithCompanyLogo: true,
-      placement: "Upright, perfectly aligned — never tilted or overlapping frame edges.",
+      placement: "Upright, perfectly aligned, never tilted or overlapping frame edges.",
     },
   },
 
@@ -204,7 +204,7 @@ export const brandGuidelines = {
     fullNameRequired:
       "Never separate 'Berkshire Hathaway' and 'HomeServices' or use them independently.",
     bhhsAbbreviation:
-      "BHHS only in Quality Seal and internal documents — never in marketing/advertising except approved domain names.",
+      "BHHS only in Quality Seal and internal documents, never in marketing/advertising except approved domain names.",
     companyNameInCopy:
       "Use full company name once in copy; subsequent references may shorten to company name only.",
     buffettReferences:
@@ -297,7 +297,7 @@ export const brandGuidelines = {
 
   photography: {
     rules: [
-      "Premium, authentic feel — never contrived or generic stock.",
+      "Premium, authentic feel, never contrived or generic stock.",
       "Aspirational yet attainable; lived-in but not messy.",
       "People: candid emotions; avoid direct camera gaze.",
       "Use only with owner permission; never download without rights.",
@@ -320,13 +320,13 @@ export const brandGuidelines = {
       "Company logo recommended as bumper.",
       "BHHS disclaimer at end in legible typeface.",
       "No Warren Buffett references or imagery.",
-      "Never say or display 'BHHS' — use full Berkshire Hathaway HomeServices.",
+      "Never say or display 'BHHS', use full Berkshire Hathaway HomeServices.",
     ],
   },
 } as const;
 
 /**
- * CSS custom property names — values are defined in src/app/globals.css
+ * CSS custom property names, values are defined in src/app/globals.css
  * and wired through Tailwind @theme inline.
  */
 export const brandCssTokens = {

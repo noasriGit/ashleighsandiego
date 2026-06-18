@@ -5,7 +5,7 @@
  *
  * Reads community data from src/data/communities.ts and zip mappings from
  * src/data/community-zips.ts (via a lightweight inline mirror for the script).
- * Prints a coverage report — the runtime config is built automatically in
+ * Prints a coverage report, the runtime config is built automatically in
  * idx-search-config.ts at import time.
  */
 
@@ -63,7 +63,7 @@ let overrides = {};
 try {
   overrides = JSON.parse(readFileSync(overridesPath, "utf8"));
 } catch {
-  console.warn("No idx-search-overrides.json found — saved search IDs not synced yet.");
+  console.warn("No idx-search-overrides.json found, saved search IDs not synced yet.");
 }
 
 const idxBase = process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.sdcommunities.com";

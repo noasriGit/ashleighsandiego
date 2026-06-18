@@ -76,8 +76,8 @@ export default async function MovingToLaJollaPage() {
         kicker="The Village"
         heading="What It's Like Living Near La Jolla"
         body={[
-          "La Jolla is one of San Diego's most recognizable coastal communities — known for ocean views, the Cove, upscale dining, and proximity to UCSD and Scripps. Living here means access to beaches, coastal trails, and a village atmosphere that's distinct from downtown or beach towns like Pacific Beach.",
-          "Relocating buyers often choose La Jolla for schools, biotech/healthcare proximity, and the coastal lifestyle — but budget and subarea preferences matter significantly.",
+          "La Jolla is one of San Diego's most recognizable coastal communities, known for ocean views, the Cove, upscale dining, and proximity to UCSD and Scripps. Living here means access to beaches, coastal trails, and a village atmosphere that's distinct from downtown or beach towns like Pacific Beach.",
+          "Relocating buyers often choose La Jolla for schools, biotech/healthcare proximity, and the coastal lifestyle, but budget and subarea preferences matter significantly.",
         ]}
         imageSrc={splitSections["moving-to-la-jolla/village"].src}
         imageAlt={splitSections["moving-to-la-jolla/village"].alt}
@@ -91,7 +91,7 @@ export default async function MovingToLaJollaPage() {
         heading="La Jolla Neighborhoods & Subareas"
         body={[
           "La Jolla isn't one uniform area. La Jolla Shores offers family-friendly beach access. Bird Rock has a local village feel south of the main Village. The Village itself is walkable with condos and dining. Muirlands and Mount Soledad provide hillside views. Windansea is known for surf culture.",
-          "Understanding these subareas helps you target your search — a condo in the Village feels very different from a home in La Jolla Shores.",
+          "Understanding these subareas helps you target your search, a condo in the Village feels very different from a home in La Jolla Shores.",
         ]}
         imageSrc={splitSections["moving-to-la-jolla/subareas"].src}
         imageAlt={splitSections["moving-to-la-jolla/subareas"].alt}
@@ -100,7 +100,7 @@ export default async function MovingToLaJollaPage() {
 
       <Section variant="pearl">
         <CalloutBlock type="quote" label="Why buyers choose La Jolla">
-          A coastal village with world-class research, top schools, and ocean trails — La Jolla
+          A coastal village with world-class research, top schools, and ocean trails, La Jolla
           rewards buyers who match the right subarea to their budget and lifestyle.
         </CalloutBlock>
       </Section>
@@ -119,7 +119,7 @@ export default async function MovingToLaJollaPage() {
         kicker="Housing"
         heading="Housing Types in La Jolla"
         body={[
-          "La Jolla offers condos, townhomes, and single-family homes — including luxury ocean-view properties. Condos and townhomes in the Village can be entry points for buyers who want the La Jolla address. Single-family homes on the hillsides command premium prices.",
+          "La Jolla offers condos, townhomes, and single-family homes, including luxury ocean-view properties. Condos and townhomes in the Village can be entry points for buyers who want the La Jolla address. Single-family homes on the hillsides command premium prices.",
           "Inventory is limited and competitive. Having a clear budget and property type preference before searching saves time.",
         ]}
         imageSrc={splitSections["moving-to-la-jolla/housing"].src}
@@ -133,7 +133,7 @@ export default async function MovingToLaJollaPage() {
         kicker="Daily Life"
         heading="Lifestyle: Beach, Dining, Schools & UCSD"
         body={[
-          "La Jolla's lifestyle centers on the coast — beaches, kayaking, coastal hiking, and outdoor dining. UCSD and Scripps Health bring academic and medical community energy. Schools are a major draw for relocating families.",
+          "La Jolla's lifestyle centers on the coast, beaches, kayaking, coastal hiking, and outdoor dining. UCSD and Scripps Health bring academic and medical community energy. Schools are a major draw for relocating families.",
           "The pace is quieter and more upscale than Pacific Beach. Dining ranges from casual to fine. Balboa Park and downtown are accessible but not walkable from most La Jolla addresses.",
         ]}
         imageSrc={splitSections["moving-to-la-jolla/lifestyle"].src}

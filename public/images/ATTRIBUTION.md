@@ -16,13 +16,13 @@ Full source metadata is maintained in [`src/data/image-manifest.json`](../../src
 
 ## Source pages (representative)
 
-- [San Diego skyline — BhTgjLZ_v2U](https://unsplash.com/photos/BhTgjLZ_v2U)
-- [La Jolla Cove — hTSD1SN8k8o](https://unsplash.com/photos/hTSD1SN8k8o)
-- [Pacific Beach pier — yARug8j9dYY](https://unsplash.com/photos/yARug8j9dYY)
-- [Balboa Park — eB3dm1_rgPw](https://unsplash.com/photos/eB3dm1_rgPw)
-- [Coronado Bridge — v7dV427jMug](https://unsplash.com/photos/v7dV427jMug)
-- [Point Loma Lighthouse — VF0HUhocN_4](https://unsplash.com/photos/VF0HUhocN_4)
-- [Geisel Library — V6SB2FADGmU](https://unsplash.com/photos/V6SB2FADGmU)
+- [San Diego skyline, BhTgjLZ_v2U](https://unsplash.com/photos/BhTgjLZ_v2U)
+- [La Jolla Cove, hTSD1SN8k8o](https://unsplash.com/photos/hTSD1SN8k8o)
+- [Pacific Beach pier, yARug8j9dYY](https://unsplash.com/photos/yARug8j9dYY)
+- [Balboa Park, eB3dm1_rgPw](https://unsplash.com/photos/eB3dm1_rgPw)
+- [Coronado Bridge, v7dV427jMug](https://unsplash.com/photos/v7dV427jMug)
+- [Point Loma Lighthouse, VF0HUhocN_4](https://unsplash.com/photos/VF0HUhocN_4)
+- [Geisel Library, V6SB2FADGmU](https://unsplash.com/photos/V6SB2FADGmU)
 
 ## Compliance notes
 

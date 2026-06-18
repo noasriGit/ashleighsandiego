@@ -1,5 +1,5 @@
 /**
- * Load .env.local then .env into process.env (Node scripts only — Next.js loads these automatically).
+ * Load .env.local then .env into process.env (Node scripts only, Next.js loads these automatically).
  * Existing process.env values take precedence over file values.
  */
 

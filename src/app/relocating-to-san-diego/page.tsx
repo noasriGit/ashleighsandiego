@@ -82,7 +82,7 @@ const sections = [
     kicker: "The Map",
     title: "La Jolla-Area Lifestyle Breakdown",
     content:
-      "The La Jolla area encompasses coastal villages, biotech corridors, and established central neighborhoods. La Jolla itself offers upscale coastal living. Pacific Beach brings beach-town energy. University City and UTC provide central access to UCSD and major employers. Del Mar and Carmel Valley appeal to families seeking top schools.\n\nEach area has a distinct feel — our neighborhood guides help you understand which matches your lifestyle.",
+      "The La Jolla area encompasses coastal villages, biotech corridors, and established central neighborhoods. La Jolla itself offers upscale coastal living. Pacific Beach brings beach-town energy. University City and UTC provide central access to UCSD and major employers. Del Mar and Carmel Valley appeal to families seeking top schools.\n\nEach area has a distinct feel, our neighborhood guides help you understand which matches your lifestyle.",
   },
   {
     id: "budget-commute",
@@ -96,15 +96,15 @@ const sections = [
     kicker: "Buying Remotely",
     title: "Buyer Process for Out-of-Area Buyers",
     content:
-      "Buying from out of state adds complexity — virtual tours, timing your visit, and understanding local market norms. We help out-of-area buyers prioritize neighborhoods, plan efficient tour trips, and navigate offers remotely when needed.\n\nA strategy call before your first visit helps you make the most of your time in San Diego.",
+      "Buying from out of state adds complexity, virtual tours, timing your visit, and understanding local market norms. We help out-of-area buyers prioritize neighborhoods, plan efficient tour trips, and navigate offers remotely when needed.\n\nA strategy call before your first visit helps you make the most of your time in San Diego.",
   },
 ];
 
 const lifestyleItems = [
-  { title: "Coastal Living", description: "La Jolla, Pacific Beach, Del Mar, Point Loma — beach access and ocean views." },
-  { title: "Biotech & UCSD Corridor", description: "University City, Sorrento Valley, Carmel Valley — short commutes to major employers." },
-  { title: "Value & Space", description: "Clairemont, Mission Valley, Bay Park — more home and yard for your budget." },
-  { title: "Urban Walkability", description: "Hillcrest, North Park — dining, culture, and condo living." },
+  { title: "Coastal Living", description: "La Jolla, Pacific Beach, Del Mar, Point Loma, beach access and ocean views." },
+  { title: "Biotech & UCSD Corridor", description: "University City, Sorrento Valley, Carmel Valley, short commutes to major employers." },
+  { title: "Value & Space", description: "Clairemont, Mission Valley, Bay Park, more home and yard for your budget." },
+  { title: "Urban Walkability", description: "Hillcrest, North Park, dining, culture, and condo living." },
 ];
 
 export default async function RelocatingPage() {
@@ -198,7 +198,7 @@ export default async function RelocatingPage() {
         <div className="grid gap-10 lg:grid-cols-2">
           <LeadMagnet
             title="San Diego Relocation Buyer Checklist"
-            description="Free checklist for relocating buyers — neighborhood research, budget planning, and pre-tour prep."
+            description="Free checklist for relocating buyers, neighborhood research, budget planning, and pre-tour prep."
             leadType="relocation-checklist"
             checklistItems={[
               "Define commute and lifestyle priorities",

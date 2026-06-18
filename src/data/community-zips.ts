@@ -23,7 +23,7 @@ const ZIP_OVERRIDES: Record<string, string[]> = {
   "ocean-beach": ["92107"],
   hillcrest: ["92103"],
   "north-park": ["92104"],
-  // Tier 2 — metadata only
+  // Tier 2, metadata only
   "bay-ho": ["92110"],
   "north-clairemont": ["92117"],
   "kearny-mesa": ["92111"],
@@ -34,7 +34,7 @@ const ZIP_OVERRIDES: Record<string, string[]> = {
   "torrey-hills": ["92130"],
   civita: ["92108"],
   "serra-mesa": ["92123"],
-  // Tier 3 — subareas
+  // Tier 3, subareas
   "la-jolla-cove": ["92037"],
   "la-jolla-shores": ["92037"],
   "la-jolla-village": ["92037"],

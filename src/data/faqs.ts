@@ -7,7 +7,7 @@ export const homeFaqs = [
   {
     question: "Do you work with military and VA buyers?",
     answer:
-      "Yes — military and VA relocation is a key focus area. We help PCS buyers understand neighborhoods, commute to bases, and navigate the buyer process. Consult a licensed lender for VA loan eligibility and financing advice.",
+      "Yes, military and VA relocation is a key focus area. We help PCS buyers understand neighborhoods, commute to bases, and navigate the buyer process. Consult a licensed lender for VA loan eligibility and financing advice.",
   },
   {
     question: "Can you help if I'm buying from out of state?",
@@ -30,7 +30,7 @@ export const relocationFaqs = [
   {
     question: "How much should I budget for a home near La Jolla?",
     answer:
-      "Price points vary widely — from condos under $700K in some areas to luxury homes over $3M in La Jolla and Del Mar. Share your budget and we'll help identify realistic options.",
+      "Price points vary widely, from condos under $700K in some areas to luxury homes over $3M in La Jolla and Del Mar. Share your budget and we'll help identify realistic options.",
   },
   {
     question: "Should I rent first or buy when relocating to San Diego?",
@@ -66,7 +66,7 @@ export const militaryFaqs = [
   {
     question: "What neighborhoods are good for PCS to San Diego?",
     answer:
-      "It depends on your duty station — Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island each have different commute patterns. Point Loma, Clairemont, and Mission Valley are common choices.",
+      "It depends on your duty station, Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island each have different commute patterns. Point Loma, Clairemont, and Mission Valley are common choices.",
   },
   {
     question: "Can you help with VA loan home buying in San Diego?",
@@ -104,7 +104,7 @@ export const firstTimeBuyerFaqs = [
   {
     question: "Should I get pre-approved before looking at homes?",
     answer:
-      "Yes — pre-approval clarifies your budget and strengthens your offer. We can connect you with lender partners if you'd like an introduction.",
+      "Yes, pre-approval clarifies your budget and strengthens your offer. We can connect you with lender partners if you'd like an introduction.",
   },
 ];
 
@@ -112,15 +112,15 @@ export const buyerRoadmapSteps = [
   { step: 1, title: "Clarify Your Priorities", description: "Define commute needs, budget, lifestyle preferences, and timeline before searching." },
   { step: 2, title: "Explore Neighborhoods", description: "Compare communities within the La Jolla radius using our guides and strategy call." },
   { step: 3, title: "Get Pre-Approved", description: "Work with a lender to understand your budget and loan options." },
-  { step: 4, title: "Search & Tour Strategically", description: "Focus on homes in areas that match your plan — not just what's available online." },
+  { step: 4, title: "Search & Tour Strategically", description: "Focus on homes in areas that match your plan, not just what's available online." },
   { step: 5, title: "Make an Informed Offer", description: "Understand market conditions and negotiate with a clear neighborhood strategy." },
   { step: 6, title: "Close & Settle In", description: "Navigate inspections, escrow, and final steps to your new San Diego home." },
 ];
 
 export const firstTimeBuyerRoadmapSteps = [
   { step: 1, title: "Understand Your Budget", description: "Review income, savings, and loan options with a lender to set a realistic price range." },
-  { step: 2, title: "Choose the Right Area", description: "San Diego neighborhoods vary widely — pick areas that match your commute and lifestyle." },
+  { step: 2, title: "Choose the Right Area", description: "San Diego neighborhoods vary widely, pick areas that match your commute and lifestyle." },
   { step: 3, title: "Learn Property Types", description: "Condos, townhomes, and single-family homes each have different costs and maintenance." },
-  { step: 4, title: "Tour with a Plan", description: "Visit neighborhoods and homes with clear criteria — not just open houses." },
+  { step: 4, title: "Tour with a Plan", description: "Visit neighborhoods and homes with clear criteria, not just open houses." },
   { step: 5, title: "Make Your First Offer", description: "Work through offer strategy, contingencies, and negotiation with guidance." },
 ];

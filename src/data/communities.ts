@@ -39,7 +39,7 @@ export const launchCommunitySlugs = [
 ] as const;
 
 export const communities: Community[] = [
-  // Tier 1 — launch guides
+  // Tier 1, launch guides
   { slug: "la-jolla", name: "La Jolla", tagline: "Coastal village living with ocean views, UCSD proximity, and upscale amenities.", tier: 1, lifestyles: ["Coastal", "Close to UCSD/UTC", "Family-oriented"], hasGuide: true },
   { slug: "pacific-beach", name: "Pacific Beach", tagline: "Beach-town energy with boardwalk access and a younger, active vibe.", tier: 1, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: true },
   { slug: "university-city", name: "University City / UTC", tagline: "Central location near UCSD, biotech corridor, and Westfield UTC.", tier: 1, lifestyles: ["Close to UCSD/UTC", "Commute-friendly", "Family-oriented"], hasGuide: true },
@@ -49,12 +49,12 @@ export const communities: Community[] = [
   { slug: "carmel-valley", name: "Carmel Valley", tagline: "Master-planned suburban feel with top schools and family amenities.", tier: 1, lifestyles: ["Family-oriented", "Close to UCSD/UTC", "Commute-friendly"], hasGuide: true },
   { slug: "point-loma", name: "Point Loma", tagline: "Peninsula living with bay views, Liberty Station, and a relaxed coastal feel.", tier: 1, lifestyles: ["Coastal", "Military/commute considerations", "Family-oriented"], hasGuide: true },
   { slug: "sorrento-valley", name: "Sorrento Valley / Sorrento Mesa", tagline: "Biotech and tech corridor with newer condos and townhomes.", tier: 1, lifestyles: ["Close to UCSD/UTC", "Commute-friendly"], hasGuide: true },
-  // Tier 2 — launch guides
+  // Tier 2, launch guides
   { slug: "bay-park", name: "Bay Park", tagline: "Hillside views and bay breezes between Clairemont and Mission Bay.", tier: 2, lifestyles: ["More affordable nearby", "Family-oriented"], hasGuide: true },
   { slug: "ocean-beach", name: "Ocean Beach", tagline: "Laid-back beach community with a strong local identity.", tier: 2, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: true },
   { slug: "hillcrest", name: "Hillcrest", tagline: "Walkable urban village near Balboa Park with dining and nightlife.", tier: 2, lifestyles: ["Nightlife/walkability", "Commute-friendly"], hasGuide: true },
   { slug: "north-park", name: "North Park", tagline: "Trendy, walkable neighborhood popular with young professionals.", tier: 2, lifestyles: ["Nightlife/walkability", "More affordable nearby"], hasGuide: true },
-  // Tier 2 — metadata only
+  // Tier 2, metadata only
   { slug: "bay-ho", name: "Bay Ho", tagline: "Quiet residential pocket near Mission Bay.", tier: 2, lifestyles: ["Family-oriented", "More affordable nearby"], hasGuide: false, parentSlug: "bay-park" },
   { slug: "north-clairemont", name: "North Clairemont", tagline: "Residential area with canyon views and central access.", tier: 2, lifestyles: ["Commute-friendly", "More affordable nearby"], hasGuide: false, parentSlug: "clairemont" },
   { slug: "kearny-mesa", name: "Kearny Mesa", tagline: "Commercial and residential hub with diverse dining.", tier: 2, lifestyles: ["Commute-friendly"], hasGuide: false, parentSlug: "clairemont" },
@@ -65,7 +65,7 @@ export const communities: Community[] = [
   { slug: "torrey-hills", name: "Torrey Hills", tagline: "Family-friendly area between Carmel Valley and Torrey Pines.", tier: 2, lifestyles: ["Family-oriented", "Close to UCSD/UTC"], hasGuide: false, parentSlug: "carmel-valley" },
   { slug: "civita", name: "Civita", tagline: "Newer master-planned community in Mission Valley.", tier: 2, lifestyles: ["Family-oriented", "Commute-friendly"], hasGuide: false, parentSlug: "mission-valley" },
   { slug: "serra-mesa", name: "Serra Mesa", tagline: "Central location near SDSU and Mission Valley.", tier: 2, lifestyles: ["Commute-friendly", "More affordable nearby"], hasGuide: false, parentSlug: "mission-valley" },
-  // Tier 3 — grouped under parents
+  // Tier 3, grouped under parents
   { slug: "la-jolla-cove", name: "La Jolla Cove", tagline: "Iconic cove area with sea lions and coastal dining.", tier: 3, lifestyles: ["Coastal"], hasGuide: false, parentSlug: "la-jolla" },
   { slug: "la-jolla-shores", name: "La Jolla Shores", tagline: "Family-friendly beach with kayak rentals and calm waters.", tier: 3, lifestyles: ["Coastal", "Family-oriented"], hasGuide: false, parentSlug: "la-jolla" },
   { slug: "la-jolla-village", name: "La Jolla Village", tagline: "Shopping and dining hub of La Jolla.", tier: 3, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: false, parentSlug: "la-jolla" },

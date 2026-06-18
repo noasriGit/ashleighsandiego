@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * BHHS brand tokens — see src/data/brand-guidelines.ts
+ * BHHS brand tokens, see src/data/brand-guidelines.ts
  * Default site theme: Traditional (Cabernet primary)
  */
 :root {
@@ -30,11 +30,11 @@
   --surface: var(--bhhs-white);
   --surface-muted: var(--bhhs-neutral-tint);
 
-  /* Sticky header height — used by full-viewport heroes */
+  /* Sticky header height, used by full-viewport heroes */
   --site-header-height: 4.5rem;
 
   /*
-   * Legacy aliases — existing Tailwind classes (navy, ocean, etc.)
+   * Legacy aliases, existing Tailwind classes (navy, ocean, etc.)
    * map to BHHS Traditional palette values.
    */
   --navy: var(--bhhs-cabernet);
@@ -76,14 +76,14 @@
   --color-gray-light: var(--gray-light);
   --color-gray-muted: var(--gray-muted);
 
-  /* Typography — Marcellus display, Manrope body */
+  /* Typography, Marcellus display, Manrope body */
   --font-sans: var(--font-manrope);
   --font-serif: var(--font-marcellus);
   --font-display: var(--font-marcellus);
   --font-body: var(--font-manrope);
 
   /*
-   * Brand headline scale (§6.0) — responsive clamps from guide px values.
+   * Brand headline scale (§6.0), responsive clamps from guide px values.
    * Marcellus: sentence case. Manrope subheads use component classes.
    */
   --text-title: clamp(0.6875rem, 0.6rem + 0.3vw, 0.75rem); /* 12px */
@@ -235,7 +235,7 @@ h6 {
 }
 
 /*
- * Hero mount animations — above-the-fold, CSS-only.
+ * Hero mount animations, above-the-fold, CSS-only.
  * Background fades in; content fades/rises in stagger.
  */
 @keyframes hero-enter-bg {

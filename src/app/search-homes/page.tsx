@@ -52,7 +52,7 @@ export default async function SearchHomesPage() {
       <Hero
         kicker="Home Search"
         headline="Search Homes Near La Jolla"
-        subheadline="Browse available homes in La Jolla and surrounding San Diego neighborhoods — or request a custom search tailored to your criteria."
+        subheadline="Browse available homes in La Jolla and surrounding San Diego neighborhoods, or request a custom search tailored to your criteria."
         primaryCta={{ label: "Request a Custom Home Search", href: "/contact" }}
         secondaryCta={{ label: "Book a Strategy Call", href: "/contact" }}
         backgroundImage={marketingHeroes.searchHomes.src}
@@ -113,7 +113,7 @@ export default async function SearchHomesPage() {
 
       <CTABanner
         headline="Need Help Narrowing Your Search?"
-        description="Tell us your budget, timeline, and preferred areas — we'll send a custom list of matching homes."
+        description="Tell us your budget, timeline, and preferred areas, we'll send a custom list of matching homes."
         ctaLabel="Request a Custom Home Search"
       />
     </>

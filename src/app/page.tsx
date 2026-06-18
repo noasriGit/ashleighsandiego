@@ -68,7 +68,7 @@ export default async function HomePage() {
       <Hero
         kicker="Berkshire Hathaway HomeServices California Properties"
         headline="Moving to San Diego? Start With a Clear Home-Buying Plan."
-        subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego — including first-time buyers, military/VA buyers, and out-of-area movers."
+        subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego, including first-time buyers, military/VA buyers, and out-of-area movers."
         primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
         backgroundImage="/images/hero1.jpg"
@@ -94,7 +94,7 @@ export default async function HomePage() {
       <Section kicker="Find Your Path">
         <h2 className="heading-section text-cabernet">Where Are You in Your Move?</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          Choose the path that fits your situation. Each guide is tailored to your priorities — commute, budget, schools, and lifestyle.
+          Choose the path that fits your situation. Each guide is tailored to your priorities, commute, budget, schools, and lifestyle.
         </p>
         <div className="mt-10">
           <BentoGrid
@@ -182,7 +182,7 @@ export default async function HomePage() {
         kicker="Military & VA"
         heading="Military & VA Relocation Support"
         body={[
-          "PCS orders to San Diego bring unique timing and location considerations. We help military buyers understand neighborhoods near Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island — without making the entire site military-only.",
+          "PCS orders to San Diego bring unique timing and location considerations. We help military buyers understand neighborhoods near Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island, without making the entire site military-only.",
           "Consult a licensed lender for VA loan eligibility and financing advice. We focus on neighborhood education, home search, and buyer guidance.",
         ]}
         cta={{ label: "Build Your PCS Buyer Plan", href: "/military-va-relocation-san-diego" }}
@@ -196,7 +196,7 @@ export default async function HomePage() {
         kicker="First-Time Buyers"
         heading="First-Time Buyer Support"
         body={[
-          "Buying your first home in San Diego comes with unique challenges — affordability, property types, and competitive markets. We help first-time buyers understand neighborhoods, get pre-approved, and tour with a plan.",
+          "Buying your first home in San Diego comes with unique challenges, affordability, property types, and competitive markets. We help first-time buyers understand neighborhoods, get pre-approved, and tour with a plan.",
           "Whether you're relocating or buying locally, a clear roadmap helps you avoid costly mistakes.",
         ]}
         cta={{ label: "First-Time Buyer Guide", href: "/first-time-home-buyer-san-diego" }}
@@ -217,7 +217,7 @@ export default async function HomePage() {
               {siteConfig.geo.radiusMiles}-Mile Radius from {siteConfig.geo.center}
             </h2>
             <p className="mt-4 max-w-xl text-white/85 leading-relaxed">
-              Our guides cover coastal, central, and inland communities within approximately {siteConfig.geo.radiusMiles} miles of La Jolla — from Del Mar to Point Loma, UTC to North Park.
+              Our guides cover coastal, central, and inland communities within approximately {siteConfig.geo.radiusMiles} miles of La Jolla, from Del Mar to Point Loma, UTC to North Park.
             </p>
             <Button
               href="/neighborhoods"
@@ -266,7 +266,7 @@ export default async function HomePage() {
               Hi, I&apos;m {siteConfig.agent.name}. I help relocating buyers understand San Diego neighborhoods, compare areas near La Jolla, and build a clear home-buying plan.
             </p>
             <p className="mt-4 leading-relaxed text-espresso/90">
-              Whether you&apos;re moving for military orders, a new job, or a lifestyle change — I&apos;m here to provide guidance, resources, and responsive support throughout your search.
+              Whether you&apos;re moving for military orders, a new job, or a lifestyle change, I&apos;m here to provide guidance, resources, and responsive support throughout your search.
             </p>
             <div className="mt-6 flex items-center gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-cabernet/20">

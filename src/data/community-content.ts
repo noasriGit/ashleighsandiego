@@ -10,7 +10,7 @@ export type CommunityContent = {
    * Optional hero photo for the neighborhood guide.
    * Expected path: `/images/neighborhoods/{slug}-hero.jpg` (1920x600).
    * When omitted, the guide hero falls back to the brand gradient.
-   * Use only real licensed/community photography — never AI or fake MLS imagery.
+   * Use only real licensed/community photography, never AI or fake MLS imagery.
    */
   heroImage?: string;
   heroImageAlt?: string;
@@ -47,7 +47,7 @@ export const communityContent: Record<string, CommunityContent> = {
       "Relocating buyers who want an established, upscale community",
     ],
     housingOverview:
-      "La Jolla offers a wide range from ocean-view condos and townhomes to luxury single-family homes on the hillsides. Price points vary significantly by subarea — Bird Rock and La Jolla Shores tend toward family homes, while the Village has more condos and walkable dining.",
+      "La Jolla offers a wide range from ocean-view condos and townhomes to luxury single-family homes on the hillsides. Price points vary significantly by subarea, Bird Rock and La Jolla Shores tend toward family homes, while the Village has more condos and walkable dining.",
     lifestyle:
       "La Jolla blends beach access, coastal trails, boutique shopping, and fine dining. Torrey Pines State Reserve, the Cove, and La Jolla Shores provide outdoor recreation. UCSD and Scripps are nearby, creating a mix of academic, medical, and research community energy.",
     commute:
@@ -58,9 +58,9 @@ export const communityContent: Record<string, CommunityContent> = {
       { name: "Del Mar", slug: "del-mar", note: "Similar upscale coastal vibe, slightly north with fairgrounds culture" },
     ],
     faqs: [
-      { question: "Is La Jolla good for relocating families?", answer: "Yes — La Jolla offers strong schools, beach access, and family-friendly subareas like La Jolla Shores and Bird Rock. Budget and housing type preferences will determine which subarea fits best." },
+      { question: "Is La Jolla good for relocating families?", answer: "Yes, La Jolla offers strong schools, beach access, and family-friendly subareas like La Jolla Shores and Bird Rock. Budget and housing type preferences will determine which subarea fits best." },
       { question: "What is the commute like from La Jolla?", answer: "La Jolla has good freeway access via I-5 and I-805. Commutes to Sorrento Valley, UTC, and downtown San Diego are common. Traffic on I-5 can be heavy during peak hours." },
-      { question: "Are there condo options in La Jolla?", answer: "Yes — the Village and nearby areas have condo and townhome options, though inventory can be limited. Condos can be a good entry point for buyers who want the La Jolla address." },
+      { question: "Are there condo options in La Jolla?", answer: "Yes, the Village and nearby areas have condo and townhome options, though inventory can be limited. Condos can be a good entry point for buyers who want the La Jolla address." },
     ],
   },
   "pacific-beach": {
@@ -94,7 +94,7 @@ export const communityContent: Record<string, CommunityContent> = {
     faqs: [
       { question: "Is Pacific Beach family-friendly?", answer: "PB can work for families, especially in quieter pockets away from Garnet. Schools and noise levels vary by block. Crown Point and north PB tend to be calmer." },
       { question: "How does Pacific Beach compare to La Jolla?", answer: "PB is more casual and social with a younger demographic. La Jolla is quieter and more upscale. PB generally offers lower entry prices for coastal living." },
-      { question: "Are there condos in Pacific Beach?", answer: "Yes — condos and townhomes are common, especially near the beach and Garnet Avenue. They can be a good option for buyers who want coastal access without a single-family budget." },
+      { question: "Are there condos in Pacific Beach?", answer: "Yes, condos and townhomes are common, especially near the beach and Garnet Avenue. They can be a good option for buyers who want coastal access without a single-family budget." },
     ],
   },
   "university-city": {
@@ -126,7 +126,7 @@ export const communityContent: Record<string, CommunityContent> = {
       { name: "Sorrento Valley", slug: "sorrento-valley", note: "Closer to biotech offices, more condo/townhome inventory" },
     ],
     faqs: [
-      { question: "Is University City good for UCSD families?", answer: "Yes — proximity to UCSD, good schools, and UTC amenities make it popular with university-affiliated buyers and families." },
+      { question: "Is University City good for UCSD families?", answer: "Yes, proximity to UCSD, good schools, and UTC amenities make it popular with university-affiliated buyers and families." },
       { question: "What is UTC vs University City?", answer: "UTC refers to the commercial/shopping hub (Westfield UTC). University City is the broader residential area. They're often grouped together for home search purposes." },
       { question: "Are there affordable options near UTC?", answer: "University City generally offers more affordable options than La Jolla or Del Mar, especially for condos and townhomes. Clairemont and Kearny Mesa are nearby alternatives." },
     ],
@@ -161,7 +161,7 @@ export const communityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "Is Clairemont a good value for relocating buyers?", answer: "Clairemont often offers more square footage and lot size per dollar compared to coastal neighborhoods. It's popular with buyers who prioritize space and central location." },
-      { question: "What are Clairemont schools like?", answer: "School quality varies by subarea. Research specific school boundaries before buying — this is an important step for relocating families." },
+      { question: "What are Clairemont schools like?", answer: "School quality varies by subarea. Research specific school boundaries before buying, this is an important step for relocating families." },
       { question: "How far is Clairemont from the beach?", answer: "Pacific Beach and Mission Bay are 10–15 minutes by car. You trade beach proximity for more home and yard for your budget." },
     ],
   },
@@ -187,7 +187,7 @@ export const communityContent: Record<string, CommunityContent> = {
     lifestyle:
       "Shopping centers (Fashion Valley, Mission Valley Mall), restaurants, and freeway convenience define the area. Less neighborhood character than coastal or established communities, but highly functional for commuters.",
     commute:
-      "Mission Valley sits at the intersection of I-8, I-805, and I-15 — one of the best-connected areas in San Diego. Downtown, UTC, and most job centers are 15–25 minutes.",
+      "Mission Valley sits at the intersection of I-8, I-805, and I-15, one of the best-connected areas in San Diego. Downtown, UTC, and most job centers are 15–25 minutes.",
     nearbyComparisons: [
       { name: "Clairemont", slug: "clairemont", note: "More single-family homes and neighborhood feel" },
       { name: "Linda Vista", slug: "linda-vista", note: "More affordable, diverse community nearby" },
@@ -323,14 +323,14 @@ export const communityContent: Record<string, CommunityContent> = {
     lifestyle:
       "The area is work-focused with biotech campuses, restaurants, and limited residential character. Buyers typically choose Sorrento Valley for commute convenience rather than lifestyle amenities.",
     commute:
-      "This is the biotech corridor — many residents walk or have a 5-minute drive to work. I-5 and I-805 provide regional access. UTC is 5–10 minutes. La Jolla is 10–15 minutes.",
+      "This is the biotech corridor, many residents walk or have a 5-minute drive to work. I-5 and I-805 provide regional access. UTC is 5–10 minutes. La Jolla is 10–15 minutes.",
     nearbyComparisons: [
       { name: "University City", slug: "university-city", note: "More residential character, UTC shopping nearby" },
       { name: "Carmel Valley", slug: "carmel-valley", note: "More family-oriented, 10–15 minute commute" },
       { name: "Mira Mesa", slug: "sorrento-valley", note: "More affordable option further inland" },
     ],
     faqs: [
-      { question: "Is Sorrento Valley good for biotech commuters?", answer: "Sorrento Valley is ideal for biotech and tech professionals — many campuses are in walking distance or a short drive. It's one of the top choices for commute-focused buyers." },
+      { question: "Is Sorrento Valley good for biotech commuters?", answer: "Sorrento Valley is ideal for biotech and tech professionals, many campuses are in walking distance or a short drive. It's one of the top choices for commute-focused buyers." },
       { question: "Are there family-friendly options in Sorrento Valley?", answer: "Families often look at nearby Carmel Valley or University City for schools and parks, while keeping Sorrento Valley on the list for commute. Evaluate based on your priorities." },
       { question: "What types of homes are in Sorrento Valley?", answer: "Condos and townhomes dominate the inventory. Newer developments offer modern amenities. Single-family homes are less common." },
     ],
@@ -384,7 +384,7 @@ export const communityContent: Record<string, CommunityContent> = {
       "Buyers who want a laid-back, local beach community",
       "Creative professionals and remote workers",
       "Buyers who prefer OB's identity over Pacific Beach's nightlife",
-      "Dog owners — Ocean Beach Dog Beach is a major draw",
+      "Dog owners, Ocean Beach Dog Beach is a major draw",
     ],
     housingOverview:
       "Ocean Beach has cottages, bungalows, and some newer construction. Inventory is eclectic. Beach-adjacent properties command premiums. Condos are less common than in PB or Mission Valley.",
@@ -433,7 +433,7 @@ export const communityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "Is Hillcrest walkable?", answer: "Hillcrest is one of San Diego's most walkable neighborhoods. Daily errands, dining, and Balboa Park are accessible on foot." },
-      { question: "Are there condo options in Hillcrest?", answer: "Yes — condos and townhomes are common in Hillcrest. They're popular with buyers who want urban lifestyle without yard maintenance." },
+      { question: "Are there condo options in Hillcrest?", answer: "Yes, condos and townhomes are common in Hillcrest. They're popular with buyers who want urban lifestyle without yard maintenance." },
       { question: "How does Hillcrest compare to North Park?", answer: "Both are walkable urban neighborhoods. Hillcrest is closer to Balboa Park and medical centers. North Park has a younger, trendier dining scene." },
     ],
   },

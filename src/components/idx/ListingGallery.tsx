@@ -28,7 +28,7 @@ export function ListingGallery({ images, address }: ListingGalleryProps) {
         {/* eslint-disable-next-line @next/next/no-img-element -- external MLS image host */}
         <img
           src={images[current]}
-          alt={`${address} — photo ${current + 1} of ${images.length}`}
+          alt={`${address}, photo ${current + 1} of ${images.length}`}
           className="h-80 w-full object-cover sm:h-[28rem]"
         />
 

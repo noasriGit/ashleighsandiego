@@ -67,7 +67,7 @@ const existingLinks = await fetchSavedLinks(API_KEY);
 console.log(`Found ${existingLinks.length} existing saved links in IDX.\n`);
 
 if (!apply) {
-  console.log("DRY RUN — pass --apply to create saved links.\n");
+  console.log("DRY RUN, pass --apply to create saved links.\n");
 }
 
 let created = 0;
@@ -78,14 +78,14 @@ for (const target of targets) {
   const { slug, name, zipCodes } = target;
 
   if (zipCodes.length === 0) {
-    console.log(`  ⊘ ${slug} — skipped (no zip codes)`);
+    console.log(`  ⊘ ${slug}, skipped (no zip codes)`);
     skipped++;
     continue;
   }
 
   const existing = matchSavedLink(existingLinks, slug, name);
   if (existing) {
-    console.log(`  ○ ${slug} — already exists (id=${existing.id}, name="${existing.linkName}")`);
+    console.log(`  ○ ${slug}, already exists (id=${existing.id}, name="${existing.linkName}")`);
     skipped++;
     continue;
   }

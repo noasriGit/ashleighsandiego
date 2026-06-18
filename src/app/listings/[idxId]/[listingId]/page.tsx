@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     listing.displayAddress !== false ? listing.address : "San Diego Home";
   const title = [listing.price, displayAddr, listing.city]
     .filter(Boolean)
-    .join(" — ");
+    .join(", ");
   const description = [
     listing.price && `Listed at ${listing.price}.`,
     listing.beds && `${listing.beds} bed`,
