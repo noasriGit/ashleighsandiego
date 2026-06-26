@@ -157,8 +157,8 @@ these steps whenever `public/idx-header.html`, `public/idx-footer.html`, or the 
 Hosted fragments:
 
 The header file loads fonts + wrapper CSS only. **Results and detail CSS load from
-`idx-footer.html`** so they apply after IDX's default stylesheets (fixes partial styling:
-buttons styled but photos/map broken).
+`idx-footer.html` only** — do NOT add them to the header. This ensures our custom CSS
+applies after IDX's own stylesheets (fixes partial styling: buttons styled but photos/map broken).
 
 | URL | Repo file |
 |-----|-----------|

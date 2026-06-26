@@ -1,7 +1,8 @@
 /*
- * IDX Results — Custom CSS (v7)
+ * IDX Results — Custom CSS (v8)
  * Paste ENTIRE file into: Design → Website → Custom CSS → Categories → Results
  *
+ * v8: Fix action buttons stacking full-width; load CSS from footer only (not header+footer)
  * v7: IDX Default template (idx-listing-card, idx-results--map) — live on sdcommunities.idxbroker.com
  * v6: Legacy Standard / Platinum Grid (.IDX-resultsPhoto, #IDX-resultsContainer)
  */
@@ -25,10 +26,15 @@
 .idx-results .IDX-topAction,
 .idx-results .IDX-top-action__group,
 .idx-results .IDX-top-action__group--no-refinement {
-  display: flex;
+  display: inline-flex !important;
+  flex-direction: row !important;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin: 0 0 16px;
+  width: auto !important;
+  float: none !important;
+  vertical-align: top;
 }
 
 .idx-results .IDX-newSearch,
@@ -47,6 +53,8 @@
   border: 1px solid #670038 !important;
   color: #ffffff !important;
   box-shadow: none !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
 }
 
 .idx-results .IDX-newSearch:hover,
