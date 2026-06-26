@@ -1,8 +1,8 @@
 /** Production apex domain (no protocol, no www). */
 export const SITE_DOMAIN = "sdcommunities.com";
 
-/** Branded IDX search subdomain host. */
-export const IDX_SEARCH_DOMAIN = `search.${SITE_DOMAIN}`;
+/** IDX Broker search host (sdcommunities.idxbroker.com). */
+export const IDX_SEARCH_DOMAIN = "sdcommunities.idxbroker.com";
 
 export const siteConfig = {
   name: "San Diego Relocation Home Guide",

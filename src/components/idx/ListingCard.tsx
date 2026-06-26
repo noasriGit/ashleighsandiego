@@ -63,10 +63,23 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
     </Card>
   );
 
+  const linkLabel = [
+    listing.price,
+    displayAddr,
+    listing.city,
+    specs.length > 0 ? specs.join(", ") : undefined,
+  ]
+    .filter(Boolean)
+    .join(" — ");
+
   // On-site featured listing: use Next.js Link for client-side navigation.
   if (listing.isOnSite && listing.idxId && listing.listingId) {
     return (
-      <Link href={`/listings/${listing.idxId}/${listing.listingId}`} className="block">
+      <Link
+        href={`/listings/${listing.idxId}/${listing.listingId}`}
+        className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
+        aria-label={`View listing: ${linkLabel}`}
+      >
         {inner}
       </Link>
     );
@@ -75,7 +88,11 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
   // Savedlinks / non-featured listing: external link to the branded subdomain.
   if (listing.detailUrl) {
     return (
-      <a href={listing.detailUrl} className="block">
+      <a
+        href={listing.detailUrl}
+        className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
+        aria-label={`View listing on search site: ${linkLabel}`}
+      >
         {inner}
       </a>
     );

@@ -115,6 +115,7 @@ export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityC
               "translate-y-2 opacity-0 transition-[transform,opacity] duration-300 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
               "group-hover:translate-y-0 group-hover:opacity-100",
             )}
+            aria-hidden="true"
           >
             Explore guide
             <svg
@@ -137,7 +138,11 @@ export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityC
 
   if (hasPage) {
     return (
-      <Link href={`/neighborhoods/${community.slug}`} className="group block h-full">
+      <Link
+        href={`/neighborhoods/${community.slug}`}
+        className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
+        aria-label={`${community.name}: ${community.tagline}`}
+      >
         {content}
       </Link>
     );

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { siteConfig } from "@/data/site-config";
 import { IdxSearchBar } from "@/components/idx/IdxSearchBar";
 import {
@@ -20,6 +20,22 @@ function navLinkLabel(item: (typeof siteConfig.nav)[number], compact = false) {
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileNavId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   return (
     <HeaderContactProvider>
@@ -32,7 +48,7 @@ export function Header() {
         >
           <img
             src="/images/berkshirelogo.png"
-            alt="Berkshire Hathaway HomeServices California Properties"
+            alt=""
             width={4074}
             height={960}
             className="block h-9 w-auto max-w-[190px] object-contain object-left sm:h-10 sm:max-w-[220px]"
@@ -49,7 +65,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="shrink-0 whitespace-nowrap px-4 text-sm text-espresso transition-colors hover:text-cabernet xl:px-5"
+              className="shrink-0 whitespace-nowrap px-4 text-sm text-espresso transition-colors hover:text-cabernet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2 xl:px-5"
             >
               {navLinkLabel(item, true)}
             </Link>
@@ -60,13 +76,15 @@ export function Header() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
-          className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-cabernet lg:hidden"
+          className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-cabernet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2 lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
-          aria-label="Toggle menu"
+          aria-controls={mobileNavId}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             {mobileOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -85,6 +103,7 @@ export function Header() {
       <HeaderContactPanel />
 
       <nav
+        id={mobileNavId}
         className={cn(
           "border-t border-surface-muted bg-background lg:hidden",
           mobileOpen ? "block" : "hidden",
@@ -102,7 +121,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-2.5 text-espresso hover:bg-rose"
+              className="rounded-lg px-3 py-2.5 text-espresso hover:bg-rose focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cabernet"
               onClick={() => setMobileOpen(false)}
             >
               {item.label}

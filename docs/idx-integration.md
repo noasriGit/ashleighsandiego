@@ -17,7 +17,8 @@ in production. None of these require code changes.
 
 ### MLS / feed
 
-- [ ] MLS feed approved and actively syncing
+- [x] MLS feed approved (SDMLS — confirmed 2026-06-24)
+- [ ] MLS feed actively syncing in IDX (verify: `npm run idx:verify` shows California listings, not Florida demo data)
 - [ ] Confirm which MLS board(s) the feed covers (affects display rules in Phase 2)
 
 ### Branding / compliance (must match `src/data/site-config.ts`)
@@ -43,8 +44,7 @@ in production. None of these require code changes.
 
 ### Subdomain + wrapper
 
-- [ ] CNAME `search.[domain].com` -> IDX Broker target (see section 4)
-- [ ] SSL enabled for the subdomain
+- [x] IDX subdomain: `sdcommunities.idxbroker.com` (no custom CNAME required)
 - [ ] Static wrapper uploaded (`docs/idx-wrapper.html`)
 - [ ] Results custom CSS uploaded (`docs/idx-results.css` → Designs → Results → Custom CSS)
 - [ ] Detail custom CSS uploaded (`docs/idx-detail.css` → Designs → Details → Custom CSS)
@@ -68,7 +68,7 @@ See `.env.example` for the full list. IDX-specific:
 |----------|-------|----------|---------|
 | `NEXT_PUBLIC_SITE_URL` | 1 | public | Canonical site URL, e.g. `https://sdcommunities.com`. Used for metadata, sitemap, JSON-LD, and canonical tags. |
 | `NEXT_PUBLIC_IDX_ENABLED` | 1 | public | Master switch. `"true"` activates live IDX; anything else shows the CustomSearchForm fallback. |
-| `NEXT_PUBLIC_IDX_BASE_URL` | 1 | public | Branded subdomain root, e.g. `https://search.sdcommunities.com`. Used to build saved-search links. |
+| `NEXT_PUBLIC_IDX_BASE_URL` | 1 | public | IDX search host root, e.g. `https://sdcommunities.idxbroker.com`. Used to build saved-search links. |
 | `NEXT_PUBLIC_IDX_WIDGET_URL` | 1 | public | Omnibar embed script URL. Required only for the `/search-homes` widget. |
 | `IDX_API_KEY` | 3 | **server-only** | IDX API access key for community featured listings + live saved-search counts. Never prefix with `NEXT_PUBLIC_`. |
 | `IDX_API_ENABLED` | 3 | **server-only** | Optional kill switch for API calls. Defaults to on when `IDX_API_KEY` is set; `"false"` disables API-driven listings/counts only. |
@@ -115,10 +115,12 @@ saved searches are still being built out.
 
 ## 4. Wrapper Strategy & Subdomain Setup
 
-**Use the static wrapper** (`docs/idx-wrapper.html`), not the dynamic (cURL) wrapper. The
-dynamic wrapper fetches a live URL server-side and cannot execute the Next.js App Router
-client runtime, which leads to broken/hydration-mismatched output. The static wrapper is
-plain HTML/CSS and renders reliably.
+IDX search runs at **`https://sdcommunities.idxbroker.com`** (IDX-provided subdomain on
+`*.idxbroker.com`). No custom CNAME on `sdcommunities.com` is required for launch.
+
+Optional later: a fully branded host like `search.sdcommunities.com` via CNAME →
+`subdomains.idxbroker.com` and **Account → `/mgmt/account`** in Middleware. See
+[Setting Up a Custom Domain](https://support.idxbroker.com/hc/en-us/articles/34490030166555-Setting-Up-a-Custom-Domain).
 
 ### Static wrapper requirements
 
@@ -127,15 +129,109 @@ plain HTML/CSS and renders reliably.
 - Includes header (logo + nav), footer (disclaimers, Equal Housing, Privacy/Terms links)
 - Inline `<style>` only (the wrapper cannot import the site's Tailwind build)
 - Re-upload the wrapper whenever `siteConfig.nav`, agent/brokerage details, or the franchise
-  disclaimer change, the wrapper is a static copy and does not track the main site automatically
+  disclaimer change — the wrapper is a static copy and does not track the main site automatically
 
-### CNAME steps
+### Middleware upload checklist (Designs panel)
 
-1. In IDX Control Panel, find the assigned subdomain target (Account -> Subdomains).
-2. Add a DNS `CNAME` record: `search` -> that target.
-3. Enable SSL for the subdomain in the Control Panel.
-4. Set the subdomain as the primary search domain.
-5. Verify: `curl -I https://search.[domain].com` returns `200` over valid SSL.
+Log in at [middleware.idxbroker.com/mgmt](https://middleware.idxbroker.com/mgmt) and complete
+these steps whenever `docs/idx-wrapper.html`, `docs/idx-results.css`, or
+`docs/idx-detail.css` change in the repo.
+
+#### Step 1 — Static wrapper (HTML only — no inline `<style>`)
+
+Wrapper styles are hosted at `https://sdcommunities.com/idx-wrapper.css` ([public/idx-wrapper.css](../public/idx-wrapper.css)). **Deploy sdcommunities.com** before uploading the wrapper so that URL resolves.
+
+1. Go to **Designs → Wrapper**.
+2. Click **Create New Wrapper** (or edit the existing SD Communities wrapper).
+3. Set type to **Static** (not dynamic / cURL).
+4. Open [`docs/idx-wrapper.html`](idx-wrapper.html) in the repo.
+5. Copy everything from `<!-- BEGIN HEADER -->` through `<!-- END HEADER -->` into the **Header** field.
+   - Header is **one `<link>` + `<header>` HTML only** — no `<style>` blocks.
+6. Copy everything from `<!-- BEGIN FOOTER -->` through `<!-- END FOOTER -->` into the **Footer** field.
+   - Footer is **`<footer>` HTML only** — no `<style>` blocks.
+7. Save the wrapper.
+8. Set this wrapper as **Primary** for `sdcommunities.idxbroker.com`.
+
+**Why no inline `<style>` in IDX wrapper:** IDX injects wrapper HTML into the page body. Inline `<style>` tags in the wrapper break or block Results Custom CSS from loading. External stylesheet via `<link>` does not.
+
+#### Step 2 — Results custom CSS
+
+1. Go to **Design → Website → Custom CSS → Categories → Results**
+   (some accounts: **Designs → Results → Custom CSS** — same field).
+2. Confirm the active results template (Standard, Platinum Grid, etc.).
+3. Select **all** existing CSS in the Results category, delete it, and paste the **entire**
+   contents of [`docs/idx-results.css`](idx-results.css) (full swap, not an append).
+4. Save Changes.
+
+**If results still look unstyled but the wrapper looks correct:**
+
+- v5 CSS uses **direct IDX selectors** (`#IDX-resultsContainer`, `.IDX-resultsCell`) — not `#IDX-main` or `.IDX-wrapper-standard` (custom wrappers often remove those).
+- Re-upload [`docs/idx-results.css`](idx-results.css) v5 under **Categories → Results** (full replace).
+- **Fallback:** If Categories CSS still fails with wrapper enabled, add to **Global Custom CSS**:
+  `@import url("https://sdcommunities.com/idx-results.css");`
+  (requires deploying [public/idx-results.css](../public/idx-results.css) to production.)
+
+**If wrapper header/footer is unstyled:**
+
+- Deploy `public/idx-wrapper.css` to sdcommunities.com and confirm `https://sdcommunities.com/idx-wrapper.css` loads in a browser.
+
+#### Step 3 — Details custom CSS
+
+1. Go to **Designs → Details**.
+2. Confirm the active template is **Standard**.
+3. Open the **Custom CSS** tab.
+4. Paste the **entire** contents of [`docs/idx-detail.css`](idx-detail.css) (full swap).
+5. Save.
+
+#### Step 4 — Optional results CTA band
+
+If your Middleware version exposes **Results → Custom HTML** (or header content above
+results), paste this block above the listing grid:
+
+```html
+<div class="IDX-sd-guide-cta">
+  Planning a move to San Diego?
+  <a href="https://sdcommunities.com/neighborhoods">Explore neighborhood guides</a>
+  or
+  <a href="https://sdcommunities.com/contact">book a free buyer strategy call</a>.
+</div>
+```
+
+Styles for `.IDX-sd-guide-cta` are already in `docs/idx-results.css`.
+
+#### Step 5 — Hard refresh and verify
+
+1. Open an incognito window (bypasses cache).
+2. Hard refresh (Ctrl+Shift+R / Cmd+Shift+R) on each test URL in the Visual QA table below.
+3. If styles do not appear, confirm the wrapper is Primary and Custom CSS was saved as a
+   full replacement (not appended to old Bootstrap overrides).
+
+### Post-upload DOM audit
+
+After upload, open Chrome DevTools on each page type and confirm these nodes exist. If a
+selector is missing, note the actual class/id and patch the CSS file before re-uploading.
+
+| Page | URL | Root wrapper | Key selectors to verify |
+|------|-----|--------------|-------------------------|
+| Zip results | `/idx/results/listings?zipcode[]=92037&a_status[]=active` | `#IDX-main` | `#IDX-resultsContainer`, `.IDX-resultsCell`, `.IDX-grid`, `#IDX-resultsCountWrap` |
+| Saved search | `/i/la-jolla` (or saved-link URL from Control Panel) | `.IDX-wrapper-standard` | Same as results; saved-link pages may omit refine panel |
+| Listing detail | Click any listing from results | `.IDX-wrapper-standard` | `#IDX-detailsWrapper`, `#IDX-detailsPrice`, `#IDX-detailsContact`, `#IDX-mainPhotos` |
+
+**Common fixes:**
+
+- Wrapper header/footer missing → wrapper not set as Primary, or header/footer pasted into wrong fields.
+- **Results CSS works without wrapper but breaks with wrapper** → re-upload `idx-wrapper.html` v6: **HTML only**, one `<link href="https://sdcommunities.com/idx-wrapper.css">` in header, **zero** `<style>` tags. Deploy `public/idx-wrapper.css` first. Re-upload results CSS v5 (direct `#IDX-resultsContainer` selectors).
+- Styles partially applied → old Custom CSS not fully replaced; Bootstrap greens still visible.
+- Fonts not loading → wrapper `<style>` must include the Google Fonts `@import` (header field).
+- Cards still horizontal / overlapping → v4 resets legacy `float:left` on `.IDX-resultsPhoto`; re-upload and hard refresh.
+
+### Optional custom CNAME (not required for launch)
+
+If you later want `search.sdcommunities.com` instead of `sdcommunities.idxbroker.com`:
+
+1. **DNS:** CNAME `search` → `subdomains.idxbroker.com`
+2. **IDX:** [middleware.idxbroker.com/mgmt/account](https://middleware.idxbroker.com/mgmt/account) → Use Custom Domain = Yes → enter `search.sdcommunities.com`
+3. Update `NEXT_PUBLIC_IDX_BASE_URL` and re-run `npm run idx:sync-searches`
 
 ---
 
@@ -253,6 +349,8 @@ listing surfaces, real usage stays well under 100 req/hr.
 
 ## 8. Testing Checklist
 
+See **section 10** for IDX subdomain visual QA (wrapper, CSS, mobile/desktop) after Middleware upload.
+
 - [ ] Each of the 13 community links opens the correct pre-filtered results on the subdomain
 - [ ] `/search-homes` omnibar renders and submits to the subdomain
 - [ ] Wrapper header/footer render with working absolute links + disclaimers
@@ -270,11 +368,38 @@ listing surfaces, real usage stays well under 100 req/hr.
 
 ---
 
-## 9. Open Items From Client
+## 10. IDX Visual QA Checklist (branded subdomain)
+
+Run after uploading wrapper + CSS (section 4). Test in incognito at **375px** (mobile) and
+**1280px** (desktop).
+
+| Test | URL | Pass criteria |
+|------|-----|---------------|
+| Results (zip filter) | `https://sdcommunities.idxbroker.com/idx/results/listings?zipcode[]=92037&a_status[]=active` | BHHS logo header, pearl background, cabernet prices, white rounded cards in 3-col grid (desktop), no green Bootstrap alerts |
+| Saved search | Community saved-link URL (e.g. La Jolla from Control Panel) | Same branding; community-filtered results |
+| Detail click-through | Any listing from results | Rounded gallery, cabernet price, styled contact form, pearl page background |
+| Mobile 375px | Same URLs | No horizontal scroll; buttons and pagination ≥44px tall |
+| Desktop 1280px | Same URLs | 3-column card grid; sticky BHHS header |
+| Footer compliance | All pages | Franchise + SDMLS + agent disclaimers; Equal Housing line; cabernet footer |
+| Return path | Header logo + nav links | All resolve to `https://sdcommunities.com/...` |
+| Search pill | Header second row | "Search homes on sdcommunities.com" links to `/search-homes` |
+| Main site parity | Compare to `https://sdcommunities.com/neighborhoods/la-jolla` | Same logo, fonts (Marcellus headings, Manrope body), cabernet CTAs, card feel |
+
+### Asset file reference
+
+| Asset | Repo path | Upload target |
+|-------|-----------|---------------|
+| Static wrapper | `docs/idx-wrapper.html` | Designs → Wrapper (Header + Footer fields) |
+| Results CSS | `docs/idx-results.css` | Designs → Results → Custom CSS |
+| Detail CSS | `docs/idx-detail.css` | Designs → Details → Custom CSS |
+
+---
+
+## 11. Open Items From Client
 
 | Item | Needed for |
 |------|------------|
-| MLS feed approval status | Phase 1 |
+| ~~MLS feed approval status~~ | Done (2026-06-24) |
 | Agent name, DRE #, email, phone | Phase 1 launch |
 | Brokerage license # and office address | Phase 1 launch |
 | Domain DNS access (CNAME) | Phase 1 |

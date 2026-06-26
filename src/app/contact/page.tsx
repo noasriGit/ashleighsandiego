@@ -26,7 +26,7 @@ function BookingEmbed() {
       <Card className="overflow-hidden p-0">
         <iframe
           src={bookingUrl}
-          title="Book a strategy call"
+          title="Schedule a buyer strategy call with Ashleigh Dodero"
           className="h-[600px] w-full border-0"
           loading="lazy"
         />

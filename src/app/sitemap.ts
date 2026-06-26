@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/privacy-policy",
     "/terms",
+    "/accessibility",
   ];
 
   const communityPages = launchCommunitySlugs.map(

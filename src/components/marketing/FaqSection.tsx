@@ -58,6 +58,7 @@ export function FaqSection({ title = "Frequently Asked Questions", faqs }: FaqSe
                 id={panelId}
                 role="region"
                 aria-labelledby={buttonId}
+                aria-hidden={!isOpen}
                 className="accordion-panel px-4"
                 data-open={isOpen}
               >

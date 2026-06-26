@@ -95,8 +95,9 @@ function TileContent({ item }: { item: BentoItem }) {
               "mt-5 inline-flex items-center text-sm font-medium",
               item.highlight ? "text-white" : "text-cabernet",
             )}
+            aria-hidden="true"
           >
-            Learn more →
+            View guide →
           </span>
         )}
       </div>
@@ -110,7 +111,11 @@ function Tile({ item }: { item: BentoItem }) {
   return (
     <div className={cn(spanStyles[item.span ?? "default"])}>
       {item.href ? (
-        <Link href={item.href} className="block h-full">
+        <Link
+          href={item.href}
+          className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
+          aria-label={`${item.title}: ${item.description}`}
+        >
           {content}
         </Link>
       ) : (

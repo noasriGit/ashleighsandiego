@@ -113,22 +113,25 @@ export function buildSavedLinkUrl(baseUrl, linkName) {
 }
 
 /**
- * Rewrite a default IDX Broker host (e.g. nvdigitalconsulting.idxbroker.com) to the branded
- * subdomain, preserving the /i/{linkName} path. Returns the URL unchanged when it is already
- * branded or when the base URL is itself an idxbroker host (branding not yet configured).
+ * Rewrite an IDX Broker host to the configured base URL, preserving path/query.
+ * Handles both custom domains (search.example.com) and *.idxbroker.com subdomains
+ * (e.g. nvdigitalconsulting.idxbroker.com → sdcommunities.idxbroker.com).
  */
 export function brandSavedLinkUrl(url, baseUrl, linkName) {
   const root = (baseUrl ?? "").replace(/\/$/, "");
   if (!root) return url;
-  const baseIsBranded = !/idxbroker\.com/i.test(root);
-  if (!url || !/idxbroker\.com/i.test(url) || !baseIsBranded) return url;
+  if (!url) return buildSavedLinkUrl(root, linkName);
   try {
     const parsed = new URL(url);
     const base = new URL(root);
-    parsed.protocol = base.protocol;
-    parsed.host = base.host;
-    return parsed.toString();
+    if (parsed.host === base.host) return url;
+    if (/idxbroker\.com/i.test(parsed.hostname) || !/idxbroker\.com/i.test(base.hostname)) {
+      parsed.protocol = base.protocol;
+      parsed.host = base.host;
+      return parsed.toString();
+    }
   } catch {
-    return buildSavedLinkUrl(root, linkName) || url;
+    /* fall through */
   }
+  return buildSavedLinkUrl(root, linkName) || url;
 }

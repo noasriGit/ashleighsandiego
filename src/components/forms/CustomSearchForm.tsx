@@ -84,13 +84,15 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
   if (status === "success") {
     return (
       <Card>
-        <h3 className="heading-card text-cabernet">Request Received</h3>
-        <p className="mt-2 text-espresso/90">
-          We&apos;ll review your criteria and send a custom list of matching homes. Want to discuss your search in detail?
-        </p>
-        <Button href="/contact" className="mt-4">
-          Book a Strategy Call
-        </Button>
+        <div role="status" aria-live="polite">
+          <h3 className="heading-card text-cabernet">Request Received</h3>
+          <p className="mt-2 text-espresso/90">
+            We&apos;ll review your criteria and send a custom list of matching homes. Want to discuss your search in detail?
+          </p>
+          <Button href="/contact" className="mt-4">
+            Book a Strategy Call
+          </Button>
+        </div>
       </Card>
     );
   }
@@ -114,15 +116,16 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
           <SelectField label="Timeline" name="timeline" options={TIMELINE_OPTIONS} />
           <Field label="Preferred Areas" name="preferredAreas" defaultValue={defaultArea} />
         </div>
-        <div>
+        <div role="group" aria-label="What matters most?">
           <span className="block text-sm font-medium text-espresso">What matters most?</span>
           <div className="mt-2 flex flex-wrap gap-2">
             {PRIORITY_OPTIONS.map((p) => (
               <button
                 key={p}
                 type="button"
+                aria-pressed={priorities.includes(p)}
                 onClick={() => togglePriority(p)}
-                className={`rounded-full px-3 py-1 text-sm transition-colors ${
+                className={`rounded-full px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2 ${
                   priorities.includes(p)
                     ? "bg-cabernet text-white"
                     : "bg-rose text-espresso hover:bg-blush/40"
@@ -148,7 +151,9 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
           {status === "loading" ? "Submitting..." : "Request Custom Search"}
         </Button>
         {status === "error" && (
-          <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+          <p className="text-sm text-red-600" role="alert">
+            Something went wrong. Please try again.
+          </p>
         )}
       </form>
     </Card>
@@ -172,12 +177,19 @@ function Field({
     <div>
       <label htmlFor={name} className="block text-sm font-medium text-espresso">
         {label}
+        {required && (
+          <>
+            <span aria-hidden="true"> *</span>
+            <span className="sr-only"> (required)</span>
+          </>
+        )}
       </label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
+        aria-required={required || undefined}
         defaultValue={defaultValue}
         className="mt-1 w-full rounded-lg border border-dove/40 bg-white px-4 py-2 focus:border-cabernet focus:outline-none focus:ring-1 focus:ring-cabernet"
       />

@@ -79,16 +79,33 @@ export function buildIdxSearchUrl(
   return `${root}${IDX_RESULTS_PATH}?${params.toString()}`;
 }
 
-/** Resolve the best browse URL: saved search URL takes precedence over dynamic build. */
+/**
+ * Resolve the best browse URL for a community.
+ *
+ * When zip/city filters exist in config, prefer the dynamic results URL built from
+ * community-zips.ts — IDX saved /i/ links may exist before their queryString is
+ * configured in the Control Panel (common during MLS onboarding).
+ *
+ * Falls back to savedSearchUrl for entries without geographic filters, then dynamic.
+ */
 export function resolveIdxBrowseUrl(
   baseUrl: string,
   config: IdxSearchConfig,
   options?: IdxSearchUrlOptions,
 ): string | null {
+  const zipCodes = options?.zipCodes ?? config.zipCodes;
+  const hasGeoFilter = zipCodes.length > 0 || config.cityIds.length > 0;
+  const dynamic = buildIdxSearchUrl(baseUrl, config, options);
+
+  if (hasGeoFilter && dynamic) {
+    return dynamic;
+  }
+
   if (config.savedSearchUrl) {
     return normalizeIdxUrl(config.savedSearchUrl, baseUrl) ?? config.savedSearchUrl;
   }
-  return buildIdxSearchUrl(baseUrl, config, options);
+
+  return dynamic;
 }
 
 /**

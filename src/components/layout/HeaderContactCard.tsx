@@ -140,7 +140,7 @@ export function HeaderContactPanel() {
         "pointer-events-none absolute inset-x-0 top-full z-50 hidden overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none lg:grid",
         open ? "pointer-events-auto grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
       )}
-      aria-hidden={!open}
+      {...(!open ? { inert: true } : {})}
     >
       <div className="min-h-0 overflow-hidden border-t border-surface-muted bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">

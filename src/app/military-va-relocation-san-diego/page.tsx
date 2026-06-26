@@ -125,6 +125,7 @@ export default async function MilitaryPage() {
         </p>
         <div className="mt-8">
           <Tabs
+            ariaLabel="Military base neighborhoods"
             tabs={baseTabs.map((base) => ({
               label: base.label,
               content: (

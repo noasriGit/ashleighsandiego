@@ -45,7 +45,7 @@ if (!API_KEY) {
 }
 
 const idxBaseUrl =
-  process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://search.sdcommunities.com";
+  process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "https://sdcommunities.idxbroker.com";
 
 if (inspect) {
   const result = await inspectSavedLinkFields(API_KEY);

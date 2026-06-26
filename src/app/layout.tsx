@@ -2,6 +2,7 @@ import { Manrope, Marcellus } from "next/font/google";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SkipLink } from "@/components/layout/SkipLink";
 import { siteConfig } from "@/data/site-config";
 import "./globals.css";
 
@@ -81,8 +82,11 @@ export default function RootLayout({
         <AnalyticsPlaceholders />
       </head>
       <body className="flex min-h-full flex-col">
+        <SkipLink />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

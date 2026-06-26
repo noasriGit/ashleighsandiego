@@ -11,9 +11,11 @@ export type TabItem = {
 type TabsProps = {
   tabs: TabItem[];
   className?: string;
+  /** Accessible name for the tab list. */
+  ariaLabel?: string;
 };
 
-export function Tabs({ tabs, className }: TabsProps) {
+export function Tabs({ tabs, className, ariaLabel = "Content sections" }: TabsProps) {
   const [active, setActive] = useState(0);
   const baseId = useId();
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -31,7 +33,7 @@ export function Tabs({ tabs, className }: TabsProps) {
     <div className={className}>
       <div
         role="tablist"
-        aria-label="Base sections"
+        aria-label={ariaLabel}
         className="flex flex-wrap gap-2 border-b border-surface-muted"
       >
         {tabs.map((tab, index) => {
@@ -51,7 +53,7 @@ export function Tabs({ tabs, className }: TabsProps) {
               onClick={() => setActive(index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
               className={cn(
-                "-mb-px border-b-2 px-4 py-3 text-sm font-medium transition-colors",
+                "-mb-px border-b-2 px-4 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cabernet",
                 isActive
                   ? "border-cabernet text-cabernet"
                   : "border-transparent text-espresso/70 hover:text-cabernet",

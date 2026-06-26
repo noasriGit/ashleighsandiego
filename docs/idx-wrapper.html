@@ -1,132 +1,127 @@
 <!--
-  Static wrapper for the IDX Broker subdomain (search.sdcommunities.com).
+  Static wrapper for sdcommunities.idxbroker.com (v6 — HTML only, no inline <style>)
 
-  How to use:
-  1. IDX Control Panel -> Designs -> Wrapper -> create a NEW (static) wrapper.
-  2. Paste the <header> and <footer> blocks below into the wrapper's header/footer areas
-     (or the whole template if the Control Panel takes one HTML field).
-  3. Leave IDX's content insertion point between the header and footer.
-  4. Replace every [PLACEHOLDER] with the client's real values (agent name, DRE #, phone,
-     email, brokerage license, office address, current year).
-  5. All links are absolute on purpose, relative links break on the IDX subdomain.
+  HEADER field: paste BEGIN HEADER → END HEADER
+  FOOTER field: paste BEGIN FOOTER → END FOOTER
 
-  Notes:
-  - Plain HTML/CSS only. No framework tags, no relative URLs.
-  - Brand colors mirror src/app/globals.css (BHHS Traditional theme).
+  Styles load from https://sdcommunities.com/idx-wrapper.css (public/idx-wrapper.css).
+  Deploy sdcommunities.com before uploading wrapper so the stylesheet URL resolves.
+
+  NEVER put <style> blocks in IDX wrapper — they break Results Custom CSS loading.
 -->
-<style>
-  :root {
-    --cabernet: #670038;
-    --espresso: #2a2223;
-    --earth: #72595e;
-    --dove: #aa979c;
-    --pearl: #f5f1f2;
-    --rose: #ece3e5;
-    --white: #ffffff;
-  }
-  .sd-wrap * { box-sizing: border-box; }
-  .sd-wrap {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--espresso);
-  }
-  .sd-header {
-    background: var(--white);
-    border-bottom: 1px solid var(--rose);
-  }
-  .sd-header-inner {
-    max-width: 1152px;
-    margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .sd-logo {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--cabernet);
-    text-decoration: none;
-    line-height: 1.2;
-  }
-  .sd-logo span { display: block; font-size: 11px; font-weight: 500; color: var(--earth); }
-  .sd-nav { display: flex; flex-wrap: wrap; gap: 18px; }
-  .sd-nav a {
-    font-size: 14px;
-    color: var(--espresso);
-    text-decoration: none;
-  }
-  .sd-nav a:hover { color: var(--cabernet); }
-  .sd-cta {
-    background: var(--cabernet);
-    color: var(--white) !important;
-    padding: 9px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .sd-footer {
-    background: var(--espresso);
-    color: var(--pearl);
-    margin-top: 40px;
-  }
-  .sd-footer-inner {
-    max-width: 1152px;
-    margin: 0 auto;
-    padding: 32px 24px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .sd-footer a { color: var(--pearl); text-decoration: underline; }
-  .sd-footer-links { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 16px; }
-  .sd-disclaimer { color: var(--dove); margin-top: 12px; }
-  .sd-eho { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--dove); }
-  .sd-eho svg { flex-shrink: 0; }
-</style>
 
-<div class="sd-wrap">
-  <!-- ============================== HEADER ============================== -->
-  <header class="sd-header">
-    <div class="sd-header-inner">
-      <a class="sd-logo" href="https://sdcommunities.com/">
-        San Diego Relocation Home Guide
-        <span>Berkshire Hathaway HomeServices California Properties</span>
-      </a>
-      <nav class="sd-nav">
-        <a href="https://sdcommunities.com/relocating-to-san-diego">Relocating</a>
-        <a href="https://sdcommunities.com/moving-to-la-jolla">La Jolla</a>
+<!-- ============================== BEGIN HEADER ============================== -->
+<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css" />
+
+<header class="sd-header" id="sd-site-header">
+  <div class="sd-header-row">
+    <a class="sd-logo-link" href="https://sdcommunities.com/" aria-label="San Diego Relocation Home Guide home">
+      <img
+        src="https://sdcommunities.com/images/berkshirelogo.png"
+        alt="Berkshire Hathaway HomeServices California Properties"
+        width="4074"
+        height="960"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="sd-nav-desktop" aria-label="Main navigation">
+      <a href="https://sdcommunities.com/relocating-to-san-diego">Relocating</a>
+      <a href="https://sdcommunities.com/moving-to-la-jolla">La Jolla</a>
+      <a href="https://sdcommunities.com/neighborhoods">Neighborhoods</a>
+      <a href="https://sdcommunities.com/search-homes">Search Homes</a>
+      <a href="https://sdcommunities.com/military-va-relocation-san-diego">Military / VA</a>
+      <a href="https://sdcommunities.com/first-time-home-buyer-san-diego">First-Time Buyers</a>
+      <a href="https://sdcommunities.com/contact">Contact</a>
+    </nav>
+
+    <a class="sd-cta" href="https://sdcommunities.com/contact">Book a Strategy Call</a>
+
+    <details class="sd-mobile-menu">
+      <summary aria-label="Open menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <nav class="sd-mobile-panel" aria-label="Mobile navigation">
+        <a href="https://sdcommunities.com/relocating-to-san-diego">Relocating to San Diego</a>
+        <a href="https://sdcommunities.com/moving-to-la-jolla">Moving to La Jolla</a>
         <a href="https://sdcommunities.com/neighborhoods">Neighborhoods</a>
         <a href="https://sdcommunities.com/search-homes">Search Homes</a>
         <a href="https://sdcommunities.com/military-va-relocation-san-diego">Military / VA</a>
         <a href="https://sdcommunities.com/first-time-home-buyer-san-diego">First-Time Buyers</a>
-      </nav>
-      <a class="sd-cta" href="https://sdcommunities.com/contact">Book a Strategy Call</a>
-    </div>
-  </header>
-
-  <!-- IDX inserts its search/results/detail content directly below this line. -->
-
-  <!-- ============================== FOOTER ============================== -->
-  <footer class="sd-footer">
-    <div class="sd-footer-inner">
-      <div class="sd-footer-links">
-        <a href="https://sdcommunities.com/">Home</a>
-        <a href="https://sdcommunities.com/neighborhoods">Neighborhoods</a>
         <a href="https://sdcommunities.com/contact">Contact</a>
-        <a href="https://sdcommunities.com/privacy-policy">Privacy Policy</a>
-        <a href="https://sdcommunities.com/terms">Terms</a>
+        <a class="sd-cta-mobile" href="https://sdcommunities.com/contact">Book a Strategy Call</a>
+      </nav>
+    </details>
+  </div>
+
+  <div class="sd-header-row sd-header-row--search">
+    <a class="sd-search-pill" href="https://sdcommunities.com/search-homes">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      Search homes on sdcommunities.com
+    </a>
+  </div>
+</header>
+<!-- ============================== END HEADER ============================== -->
+
+<!-- ============================== BEGIN FOOTER ============================== -->
+<footer class="sd-footer" id="sd-site-footer">
+  <div class="sd-footer-inner">
+    <div class="sd-footer-grid">
+      <div>
+        <h3>San Diego Relocation Home Guide</h3>
+        <p>Neighborhood guidance and buyer support for people moving to San Diego.</p>
       </div>
 
+      <div>
+        <h4>Buyer Resources</h4>
+        <ul>
+          <li><a href="https://sdcommunities.com/relocating-to-san-diego">Relocating to San Diego</a></li>
+          <li><a href="https://sdcommunities.com/moving-to-la-jolla">Moving to La Jolla</a></li>
+          <li><a href="https://sdcommunities.com/neighborhoods">Neighborhoods</a></li>
+          <li><a href="https://sdcommunities.com/search-homes">Search Homes</a></li>
+          <li><a href="https://sdcommunities.com/first-time-home-buyer-san-diego">First-Time Buyers</a></li>
+          <li><a href="https://sdcommunities.com/military-va-relocation-san-diego">Military / VA</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="https://sdcommunities.com/contact">Book a Strategy Call</a></li>
+          <li><a href="https://sdcommunities.com/contact">Request Custom Search</a></li>
+          <li><a href="https://sdcommunities.com/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://sdcommunities.com/privacy-policy">Privacy Policy</a></li>
+          <li><a href="https://sdcommunities.com/terms">Terms &amp; Disclaimer</a></li>
+          <li><a href="https://sdcommunities.com/accessibility">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sd-footer-legal">
       <p>
-        Ashleigh Dodero, California DRE #02351643<br />
+        <strong>Ashleigh Dodero</strong> | California DRE #02351643<br />
         Berkshire Hathaway HomeServices California Properties<br />
-        1299 Prospect St, La Jolla, California 92037 &middot; 703-229-2810 &middot; AshleighDodero@bhhscal.com &middot; @ashleighdodero_realestate
+        1299 Prospect St, La Jolla, California 92037
+      </p>
+      <p>
+        <a href="tel:+17032292810">703-229-2810</a>
+        &middot;
+        <a href="mailto:AshleighDodero@bhhscal.com">AshleighDodero@bhhscal.com</a>
+        &middot;
+        <a href="https://www.instagram.com/ashleighdodero_realestate/" target="_blank" rel="noopener noreferrer">@ashleighdodero_realestate</a>
       </p>
 
       <div class="sd-eho">
-        <!-- Equal Housing Opportunity mark -->
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M3 11.5 12 4l9 7.5" stroke-linecap="round" stroke-linejoin="round" />
           <path d="M5 10.5V20h14v-9.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -136,19 +131,22 @@
       </div>
 
       <p class="sd-disclaimer">
-        &copy;[Year] BHH Affiliates, LLC. An independently operated subsidiary of HomeServices of
+        &copy;2026 BHH Affiliates, LLC. An independently operated subsidiary of HomeServices of
         America, Inc., a Berkshire Hathaway affiliate, and a franchisee of BHH Affiliates, LLC.
         Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are
         registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate.
         Equal Housing Opportunity.
       </p>
       <p class="sd-disclaimer">
-        This information is deemed reliable but not guaranteed. You should rely on this information only to decide whether or not to further investigate a particular property. BEFORE MAKING ANY OTHER DECISION, YOU SHOULD PERSONALLY INVESTIGATE THE FACTS (e.g., square footage and lot size) with the assistance of an appropriate professional. You may use this information only to identify properties you may be interested in investigating further. All uses except for personal, noncommercial use in accordance with the foregoing purpose are prohibited. Redistribution or copying of this information, any photographs, or video tours is strictly prohibited. This information is derived from the Internet Data Exchange (IDX) service provided by San Diego MLS. Displayed property listings may be held by a brokerage firm other than the broker and/or agent responsible for this display. The information, photographs, video tours, and the compilation from which they are derived are protected by copyright. Compilation &copy; [Year] San Diego MLS.
+        This information is deemed reliable but not guaranteed. You should rely on this information only to decide whether or not to further investigate a particular property. BEFORE MAKING ANY OTHER DECISION, YOU SHOULD PERSONALLY INVESTIGATE THE FACTS (e.g., square footage and lot size) with the assistance of an appropriate professional. You may use this information only to identify properties you may be interested in investigating further. All uses except for personal, noncommercial use in accordance with the foregoing purpose are prohibited. Redistribution or copying of this information, any photographs, or video tours is strictly prohibited. This information is derived from the Internet Data Exchange (IDX) service provided by San Diego MLS. Displayed property listings may be held by a brokerage firm other than the broker and/or agent responsible for this display. The information, photographs, video tours, and the compilation from which they are derived are protected by copyright. Compilation &copy; 2026 San Diego MLS.
       </p>
       <p class="sd-disclaimer">
-        All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your
-        home is currently listed with a Broker, this is not intended as a solicitation.
+        This website is independently operated by Ashleigh Dodero, California DRE #02351643, a sales professional affiliated with Berkshire Hathaway HomeServices California Properties. All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your home is currently listed with a Broker, this is not intended as a solicitation.
+      </p>
+      <p class="sd-disclaimer">
+        &copy; 2026 San Diego Relocation Home Guide. All rights reserved.
       </p>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
+<!-- ============================== END FOOTER ============================== -->

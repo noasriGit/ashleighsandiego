@@ -42,13 +42,15 @@ export function LeadMagnet({
   if (status === "success") {
     return (
       <Card variant="filled">
-        <h3 className="heading-card text-cabernet">Checklist Requested!</h3>
-        <p className="mt-2 text-espresso/90">
-          Thank you! We&apos;ll send your checklist shortly. Ready to talk through your move?
-        </p>
-        <Button href="/contact" className="mt-4" variant="primary">
-          Book a Strategy Call
-        </Button>
+        <div role="status" aria-live="polite">
+          <h3 className="heading-card text-cabernet">Checklist Requested!</h3>
+          <p className="mt-2 text-espresso/90">
+            Thank you! We&apos;ll send your checklist shortly. Ready to talk through your move?
+          </p>
+          <Button href="/contact" className="mt-4" variant="primary">
+            Book a Strategy Call
+          </Button>
+        </div>
       </Card>
     );
   }
@@ -61,7 +63,7 @@ export function LeadMagnet({
         <ul className="mt-4 space-y-2 text-sm text-espresso/80">
           {checklistItems.map((item) => (
             <li key={item} className="flex items-start gap-2">
-              <span className="mt-1 text-cabernet">&#10003;</span>
+              <span className="mt-1 text-cabernet" aria-hidden="true">&#10003;</span>
               {item}
             </li>
           ))}
@@ -71,11 +73,14 @@ export function LeadMagnet({
         <div>
           <label htmlFor={`${leadType}-name`} className="block text-sm font-medium text-espresso">
             Name
+            <span aria-hidden="true"> *</span>
+            <span className="sr-only"> (required)</span>
           </label>
           <input
             id={`${leadType}-name`}
             type="text"
             required
+            aria-required
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="mt-1 w-full rounded-lg border border-dove/40 bg-white px-4 py-2 focus:border-cabernet focus:outline-none focus:ring-1 focus:ring-cabernet"
@@ -84,11 +89,14 @@ export function LeadMagnet({
         <div>
           <label htmlFor={`${leadType}-email`} className="block text-sm font-medium text-espresso">
             Email
+            <span aria-hidden="true"> *</span>
+            <span className="sr-only"> (required)</span>
           </label>
           <input
             id={`${leadType}-email`}
             type="email"
             required
+            aria-required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="mt-1 w-full rounded-lg border border-dove/40 bg-white px-4 py-2 focus:border-cabernet focus:outline-none focus:ring-1 focus:ring-cabernet"
@@ -98,7 +106,9 @@ export function LeadMagnet({
           {status === "loading" ? "Sending..." : "Get the Checklist"}
         </Button>
         {status === "error" && (
-          <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+          <p className="text-sm text-red-600" role="alert">
+            Something went wrong. Please try again.
+          </p>
         )}
       </form>
     </Card>

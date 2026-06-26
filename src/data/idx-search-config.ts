@@ -100,7 +100,7 @@ export function getIdxSearchConfig(slug?: string): IdxSearchConfig {
   return idxSearchConfigs[GENERAL_KEY];
 }
 
-/** Resolve the browse URL for a community, preferring saved search over dynamic zip URL. */
+/** Resolve the zip-filtered browse URL for a community (dynamic when zips are configured). */
 export function getIdxBrowseUrl(slug?: string): string | null {
   const baseUrl = (process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "").replace(/\/$/, "");
   if (!baseUrl) return null;
