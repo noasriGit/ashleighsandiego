@@ -255,7 +255,7 @@ selector is missing, note the actual class/id and patch the CSS file before re-u
 
 | Page | URL | Root wrapper | Key selectors to verify |
 |------|-----|--------------|-------------------------|
-| Zip results | `/idx/results/listings?zipcode[]=92037&a_status[]=active` | `#IDX-main` | `#IDX-resultsContainer`, `.IDX-resultsCell`, `.IDX-grid`, `#IDX-resultsCountWrap` |
+| Zip results | `/idx/results/listings?zipcode[]=92037&a_status[]=active` | `.idx-results` / `#IDX-main` | `.idx-listing-card`, `.idx-listing-card__image`, `#IDX-map`, `.idx-results__listings` |
 | Saved search | `/i/la-jolla` (or saved-link URL from Control Panel) | `.IDX-wrapper-standard` | Same as results; saved-link pages may omit refine panel |
 | Listing detail | Click any listing from results | `.IDX-wrapper-standard` | `#IDX-detailsWrapper`, `#IDX-detailsPrice`, `#IDX-detailsContact`, `#IDX-mainPhotos` |
 
