@@ -156,13 +156,17 @@ these steps whenever `public/idx-header.html`, `public/idx-footer.html`, or the 
 
 Hosted fragments:
 
+The header file loads fonts + wrapper CSS only. **Results and detail CSS load from
+`idx-footer.html`** so they apply after IDX's default stylesheets (fixes partial styling:
+buttons styled but photos/map broken).
+
 | URL | Repo file |
 |-----|-----------|
 | `https://sdcommunities.com/idx-header.html` | [public/idx-header.html](../public/idx-header.html) |
 | `https://sdcommunities.com/idx-footer.html` | [public/idx-footer.html](../public/idx-footer.html) |
 
-The header file loads fonts + all IDX stylesheets (wrapper, results, detail) via `<link>` tags
-**before** the `<header>` markup. This bypasses IDX Categories CSS when Static wrappers break it.
+The footer file loads `idx-results.css` and `idx-detail.css` via `<link>` tags **before**
+the `<footer>` markup.
 
 1. Go to **Design → Website → Wrappers** (some accounts: **Designs → Wrapper**).
 2. Create or edit the SD Communities wrapper.
@@ -261,7 +265,7 @@ selector is missing, note the actual class/id and patch the CSS file before re-u
 - **Results CSS works without wrapper but breaks with Static wrapper** → switch to **Includes** wrapper (`idx-header.html` + `idx-footer.html`). Remove Global `@import`. Do not paste `<link>` into Static header.
 - Styles partially applied → old Custom CSS not fully replaced; Bootstrap greens still visible.
 - Fonts not loading → confirm Google Fonts `<link>` in `idx-header.html` (not `@import` in CSS).
-- Cards still horizontal / overlapping → v4 resets legacy `float:left` on `.IDX-resultsPhoto`; redeploy CSS and hard refresh.
+- **Buttons styled but photos/map/grid broken** → results CSS was loading before IDX defaults. Redeploy `idx-footer.html` (loads `idx-results.css` after content) and hard refresh.
 
 ### Optional custom CNAME (not required for launch)
 

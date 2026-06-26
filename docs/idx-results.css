@@ -1,14 +1,64 @@
 /*
- * IDX Results — Custom CSS (v5)
+ * IDX Results — Custom CSS (v6)
  * Paste ENTIRE file into: Design → Website → Custom CSS → Categories → Results
  *
+ * v6: Load from idx-footer.html (after IDX defaults) + float/grid/map/photo overrides.
  * v5: Direct IDX selectors only (no #IDX-main / .IDX-wrapper-standard parent).
- * Custom static wrappers often remove those wrappers from the DOM.
- *
- * Also copy to public/idx-results.css and host on sdcommunities.com if IDX
- * Categories CSS still fails — then add to Global CSS:
- *   @import url("https://sdcommunities.com/idx-results.css");
  */
+
+/* ── Legacy float reset (IDX default template uses floats on photos/cells) ── */
+#IDX-main,
+#IDX-resultsRow,
+#IDX-resultsContainer,
+#IDX-resultsContent,
+#IDX-resultsContainer .IDX-row,
+#IDX-resultsContainer .IDX-row-content,
+#IDX-resultsContainer .IDX-column,
+.IDX-resultsCell,
+.IDX-resultsCell > div,
+.IDX-cellInnerWrapper,
+.IDX-resultsCell .IDX-row-content {
+  float: none !important;
+  clear: both !important;
+  box-sizing: border-box !important;
+}
+
+#IDX-resultsRow {
+  display: block !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+#IDX-resultsMap,
+#IDX-resultsMapWrap,
+.IDX-resultsMapWrap,
+#IDX-mapWrapper {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  min-height: 360px !important;
+  height: 400px !important;
+  max-height: none !important;
+  margin-bottom: 24px !important;
+  position: relative !important;
+  float: none !important;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ece3e5;
+  box-shadow: 0 1px 3px rgba(42, 34, 35, 0.08), 0 4px 12px rgba(42, 34, 35, 0.06);
+}
+
+#IDX-resultsMap iframe,
+#IDX-resultsMap > div,
+#IDX-resultsMap .IDX-map,
+#IDX-resultsMapWrap iframe,
+#IDX-resultsMapWrap > div {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 360px !important;
+  display: block !important;
+}
 
 #IDX-resultsRow,
 #IDX-resultsContainer {
@@ -254,14 +304,6 @@
   margin-bottom: 4px;
 }
 
-#IDX-resultsMap {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #ece3e5;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(42, 34, 35, 0.08), 0 4px 12px rgba(42, 34, 35, 0.06);
-}
-
 .IDX-resultsSeparatorText {
   font-family: "Marcellus", Georgia, serif;
   font-size: 1.5rem;
@@ -300,7 +342,8 @@
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(42, 34, 35, 0.08), 0 4px 12px rgba(42, 34, 35, 0.06);
   float: none !important;
-  width: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
   clear: none !important;
   display: flex !important;
   flex-direction: column;
@@ -328,7 +371,9 @@
   clear: both !important;
 }
 
-.IDX-resultsPhoto {
+.IDX-resultsPhoto,
+.IDX-grid .IDX-resultsPhoto,
+.IDX-resultsCell .IDX-resultsPhoto {
   width: 100% !important;
   float: none !important;
   display: block !important;
@@ -350,15 +395,27 @@
   height: 100%;
 }
 
-.IDX-resultsPhotoImg {
+.IDX-resultsPhotoImg,
+.IDX-grid .IDX-resultsPhotoImg,
+.IDX-resultsPhoto img,
+.IDX-resultsCell .IDX-resultsPhoto img,
+#IDX-resultsContainer .IDX-resultsPhotoImg {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
+  object-fit: cover !important;
   display: block;
-  max-width: none !important;
+  max-width: 100% !important;
+  max-height: none !important;
   position: relative !important;
   left: auto !important;
   top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.IDX-grid .IDX-resultsPhotoImg {
+  min-height: 0 !important;
+  min-width: 0 !important;
 }
 
 .IDX-resultsAddress,
