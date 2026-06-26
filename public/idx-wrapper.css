@@ -1,10 +1,8 @@
 /*
- * Hosted wrapper styles for sdcommunities.idxbroker.com
- * Loaded via <link> in IDX static wrapper header — NO inline <style> in IDX.
- * Scoped strictly to .sd-header and .sd-footer only.
+ * Wrapper-only styles for sdcommunities.idxbroker.com (header + footer).
+ * Loaded via public/idx-header.html — NO @import (blocks other stylesheets).
+ * Fonts: load via separate <link> in idx-header.html, not here.
  */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Marcellus&display=swap");
-
 .sd-header {
   position: sticky;
   top: 0;
