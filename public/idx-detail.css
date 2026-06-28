@@ -1,8 +1,8 @@
 /*
- * IDX Detail — Brand Layer (v1 fresh)
+ * IDX Detail — Brand Layer (v2)
  * Targets the Elm Street Standard Details template.
- * Philosophy: let the default template own layout; we only apply brand
- * typography, colors, and light visual polish.
+ * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
+ * regardless of which wrapper type is active (Static or Includes).
  *
  * Deployed at:  https://sdcommunities.com/idx-detail.css
  * Loaded from:  public/idx-footer.html  (after IDX default stylesheets)
@@ -22,28 +22,26 @@
   --sd-pearl:          #f5f1f2;
   --sd-rose:           #ece3e5;
   --sd-white:          #ffffff;
-  --sd-shadow-card:    0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05);
-  --sd-radius:         16px;
-  --sd-radius-sm:      8px;
   --sd-font-body:      "Manrope", system-ui, -apple-system, sans-serif;
   --sd-font-display:   "Marcellus", Georgia, serif;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Base — typography + page background
+   Base — page background + typography
    ═══════════════════════════════════════════════════════════════ */
 
 body.IDX-wrapper-standard,
 .IDX-wrapper-standard {
-  font-family: var(--sd-font-body);
-  color: var(--sd-espresso);
-  background: var(--sd-pearl);
+  font-family: var(--sd-font-body) !important;
+  color: var(--sd-espresso) !important;
+  background-color: var(--sd-pearl) !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsContainer {
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
+  max-width: 1152px !important;
+  margin: 0 auto !important;
+  padding: 24px 16px 48px !important;
+  float: none !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -54,38 +52,40 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard #IDX-detailsTopPhotos img,
 .IDX-wrapper-standard .IDX-galleryImage,
 .IDX-wrapper-standard .IDX-photo img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  border-radius: var(--sd-radius);
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 280px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 16px !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsGallery,
 .IDX-wrapper-standard #IDX-mainPhotos,
 .IDX-wrapper-standard .IDX-galleryWrap {
-  background: var(--sd-white);
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  box-shadow: var(--sd-shadow-card);
-  margin-bottom: 20px;
+  background-color: var(--sd-white) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05) !important;
+  margin-bottom: 20px !important;
 }
 
 /* Thumbnail strip */
 .IDX-wrapper-standard .IDX-galleryThumbs img,
 .IDX-wrapper-standard #IDX-detailsThumbnails img {
-  border-radius: var(--sd-radius-sm);
-  border: 2px solid transparent;
-  opacity: 0.8;
-  cursor: pointer;
+  border-radius: 8px !important;
+  border: 2px solid transparent !important;
+  opacity: 0.8 !important;
+  cursor: pointer !important;
   transition: border-color 0.15s, opacity 0.15s;
 }
 
 .IDX-wrapper-standard .IDX-galleryThumbs img:hover,
 .IDX-wrapper-standard #IDX-detailsThumbnails img:hover,
 .IDX-wrapper-standard .IDX-galleryThumbs .IDX-active img {
-  border-color: var(--sd-cabernet);
-  opacity: 1;
+  border-color: var(--sd-cabernet) !important;
+  opacity: 1 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -94,25 +94,25 @@ body.IDX-wrapper-standard,
 
 .IDX-wrapper-standard #IDX-detailsPrice,
 .IDX-wrapper-standard .IDX-detailsPrice {
-  color: var(--sd-cabernet);
-  font-weight: 600;
-  font-size: 1.875rem;
-  font-family: var(--sd-font-body);
-  line-height: 1.1;
+  color: var(--sd-cabernet) !important;
+  font-weight: 600 !important;
+  font-size: 1.875rem !important;
+  font-family: var(--sd-font-body) !important;
+  line-height: 1.1 !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsAddress,
 .IDX-wrapper-standard .IDX-detailsAddress {
-  color: var(--sd-espresso);
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.3;
+  color: var(--sd-espresso) !important;
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
 }
 
 .IDX-wrapper-standard .IDX-detailsCityStateZip,
 .IDX-wrapper-standard #IDX-detailsCityStateZip {
-  color: var(--sd-earth);
-  font-size: 1rem;
+  color: var(--sd-earth) !important;
+  font-size: 1rem !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -123,27 +123,27 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard #IDX-detailsStatus,
 .IDX-wrapper-standard .IDX-statusLabel,
 .IDX-wrapper-standard .IDX-field-status .IDX-text {
-  display: inline-block;
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  background: rgba(236, 227, 229, 0.6);
-  color: var(--sd-espresso);
-  text-transform: capitalize;
+  display: inline-block !important;
+  border-radius: 999px !important;
+  padding: 4px 12px !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  background-color: rgba(236, 227, 229, 0.6) !important;
+  color: var(--sd-espresso) !important;
+  text-transform: capitalize !important;
 }
 
 .IDX-wrapper-standard .IDX-status-active,
 .IDX-wrapper-standard [class*="active"] .IDX-detailsStatus,
 .IDX-wrapper-standard [class*="Active"] .IDX-detailsStatus {
-  background: #d1fae5 !important;
+  background-color: #d1fae5 !important;
   color: #065f46 !important;
 }
 
 .IDX-wrapper-standard .IDX-status-pending,
 .IDX-wrapper-standard [class*="pending"] .IDX-detailsStatus,
 .IDX-wrapper-standard [class*="Pending"] .IDX-detailsStatus {
-  background: #fef3c7 !important;
+  background-color: #fef3c7 !important;
   color: #92400e !important;
 }
 
@@ -153,7 +153,7 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard [class*="Sold"] .IDX-detailsStatus,
 .IDX-wrapper-standard [class*="closed"] .IDX-detailsStatus,
 .IDX-wrapper-standard [class*="Closed"] .IDX-detailsStatus {
-  background: #f3f4f6 !important;
+  background-color: #f3f4f6 !important;
   color: #374151 !important;
 }
 
@@ -166,17 +166,16 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard #IDX-detailsFields,
 .IDX-wrapper-standard .IDX-detailsFieldsWrap,
 .IDX-wrapper-standard .IDX-detailsTablesWrap {
-  background: var(--sd-white);
-  border: 1px solid var(--sd-rose);
-  border-radius: var(--sd-radius);
-  padding: 20px;
-  box-shadow: var(--sd-shadow-card);
-  margin-top: 16px;
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06) !important;
+  margin-top: 16px !important;
 }
 
-/* Zebra rows inside tables */
 .IDX-wrapper-standard .IDX-detailsTable tr:nth-child(even) {
-  background: var(--sd-pearl);
+  background-color: var(--sd-pearl) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -187,11 +186,11 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard #IDX-detailsWrapper h2,
 .IDX-wrapper-standard #IDX-detailsWrapper h3,
 .IDX-wrapper-standard .IDX-detailsSectionTitle {
-  font-family: var(--sd-font-display);
-  color: var(--sd-cabernet);
-  font-weight: 400;
-  font-size: 1.25rem;
-  margin-bottom: 12px;
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-weight: 400 !important;
+  font-size: 1.25rem !important;
+  margin-bottom: 12px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -202,9 +201,9 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard .IDX-detailsDescription,
 .IDX-wrapper-standard #IDX-detailsRemarks,
 .IDX-wrapper-standard .IDX-detailsRemarks {
-  color: var(--sd-espresso);
-  line-height: 1.7;
-  font-size: 15px;
+  color: var(--sd-espresso) !important;
+  line-height: 1.7 !important;
+  font-size: 15px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -214,19 +213,19 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard #IDX-detailsMap,
 .IDX-wrapper-standard .IDX-detailsMapWrap,
 .IDX-wrapper-standard #IDX-detailsMapWrap {
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  border: 1px solid var(--sd-rose);
-  box-shadow: var(--sd-shadow-card);
-  margin-top: 12px;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--sd-rose) !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06) !important;
+  margin-top: 12px !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsMap iframe,
 .IDX-wrapper-standard .IDX-detailsMapWrap iframe {
-  display: block;
-  width: 100%;
-  min-height: 280px;
-  border: none;
+  display: block !important;
+  width: 100% !important;
+  min-height: 280px !important;
+  border: none !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -237,34 +236,30 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard .IDX-detailsActions a,
 .IDX-wrapper-standard #IDX-detailsContact button,
 .IDX-wrapper-standard #IDX-detailsContact input[type="submit"] {
-  background: var(--sd-cabernet);
-  color: var(--sd-white);
-  border: none;
-  border-radius: var(--sd-radius-sm);
-  padding: 12px 20px;
-  font-weight: 600;
-  font-family: var(--sd-font-body);
-  font-size: 15px;
-  min-height: 44px;
-  cursor: pointer;
-  text-decoration: none;
+  background-color: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 20px !important;
+  font-weight: 600 !important;
+  font-family: var(--sd-font-body) !important;
+  font-size: 15px !important;
+  min-height: 44px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
 }
 
 .IDX-wrapper-standard .IDX-btn:hover,
 .IDX-wrapper-standard .IDX-detailsActions a:hover,
 .IDX-wrapper-standard #IDX-detailsContact button:hover,
 .IDX-wrapper-standard #IDX-detailsContact input[type="submit"]:hover {
-  background: var(--sd-cabernet-dark);
+  background-color: var(--sd-cabernet-dark) !important;
 }
 
 .IDX-wrapper-standard .IDX-btn-secondary {
-  background: var(--sd-white);
-  color: var(--sd-cabernet);
-  border: 1px solid var(--sd-cabernet);
-}
-
-.IDX-wrapper-standard .IDX-btn-secondary:hover {
-  background: var(--sd-pearl);
+  background-color: var(--sd-white) !important;
+  color: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -273,46 +268,47 @@ body.IDX-wrapper-standard,
 
 .IDX-wrapper-standard #IDX-detailsContact,
 .IDX-wrapper-standard .IDX-detailsContactForm {
-  background: var(--sd-white);
-  border: 1px solid var(--sd-rose);
-  border-top: 3px solid var(--sd-cabernet);
-  border-radius: var(--sd-radius);
-  padding: 24px;
-  box-shadow: var(--sd-shadow-card);
-  margin-top: 16px;
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-top: 3px solid var(--sd-cabernet) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06) !important;
+  margin-top: 16px !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsContact h2,
 .IDX-wrapper-standard #IDX-detailsContact h3,
 .IDX-wrapper-standard .IDX-detailsContactForm h2,
 .IDX-wrapper-standard .IDX-detailsContactForm h3 {
-  font-family: var(--sd-font-display);
-  color: var(--sd-cabernet);
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin: 0 0 12px;
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  margin: 0 0 12px !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsContact input,
 .IDX-wrapper-standard #IDX-detailsContact textarea,
 .IDX-wrapper-standard #IDX-detailsContact select {
-  border: 1px solid var(--sd-dove);
-  border-radius: var(--sd-radius-sm);
-  padding: 10px 12px;
-  min-height: 44px;
-  width: 100%;
-  color: var(--sd-espresso);
-  background: var(--sd-white);
-  font-family: var(--sd-font-body);
-  margin-bottom: 8px;
+  border: 1px solid var(--sd-dove) !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  color: var(--sd-espresso) !important;
+  background-color: var(--sd-white) !important;
+  font-family: var(--sd-font-body) !important;
+  margin-bottom: 8px !important;
+  box-shadow: none !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsContact input:focus,
 .IDX-wrapper-standard #IDX-detailsContact textarea:focus,
 .IDX-wrapper-standard #IDX-detailsContact select:focus {
-  outline: 2px solid var(--sd-cabernet);
-  outline-offset: 1px;
-  border-color: var(--sd-cabernet);
+  outline: 2px solid var(--sd-cabernet) !important;
+  outline-offset: 1px !important;
+  border-color: var(--sd-cabernet) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -320,11 +316,11 @@ body.IDX-wrapper-standard,
    ═══════════════════════════════════════════════════════════════ */
 
 .IDX-wrapper-standard #IDX-detailsWrapper a {
-  color: var(--sd-cabernet);
+  color: var(--sd-cabernet) !important;
 }
 
 .IDX-wrapper-standard #IDX-detailsWrapper a:hover {
-  color: var(--sd-cabernet-dark);
+  color: var(--sd-cabernet-dark) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -335,12 +331,12 @@ body.IDX-wrapper-standard,
 .IDX-wrapper-standard .IDX-detailsDisclaimer,
 .IDX-wrapper-standard .IDX-mlsDisclaimer,
 .IDX-wrapper-standard #IDX-detailsMLSRights {
-  color: var(--sd-earth);
-  font-size: 12px;
-  line-height: 1.65;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--sd-rose);
+  color: var(--sd-earth) !important;
+  font-size: 12px !important;
+  line-height: 1.65 !important;
+  margin-top: 24px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid var(--sd-rose) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -352,23 +348,23 @@ body.IDX-wrapper-standard,
   .IDX-wrapper-standard #IDX-detailsWrapper > .IDX-row:first-of-type,
   .IDX-wrapper-standard #IDX-detailsContainer .IDX-detailsMainWrap,
   .IDX-wrapper-standard .IDX-detailsPageWrap {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 32px;
-    align-items: start;
+    display: grid !important;
+    grid-template-columns: 1fr 340px !important;
+    gap: 32px !important;
+    align-items: start !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsContact,
   .IDX-wrapper-standard .IDX-detailsContactForm,
   .IDX-wrapper-standard .IDX-contactForm {
-    position: sticky;
-    top: 6rem;
-    align-self: start;
-    margin-top: 0;
+    position: sticky !important;
+    top: 6rem !important;
+    align-self: start !important;
+    margin-top: 0 !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsContainer {
-    padding: 32px 24px 64px;
+    padding: 32px 24px 64px !important;
   }
 }
 
@@ -378,20 +374,20 @@ body.IDX-wrapper-standard,
 
 @media (max-width: 767px) {
   .IDX-wrapper-standard #IDX-detailsContainer {
-    padding: 16px 12px 40px;
+    padding: 16px 12px 40px !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsPrice,
   .IDX-wrapper-standard .IDX-detailsPrice {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
 
   .IDX-wrapper-standard .IDX-btn,
   .IDX-wrapper-standard .IDX-detailsActions a,
   .IDX-wrapper-standard #IDX-detailsContact button,
   .IDX-wrapper-standard #IDX-detailsContact input[type="submit"] {
-    display: block;
-    width: 100%;
-    text-align: center;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
   }
 }

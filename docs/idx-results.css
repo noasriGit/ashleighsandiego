@@ -1,8 +1,8 @@
 /*
- * IDX Results — Brand Layer (v1 fresh)
+ * IDX Results — Brand Layer (v2)
  * Targets the Elm Street Precision Listings / IDX Default template.
- * Philosophy: let the default template own layout; we only apply brand
- * typography, colors, and light visual polish.
+ * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
+ * regardless of which wrapper type is active (Static or Includes).
  *
  * Deployed at:  https://sdcommunities.com/idx-results.css
  * Loaded from:  public/idx-footer.html  (after IDX default stylesheets)
@@ -22,119 +22,96 @@
   --sd-pearl:          #f5f1f2;
   --sd-rose:           #ece3e5;
   --sd-white:          #ffffff;
-  --sd-shadow-card:    0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05);
-  --sd-shadow-hover:   0 8px 24px rgba(42, 34, 35, .12);
-  --sd-radius:         16px;
-  --sd-radius-sm:      8px;
   --sd-font-body:      "Manrope", system-ui, -apple-system, sans-serif;
   --sd-font-display:   "Marcellus", Georgia, serif;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Base — typography + page background
+   Base — page background + typography
+   (needs !important to beat IDX Bootstrap body/background rules)
    ═══════════════════════════════════════════════════════════════ */
 
 #IDX-main,
 .idx-results,
 #IDX-resultsContainer,
-#IDX-resultsRow {
-  font-family: var(--sd-font-body);
-  color: var(--sd-espresso);
-  background: var(--sd-pearl);
+#IDX-resultsRow,
+.IDX-pageContainer {
+  font-family: var(--sd-font-body) !important;
+  color: var(--sd-espresso) !important;
+  background-color: var(--sd-pearl) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    Top action bar — New Search / Modify / Save Search
    ═══════════════════════════════════════════════════════════════ */
 
-/* Precision Listings template */
+/* Precision Listings */
 .idx-results .IDX-newSearch,
 .idx-results .IDX-modifySearch,
-.idx-results #IDX-saveSearch {
-  background: var(--sd-cabernet) !important;
+.idx-results #IDX-saveSearch,
+/* Legacy */
+.IDX-topAction a,
+#IDX-newSearch,
+#IDX-modifySearch,
+#IDX-refineSearchFormToggle,
+#IDX-saveSearch {
+  background-color: var(--sd-cabernet) !important;
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
-  border-radius: var(--sd-radius-sm) !important;
+  border-radius: 8px !important;
   font-weight: 600 !important;
 }
 
 .idx-results .IDX-newSearch:hover,
 .idx-results .IDX-modifySearch:hover,
-.idx-results #IDX-saveSearch:hover {
-  background: var(--sd-cabernet-dark) !important;
-  border-color: var(--sd-cabernet-dark) !important;
-}
-
-/* Legacy template selectors */
-.IDX-topAction a,
-#IDX-newSearch,
-#IDX-modifySearch,
-#IDX-refineSearchFormToggle {
-  background: var(--sd-cabernet) !important;
-  border-color: var(--sd-cabernet) !important;
-  color: var(--sd-white) !important;
-  border-radius: var(--sd-radius-sm) !important;
-  font-weight: 600 !important;
-}
-
+.idx-results #IDX-saveSearch:hover,
 .IDX-topAction a:hover,
 #IDX-newSearch:hover,
 #IDX-modifySearch:hover,
-#IDX-refineSearchFormToggle:hover {
-  background: var(--sd-cabernet-dark) !important;
-  border-color: var(--sd-cabernet-dark) !important;
-}
-
-#IDX-saveSearch {
-  background: var(--sd-cabernet) !important;
-  border-color: var(--sd-cabernet) !important;
-  color: var(--sd-white) !important;
-  border-radius: var(--sd-radius-sm) !important;
-  font-weight: 600 !important;
-}
-
+#IDX-refineSearchFormToggle:hover,
 #IDX-saveSearch:hover {
-  background: var(--sd-cabernet-dark) !important;
+  background-color: var(--sd-cabernet-dark) !important;
   border-color: var(--sd-cabernet-dark) !important;
 }
 
 #IDX-saveSearch.IDX-disabled {
-  background: var(--sd-earth) !important;
+  background-color: var(--sd-earth) !important;
   border-color: var(--sd-earth) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Results header — count + map toggle
+   Results count / header band
    ═══════════════════════════════════════════════════════════════ */
 
 .idx-results-total__heading {
-  font-family: var(--sd-font-display);
-  color: var(--sd-cabernet);
-  font-weight: 400;
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-weight: 400 !important;
+}
+
+#IDX-resultsCountWrap {
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: 8px !important;
+  color: var(--sd-espresso) !important;
+  box-shadow: none !important;
+}
+
+#IDX-resultsCountWrap .IDX-resultsCount {
+  color: var(--sd-cabernet) !important;
+  font-weight: 700 !important;
 }
 
 #idx-results-map-toggle {
   border-color: var(--sd-dove) !important;
   color: var(--sd-espresso) !important;
-  background: var(--sd-white) !important;
-  border-radius: var(--sd-radius-sm) !important;
+  background-color: var(--sd-white) !important;
+  border-radius: 8px !important;
 }
 
 #idx-results-map-toggle:hover {
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-cabernet) !important;
-}
-
-#IDX-resultsCountWrap {
-  background: var(--sd-white) !important;
-  border: 1px solid var(--sd-rose) !important;
-  border-radius: var(--sd-radius-sm) !important;
-  color: var(--sd-espresso) !important;
-}
-
-#IDX-resultsCountWrap .IDX-resultsCount {
-  color: var(--sd-cabernet);
-  font-weight: 700;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -146,9 +123,9 @@
 #IDX-resultsMap,
 #IDX-resultsMapWrap,
 .IDX-resultsMapWrap {
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  border: 1px solid var(--sd-rose);
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--sd-rose) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -156,30 +133,36 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .idx-listing-card {
-  border-radius: var(--sd-radius) !important;
+  background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
-  background: var(--sd-white) !important;
-  box-shadow: var(--sd-shadow-card);
+  border-radius: 16px !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05) !important;
 }
 
 .idx-listing-card:hover {
   border-color: var(--sd-dove) !important;
-  box-shadow: var(--sd-shadow-hover) !important;
+  box-shadow: 0 8px 24px rgba(42, 34, 35, .12) !important;
+}
+
+.idx-listing-card__image,
+.idx-listing-card__link img {
+  object-fit: cover !important;
+  width: 100% !important;
 }
 
 .idx-listing-card__price {
   color: var(--sd-cabernet) !important;
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 600 !important;
+  font-size: 1.125rem !important;
 }
 
 .idx-listing-card__address {
-  color: var(--sd-espresso);
+  color: var(--sd-espresso) !important;
 }
 
 .idx-listing-card__actions a,
 .idx-listing-card__actions .IDX-resultsAction {
-  border-radius: var(--sd-radius-sm) !important;
+  border-radius: 8px !important;
   font-weight: 600 !important;
 }
 
@@ -188,49 +171,68 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .IDX-resultsCell {
-  background: var(--sd-white) !important;
+  background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
-  border-radius: var(--sd-radius) !important;
-  box-shadow: var(--sd-shadow-card);
+  border-radius: 16px !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05) !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
 .IDX-resultsCell:hover {
   border-color: var(--sd-dove) !important;
-  box-shadow: var(--sd-shadow-hover) !important;
+  box-shadow: 0 8px 24px rgba(42, 34, 35, .12) !important;
 }
 
 .IDX-field-price .IDX-text,
 .IDX-resultsField-price .IDX-text {
   color: var(--sd-cabernet) !important;
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 600 !important;
+  font-size: 1.125rem !important;
+}
+
+.IDX-resultsPhoto,
+.IDX-resultsCell .IDX-resultsPhoto {
+  float: none !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.IDX-resultsPhotoImg,
+.IDX-resultsPhoto img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 .IDX-resultsAddress a {
-  color: var(--sd-espresso);
-  text-decoration: none;
+  color: var(--sd-espresso) !important;
+  text-decoration: none !important;
 }
 
 .IDX-resultsAddress a:hover {
-  color: var(--sd-cabernet);
+  color: var(--sd-cabernet) !important;
 }
 
 .IDX-resultsDetailsLink a {
-  background: var(--sd-cabernet) !important;
+  background-color: var(--sd-cabernet) !important;
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
-  border-radius: var(--sd-radius-sm);
-  font-weight: 600;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
 }
 
 .IDX-resultsPhotogallery a,
 .IDX-resultsVirtualTour a,
 .IDX-resultsOpenHouse a,
 .IDX-resultsSaveProperty a {
-  background: var(--sd-white) !important;
+  background-color: var(--sd-white) !important;
   border-color: var(--sd-dove) !important;
   color: var(--sd-espresso) !important;
-  border-radius: var(--sd-radius-sm);
+  border-radius: 8px !important;
 }
 
 .IDX-resultsCellSaved {
@@ -238,13 +240,49 @@
 }
 
 .IDX-mlsContainer {
-  border-top: 1px solid var(--sd-pearl);
-  background: var(--sd-pearl);
+  border-top: 1px solid var(--sd-pearl) !important;
+  background-color: var(--sd-pearl) !important;
 }
 
 .IDX-MLSCourtesy {
-  color: var(--sd-dove);
-  font-size: 11px;
+  color: var(--sd-dove) !important;
+  font-size: 11px !important;
+}
+
+/* Float/grid resets for legacy template */
+#IDX-resultsRow,
+#IDX-resultsContainer,
+#IDX-resultsContent,
+.IDX-resultsCellsContainer,
+.IDX-grid,
+.IDX-resultsCell > div,
+.IDX-cellInnerWrapper,
+.IDX-resultsCell .IDX-row-content {
+  float: none !important;
+  clear: none !important;
+  box-sizing: border-box !important;
+}
+
+.IDX-resultsCellsContainer,
+.IDX-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+
+@media (min-width: 640px) {
+  .IDX-resultsCellsContainer,
+  .IDX-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .IDX-resultsCellsContainer,
+  .IDX-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -254,9 +292,9 @@
 .idx-results__category--title,
 .IDX-resultsSeparatorText,
 .IDX-propertyTypeHeader {
-  font-family: var(--sd-font-display);
-  color: var(--sd-cabernet);
-  font-weight: 400;
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-weight: 400 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -264,109 +302,81 @@
    ═══════════════════════════════════════════════════════════════ */
 
 #IDX-resultsRefineSearchWrap {
-  background: var(--sd-white);
-  border: 1px solid var(--sd-rose);
-  border-radius: var(--sd-radius);
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
 }
 
 #IDX-resultsRefineSubmit {
-  background: var(--sd-cabernet) !important;
+  background-color: var(--sd-cabernet) !important;
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
   border-radius: 999px !important;
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 #IDX-resultsRefineSubmit:hover {
-  background: var(--sd-cabernet-dark) !important;
+  background-color: var(--sd-cabernet-dark) !important;
   border-color: var(--sd-cabernet-dark) !important;
 }
 
-#IDX-resultsContent .IDX-controls input[type="text"],
-#IDX-resultsContent .IDX-controls input[type="number"],
-#IDX-resultsContent .IDX-select,
-#IDX-resultsContent select.IDX-select {
-  border: 1px solid var(--sd-dove);
-  border-radius: var(--sd-radius-sm);
-  background: var(--sd-white);
-}
-
 #IDX-resultsContent .IDX-label {
-  color: var(--sd-earth);
-  font-weight: 600;
+  color: var(--sd-earth) !important;
+  font-weight: 600 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    Nav pills (saved search tabs)
    ═══════════════════════════════════════════════════════════════ */
 
-#IDX-resultsHeader .IDX-nav-pills a {
-  border: 1px solid var(--sd-dove);
-  background: var(--sd-white);
-  color: var(--sd-espresso);
-  border-radius: 999px;
-  text-decoration: none;
-}
-
 #IDX-resultsHeader .IDX-nav-pills .IDX-active a,
 #IDX-resultsHeader .IDX-nav-pills li.IDX-active a {
-  background: var(--sd-cabernet);
-  border-color: var(--sd-cabernet);
-  color: var(--sd-white);
+  background-color: var(--sd-cabernet) !important;
+  border-color: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    Pagination
    ═══════════════════════════════════════════════════════════════ */
 
-.IDX-pagination-action a.IDX-btn {
-  border: 1px solid var(--sd-dove);
-  background: var(--sd-white);
-  color: var(--sd-espresso);
-  border-radius: var(--sd-radius-sm);
-  font-weight: 600;
-}
-
 .IDX-pagination-action a.IDX-btn:hover:not(.IDX-disabled) {
-  border-color: var(--sd-cabernet);
-  color: var(--sd-cabernet);
+  border-color: var(--sd-cabernet) !important;
+  color: var(--sd-cabernet) !important;
 }
 
 .idx-results__pagination .IDX-active a,
 #idx-results-pagination .IDX-active a {
-  background: var(--sd-cabernet) !important;
+  background-color: var(--sd-cabernet) !important;
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Disclaimers + alerts
+   Alerts / notices
    ═══════════════════════════════════════════════════════════════ */
-
-#IDX-resultsDisclaimer,
-#IDX-resultsMLSRights {
-  font-size: 11px;
-  color: var(--sd-dove);
-  line-height: 1.6;
-}
-
-#IDX-noResultsMessage,
-#IDX-resultsCountMessage {
-  background: var(--sd-white);
-  border: 1px solid var(--sd-rose);
-  border-radius: var(--sd-radius-sm);
-  color: var(--sd-earth);
-}
 
 #IDX-resultsContent .alert,
 #IDX-resultsContent .alert-success,
 #IDX-resultsContent .alert-info,
 #IDX-resultsContent .alert-warning {
-  background: var(--sd-white) !important;
+  background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
-  border-radius: var(--sd-radius-sm) !important;
+  border-radius: 8px !important;
   color: var(--sd-espresso) !important;
   box-shadow: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Disclaimers
+   ═══════════════════════════════════════════════════════════════ */
+
+#IDX-resultsDisclaimer,
+#IDX-resultsMLSRights {
+  font-size: 11px !important;
+  color: var(--sd-dove) !important;
+  line-height: 1.6 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -374,9 +384,9 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .IDX-sd-guide-cta {
-  background: var(--sd-white);
+  background-color: var(--sd-white);
   border: 1px solid var(--sd-rose);
-  border-radius: var(--sd-radius-sm);
+  border-radius: 8px;
   padding: 14px 18px;
   margin: 16px 0;
   text-align: center;
@@ -388,8 +398,4 @@
   color: var(--sd-cabernet);
   font-weight: 600;
   text-decoration: none;
-}
-
-.IDX-sd-guide-cta a:hover {
-  text-decoration: underline;
 }
