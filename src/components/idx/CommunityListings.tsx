@@ -6,6 +6,8 @@ import { getCommunityListings, type IdxListing } from "@/lib/idx-api";
 type SectionVariant = "default" | "sand" | "pearl";
 
 type CommunityListingsProps = {
+  /** Optional anchor id for in-page navigation (e.g. hero "Search Homes" CTA). */
+  id?: string;
   /**
    * Community slug for idx-search-config lookup. Omit for the general featured set.
    * Used to fetch listings when `listings` is not pre-fetched.
@@ -42,6 +44,7 @@ function isFromSavedLinks(listings: IdxListing[]): boolean {
 // Server Component. Renders nothing (no section at all) when the API returns no listings
 // or is not configured, so consuming pages degrade gracefully.
 export async function CommunityListings({
+  id,
   title,
   description,
   slug,
@@ -82,7 +85,7 @@ export async function CommunityListings({
       : "View all homes";
 
   return (
-    <Section variant={variant}>
+    <Section id={id} variant={variant}>
       <h2 className="heading-section text-cabernet">{resolvedTitle}</h2>
       {resolvedDescription && (
         <p className="mt-2 text-espresso/90">{resolvedDescription}</p>

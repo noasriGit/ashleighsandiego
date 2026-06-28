@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
@@ -10,6 +12,8 @@ type CommunityCardProps = {
   /** Optional real photo. When absent, a brand-tinted placeholder header shows. */
   thumbnail?: string;
   thumbnailAlt?: string;
+  highlighted?: boolean;
+  onHover?: (slug: string | null) => void;
 };
 
 const lifestyleGradient: Record<LifestyleTag, string> = {
@@ -22,7 +26,13 @@ const lifestyleGradient: Record<LifestyleTag, string> = {
   "Military/commute considerations": "from-espresso to-earth",
 };
 
-export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityCardProps) {
+export function CommunityCard({
+  community,
+  thumbnail,
+  thumbnailAlt,
+  highlighted = false,
+  onHover,
+}: CommunityCardProps) {
   const hasPage = community.hasGuide;
   const gradient =
     lifestyleGradient[community.lifestyles[0]] ?? "from-cabernet to-espresso";
@@ -36,6 +46,7 @@ export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityC
         !hasPage && "opacity-75",
         hasPage &&
           "transition-[transform,box-shadow] duration-300 ease-out motion-reduce:transition-none group-hover:-translate-y-2 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-cabernet/15",
+        highlighted && "ring-2 ring-cabernet/30 shadow-lg",
       )}
     >
       <div className={cn("relative h-28 overflow-hidden bg-gradient-to-br", gradient)}>
@@ -143,6 +154,10 @@ export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityC
         href={`/neighborhoods/${community.slug}`}
         className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
         aria-label={`${community.name}: ${community.tagline}`}
+        onMouseEnter={() => onHover?.(community.slug)}
+        onMouseLeave={() => onHover?.(null)}
+        onFocus={() => onHover?.(community.slug)}
+        onBlur={() => onHover?.(null)}
       >
         {content}
       </Link>

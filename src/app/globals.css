@@ -359,3 +359,15 @@ h6 {
     --site-header-height: 6.25rem;
   }
 }
+
+/* Community map popup (MapLibre) */
+.community-map-popup.maplibregl-popup .maplibregl-popup-content {
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgb(42 34 35 / 0.15);
+  border: 1px solid rgb(103 0 56 / 0.12);
+}
+
+.community-map-popup.maplibregl-popup .maplibregl-popup-tip {
+  border-top-color: var(--bhhs-white);
+}

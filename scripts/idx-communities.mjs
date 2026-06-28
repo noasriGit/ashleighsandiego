@@ -29,13 +29,15 @@ export function loadCommunitySearchTargets(rootDir) {
     "utf8",
   );
   const launchBlock = communitiesSource.match(
-    /export const launchCommunitySlugs = \[([\s\S]*?)\] as const;/,
-  )?.[1];
+    /hasGuide:\s*true/g,
+  );
   if (!launchBlock) {
-    throw new Error("Could not parse launchCommunitySlugs from communities.ts");
+    throw new Error("Could not parse hasGuide communities from communities.ts");
   }
 
-  const launchSlugs = [...launchBlock.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  const launchSlugs = [...communitiesSource.matchAll(
+    /\{\s*slug:\s*"([^"]+)"[\s\S]*?hasGuide:\s*true/g,
+  )].map((m) => m[1]);
 
   const communityNames = {};
   for (const match of communitiesSource.matchAll(

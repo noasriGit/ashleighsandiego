@@ -1,5 +1,5 @@
 /*
- * IDX Detail — Brand Layer (v12)
+ * IDX Detail — Brand Layer (v13 — mobile)
  * Targets the Elm Street Standard Details template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -383,6 +383,53 @@ body.IDX-wrapper-standard,
     font-size: 1.5rem !important;
   }
 
+  .IDX-wrapper-standard #IDX-detailsAddress,
+  .IDX-wrapper-standard .IDX-detailsAddress {
+    font-size: 1.1rem !important;
+  }
+
+  .IDX-wrapper-standard #IDX-mainPhotos img,
+  .IDX-wrapper-standard #IDX-detailsTopPhotos img,
+  .IDX-wrapper-standard .IDX-galleryImage,
+  .IDX-wrapper-standard .IDX-photo img {
+    min-height: 200px !important;
+    border-radius: 12px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsGallery,
+  .IDX-wrapper-standard #IDX-mainPhotos,
+  .IDX-wrapper-standard .IDX-galleryWrap {
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .IDX-wrapper-standard .IDX-panel,
+  .IDX-wrapper-standard #IDX-detailsFeatured,
+  .IDX-wrapper-standard #IDX-detailsFields,
+  .IDX-wrapper-standard .IDX-detailsFieldsWrap,
+  .IDX-wrapper-standard .IDX-detailsTablesWrap {
+    padding: 16px !important;
+    margin-top: 12px !important;
+  }
+
+  .IDX-wrapper-standard .IDX-detailsTable,
+  .IDX-wrapper-standard .IDX-detailsTable tr,
+  .IDX-wrapper-standard .IDX-detailsTable td {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .IDX-wrapper-standard .IDX-detailsTable td {
+    padding: 6px 0 !important;
+    font-size: 14px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsContact,
+  .IDX-wrapper-standard .IDX-detailsContactForm {
+    padding: 16px !important;
+  }
+
   .IDX-wrapper-standard .IDX-btn,
   .IDX-wrapper-standard .IDX-detailsActions a,
   .IDX-wrapper-standard #IDX-detailsContact button,
@@ -390,5 +437,36 @@ body.IDX-wrapper-standard,
     display: block !important;
     width: 100% !important;
     text-align: center !important;
+    min-height: 44px !important;
+  }
+
+  .IDX-wrapper-standard .IDX-detailsActions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .IDX-wrapper-standard .IDX-detailsActions a,
+  .IDX-wrapper-standard .IDX-detailsVirtualTour a,
+  .IDX-wrapper-standard .IDX-detailsOpenHouse a,
+  .IDX-wrapper-standard #IDX-detailsWrapper .IDX-resultsVirtualTour a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsContact input,
+  .IDX-wrapper-standard #IDX-detailsContact textarea,
+  .IDX-wrapper-standard #IDX-detailsContact select {
+    min-height: 44px !important;
+    font-size: 16px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsMap iframe,
+  .IDX-wrapper-standard .IDX-detailsMapWrap iframe {
+    min-height: 240px !important;
   }
 }

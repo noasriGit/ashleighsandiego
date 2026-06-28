@@ -1,8 +1,7 @@
-export type KeywordMapping = {
-  keyword: string;
-  page: string;
-  intent: "relocation" | "homes-for-sale" | "community-guide" | "first-time-buyer" | "military" | "comparison";
-};
+import type { KeywordMapping } from "./keywords-types";
+import { phase1GuideKeywords } from "./community-guide-keywords.generated";
+
+export type { KeywordMapping };
 
 export const keywordMappings: KeywordMapping[] = [
   // Relocation
@@ -34,6 +33,8 @@ export const keywordMappings: KeywordMapping[] = [
   { keyword: "living in Point Loma", page: "/neighborhoods/point-loma", intent: "community-guide" },
   { keyword: "University City homes for sale", page: "/search-homes", intent: "homes-for-sale" },
   { keyword: "Pacific Beach homes for sale", page: "/search-homes", intent: "homes-for-sale" },
+  // Phase 1 community guides (generated — npm run keywords:generate-community)
+  ...phase1GuideKeywords,
 ];
 
 export function getKeywordsForPage(path: string): string[] {

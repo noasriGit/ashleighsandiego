@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { communities, launchCommunitySlugs } from "@/data/communities";
+import { usePathname } from "next/navigation";
+import { communities, getLaunchCommunitySlugs } from "@/data/communities";
 import {
   getMaxPriceOptions,
   getMinPriceOptions,
@@ -11,7 +12,11 @@ import {
   resolvePriceAmount,
   type ListingType,
 } from "@/data/idx-search-bar-config";
-import { GENERAL_KEY, getIdxSearchConfig } from "@/data/idx-search-config";
+import {
+  GENERAL_KEY,
+  getIdxSearchConfig,
+  resolveDefaultAreaSlugFromPath,
+} from "@/data/idx-search-config";
 import { IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
 import { SearchSelect } from "@/components/ui/SearchSelect";
@@ -19,7 +24,7 @@ import { cn } from "@/lib/utils";
 
 const AREA_OPTIONS = [
   { slug: GENERAL_KEY, label: "All San Diego" },
-  ...launchCommunitySlugs.map((slug) => {
+  ...getLaunchCommunitySlugs().map((slug) => {
     const community = communities.find((c) => c.slug === slug);
     return { slug, label: community?.name ?? slug };
   }),
@@ -28,6 +33,8 @@ const AREA_OPTIONS = [
 type IdxSearchBarProps = {
   variant?: "header" | "inline";
   className?: string;
+  /** Override route-derived default area (community slug or `_general`). */
+  defaultAreaSlug?: string;
   /** Called after a successful search navigation (e.g. close mobile drawer). */
   onSearch?: () => void;
 };
@@ -60,13 +67,24 @@ function FieldDivider() {
 export function IdxSearchBar({
   variant = "header",
   className,
+  defaultAreaSlug,
   onSearch,
 }: IdxSearchBarProps) {
+  const pathname = usePathname();
+  const routeDefaultArea = useMemo(
+    () => defaultAreaSlug ?? resolveDefaultAreaSlugFromPath(pathname),
+    [pathname, defaultAreaSlug],
+  );
+
   const [listingType, setListingType] = useState<ListingType>("buy");
-  const [areaSlug, setAreaSlug] = useState(GENERAL_KEY);
+  const [areaSlug, setAreaSlug] = useState(routeDefaultArea);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [minBed, setMinBed] = useState("");
+
+  useEffect(() => {
+    setAreaSlug(routeDefaultArea);
+  }, [routeDefaultArea]);
 
   if (!idxEnabled) {
     return (

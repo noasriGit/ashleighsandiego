@@ -8,7 +8,7 @@
 // Dynamic search URLs are built automatically from zip codes when savedSearchUrl is empty.
 // See src/lib/idx-search-url.ts.
 
-import { communities, launchCommunitySlugs } from "./communities";
+import { communities, getLaunchCommunitySlugs } from "./communities";
 import { getCommunityZips } from "./community-zips";
 import overrides from "../../data/idx-search-overrides.json";
 import { resolveIdxBrowseUrl } from "@/lib/idx-search-url";
@@ -63,7 +63,7 @@ function buildConfig(
 }
 
 /** All launch community slugs plus special keys. Used by sync script naming conventions. */
-export const idxSearchSlugs = [...launchCommunitySlugs, GENERAL_KEY, MILITARY_KEY] as const;
+export const idxSearchSlugs = [...getLaunchCommunitySlugs(), GENERAL_KEY, MILITARY_KEY] as const;
 
 function buildAllConfigs(): Record<string, IdxSearchConfig> {
   const configs: Record<string, IdxSearchConfig> = {};
@@ -99,6 +99,15 @@ export const idxSearchConfigs: Record<string, IdxSearchConfig> = buildAllConfigs
 export function getIdxSearchConfig(slug?: string): IdxSearchConfig {
   if (slug && idxSearchConfigs[slug]) return idxSearchConfigs[slug];
   return idxSearchConfigs[GENERAL_KEY];
+}
+
+/** Default header search area from the current path (e.g. /neighborhoods/la-jolla). */
+export function resolveDefaultAreaSlugFromPath(pathname: string): string {
+  const neighborhoodMatch = /^\/neighborhoods\/([^/]+)\/?$/.exec(pathname);
+  if (neighborhoodMatch && idxSearchConfigs[neighborhoodMatch[1]]) {
+    return neighborhoodMatch[1];
+  }
+  return GENERAL_KEY;
 }
 
 /** Resolve the zip-filtered browse URL for a community (dynamic when zips are configured). */

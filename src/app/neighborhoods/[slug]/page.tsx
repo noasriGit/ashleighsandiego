@@ -4,9 +4,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { FaqSection } from "@/components/marketing/FaqSection";
 import { PageHero } from "@/components/marketing/PageHero";
-import { CommunityIdxSearch } from "@/components/idx/CommunityIdxSearch";
 import { CommunityListings } from "@/components/idx/CommunityListings";
-import { IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { Section } from "@/components/ui/Section";
 import { StatBand } from "@/components/ui/StatBand";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
@@ -16,9 +14,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import {
   getCommunityBySlug,
   getRelatedCommunities,
-  launchCommunitySlugs,
+  getLaunchCommunitySlugs,
 } from "@/data/communities";
 import { getCommunityContent } from "@/data/community-content";
+import { isZipOnlySubarea } from "@/data/community-zips";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
 import { getKeywordsForPage } from "@/data/keywords";
@@ -43,7 +42,7 @@ const heroGradient: Record<LifestyleTag, string> = {
 };
 
 export async function generateStaticParams() {
-  return launchCommunitySlugs.map((slug) => ({ slug }));
+  return getLaunchCommunitySlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -95,6 +94,10 @@ export default async function CommunityPage({ params }: PageProps) {
         ? [...content.stats, { value: liveCount.toLocaleString(), label: "Active Listings" }]
         : content.stats
       : [];
+
+  const listingsDescription = isZipOnlySubarea(slug)
+    ? `Listings are filtered by ZIP code and may include nearby areas beyond ${community.name}. Tour specific blocks and streets with your agent before deciding.`
+    : undefined;
 
   return (
     <>
@@ -197,6 +200,17 @@ export default async function CommunityPage({ params }: PageProps) {
         </div>
       </Section>
 
+      <CommunityListings
+        id="search"
+        communityName={community.name}
+        slug={slug}
+        listings={listings}
+        count={liveCount}
+        viewAllUrl={browseUrl ?? undefined}
+        description={listingsDescription}
+        variant="sand"
+      />
+
       <Section id="compare" variant="sand" kicker="Compare Nearby">
         <h2 className="heading-section text-cabernet">Nearby Areas to Compare</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
@@ -206,28 +220,6 @@ export default async function CommunityPage({ params }: PageProps) {
           <ComparisonCards comparisons={content.nearbyComparisons} />
         </div>
       </Section>
-
-      <CommunityListings
-        communityName={community.name}
-        slug={slug}
-        listings={listings}
-        count={liveCount}
-        viewAllUrl={browseUrl ?? undefined}
-        variant="sand"
-      />
-
-      {isIdxPublicEnabled() &&
-        searchConfig.zipCodes.length > 0 &&
-        IDX_BASE_URL && (
-          <Section id="search" variant="pearl">
-            <CommunityIdxSearch
-              communityName={community.name}
-              config={searchConfig}
-              idxBaseUrl={IDX_BASE_URL}
-              className="mt-0"
-            />
-          </Section>
-        )}
 
       <Section id="faqs">
         <FaqSection faqs={content.faqs} />

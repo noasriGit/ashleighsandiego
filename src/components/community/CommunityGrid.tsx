@@ -10,10 +10,30 @@ import { communityContent } from "@/data/community-content";
 type CommunityGridProps = {
   communities: Community[];
   showFilters?: boolean;
+  activeFilter?: LifestyleTag | "all";
+  onFilterChange?: (filter: LifestyleTag | "all") => void;
+  highlightedSlug?: string | null;
+  onCommunityHover?: (slug: string | null) => void;
 };
 
-export function CommunityGrid({ communities, showFilters = true }: CommunityGridProps) {
-  const [activeFilter, setActiveFilter] = useState<LifestyleTag | "all">("all");
+export function CommunityGrid({
+  communities,
+  showFilters = true,
+  activeFilter: controlledFilter,
+  onFilterChange,
+  highlightedSlug,
+  onCommunityHover,
+}: CommunityGridProps) {
+  const [internalFilter, setInternalFilter] = useState<LifestyleTag | "all">("all");
+  const activeFilter = controlledFilter ?? internalFilter;
+
+  const setActiveFilter = (filter: LifestyleTag | "all") => {
+    if (onFilterChange) {
+      onFilterChange(filter);
+    } else {
+      setInternalFilter(filter);
+    }
+  };
 
   const filtered =
     activeFilter === "all"
@@ -47,6 +67,8 @@ export function CommunityGrid({ communities, showFilters = true }: CommunityGrid
               community={community}
               thumbnail={content?.thumbnail}
               thumbnailAlt={content?.thumbnailAlt}
+              highlighted={highlightedSlug === community.slug}
+              onHover={onCommunityHover}
             />
           );
         })}

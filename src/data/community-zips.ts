@@ -92,6 +92,22 @@ export function getCommunityZips(slug: string): string[] {
   return [];
 }
 
+/** True when a subarea shares the same ZIP set as its parent (IDX zip filter cannot isolate the pocket). */
+export function isZipOnlySubarea(slug: string): boolean {
+  const community = communities.find((c) => c.slug === slug);
+  if (!community?.parentSlug) return false;
+
+  const zips = getCommunityZips(slug);
+  const parentZips = getCommunityZips(community.parentSlug);
+  if (zips.length === 0 || parentZips.length === 0) return false;
+
+  const zipSet = new Set(zips);
+  return (
+    zips.length === parentZips.length &&
+    parentZips.every((z) => zipSet.has(z))
+  );
+}
+
 /** All community slugs that have at least one zip code configured. */
 export function getSearchableCommunitySlugs(): string[] {
   const slugs = new Set<string>();

@@ -1,5 +1,5 @@
 import { Hero } from "@/components/marketing/Hero";
-import { CommunityGrid } from "@/components/community/CommunityGrid";
+import { NeighborhoodsExplorer } from "@/components/community/NeighborhoodsExplorer";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { Section } from "@/components/ui/Section";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -56,7 +56,7 @@ export default function NeighborhoodsPage() {
           </p>
         </div>
         <div className="mt-10">
-          <CommunityGrid communities={communities} />
+          <NeighborhoodsExplorer communities={communities} />
         </div>
       </Section>
 

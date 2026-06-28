@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site-config";
-import { launchCommunitySlugs } from "@/data/communities";
+import { getLaunchCommunitySlugs } from "@/data/communities";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accessibility",
   ];
 
-  const communityPages = launchCommunitySlugs.map(
+  const communityPages = getLaunchCommunitySlugs().map(
     (slug) => `/neighborhoods/${slug}`,
   );
 

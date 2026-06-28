@@ -1,3 +1,5 @@
+import { phase1CommunityContent } from "./community-content-phase1";
+
 export type CommunityContent = {
   slug: string;
   whoItsFor: string[];
@@ -53,9 +55,9 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "I-5 and I-805 provide freeway access. Commute to Sorrento Valley biotech corridor is straightforward. Downtown is roughly 20–30 minutes depending on traffic. Many buyers work remotely or commute to UTC, Sorrento Valley, or central San Diego.",
     nearbyComparisons: [
+      { name: "La Jolla Shores", slug: "la-jolla-shores", note: "Family-friendly beach pocket with calmer waters" },
       { name: "Pacific Beach", slug: "pacific-beach", note: "More casual beach town feel at generally lower price points" },
       { name: "University City", slug: "university-city", note: "More central, newer condos, closer to UTC shopping" },
-      { name: "Del Mar", slug: "del-mar", note: "Similar upscale coastal vibe, slightly north with fairgrounds culture" },
     ],
     faqs: [
       { question: "Is La Jolla good for relocating families?", answer: "Yes, La Jolla offers strong schools, beach access, and family-friendly subareas like La Jolla Shores and Bird Rock. Budget and housing type preferences will determine which subarea fits best." },
@@ -87,9 +89,9 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "I-5 and I-8 provide freeway access. Commute to UTC or Sorrento Valley is 15–25 minutes. Downtown is about 15–20 minutes. Traffic on Garnet and Mission Blvd can be heavy on weekends.",
     nearbyComparisons: [
+      { name: "Crown Point", slug: "crown-point", note: "Canal-side living in a quieter PB pocket" },
       { name: "La Jolla", slug: "la-jolla", note: "More upscale and quieter, with higher price points" },
-      { name: "Ocean Beach", slug: "ocean-beach", note: "More laid-back and local, less nightlife-focused" },
-      { name: "Mission Valley", slug: "mission-valley", note: "More central and affordable, less beach access" },
+      { name: "Mission Beach", slug: "mission-beach", note: "Boardwalk-focused beach town between PB and Belmont Park" },
     ],
     faqs: [
       { question: "Is Pacific Beach family-friendly?", answer: "PB can work for families, especially in quieter pockets away from Garnet. Schools and noise levels vary by block. Crown Point and north PB tend to be calmer." },
@@ -189,9 +191,9 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "Mission Valley sits at the intersection of I-8, I-805, and I-15, one of the best-connected areas in San Diego. Downtown, UTC, and most job centers are 15–25 minutes.",
     nearbyComparisons: [
+      { name: "Civita", slug: "civita", note: "Newer master-planned homes within Mission Valley" },
       { name: "Clairemont", slug: "clairemont", note: "More single-family homes and neighborhood feel" },
-      { name: "Linda Vista", slug: "linda-vista", note: "More affordable, diverse community nearby" },
-      { name: "Hillcrest", slug: "hillcrest", note: "Walkable urban village, higher price points" },
+      { name: "Linda Vista", slug: "linda-vista", note: "Central location near USD and freeway corridors" },
     ],
     faqs: [
       { question: "Is Mission Valley good for first-time buyers?", answer: "Mission Valley can offer more affordable condo and townhome options compared to coastal areas. It's worth comparing commute needs and lifestyle preferences." },
@@ -257,9 +259,9 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "Close to I-5 and I-805. Sorrento Valley and UTC are 10–15 minutes. UCSD is 15–20 minutes. One of the best areas for biotech corridor commuters who want family-friendly neighborhoods.",
     nearbyComparisons: [
+      { name: "Torrey Hills", slug: "torrey-hills", note: "Established family pocket closer to Torrey Pines" },
       { name: "Del Mar", slug: "del-mar", note: "Coastal and upscale, higher price points" },
-      { name: "University City", slug: "university-city", note: "Closer to UTC, more condo inventory" },
-      { name: "Sorrento Valley", slug: "sorrento-valley", note: "Closer to offices, more urban feel" },
+      { name: "Sorrento Valley", slug: "sorrento-valley", note: "Closer to offices, more condo/townhome inventory" },
     ],
     faqs: [
       { question: "Is Carmel Valley good for relocating families?", answer: "Carmel Valley is one of the most popular areas for relocating families due to schools, safety, and amenities. Budget and commute preferences should guide your search." },
@@ -293,7 +295,7 @@ export const communityContent: Record<string, CommunityContent> = {
     nearbyComparisons: [
       { name: "Ocean Beach", slug: "ocean-beach", note: "More bohemian beach town, less peninsula privacy" },
       { name: "La Jolla", slug: "la-jolla", note: "Ocean-facing vs bay-facing, different coastal character" },
-      { name: "Old Town", slug: "point-loma", note: "Historic district at the base of Point Loma" },
+      { name: "Old Town", slug: "old-town", note: "Historic district at the base of Point Loma" },
     ],
     faqs: [
       { question: "Is Point Loma good for military families?", answer: "Point Loma's proximity to Naval Base Point Loma and NAS North Island makes it popular with military buyers. Commute times and BAH budget should guide your search." },
@@ -361,7 +363,7 @@ export const communityContent: Record<string, CommunityContent> = {
     nearbyComparisons: [
       { name: "Clairemont", slug: "clairemont", note: "Flatter terrain, generally lower prices" },
       { name: "Pacific Beach", slug: "pacific-beach", note: "Beach access, higher prices and more activity" },
-      { name: "Morena", slug: "bay-park", note: "Emerging area with newer development nearby" },
+      { name: "Morena", slug: "morena", note: "Emerging area with newer development nearby" },
     ],
     faqs: [
       { question: "How does Bay Park compare to Clairemont?", answer: "Bay Park offers hillside views and bay breezes at a slight premium over flat Clairemont. Both provide central location and single-family home options." },
@@ -395,7 +397,7 @@ export const communityContent: Record<string, CommunityContent> = {
     nearbyComparisons: [
       { name: "Point Loma", slug: "point-loma", note: "Peninsula living, more bay views and military proximity" },
       { name: "Pacific Beach", slug: "pacific-beach", note: "More nightlife and boardwalk energy" },
-      { name: "Mission Hills", slug: "hillcrest", note: "Urban village feel without beach access" },
+      { name: "Mission Hills", slug: "mission-hills", note: "Historic urban village feel without beach access" },
     ],
     faqs: [
       { question: "How does Ocean Beach compare to Pacific Beach?", answer: "OB is more laid-back and local-focused. PB has more nightlife and boardwalk activity. OB generally has a more bohemian, community-oriented feel." },
@@ -427,9 +429,9 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "Central location with I-805 and SR-163 access. Downtown is 5–10 minutes. Medical centers (UCSD Hillcrest, Scripps) are nearby. Less ideal for UTC or Sorrento Valley commuters.",
     nearbyComparisons: [
+      { name: "Mission Hills", slug: "mission-hills", note: "Historic homes on tree-lined streets nearby" },
       { name: "North Park", slug: "north-park", note: "Similar urban vibe, slightly more affordable" },
-      { name: "Bankers Hill", slug: "hillcrest", note: "Upscale urban living closer to downtown" },
-      { name: "Mission Valley", slug: "mission-valley", note: "More affordable, car-dependent, central freeway access" },
+      { name: "Bankers Hill", slug: "bankers-hill", note: "Upscale urban living closer to downtown" },
     ],
     faqs: [
       { question: "Is Hillcrest walkable?", answer: "Hillcrest is one of San Diego's most walkable neighborhoods. Daily errands, dining, and Balboa Park are accessible on foot." },
@@ -462,8 +464,8 @@ export const communityContent: Record<string, CommunityContent> = {
       "SR-163 and I-805 provide freeway access. Downtown is 10 minutes. UTC and Sorrento Valley are 25–30 minutes. Best for buyers with central or remote work arrangements.",
     nearbyComparisons: [
       { name: "Hillcrest", slug: "hillcrest", note: "More established urban village, closer to Balboa Park" },
-      { name: "Normal Heights", slug: "north-park", note: "Quieter residential, Adams Avenue dining nearby" },
-      { name: "University Heights", slug: "hillcrest", note: "Between Hillcrest and North Park, mixed character" },
+      { name: "Normal Heights", slug: "normal-heights", note: "Quieter residential, Adams Avenue dining nearby" },
+      { name: "University Heights", slug: "university-heights", note: "Between Hillcrest and North Park, mixed character" },
     ],
     faqs: [
       { question: "Is North Park good for first-time buyers?", answer: "North Park can offer character homes at lower entry points than coastal areas. Condos and smaller homes are available, though competition can be strong." },
@@ -471,6 +473,7 @@ export const communityContent: Record<string, CommunityContent> = {
       { question: "What is the nightlife like in North Park?", answer: "North Park has a vibrant dining and craft beer scene. It's livelier than Clairemont or Carmel Valley but different from Pacific Beach's boardwalk culture." },
     ],
   },
+  ...phase1CommunityContent,
 };
 
 export function getCommunityContent(slug: string): CommunityContent | undefined {

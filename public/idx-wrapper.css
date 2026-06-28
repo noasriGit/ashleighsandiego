@@ -33,6 +33,7 @@
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 12px;
+  overflow-x: hidden;
 }
 
 .sd-header .sd-logo-link {
@@ -128,8 +129,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
   color: #670038;
 }
@@ -151,7 +152,9 @@
 }
 
 .sd-header .sd-mobile-panel a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 12px;
   border-radius: 8px;
   color: #2a2223;
@@ -165,7 +168,10 @@
 }
 
 .sd-header .sd-cta-mobile {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   margin-top: 8px;
   text-align: center;
   background: #670038;
@@ -505,4 +511,19 @@
 
 .sd-footer .sd-eho svg {
   flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .sd-footer-inner {
+    padding: 32px 16px;
+  }
+
+  .sd-footer-legal {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .sd-search-fields {
+    border-radius: 16px;
+  }
 }

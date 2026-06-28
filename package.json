@@ -11,17 +11,23 @@
     "idx:generate-search-bar": "node scripts/generate-idx-search-bar.mjs",
     "idx:sync-searches": "node scripts/sync-idx-saved-searches.mjs",
     "idx:create-searches": "node scripts/create-idx-saved-searches.mjs",
-    "idx:verify": "node scripts/verify-idx-launch.mjs"
+    "idx:verify": "node scripts/verify-idx-launch.mjs",
+    "keywords:generate-community": "node scripts/generate-community-keywords.mjs",
+    "geo:generate-boundaries": "node scripts/generate-community-boundaries.mjs",
+    "geo:validate-boundaries": "node scripts/validate-community-boundaries.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "maplibre-gl": "^5.24.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-map-gl": "^8.1.1",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/geojson": "^7946.0.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
