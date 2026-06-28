@@ -1092,3 +1092,35 @@
     gap: 24px !important;
   }
 }
+
+/* Recover gracefully when map mode initializes without a live map pane. */
+@supports selector(:has(*)) {
+  .idx-results--map .idx-results__content:not(:has(.leaflet-container)),
+  #IDX-resultsRow:not(:has(.leaflet-container)),
+  #IDX-resultsContainer:not(:has(.leaflet-container)) .IDX-resultsRow {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+
+  .idx-results--map #IDX-map:not(:has(.leaflet-container)),
+  .idx-results--map .idx-map:not(:has(.leaflet-container)),
+  #IDX-resultsMap:not(:has(.leaflet-container)),
+  #IDX-resultsMapWrap:not(:has(.leaflet-container)),
+  .IDX-resultsMapWrap:not(:has(.leaflet-container)) {
+    display: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .idx-results--map .idx-results__listings,
+  .idx-results--map .idx-results__category,
+  #IDX-resultsContainer .idx-results--map .IDX-resultsCellsContainer,
+  #IDX-resultsContainer .idx-results--map .IDX-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
