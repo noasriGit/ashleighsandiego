@@ -331,28 +331,32 @@
 }
 
 .idx-results--map .IDX-resultsVirtualTour ~ .IDX-resultsOpenHouse {
-  bottom: 48px !important;
+  bottom: 58px !important;
 }
 
 .idx-results--map .IDX-resultsOpenHouse a,
 .idx-results--map .IDX-resultsOpenHouse .IDX-open-house {
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: var(--sd-white) !important;
   color: var(--sd-cabernet) !important;
   border: 1px solid var(--sd-cabernet) !important;
   border-radius: 999px !important;
-  padding: 5px 12px !important;
+  padding: 0 12px !important;
+  min-height: 28px !important;
   font-size: 10px !important;
   font-weight: 700 !important;
   letter-spacing: 0.03em !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
-  line-height: 1.25 !important;
+  line-height: 1 !important;
   box-shadow: 0 2px 8px rgba(42, 34, 35, 0.12) !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .idx-results--map .IDX-resultsOpenHouse a:hover,
@@ -392,20 +396,24 @@
 }
 
 .idx-results--map .IDX-resultsVirtualTour a {
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: rgba(42, 34, 35, 0.88) !important;
   color: var(--sd-white) !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-radius: 999px !important;
-  padding: 6px 14px !important;
+  padding: 0 14px !important;
+  min-height: 28px !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
-  line-height: 1.2 !important;
+  line-height: 1 !important;
   box-shadow: 0 2px 8px rgba(42, 34, 35, 0.25) !important;
+  box-sizing: border-box !important;
 }
 
 .idx-results--map .IDX-resultsVirtualTour a:hover {
