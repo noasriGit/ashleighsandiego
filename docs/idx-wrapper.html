@@ -2,42 +2,46 @@
   IDX wrapper for sdcommunities.idxbroker.com
 
   ═══════════════════════════════════════════════════════════════════
-  GOLDEN RULE: load every stylesheet via <link>. The hosted CSS files
-  in public/ are the single source of truth.
+  GOLDEN RULE: the wrapper must be a COMPLETE HTML document, split into
+  a header file (<!DOCTYPE> … <head> … <body> … site header) and a footer
+  file (site footer … </body></html>). IDX injects its own content AND its
+  default stylesheets between them.
   ═══════════════════════════════════════════════════════════════════
 
-  Verified 2026-06-28 against the live rendered results page: IDX strips
-  NOTHING from the wrapper. Both the header <link> and footer <script>
-  appear in the served HTML, and idx-results.css / idx-detail.css load
-  with HTTP 200. The old "IDX strips <link>/<script>" assumption (which
-  drove v10/v11 and an inline-<style> + Custom-CSS-panels detour) was
-  wrong. The real failure modes were operational: a removed loader, the
-  wrong cascade order, or a stale CDN/wrapper cache.
+  ROOT CAUSE (verified 2026-06-28 from the live wrapped page + IDX docs):
+  Earlier versions shipped bare fragments (no <!DOCTYPE>/<html>/<head>/<body>).
+  IDX just concatenated [header] + [IDX content] + [footer], so the rendered
+  page had NO <head> — and IDX never injected its base results/detail CSS.
+  Result: every IDX page lost its grid/card layout (raw stacked listings),
+  even though our wrapper chrome + color overrides loaded. Disabling the
+  wrapper "fixed" it only because IDX then served its own full document with
+  its base CSS. Per IDX docs the header section IS "<html>, <head>, and some
+  of the <body>" and "IDX Broker automatically injects its stylesheets into
+  this structure" — so the <head> is mandatory.
 
-  HOW CSS LOADS (v12):
-    1. idx-header.html → <link> fonts + <link> idx-wrapper.css   (header/footer chrome)
-    2. idx-footer.html → <link> idx-results.css + idx-detail.css (loaded LAST so the
-       brand layer overrides IDX's default head stylesheets)
-    Bump the ?v= query on each <link> after editing a CSS file, or the
-    CDN keeps serving the cached version.
+  HOW IT WORKS NOW (v13):
+    1. idx-header.html → <!DOCTYPE><html><head> meta + <title> + fonts +
+       idx-wrapper.css </head><body> + <header>.  IDX injects its base CSS
+       into this <head>, which supplies the results grid/card LAYOUT.
+    2. idx-footer.html → idx-results.css + idx-detail.css <link> (load LAST,
+       end of body, so our brand COLORS/spacing override IDX's base CSS) +
+       <footer> + </body></html>.
+    Bump the ?v= query on each <link> after editing a CSS file.
 
   Wrapper setup — IDX Middleware → Design → Website → Wrappers → Global:
     Includes (recommended):
       Header URL: https://sdcommunities.com/idx-header.html
       Footer URL: https://sdcommunities.com/idx-footer.html
-    Static (fine too): paste idx-header.html / idx-footer.html into the
-      header/footer fields; the <link> tags work there as well.
-    After deploying CSS changes, clear the IDX wrapper cache (~3h Includes cache).
+    Static: paste idx-header.html into Header HTML and idx-footer.html into
+      Footer HTML (they are already a full document split in two).
+    After deploying, CLEAR THE IDX WRAPPER CACHE (~3h Includes cache).
 
   Hosted files (deploy sdcommunities.com first):
-    - public/idx-header.html  → fonts + idx-wrapper.css <link> + <header>
-    - public/idx-footer.html  → idx-results.css + idx-detail.css <link> + <footer>
+    - public/idx-header.html  → <!DOCTYPE>/<html>/<head>(fonts+wrapper css)/<body>+<header>
+    - public/idx-footer.html  → results/detail css <link> + <footer> + </body></html>
     - public/idx-wrapper.css  → header/footer chrome (no @import)
-    - public/idx-results.css  → results brand layer
+    - public/idx-results.css  → results brand layer (colors/spacing over IDX base)
     - public/idx-detail.css   → detail brand layer
-
-  Optional panel backup (not required): paste idx-results.css into
-  Categories → Results and idx-detail.css into Designs → Details.
 
   Source copies: edit public/idx-header.html and public/idx-footer.html, then redeploy.
 -->

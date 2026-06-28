@@ -131,31 +131,33 @@ Optional later: a fully branded host like `search.sdcommunities.com` via CNAME �
 - Re-upload or redeploy whenever `siteConfig.nav`, agent/brokerage details, or the franchise
   disclaimer change — hosted HTML is a static copy and does not track the main site automatically
 
-### CSS loading (root cause, verified 2026-06-28)
+### Root cause (verified 2026-06-28): the wrapper had no `<head>`
 
-Earlier versions assumed IDX strips `<link>`/`<script>` from the wrapper. **That is false
-for this account.** Inspecting the live rendered results page
-(`sdcommunities.idxbroker.com/idx/results/listings?...`) shows **both** the header
-`<link ... idx-wrapper.css>` **and** the footer `<script>` present in the served HTML, and
-`idx-results.css` / `idx-detail.css` return HTTP 200. IDX strips **nothing**.
+Inspecting the **live wrapped page** (`sdcommunities.idxbroker.com/idx/results/listings?...`)
+revealed the real defect: the served document had **no `<!DOCTYPE html>`, `<html>`, `<head>`,
+or `<body>`** and **zero IDX default stylesheets** — only our four `<link>`s. IDX was simply
+concatenating `[idx-header.html] + [IDX content] + [idx-footer.html]`, and our files were bare
+fragments.
 
-So the wrapper itself never broke the pages. The real failure modes were operational:
+Per IDX's own docs a Static/Includes wrapper header section is **"`<html>`, `<head>`, and some
+of the `<body>`"** and **"IDX Broker automatically injects its stylesheets into this
+structure."** With no `<head>`, IDX had nowhere to inject its **base results/detail CSS**, so
+every IDX page lost its grid/card layout (raw stacked listings) — even though our wrapper chrome
+and color overrides loaded fine. Disabling the wrapper appeared to "fix" it only because IDX
+then served its own complete document (with its base CSS).
 
-- A `<script>` loader works, but a plain `<link>` is simpler and is the standard channel.
-- The brand CSS must load **after** IDX's default head stylesheets to win the cascade —
-  hence results/detail `<link>`s live in `idx-footer.html` (bottom of body), not the header.
-- The CDN caches each CSS URL; **bump `?v=`** after editing a CSS file or the old version
-  keeps serving.
+(Earlier "IDX strips `<link>`/`<script>`" theories were wrong — nothing is stripped. The
+missing document scaffolding was the actual cause.)
 
-**Current design (v12):** load everything via `<link>`, single source of truth = the hosted
-files in `public/`.
+**Current design (v13):** the wrapper is a complete HTML document split in two.
 
-1. `idx-header.html` → fonts `<link>` + `<link>` to `idx-wrapper.css?v=12` (header/footer chrome).
-2. `idx-footer.html` → `<link>` to `idx-results.css?v=12` and `idx-detail.css?v=12`
-   (loaded last so the brand layer overrides IDX defaults).
+1. `idx-header.html` → `<!DOCTYPE html><html><head>` (meta, `<title>`, fonts, `idx-wrapper.css`)
+   `</head><body>` + `<header>`. **IDX injects its base CSS into this `<head>`**, which supplies
+   the results grid/card layout.
+2. `idx-footer.html` → `idx-results.css` + `idx-detail.css` `<link>` (end of body, so our brand
+   colors/spacing override IDX's base CSS) + `<footer>` + `</body></html>`.
 
-Pasting the CSS into the **Custom CSS panels** (Categories → Results, Designs → Details) is an
-optional backup, not required.
+Bump `?v=` after editing any CSS file. Pasting CSS into the Custom CSS panels is optional backup.
 
 ### Middleware upload checklist (Designs panel)
 

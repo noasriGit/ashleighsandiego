@@ -1,18 +1,30 @@
 <!--
-  IDX wrapper header (Includes / Static).
-  Verified 2026-06-28 against the live rendered page: IDX strips NOTHING from the
-  wrapper — both <link> and <script> survive into the served HTML. So load CSS the
-  simple way, via <link> (single source of truth = the hosted CSS files):
-    - fonts + idx-wrapper.css here (header chrome)
-    - idx-results.css + idx-detail.css in idx-footer.html, so they cascade AFTER
-      IDX's default head stylesheets.
-  Bump ?v= whenever a CSS file changes so the CDN serves the new version.
+  IDX wrapper HEADER (Static / Includes).
+
+  MUST be a real document head + open <body> — NOT a bare fragment. Per IDX docs,
+  the header section is "<html>, <head>, and some of the <body>" and IDX injects
+  its OWN default stylesheets into this <head>. Earlier versions shipped a headless
+  fragment, so IDX had nowhere to inject its base results/detail CSS: every IDX page
+  lost its grid/card layout (raw stacked listings) even though our wrapper chrome
+  and color overrides loaded. Disabling the wrapper "fixed" it only because IDX then
+  served its own complete document (with its base CSS).
+
+  Layout therefore comes from IDX's injected base CSS; our brand layer
+  (idx-results.css / idx-detail.css) loads LAST from idx-footer.html to override
+  colors/spacing. Keep all URLs absolute. Bump ?v= after editing any CSS file.
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>San Diego Relocation Home Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Marcellus&amp;display=swap" />
-<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css?v=12" />
-
+<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css?v=13" />
+</head>
+<body>
 <header class="sd-header" id="sd-site-header">
   <div class="sd-header-row">
     <a class="sd-logo-link" href="https://sdcommunities.com/" aria-label="San Diego Relocation Home Guide home">
