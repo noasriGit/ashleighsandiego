@@ -153,50 +153,74 @@
   font-weight: 600 !important;
 }
 
-/* Map layout — tighten gap between map and listings column */
+/* Map layout — fill space between map and cards, no horizontal scroll */
+.idx-results--map,
+.idx-results--map #IDX-main {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
 .idx-results--map .idx-results__content,
 .idx-results--map #idx-results-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 44%) !important;
   gap: 0 !important;
   column-gap: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
 }
 
 .idx-results--map #IDX-map,
 .idx-results--map .idx-map {
-  margin-right: 0 !important;
-  padding-right: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Map sidebar — full-width, taller cards without overflow */
 .idx-results--map .idx-results__listings {
-  padding-left: 4px !important;
-  padding-right: 8px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: 0 !important;
   padding-bottom: 48px !important;
-  margin-left: 0 !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   box-sizing: border-box !important;
 }
 
 .idx-results--map .idx-results__category,
 .idx-results--map .idx-results__category--active {
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
 }
 
 .idx-results--map .idx-results__listing {
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
   margin: 0 0 12px 0 !important;
   padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .idx-results--map .idx-listing-card {
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
   min-height: 300px !important;
   height: 300px !important;
   overflow: hidden !important;
   position: relative !important;
   margin: 0 !important;
   display: block !important;
+  box-sizing: border-box !important;
 }
 
 .idx-results--map .idx-listing-card__link {
@@ -204,7 +228,7 @@
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
   z-index: 0 !important;
   overflow: hidden !important;
 }
@@ -214,7 +238,7 @@
   width: 100% !important;
   height: 100% !important;
   min-height: 0 !important;
-  max-width: none !important;
+  max-width: 100% !important;
   aspect-ratio: unset !important;
   object-fit: cover !important;
   display: block !important;
@@ -225,17 +249,71 @@
   position: relative !important;
   z-index: 1 !important;
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
   height: 100% !important;
+  padding: 14px 52px 56px 14px !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
 }
 
+.idx-results--map .idx-listing-card__price {
+  font-size: 1.25rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 6px !important;
+}
+
+.idx-results--map .idx-listing-card__mls-logo {
+  display: none !important;
+}
+
+/* Card actions — favorite top-right, virtual tour bottom-left */
 .idx-results--map .idx-listing-card__actions {
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
+  inset: 0 !important;
   z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+.idx-results--map .idx-listing-card__actions > * {
+  pointer-events: auto !important;
+}
+
+.idx-results--map .IDX-resultsSaveProperty {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.idx-results--map .IDX-resultsVirtualTour {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  top: auto !important;
+  right: auto !important;
+}
+
+.idx-results--map .IDX-resultsVirtualTour a {
+  display: inline-block !important;
+  background: rgba(42, 34, 35, 0.88) !important;
+  color: var(--sd-white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 999px !important;
+  padding: 6px 14px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 2px 8px rgba(42, 34, 35, 0.25) !important;
+}
+
+.idx-results--map .IDX-resultsVirtualTour a:hover {
+  background: var(--sd-cabernet) !important;
+  border-color: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
 }
 
 /* Results page bottom breathing room */
