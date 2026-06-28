@@ -309,7 +309,6 @@
 .idx-results--map .IDX-resultsSaveProperty:hover {
   border-color: var(--sd-cabernet) !important;
   box-shadow: 0 4px 14px rgba(103, 0, 56, 0.22) !important;
-  transform: scale(1.04) !important;
 }
 
 .idx-results--map .IDX-resultsSaveProperty idx-favorite {

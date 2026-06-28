@@ -3,25 +3,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import { communities, launchCommunitySlugs } from "@/data/communities";
+import {
+  getMaxPriceOptions,
+  getMinPriceOptions,
+  LISTING_TYPE_OPTIONS,
+  listingTypeToPropertyType,
+  resolvePriceAmount,
+  type ListingType,
+} from "@/data/idx-search-bar-config";
 import { GENERAL_KEY, getIdxSearchConfig } from "@/data/idx-search-config";
 import { IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
 import { SearchSelect } from "@/components/ui/SearchSelect";
 import { cn } from "@/lib/utils";
-
-type PricePreset = {
-  label: string;
-  value: string;
-  minPrice?: number;
-  maxPrice?: number;
-};
-
-const PRICE_PRESETS: PricePreset[] = [
-  { label: "Any price", value: "" },
-  { label: "Under $1M", value: "under-1m", maxPrice: 999_999 },
-  { label: "$1M – $2M", value: "1m-2m", minPrice: 1_000_000, maxPrice: 2_000_000 },
-  { label: "$2M+", value: "2m-plus", minPrice: 2_000_000 },
-];
 
 const AREA_OPTIONS = [
   { slug: GENERAL_KEY, label: "All San Diego" },
@@ -59,13 +53,19 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
+function FieldDivider() {
+  return <div className="hidden w-px shrink-0 self-stretch bg-dove/25 sm:block" aria-hidden="true" />;
+}
+
 export function IdxSearchBar({
   variant = "header",
   className,
   onSearch,
 }: IdxSearchBarProps) {
+  const [listingType, setListingType] = useState<ListingType>("buy");
   const [areaSlug, setAreaSlug] = useState(GENERAL_KEY);
-  const [pricePreset, setPricePreset] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const [minBed, setMinBed] = useState("");
 
   if (!idxEnabled) {
@@ -83,16 +83,27 @@ export function IdxSearchBar({
     );
   }
 
+  function handleListingTypeChange(type: ListingType) {
+    setListingType(type);
+    setMinPrice("");
+    setMaxPrice("");
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     const config = getIdxSearchConfig(areaSlug === GENERAL_KEY ? undefined : areaSlug);
-    const preset = PRICE_PRESETS.find((p) => p.value === pricePreset);
+    let min = resolvePriceAmount(minPrice);
+    let max = resolvePriceAmount(maxPrice);
+    if (min != null && max != null && min > max) {
+      [min, max] = [max, min];
+    }
 
     const searchUrl = resolveIdxSearchFromFilters(IDX_BASE_URL, config, {
-      minPrice: preset?.minPrice,
-      maxPrice: preset?.maxPrice,
+      minPrice: min,
+      maxPrice: max,
       minBed: minBed ? Number(minBed) : undefined,
+      propertyType: listingTypeToPropertyType(listingType),
     });
 
     onSearch?.();
@@ -104,9 +115,13 @@ export function IdxSearchBar({
     value: option.slug,
     label: option.label,
   }));
-  const priceOptions = PRICE_PRESETS.map((preset) => ({
-    value: preset.value,
-    label: preset.label,
+  const minPriceOptions = getMinPriceOptions(listingType).map((option) => ({
+    value: option.value,
+    label: option.label,
+  }));
+  const maxPriceOptions = getMaxPriceOptions(listingType).map((option) => ({
+    value: option.value,
+    label: option.label,
   }));
   const bedOptions = [
     { value: "", label: "Any beds" },
@@ -117,39 +132,77 @@ export function IdxSearchBar({
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "flex w-full max-w-3xl flex-col gap-2 sm:flex-row sm:items-stretch",
-        isHeader && "sm:gap-0",
+        "flex w-full max-w-6xl flex-col gap-2 lg:flex-row lg:items-stretch",
+        isHeader && "lg:gap-2",
         className,
       )}
       aria-label="Search MLS listings"
     >
       <div
         className={cn(
-          "relative z-10 flex flex-1 flex-col gap-1 overflow-visible p-1.5 sm:flex-row sm:items-stretch sm:gap-0 sm:p-1",
-          "rounded-2xl border border-dove/30 bg-white/95 shadow-md backdrop-blur-md sm:rounded-full",
+          "relative z-10 flex flex-1 flex-col gap-2 overflow-visible p-2 sm:flex-row sm:flex-wrap sm:items-stretch lg:flex-nowrap lg:gap-0 lg:p-1.5",
+          "rounded-2xl border border-dove/30 bg-white/95 shadow-md backdrop-blur-md lg:rounded-full",
         )}
       >
+        <div
+          role="group"
+          aria-label="Buy or rent"
+          className="flex shrink-0 rounded-full bg-rose/50 p-0.5 sm:self-center lg:mx-1"
+        >
+          {LISTING_TYPE_OPTIONS.map((option) => {
+            const active = listingType === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={active}
+                onClick={() => handleListingTypeChange(option.value)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet/40 focus-visible:ring-offset-1",
+                  active
+                    ? "bg-cabernet text-white shadow-sm"
+                    : "text-espresso/80 hover:text-cabernet",
+                )}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+
+        <FieldDivider />
+
         <SearchSelect
           label="Area"
           fieldLabel="Area"
           value={areaSlug}
           onChange={setAreaSlug}
           options={areaOptions}
-          className="sm:min-w-[9rem] sm:flex-[1.4]"
+          className="sm:min-w-[10rem] sm:flex-[1.35]"
         />
 
-        <div className="hidden w-px shrink-0 self-stretch bg-dove/25 sm:block" aria-hidden="true" />
+        <FieldDivider />
 
-        <SearchSelect
-          label="Price"
-          fieldLabel="Price"
-          value={pricePreset}
-          onChange={setPricePreset}
-          options={priceOptions}
-          className="sm:max-w-[9.5rem]"
-        />
+        <div className="flex min-w-0 flex-1 flex-col sm:flex-row sm:items-stretch lg:max-w-[15rem]">
+          <SearchSelect
+            label="Minimum price"
+            fieldLabel="Min price"
+            value={minPrice}
+            onChange={setMinPrice}
+            options={minPriceOptions}
+            className="sm:flex-1"
+          />
+          <SearchSelect
+            label="Maximum price"
+            fieldLabel="Max price"
+            value={maxPrice}
+            onChange={setMaxPrice}
+            options={maxPriceOptions}
+            className="sm:flex-1"
+          />
+        </div>
 
-        <div className="hidden w-px shrink-0 self-stretch bg-dove/25 sm:block" aria-hidden="true" />
+        <FieldDivider />
 
         <SearchSelect
           label="Minimum bedrooms"
@@ -157,15 +210,15 @@ export function IdxSearchBar({
           value={minBed}
           onChange={setMinBed}
           options={bedOptions}
-          className="sm:max-w-[7.5rem]"
+          className="sm:max-w-[8rem]"
         />
       </div>
 
       <button
         type="submit"
         className={cn(
-          "inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-cabernet px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-cabernet/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2",
-          isHeader && "sm:ml-2",
+          "inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-cabernet px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-cabernet/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2",
+          isHeader && "lg:ml-0",
         )}
       >
         <SearchIcon className="h-4 w-4" />

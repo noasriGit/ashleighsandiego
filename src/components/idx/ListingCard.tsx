@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import type { IdxListing } from "@/lib/idx-api";
 
@@ -30,6 +31,9 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
     .filter(Boolean)
     .join(", ");
   const imageCount = listing.allImages?.length ?? (listing.imageUrl ? 1 : 0);
+  const canOptimizeImage = Boolean(
+    listing.imageUrl && listing.imageUrl.includes("cdn.realtyfeed.com"),
+  );
   const statusLabel = listing.status
     ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1).toLowerCase()
     : undefined;
@@ -46,13 +50,24 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
     >
       <div className={`relative ${imageRatio} overflow-hidden bg-rose/30`}>
         {listing.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element -- external MLS image host, varies per listing
-          <img
-            src={listing.imageUrl}
-            alt={displayAddr}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            loading="lazy"
-          />
+          canOptimizeImage ? (
+            <Image
+              src={listing.imageUrl}
+              alt={displayAddr}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element -- external MLS image host can vary by feed
+            <img
+              src={listing.imageUrl}
+              alt={displayAddr}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+          )
         ) : (
           <div className="flex h-full w-full items-center justify-center text-sm text-espresso/55">
             No photo available

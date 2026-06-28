@@ -67,7 +67,10 @@ export function SplitSection({
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-cabernet via-earth to-espresso">
-          <div className="absolute inset-0 bg-[url('/images/coastal-pattern.svg')] bg-cover opacity-20" />
+          <div
+            className="absolute inset-0 bg-cover opacity-20"
+            style={{ backgroundImage: "url('/images/coastal-pattern.svg')" }}
+          />
         </div>
       )}
     </div>

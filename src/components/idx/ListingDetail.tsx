@@ -1,9 +1,13 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { ListingGallery } from "@/components/idx/ListingGallery";
 import { getSdmlsIdxDisclaimer, siteConfig } from "@/data/site-config";
 import type { IdxListing } from "@/lib/idx-api";
+
+const ListingGallery = dynamic(
+  () => import("@/components/idx/ListingGallery").then((mod) => mod.ListingGallery),
+);
 
 type ListingDetailProps = {
   listing: IdxListing;

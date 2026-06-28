@@ -44,6 +44,8 @@ export type IdxSearchUrlOptions = {
   maxPrice?: number;
   minBed?: number;
   minBath?: number;
+  /** IDX Broker system property type (e.g. sfr, rnt). See pt shortcode docs. */
+  propertyType?: string;
 };
 
 /**
@@ -71,6 +73,7 @@ export function buildIdxSearchUrl(
   if (maxPrice != null) params.set("hp", String(maxPrice));
   if (options.minBed != null) params.set("bd", String(options.minBed));
   if (options.minBath != null) params.set("tb", String(options.minBath));
+  if (options.propertyType) params.set("pt", options.propertyType);
 
   params.set("idxID", IDX_MLS_ID);
 
@@ -83,7 +86,8 @@ export function buildIdxSearchUrl(
     minPrice != null ||
     maxPrice != null ||
     options.minBed != null ||
-    options.minBath != null;
+    options.minBath != null ||
+    Boolean(options.propertyType);
 
   if (!hasCriteria) {
     return root;
@@ -135,10 +139,12 @@ export function resolveIdxSearchFromFilters(
     filters.minPrice != null ||
       filters.maxPrice != null ||
       filters.minBed != null ||
-      filters.minBath != null,
+      filters.minBath != null ||
+      filters.propertyType,
   );
 
-  if (hasFilters) {
+  // Rental saved searches are sale-focused; always build a dynamic URL for rentals.
+  if (hasFilters || filters.propertyType === "rnt") {
     return buildIdxSearchUrl(baseUrl, config, filters) ?? baseUrl;
   }
 

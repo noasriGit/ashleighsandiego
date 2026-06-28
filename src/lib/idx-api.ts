@@ -21,6 +21,7 @@
 
 import { getIdxSearchConfig } from "@/data/idx-search-config";
 import { normalizeIdxUrl } from "@/lib/idx-search-url";
+import { cache } from "react";
 
 const IDX_API_BASE = "https://api.idxbroker.com";
 
@@ -287,7 +288,7 @@ async function idxApiFetch(path: string, revalidate: number): Promise<unknown | 
  * Used by the on-site detail page to locate a listing by idxId + listingId.
  * Each page is independently cached at 15-min ISR via Next.js fetch.
  */
-export async function getAllFeaturedListings(): Promise<IdxListing[]> {
+const getAllFeaturedListingsCached = cache(async (): Promise<IdxListing[]> => {
   if (!isApiEnabled()) return [];
 
   const all: IdxListing[] = [];
@@ -313,6 +314,10 @@ export async function getAllFeaturedListings(): Promise<IdxListing[]> {
   }
 
   return all;
+});
+
+export async function getAllFeaturedListings(): Promise<IdxListing[]> {
+  return getAllFeaturedListingsCached();
 }
 
 /**
@@ -320,14 +325,43 @@ export async function getAllFeaturedListings(): Promise<IdxListing[]> {
  * Returns null when the listing is not in the agent's featured set (→ fall back to
  * linking to fullDetailsURL on the branded subdomain).
  */
+const getFeaturedListingCached = cache(
+  async (idxId: string, listingId: string): Promise<IdxListing | null> => {
+  if (!isApiEnabled()) return null;
+
+  let offset = 0;
+  const limit = 50;
+
+  for (let page = 0; page < MAX_FEATURED_PAGES; page++) {
+    const data = await idxApiFetch(
+      `/clients/featured?offset=${offset}&limit=${limit}`,
+      REVALIDATE_LISTINGS,
+    );
+    if (!data) break;
+
+    const { listings: raw, next } = unwrapEnvelope(data);
+    const normalized = raw
+      .map((r) => normalizeListing(r, true))
+      .filter((l): l is IdxListing => l !== null);
+
+    const found = normalized.find(
+      (listing) => listing.idxId === idxId && listing.listingId === listingId,
+    );
+    if (found) return found;
+
+    if (!next || normalized.length === 0) break;
+    offset += limit;
+  }
+
+    return null;
+  },
+);
+
 export async function getFeaturedListing(
   idxId: string,
   listingId: string,
 ): Promise<IdxListing | null> {
-  const all = await getAllFeaturedListings();
-  return (
-    all.find((l) => l.idxId === idxId && l.listingId === listingId) ?? null
-  );
+  return getFeaturedListingCached(idxId, listingId);
 }
 
 /**

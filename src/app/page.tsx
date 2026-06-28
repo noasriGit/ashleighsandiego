@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { BentoGrid } from "@/components/ui/BentoGrid";
@@ -8,10 +9,8 @@ import { SplitSection } from "@/components/ui/SplitSection";
 import { CommunityCard } from "@/components/community/CommunityCard";
 import { Hero } from "@/components/marketing/Hero";
 import { Timeline } from "@/components/marketing/Timeline";
-import { LeadMagnet } from "@/components/marketing/LeadMagnet";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { CommunityListings } from "@/components/idx/CommunityListings";
-import { FaqSection } from "@/components/marketing/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import { getLaunchCommunities } from "@/data/communities";
@@ -27,6 +26,14 @@ import {
   faqSchema,
   webPageSchema,
 } from "@/lib/schema";
+
+const LeadMagnet = dynamic(
+  () => import("@/components/marketing/LeadMagnet").then((mod) => mod.LeadMagnet),
+);
+
+const FaqSection = dynamic(
+  () => import("@/components/marketing/FaqSection").then((mod) => mod.FaqSection),
+);
 
 export const metadata = generatePageMetadata({
   title: "San Diego Relocation Home Guide | Neighborhood Guidance & Home Search",
@@ -71,7 +78,7 @@ export default async function HomePage() {
         subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego, including first-time buyers, military/VA buyers, and out-of-area movers."
         primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
-        backgroundImage="/images/hero1.jpg"
+        backgroundImage="/images/heroes/home.jpg"
         backgroundImageAlt="San Diego coastal homes and neighborhoods"
         backgroundImageFit="cover"
         backgroundImagePosition="object-top"
@@ -207,7 +214,7 @@ export default async function HomePage() {
 
       <Section
         variant="espresso"
-        backgroundImage="/images/lajolla.jpg"
+        backgroundImage="/images/heroes/moving-to-la-jolla.jpg"
         backgroundImageAlt="Aerial view of La Jolla coastline, beach, and Pacific Ocean"
       >
         <div className="grid items-center gap-10 lg:grid-cols-2">

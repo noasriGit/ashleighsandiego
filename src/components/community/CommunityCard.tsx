@@ -53,9 +53,10 @@ export function CommunityCard({ community, thumbnail, thumbnailAlt }: CommunityC
         ) : (
           <div
             className={cn(
-              "absolute inset-0 bg-[url('/images/coastal-pattern.svg')] bg-cover opacity-20 transition-transform duration-500 ease-out motion-reduce:transition-none",
+              "absolute inset-0 bg-cover opacity-20 transition-transform duration-500 ease-out motion-reduce:transition-none",
               hasPage && "group-hover:scale-110",
             )}
+            style={{ backgroundImage: "url('/images/coastal-pattern.svg')" }}
           />
         )}
 

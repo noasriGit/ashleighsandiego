@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "idx:generate-config": "node scripts/generate-idx-search-config.mjs",
+    "idx:generate-search-bar": "node scripts/generate-idx-search-bar.mjs",
     "idx:sync-searches": "node scripts/sync-idx-saved-searches.mjs",
     "idx:create-searches": "node scripts/create-idx-saved-searches.mjs",
     "idx:verify": "node scripts/verify-idx-launch.mjs"

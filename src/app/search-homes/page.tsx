@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { getLaunchCommunities } from "@/data/communities";
 import { marketingHeroes } from "@/data/page-images";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
-import { getAllSavedSearchCounts } from "@/lib/idx-api";
+import { getSavedSearchCount } from "@/lib/idx-api";
 import { generatePageMetadata } from "@/lib/metadata";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -30,7 +30,18 @@ const quickLinks = [
 
 export default async function SearchHomesPage() {
   const communities = getLaunchCommunities();
-  const counts = await getAllSavedSearchCounts();
+  const counts = Object.fromEntries(
+    (
+      await Promise.all(
+        communities.map(async (community) => {
+          const savedSearchId = getIdxSearchConfig(community.slug).savedSearchId;
+          if (!savedSearchId) return [community.slug, 0] as const;
+          const count = await getSavedSearchCount(savedSearchId);
+          return [savedSearchId, count ?? 0] as const;
+        }),
+      )
+    ).filter(([, count]) => count > 0),
+  );
 
   return (
     <>

@@ -108,7 +108,7 @@ export function Hero({
               width={backgroundImageWidth}
               height={backgroundImageHeight}
               priority
-              quality={90}
+              quality={75}
               sizes="100vw"
               className="h-full w-full object-contain"
             />
@@ -125,7 +125,7 @@ export function Hero({
                   alt={backgroundImageAlt}
                   fill
                   priority
-                  quality={90}
+                  quality={75}
                   sizes="100vw"
                   className="object-cover"
                   style={{ objectPosition: toObjectPosition(backgroundImagePosition) }}
@@ -137,7 +137,7 @@ export function Hero({
                 alt={backgroundImageAlt}
                 fill
                 priority
-                quality={90}
+                quality={75}
                 sizes="100vw"
                 className={cn(
                   "object-cover",
@@ -149,11 +149,17 @@ export function Hero({
           </div>
         )
       ) : (
-        <div className="absolute inset-0 bg-[url('/images/coastal-pattern.svg')] opacity-10" />
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: "url('/images/coastal-pattern.svg')" }}
+        />
       )}
 
       {showMobileGradient && (
-        <div className="absolute inset-0 bg-[url('/images/coastal-pattern.svg')] opacity-10 lg:hidden" />
+        <div
+          className="absolute inset-0 opacity-10 lg:hidden"
+          style={{ backgroundImage: "url('/images/coastal-pattern.svg')" }}
+        />
       )}
 
       <Container

@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import { AgentContactCard, AGENT_CARD_IMAGE } from "@/components/layout/AgentContactCard";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site-config";
@@ -34,19 +35,20 @@ function useHeaderContact() {
 }
 
 export function HeaderContactProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const allowAutoOpen = pathname === "/";
   const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
-  const [hasDismissedOnce, setHasDismissedOnce] = useState(false);
-
-  useEffect(() => {
-    setHasDismissedOnce(sessionStorage.getItem(DISMISSED_KEY) === "true");
-  }, []);
+  const [hasDismissedOnce, setHasDismissedOnce] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem(DISMISSED_KEY) === "true";
+  });
 
   useEffect(() => {
     const hero = document.querySelector("[data-page-hero]");
     if (!hero) {
-      setPastHero(true);
-      return;
+      const frame = window.requestAnimationFrame(() => setPastHero(true));
+      return () => window.cancelAnimationFrame(frame);
     }
 
     const observer = new IntersectionObserver(
@@ -64,14 +66,16 @@ export function HeaderContactProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!allowAutoOpen) return;
     if (!pastHero) return;
 
     const alreadyAutoOpened = sessionStorage.getItem(AUTO_OPEN_KEY) === "true";
     if (!alreadyAutoOpened) {
-      setOpen(true);
+      const frame = window.requestAnimationFrame(() => setOpen(true));
       sessionStorage.setItem(AUTO_OPEN_KEY, "true");
+      return () => window.cancelAnimationFrame(frame);
     }
-  }, [pastHero]);
+  }, [allowAutoOpen, pastHero]);
 
   function handleDismiss() {
     setOpen(false);
@@ -83,7 +87,7 @@ export function HeaderContactProvider({ children }: { children: ReactNode }) {
     setOpen(true);
   }
 
-  const reopenNavVisible = hasDismissedOnce && pastHero && !open;
+  const reopenNavVisible = allowAutoOpen && hasDismissedOnce && pastHero && !open;
 
   return (
     <HeaderContactContext.Provider

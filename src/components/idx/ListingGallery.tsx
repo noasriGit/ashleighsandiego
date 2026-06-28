@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type ListingGalleryProps = {
@@ -9,6 +10,7 @@ type ListingGalleryProps = {
 
 export function ListingGallery({ images, address }: ListingGalleryProps) {
   const [current, setCurrent] = useState(0);
+  const thumbnailWindow = 3;
 
   if (images.length === 0) {
     return (
@@ -20,6 +22,12 @@ export function ListingGallery({ images, address }: ListingGalleryProps) {
 
   const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+  const currentSrc = images[current];
+  const optimizeCurrent = currentSrc?.includes("cdn.realtyfeed.com");
+  const visibleThumbnails = images.map((src, index) => ({ src, index })).filter(({ index }) => {
+    if (Math.abs(index - current) <= thumbnailWindow) return true;
+    return false;
+  });
 
   return (
     <div className="space-y-3">
@@ -28,12 +36,26 @@ export function ListingGallery({ images, address }: ListingGalleryProps) {
         role="region"
         aria-label={`Photo gallery for ${address}`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element -- external MLS image host */}
-        <img
-          src={images[current]}
-          alt={`${address}, photo ${current + 1} of ${images.length}`}
-          className="h-[28rem] w-full object-cover sm:h-[36rem]"
-        />
+        <div className="relative h-[28rem] w-full sm:h-[36rem]">
+          {optimizeCurrent ? (
+            <Image
+              src={currentSrc}
+              alt={`${address}, photo ${current + 1} of ${images.length}`}
+              fill
+              priority={current === 0}
+              sizes="(max-width: 1024px) 100vw, 70vw"
+              className="object-cover"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element -- external MLS image host can vary by feed
+            <img
+              src={currentSrc}
+              alt={`${address}, photo ${current + 1} of ${images.length}`}
+              className="h-[28rem] w-full object-cover sm:h-[36rem]"
+              loading="lazy"
+            />
+          )}
+        </div>
 
         {images.length > 1 && (
           <>
@@ -66,7 +88,7 @@ export function ListingGallery({ images, address }: ListingGalleryProps) {
 
       {images.length > 1 && (
         <div className="flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Photo thumbnails">
-          {images.map((src, i) => (
+          {visibleThumbnails.map(({ src, index: i }) => (
             <button
               key={i}
               type="button"
@@ -80,12 +102,26 @@ export function ListingGallery({ images, address }: ListingGalleryProps) {
                   : "border-transparent opacity-60 hover:opacity-90"
               }`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element -- external MLS image host */}
-              <img
-                src={src}
-                alt=""
-                className="h-16 w-24 object-cover"
-              />
+              <div className="relative h-16 w-24">
+                {src.includes("cdn.realtyfeed.com") ? (
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    loading="lazy"
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element -- external MLS image host can vary by feed
+                  <img
+                    src={src}
+                    alt=""
+                    className="h-16 w-24 object-cover"
+                    loading="lazy"
+                  />
+                )}
+              </div>
             </button>
           ))}
         </div>
