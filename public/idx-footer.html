@@ -1,15 +1,10 @@
 <!--
-  IDX wrapper FOOTER (Static / Includes) — site footer + close of <body>/<html>.
-  Per IDX docs this section is "the closing </body> and </html> tags and their
-  content"; the header file opens <html>/<head>/<body>.
-
-  Our brand CSS loads here (end of body) so it cascades AFTER IDX's base stylesheets
-  that get injected into the <head> — this is what lets our colors/spacing override
-  IDX defaults while IDX's base CSS still provides the results grid/card layout.
-  Bump ?v= after editing the CSS files so the CDN serves the new version.
+  IDX wrapper FOOTER (Includes URL). Brand CSS loads here (end of document) so
+  it cascades after IDX default stylesheets. Avoid literal closing-tag names in
+  this comment. Bump ?v= after editing CSS files.
 -->
-<link rel="stylesheet" href="https://sdcommunities.com/idx-results.css?v=13" />
-<link rel="stylesheet" href="https://sdcommunities.com/idx-detail.css?v=13" />
+<link rel="stylesheet" href="https://sdcommunities.com/idx-results.css?v=14" />
+<link rel="stylesheet" href="https://sdcommunities.com/idx-detail.css?v=14" />
 
 <footer class="sd-footer" id="sd-site-footer">
   <div class="sd-footer-inner">

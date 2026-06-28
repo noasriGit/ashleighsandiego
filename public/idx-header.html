@@ -1,17 +1,10 @@
 <!--
-  IDX wrapper HEADER (Static / Includes).
-
-  MUST be a real document head + open <body> — NOT a bare fragment. Per IDX docs,
-  the header section is "<html>, <head>, and some of the <body>" and IDX injects
-  its OWN default stylesheets into this <head>. Earlier versions shipped a headless
-  fragment, so IDX had nowhere to inject its base results/detail CSS: every IDX page
-  lost its grid/card layout (raw stacked listings) even though our wrapper chrome
-  and color overrides loaded. Disabling the wrapper "fixed" it only because IDX then
-  served its own complete document (with its base CSS).
-
-  Layout therefore comes from IDX's injected base CSS; our brand layer
-  (idx-results.css / idx-detail.css) loads LAST from idx-footer.html to override
-  colors/spacing. Keep all URLs absolute. Bump ?v= after editing any CSS file.
+  IDX wrapper HEADER (Includes URL). Must open a full document (doctype, html,
+  head, body) — not a bare fragment. IDX injects its default stylesheets into
+  the document head; do NOT put the words head, html, or body as literal tag
+  text anywhere above the real tags below or injection lands in this comment.
+  Brand CSS: idx-results.css + idx-detail.css load last from idx-footer.html.
+  Bump ?v= after editing any CSS file.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Marcellus&amp;display=swap" />
-<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css?v=13" />
+<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css?v=14" />
 </head>
 <body>
 <header class="sd-header" id="sd-site-header">

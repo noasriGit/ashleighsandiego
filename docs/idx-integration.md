@@ -131,7 +131,7 @@ Optional later: a fully branded host like `search.sdcommunities.com` via CNAME �
 - Re-upload or redeploy whenever `siteConfig.nav`, agent/brokerage details, or the franchise
   disclaimer change — hosted HTML is a static copy and does not track the main site automatically
 
-### Root cause (verified 2026-06-28): the wrapper had no `<head>`
+### Root cause (verified 2026-06-28): the wrapper had no document head
 
 Inspecting the **live wrapped page** (`sdcommunities.idxbroker.com/idx/results/listings?...`)
 revealed the real defect: the served document had **no `<!DOCTYPE html>`, `<html>`, `<head>`,
@@ -149,7 +149,21 @@ then served its own complete document (with its base CSS).
 (Earlier "IDX strips `<link>`/`<script>`" theories were wrong — nothing is stripped. The
 missing document scaffolding was the actual cause.)
 
-**Current design (v13):** the wrapper is a complete HTML document split in two.
+### Root cause (verified 2026-06-28, v14): HTML comments contained `<head>`
+
+After adding the document scaffold (v13), IDX pages were **still** unstyled. Saving the live
+page source (`idx_live3.html`) showed IDX injecting **all base stylesheets inside the HTML
+comment** at the top of `idx-header.html`, not into the real `<head>`. IDX matches the first
+literal `<head>` string when injecting; our comment documented IDX's requirement using the text
+`"<html>, <head>, and some of the <body>"`, so injection landed in the comment (ignored by the
+browser). The real `<head>` kept our `idx-wrapper.css` link but never received IDX Bootstrap /
+results layout CSS.
+
+**Fix (v14):** rewrite wrapper comments so they never contain literal tag names (`head`, `html`,
+`body`, `</body>`, etc.) above the real document tags. Bump `?v=14` and clear the IDX wrapper
+cache.
+
+**Current design (v14):** the wrapper is a complete HTML document split in two.
 
 1. `idx-header.html` → `<!DOCTYPE html><html><head>` (meta, `<title>`, fonts, `idx-wrapper.css`)
    `</head><body>` + `<header>`. **IDX injects its base CSS into this `<head>`**, which supplies
@@ -272,9 +286,13 @@ selector is missing, note the actual class/id and patch the CSS file before re-u
 
 **Common fixes:**
 
-- **ALL idx pages unstyled (raw Bootstrap)** → the deployed `idx-footer.html` is missing the
-  `idx-results.css`/`idx-detail.css` `<link>`s, the CSS files 404, or the IDX wrapper cache is
-  stale. Redeploy, confirm the files return 200, **bump `?v=`**, and clear the wrapper cache.
+- **ALL idx pages unstyled (raw unstyled HTML, no Bootstrap grid)** → IDX base CSS injected into
+  the wrapper HTML **comment** instead of the real document head (v13 bug). Redeploy v14
+  `idx-header.html` (comment must not contain literal `head`/`html`/`body` tag text), bump
+  `?v=`, and clear the IDX wrapper cache. Or: missing document scaffold (pre-v13 bare fragments).
+- **ALL idx pages unstyled (missing our brand colors too)** → the deployed `idx-footer.html` is
+  missing the `idx-results.css`/`idx-detail.css` `<link>`s, the CSS files 404, or the IDX wrapper
+  cache is stale. Redeploy, confirm the files return 200, **bump `?v=`**, and clear the wrapper cache.
 - Edited CSS not showing → CDN is serving the cached `?v=` URL; bump the version in the wrapper.
 - Wrapper header/footer missing → wrapper not set as Primary, or Includes URLs wrong / not deployed.
 - Wrapper header/footer **unstyled** → `idx-wrapper.css` 404s or the header `<link>` is wrong;

@@ -1,47 +1,27 @@
 <!--
   IDX wrapper for sdcommunities.idxbroker.com
 
-  ═══════════════════════════════════════════════════════════════════
-  GOLDEN RULE: the wrapper must be a COMPLETE HTML document, split into
-  a header file (<!DOCTYPE> … <head> … <body> … site header) and a footer
-  file (site footer … </body></html>). IDX injects its own content AND its
-  default stylesheets between them.
-  ═══════════════════════════════════════════════════════════════════
+  GOLDEN RULE: wrapper = complete HTML document split into header + footer.
+  IDX injects page content and default stylesheets between them.
 
-  ROOT CAUSE (verified 2026-06-28 from the live wrapped page + IDX docs):
-  Earlier versions shipped bare fragments (no <!DOCTYPE>/<html>/<head>/<body>).
-  IDX just concatenated [header] + [IDX content] + [footer], so the rendered
-  page had NO <head> — and IDX never injected its base results/detail CSS.
-  Result: every IDX page lost its grid/card layout (raw stacked listings),
-  even though our wrapper chrome + color overrides loaded. Disabling the
-  wrapper "fixed" it only because IDX then served its own full document with
-  its base CSS. Per IDX docs the header section IS "<html>, <head>, and some
-  of the <body>" and "IDX Broker automatically injects its stylesheets into
-  this structure" — so the <head> is mandatory.
+  ROOT CAUSE 1 (v13): bare fragments with no document head — IDX never injected base CSS.
+  ROOT CAUSE 2 (v14): HTML comment in idx-header.html contained literal "<head>" text;
+  IDX matched that string first and injected all base CSS inside the comment (ignored).
 
-  HOW IT WORKS NOW (v13):
-    1. idx-header.html → <!DOCTYPE><html><head> meta + <title> + fonts +
-       idx-wrapper.css </head><body> + <header>.  IDX injects its base CSS
-       into this <head>, which supplies the results grid/card LAYOUT.
-    2. idx-footer.html → idx-results.css + idx-detail.css <link> (load LAST,
-       end of body, so our brand COLORS/spacing override IDX's base CSS) +
-       <footer> + </body></html>.
-    Bump the ?v= query on each <link> after editing a CSS file.
+  v14: comments must NOT contain literal tag names (head, html, body) above real tags.
+
+  HOW IT WORKS (v14):
+    1. idx-header.html — doctype + head (fonts + idx-wrapper.css) + body + site header.
+       IDX injects base CSS into the real head.
+    2. idx-footer.html — idx-results.css + idx-detail.css links (load last) + footer + close tags.
+    Bump ?v= on each link after editing CSS.
 
   Wrapper setup — IDX Middleware → Design → Website → Wrappers → Global:
     Includes (recommended):
       Header URL: https://sdcommunities.com/idx-header.html
       Footer URL: https://sdcommunities.com/idx-footer.html
-    Static: paste idx-header.html into Header HTML and idx-footer.html into
-      Footer HTML (they are already a full document split in two).
     After deploying, CLEAR THE IDX WRAPPER CACHE (~3h Includes cache).
 
   Hosted files (deploy sdcommunities.com first):
-    - public/idx-header.html  → <!DOCTYPE>/<html>/<head>(fonts+wrapper css)/<body>+<header>
-    - public/idx-footer.html  → results/detail css <link> + <footer> + </body></html>
-    - public/idx-wrapper.css  → header/footer chrome (no @import)
-    - public/idx-results.css  → results brand layer (colors/spacing over IDX base)
-    - public/idx-detail.css   → detail brand layer
-
-  Source copies: edit public/idx-header.html and public/idx-footer.html, then redeploy.
+    public/idx-header.html, idx-footer.html, idx-wrapper.css, idx-results.css, idx-detail.css
 -->
