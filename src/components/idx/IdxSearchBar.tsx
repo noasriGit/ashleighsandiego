@@ -9,12 +9,19 @@ import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
 import { SearchSelect } from "@/components/ui/SearchSelect";
 import { cn } from "@/lib/utils";
 
-const PRICE_PRESETS = [
+type PricePreset = {
+  label: string;
+  value: string;
+  minPrice?: number;
+  maxPrice?: number;
+};
+
+const PRICE_PRESETS: PricePreset[] = [
   { label: "Any price", value: "" },
-  { label: "Under $1M", value: "under-1m", minPrice: undefined, maxPrice: 999_999 },
+  { label: "Under $1M", value: "under-1m", maxPrice: 999_999 },
   { label: "$1M – $2M", value: "1m-2m", minPrice: 1_000_000, maxPrice: 2_000_000 },
-  { label: "$2M+", value: "2m-plus", minPrice: 2_000_000, maxPrice: undefined },
-] as const;
+  { label: "$2M+", value: "2m-plus", minPrice: 2_000_000 },
+];
 
 const AREA_OPTIONS = [
   { slug: GENERAL_KEY, label: "All San Diego" },
