@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { communities, launchCommunitySlugs } from "@/data/communities";
 import { GENERAL_KEY, getIdxSearchConfig } from "@/data/idx-search-config";
-import { IDX_BASE_URL } from "@/data/idx-links";
+import { IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { resolveIdxSearchFromFilters } from "@/lib/idx-search-url";
 import { SearchSelect } from "@/components/ui/SearchSelect";
 import { cn } from "@/lib/utils";
@@ -31,8 +31,7 @@ type IdxSearchBarProps = {
   onSearch?: () => void;
 };
 
-const idxEnabled =
-  process.env.NEXT_PUBLIC_IDX_ENABLED === "true" && Boolean(IDX_BASE_URL);
+const idxEnabled = isIdxPublicEnabled();
 
 function SearchIcon({ className }: { className?: string }) {
   return (

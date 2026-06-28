@@ -6,7 +6,7 @@ import { FaqSection } from "@/components/marketing/FaqSection";
 import { PageHero } from "@/components/marketing/PageHero";
 import { CommunityIdxSearch } from "@/components/idx/CommunityIdxSearch";
 import { CommunityListings } from "@/components/idx/CommunityListings";
-import { IDX_BASE_URL } from "@/data/idx-links";
+import { IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { Section } from "@/components/ui/Section";
 import { StatBand } from "@/components/ui/StatBand";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
@@ -216,7 +216,7 @@ export default async function CommunityPage({ params }: PageProps) {
         variant="sand"
       />
 
-      {process.env.NEXT_PUBLIC_IDX_ENABLED === "true" &&
+      {isIdxPublicEnabled() &&
         searchConfig.zipCodes.length > 0 &&
         IDX_BASE_URL && (
           <Section id="search" variant="pearl">

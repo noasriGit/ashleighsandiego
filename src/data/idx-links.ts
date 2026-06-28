@@ -6,9 +6,17 @@ import {
   idxSearchConfigs,
   GENERAL_KEY,
 } from "@/data/idx-search-config";
+import { IDX_SEARCH_DOMAIN } from "@/data/site-config";
 import { normalizeIdxUrl, resolveIdxBrowseUrl } from "@/lib/idx-search-url";
 
-export const IDX_BASE_URL = (process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "").replace(/\/$/, "");
+export const IDX_BASE_URL = (
+  process.env.NEXT_PUBLIC_IDX_BASE_URL ?? `https://${IDX_SEARCH_DOMAIN}`
+).replace(/\/$/, "");
+
+/** On unless explicitly disabled — avoids missing Vercel env showing the "Search homes" fallback. */
+export function isIdxPublicEnabled(): boolean {
+  return process.env.NEXT_PUBLIC_IDX_ENABLED !== "false" && Boolean(IDX_BASE_URL);
+}
 
 export type IdxLinkEntry = {
   /** Full URL to a pre-filtered IDX saved search on the subdomain. */

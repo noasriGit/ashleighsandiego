@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { CustomSearchForm } from "@/components/forms/CustomSearchForm";
 import { CommunityIdxSearch } from "@/components/idx/CommunityIdxSearch";
 import { ListingCard } from "@/components/idx/ListingCard";
-import { getIdxLink, IDX_BASE_URL } from "@/data/idx-links";
+import { getIdxLink, IDX_BASE_URL, isIdxPublicEnabled } from "@/data/idx-links";
 import { getIdxSearchConfig } from "@/data/idx-search-config";
 import type { IdxListing } from "@/lib/idx-api";
 
@@ -48,7 +48,7 @@ export function IdxSearchModule({
   listings,
   count,
 }: IdxSearchModuleProps) {
-  const idxEnabled = process.env.NEXT_PUBLIC_IDX_ENABLED === "true";
+  const idxEnabled = isIdxPublicEnabled();
   const widgetUrl = process.env.NEXT_PUBLIC_IDX_WIDGET_URL;
   const idxLink = idxEnabled ? getIdxLink(communitySlug) : null;
 

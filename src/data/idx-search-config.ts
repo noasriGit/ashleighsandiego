@@ -12,6 +12,7 @@ import { communities, launchCommunitySlugs } from "./communities";
 import { getCommunityZips } from "./community-zips";
 import overrides from "../../data/idx-search-overrides.json";
 import { resolveIdxBrowseUrl } from "@/lib/idx-search-url";
+import { IDX_SEARCH_DOMAIN } from "./site-config";
 
 export type IdxSearchConfig = {
   /** IDX numeric city IDs (from GET /clients/cities). Most accurate featured filter. */
@@ -102,7 +103,9 @@ export function getIdxSearchConfig(slug?: string): IdxSearchConfig {
 
 /** Resolve the zip-filtered browse URL for a community (dynamic when zips are configured). */
 export function getIdxBrowseUrl(slug?: string): string | null {
-  const baseUrl = (process.env.NEXT_PUBLIC_IDX_BASE_URL ?? "").replace(/\/$/, "");
+  const baseUrl = (
+    process.env.NEXT_PUBLIC_IDX_BASE_URL ?? `https://${IDX_SEARCH_DOMAIN}`
+  ).replace(/\/$/, "");
   if (!baseUrl) return null;
   const config = getIdxSearchConfig(slug);
   return resolveIdxBrowseUrl(baseUrl, config);
