@@ -4,21 +4,15 @@ import Image from "next/image";
 import {
   createContext,
   useContext,
-  useEffect,
   useState,
   type ReactNode,
 } from "react";
-import { usePathname } from "next/navigation";
 import { AgentContactCard, AGENT_CARD_IMAGE } from "@/components/layout/AgentContactCard";
-import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site-config";
 import { cn } from "@/lib/utils";
 
-const DISMISSED_KEY = "contact-card-dismissed";
-
 type HeaderContactContextValue = {
   open: boolean;
-  reopenNavVisible: boolean;
   handleDismiss: () => void;
   handleReopen: () => void;
 };
@@ -34,93 +28,49 @@ function useHeaderContact() {
 }
 
 export function HeaderContactProvider({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const allowAutoOpen = pathname === "/";
-  const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
-  const [hasDismissedOnce, setHasDismissedOnce] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return sessionStorage.getItem(DISMISSED_KEY) === "true";
-  });
-
-  useEffect(() => {
-    if (!allowAutoOpen) return;
-
-    const hero = document.querySelector("[data-page-hero]");
-    if (!hero) {
-      const frame = window.requestAnimationFrame(() => setPastHero(true));
-      return () => window.cancelAnimationFrame(frame);
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setPastHero(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-        rootMargin: "-72px 0px 0px 0px",
-      },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, [allowAutoOpen]);
 
   function handleDismiss() {
     setOpen(false);
-    setHasDismissedOnce(true);
-    sessionStorage.setItem(DISMISSED_KEY, "true");
   }
 
   function handleReopen() {
     setOpen(true);
   }
 
-  const reopenNavVisible = allowAutoOpen && hasDismissedOnce && pastHero && !open;
-
   return (
-    <HeaderContactContext.Provider
-      value={{ open, reopenNavVisible, handleDismiss, handleReopen }}
-    >
+    <HeaderContactContext.Provider value={{ open, handleDismiss, handleReopen }}>
       {children}
     </HeaderContactContext.Provider>
   );
 }
 
-/** Nav slot: agent chip when the card is closed, otherwise the default CTA. */
+/** Nav slot: always shows Ashleigh's contact chip. */
 export function HeaderContactNavSlot() {
-  const { reopenNavVisible, handleReopen } = useHeaderContact();
+  const { handleReopen } = useHeaderContact();
   const firstName = siteConfig.agent.name.split(" ")[0];
 
-  if (reopenNavVisible) {
-    return (
-      <button
-        type="button"
-        onClick={handleReopen}
-        aria-label={`Open contact card for ${siteConfig.agent.name}`}
-        className="group flex items-center gap-2 rounded-full border border-cabernet/25 bg-rose/50 py-1 pl-1 pr-3 shadow-sm transition-all hover:border-cabernet/40 hover:bg-rose hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet"
-      >
-        <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-cabernet/20 transition-transform group-hover:scale-105">
-          <Image
-            src={AGENT_CARD_IMAGE}
-            alt=""
-            fill
-            sizes="32px"
-            className="object-cover object-[center_20%]"
-          />
-        </span>
-        <span className="whitespace-nowrap text-sm font-medium text-espresso">
-          <span className="hidden xl:inline">{firstName} · </span>
-          <span className="text-cabernet">Contact</span>
-        </span>
-      </button>
-    );
-  }
-
   return (
-    <Button href="/contact" size="sm" className="whitespace-nowrap">
-      Book a Call
-    </Button>
+    <button
+      type="button"
+      onClick={handleReopen}
+      aria-label={`Open contact card for ${siteConfig.agent.name}`}
+      className="group flex items-center gap-2 rounded-full border border-cabernet/25 bg-rose/50 py-1 pl-1 pr-3 shadow-sm transition-all hover:border-cabernet/40 hover:bg-rose hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet"
+    >
+      <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-cabernet/20 transition-transform group-hover:scale-105">
+        <Image
+          src={AGENT_CARD_IMAGE}
+          alt=""
+          fill
+          sizes="32px"
+          className="object-cover object-[center_20%]"
+        />
+      </span>
+      <span className="whitespace-nowrap text-sm font-medium text-espresso">
+        <span className="hidden xl:inline">{firstName} · </span>
+        <span className="text-cabernet">Contact</span>
+      </span>
+    </button>
   );
 }
 
