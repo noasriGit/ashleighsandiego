@@ -141,6 +141,11 @@
   color: var(--sd-cabernet) !important;
   font-weight: 600 !important;
   font-size: 1.125rem !important;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 1px 3px rgba(255, 255, 255, 0.95),
+    0 2px 6px rgba(255, 255, 255, 0.75) !important;
 }
 
 .idx-listing-card__address {
@@ -164,8 +169,8 @@
 .idx-results--map #idx-results-content {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(340px, 44%) !important;
-  gap: 0 !important;
-  column-gap: 0 !important;
+  gap: 10px !important;
+  column-gap: 10px !important;
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: hidden !important;
@@ -261,6 +266,11 @@
   font-size: 1.25rem !important;
   line-height: 1.2 !important;
   margin-bottom: 6px !important;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 1px 3px rgba(255, 255, 255, 0.95),
+    0 2px 8px rgba(255, 255, 255, 0.8) !important;
 }
 
 .idx-results--map .idx-listing-card__mls-logo {
@@ -283,6 +293,94 @@
   position: absolute !important;
   top: 10px !important;
   right: 10px !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid var(--sd-rose) !important;
+  box-shadow: 0 2px 10px rgba(42, 34, 35, 0.18) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease !important;
+}
+
+.idx-results--map .IDX-resultsSaveProperty:hover {
+  border-color: var(--sd-cabernet) !important;
+  box-shadow: 0 4px 14px rgba(103, 0, 56, 0.22) !important;
+  transform: scale(1.04) !important;
+}
+
+.idx-results--map .IDX-resultsSaveProperty idx-favorite {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  color: var(--sd-cabernet) !important;
+}
+
+.idx-results--map .IDX-resultsOpenHouse {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  top: auto !important;
+  right: auto !important;
+  max-width: calc(100% - 68px) !important;
+}
+
+.idx-results--map .IDX-resultsVirtualTour ~ .IDX-resultsOpenHouse {
+  bottom: 48px !important;
+}
+
+.idx-results--map .IDX-resultsOpenHouse a,
+.idx-results--map .IDX-resultsOpenHouse .IDX-open-house {
+  display: inline-block !important;
+  background: var(--sd-white) !important;
+  color: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
+  border-radius: 999px !important;
+  padding: 5px 12px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  line-height: 1.25 !important;
+  box-shadow: 0 2px 8px rgba(42, 34, 35, 0.12) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+.idx-results--map .IDX-resultsOpenHouse a:hover,
+.idx-results--map .IDX-resultsOpenHouse .IDX-open-house:hover {
+  background: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  border-color: var(--sd-cabernet) !important;
+}
+
+.idx-results--map .IDX-mediaContentOH {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Dynamic community title (set by idx-results-titles.js) */
+#idx-results-active-title,
+.idx-results__category--title {
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-size: 1.35rem !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  padding: 10px 0 12px !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--sd-rose) !important;
 }
 
 .idx-results--map .IDX-resultsVirtualTour {
