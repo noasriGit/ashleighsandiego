@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { ListingCard } from "@/components/idx/ListingCard";
+import { ListingsFilterBar } from "@/components/idx/ListingsFilterBar";
 import { getFeaturedListingsPage } from "@/lib/idx-api";
 import { communities } from "@/data/communities";
-import { getIdxSearchConfig } from "@/data/idx-search-config";
+import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { siteConfig } from "@/data/site-config";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
@@ -65,6 +66,7 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
 
   const label = communityLabel(community);
   const pageTitle = community ? `${label} Homes for Sale` : "Featured Homes for Sale";
+  const fullMlsUrl = getIdxBrowseUrl(community) ?? getIdxBrowseUrl() ?? "/search-homes";
 
   const communityOptions = communities.filter((c) => c.hasGuide);
 
@@ -104,48 +106,19 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
         </nav>
       </div>
 
-      {/* Hero band */}
       <Section variant="cabernet" spacing="tight">
-        <p className="hero-enter-up hero-enter-up--1 kicker text-white/70">
-          Browse homes
-        </p>
-        <h1 className="hero-enter-up hero-enter-up--2 heading-section">
-          {pageTitle}
-        </h1>
+        <p className="hero-enter-up hero-enter-up--1 kicker text-white/70">Live inventory</p>
+        <h1 className="hero-enter-up hero-enter-up--2 heading-section">{pageTitle}</h1>
         {total !== undefined && (
           <p className="hero-enter-up hero-enter-up--3 mt-2 text-white/80">
-            {total.toLocaleString()} featured {total === 1 ? "listing" : "listings"}
+            {total.toLocaleString()} featured {total === 1 ? "listing" : "listings"} in{" "}
+            {label}
           </p>
         )}
       </Section>
 
       <Section spacing="tight">
-        <div className="flex flex-wrap items-center gap-3">
-          <p className="text-sm font-medium text-espresso">Filter by community:</p>
-          <Link
-            href="/listings"
-            className={`rounded-full px-3 py-1 text-sm transition-colors ${
-              !community
-                ? "bg-cabernet text-white"
-                : "bg-rose/50 text-espresso hover:bg-rose"
-            }`}
-          >
-            All areas
-          </Link>
-          {communityOptions.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/listings?community=${c.slug}`}
-              className={`rounded-full px-3 py-1 text-sm transition-colors ${
-                community === c.slug
-                  ? "bg-cabernet text-white"
-                  : "bg-rose/50 text-espresso hover:bg-rose"
-              }`}
-            >
-              {c.name}
-            </Link>
-          ))}
-        </div>
+        <ListingsFilterBar activeCommunity={community} options={communityOptions} />
       </Section>
 
       {listings.length === 0 ? (
@@ -169,6 +142,10 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
       ) : (
         <>
           <Section>
+            <p className="mb-4 text-sm text-espresso/70">
+              Showing {listings.length.toLocaleString()}
+              {typeof total === "number" ? ` of ${total.toLocaleString()}` : ""} listings.
+            </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {listings.map((listing) => (
                 <ListingCard key={listing.id} listing={listing} />
@@ -201,19 +178,21 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
 
           {/* Full MLS upsell */}
           <Section variant="sand" spacing="tight">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="font-medium text-espresso">
-                  These are featured listings only, the full MLS has many more.
-                </p>
-                <p className="mt-1 text-sm text-espresso/70">
-                  Search the complete active inventory with maps, filters, and saved-search
-                  alerts on our search portal.
-                </p>
+            <div className="rounded-2xl border border-dove/30 bg-white p-6 shadow-sm">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="font-medium text-espresso">
+                    Need the full MLS instead of featured inventory?
+                  </p>
+                  <p className="mt-1 text-sm text-espresso/70">
+                    Open the complete results portal with map search, advanced filters, and saved
+                    search alerts.
+                  </p>
+                </div>
+                <Button href={fullMlsUrl} className="shrink-0">
+                  Open full MLS search
+                </Button>
               </div>
-              <Button href="/search-homes" className="shrink-0">
-                Search all MLS listings
-              </Button>
             </div>
           </Section>
         </>

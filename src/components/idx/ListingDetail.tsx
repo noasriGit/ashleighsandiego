@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { ListingGallery } from "@/components/idx/ListingGallery";
-import { siteConfig } from "@/data/site-config";
+import { getSdmlsIdxDisclaimer, siteConfig } from "@/data/site-config";
 import type { IdxListing } from "@/lib/idx-api";
 
 type ListingDetailProps = {
@@ -53,28 +53,41 @@ export function ListingDetail({ listing }: ListingDetailProps) {
   const locationLine = buildLocationLine(listing);
   const year = new Date().getFullYear();
   const franchiseText = siteConfig.franchiseDisclaimer.replace("{year}", String(year));
+  const sdmlsDisclaimer = getSdmlsIdxDisclaimer();
 
   const specs: SpecItem[] = [
-    listing.beds ? { label: "Beds", value: listing.beds } : null,
+    listing.beds ? { label: "Bedrooms", value: listing.beds } : null,
     listing.fullBaths
-      ? { label: "Full baths", value: listing.fullBaths }
+      ? { label: "Full Baths", value: listing.fullBaths }
       : listing.baths
-        ? { label: "Baths", value: listing.baths }
+        ? { label: "Bathrooms", value: listing.baths }
         : null,
-    listing.partialBaths ? { label: "Half baths", value: listing.partialBaths } : null,
-    listing.sqft ? { label: "Sq ft", value: Number(listing.sqft.replace(/[^0-9]/g, "")).toLocaleString() } : null,
-    listing.acres ? { label: "Lot acres", value: listing.acres } : null,
-    listing.yearBuilt ? { label: "Year built", value: listing.yearBuilt } : null,
-    listing.propertyType ? { label: "Type", value: listing.propertyType } : null,
+    listing.partialBaths ? { label: "Half Baths", value: listing.partialBaths } : null,
+    listing.sqft
+      ? {
+          label: "Square Feet",
+          value: Number(listing.sqft.replace(/[^0-9]/g, "")).toLocaleString(),
+        }
+      : null,
+    listing.acres ? { label: "Lot Acres", value: listing.acres } : null,
+    listing.yearBuilt ? { label: "Year Built", value: listing.yearBuilt } : null,
+    listing.propertyType ? { label: "Property Type", value: listing.propertyType } : null,
     listing.county ? { label: "County", value: listing.county } : null,
   ].filter((s): s is SpecItem => s !== null);
 
   const images = listing.allImages ?? (listing.imageUrl ? [listing.imageUrl] : []);
   const hasMap = Boolean(listing.latitude && listing.longitude);
+  const additionalDetails: SpecItem[] = [
+    listing.status ? { label: "Status", value: listing.status } : null,
+    listing.city ? { label: "City", value: listing.city } : null,
+    listing.state ? { label: "State", value: listing.state } : null,
+    listing.zipcode ? { label: "ZIP", value: listing.zipcode } : null,
+    listing.listingAgentId ? { label: "Listing Agent ID", value: listing.listingAgentId } : null,
+    listing.listingOfficeId ? { label: "Listing Office ID", value: listing.listingOfficeId } : null,
+  ].filter((item): item is SpecItem => item !== null);
 
   return (
-    <article className="mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-6 lg:px-8">
-      {/* Breadcrumbs */}
+    <article className="mx-auto max-w-7xl px-4 pb-20 pt-6 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" className="mb-6">
         <ol className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <li>
@@ -91,76 +104,81 @@ export function ListingDetail({ listing }: ListingDetailProps) {
         </ol>
       </nav>
 
-      {/* Gallery */}
       <ListingGallery images={images} address={displayAddr} />
 
-      {/* Main content: detail + sidebar CTA */}
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
-        {/* ── Left: listing details ── */}
-        <div>
-          {/* Price + status + address */}
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              {listing.price && (
-                <p className="text-3xl font-semibold text-cabernet sm:text-4xl">
-                  {listing.price}
-                </p>
-              )}
-              <h1 className="mt-1 text-xl font-medium text-espresso sm:text-2xl">
-                {displayAddr}
-              </h1>
-              {locationLine && (
-                <p className="mt-0.5 text-base text-espresso/70">{locationLine}</p>
-              )}
-            </div>
-            {listing.status && (
-              <span
-                className={`rounded-full px-3 py-1 text-sm font-medium ${statusBadgeClass(listing.status)}`}
-              >
-                {listing.status.charAt(0).toUpperCase() + listing.status.slice(1).toLowerCase()}
-              </span>
+      <section className="mt-7 rounded-2xl border border-dove/30 bg-white p-6 shadow-sm sm:p-8">
+        <div className="flex flex-wrap items-start justify-between gap-5">
+          <div>
+            {listing.price && (
+              <p className="text-4xl font-semibold text-cabernet sm:text-5xl">{listing.price}</p>
             )}
+            <h1 className="mt-2 text-2xl font-medium text-espresso sm:text-3xl">{displayAddr}</h1>
+            {locationLine && <p className="mt-1 text-base text-espresso/75">{locationLine}</p>}
           </div>
-
-          {/* Specs grid */}
-          {specs.length > 0 && (
-            <div className="mt-6 grid grid-cols-2 gap-3 rounded-xl border border-dove/30 bg-pearl p-5 sm:grid-cols-3 lg:grid-cols-4">
-              {specs.map(({ label, value }) => (
-                <div key={label} className="text-center">
-                  <p className="text-base font-semibold text-espresso">{value}</p>
-                  <p className="text-xs text-espresso/60">{label}</p>
-                </div>
-              ))}
-            </div>
+          {listing.status && (
+            <span
+              className={`rounded-full px-3 py-1 text-sm font-medium ${statusBadgeClass(listing.status)}`}
+            >
+              {listing.status.charAt(0).toUpperCase() + listing.status.slice(1).toLowerCase()}
+            </span>
           )}
+        </div>
+        {specs.length > 0 && (
+          <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {specs.map(({ label, value }) => (
+              <div key={label} className="rounded-xl border border-dove/30 bg-pearl p-3 text-center">
+                <p className="text-base font-semibold text-espresso">{value}</p>
+                <p className="mt-1 text-[11px] uppercase tracking-wide text-espresso/65">{label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
 
-          {/* Remarks */}
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="space-y-6">
           {listing.remarks && (
-            <div className="mt-8">
+            <Card className="bg-white p-6">
               <h2 className="heading-card text-cabernet">About This Home</h2>
-              <p className="mt-3 leading-relaxed text-espresso/90 whitespace-pre-line">
+              <p className="mt-3 whitespace-pre-line leading-relaxed text-espresso/90">
                 {listing.remarks}
               </p>
-            </div>
+            </Card>
           )}
 
-          {/* Map */}
+          {additionalDetails.length > 0 && (
+            <Card className="bg-white p-6">
+              <h2 className="heading-card text-cabernet">Additional Details</h2>
+              <div className="mt-4 grid gap-2">
+                {additionalDetails.map(({ label, value }) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between border-b border-dove/20 py-2 text-sm last:border-b-0"
+                  >
+                    <span className="text-espresso/70">{label}</span>
+                    <span className="font-medium text-espresso">{value}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+
           {hasMap && (
-            <div className="mt-8">
+            <Card className="bg-white p-6">
               <h2 className="heading-card text-cabernet">Location</h2>
               <div className="mt-3 overflow-hidden rounded-xl border border-dove/30">
                 <iframe
                   title={`Map showing location of ${displayAddr}`}
                   src={buildMapUrl(listing.latitude!, listing.longitude!)}
                   width="100%"
-                  height="320"
+                  height="360"
                   className="block"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <p className="mt-1 text-xs text-espresso/50">
-                Map data ©{" "}
+              <p className="mt-2 text-xs text-espresso/55">
+                Map data by{" "}
                 <a
                   href="https://www.openstreetmap.org/copyright"
                   target="_blank"
@@ -169,33 +187,31 @@ export function ListingDetail({ listing }: ListingDetailProps) {
                 >
                   OpenStreetMap
                 </a>{" "}
-                contributors
+                contributors.
               </p>
-            </div>
+            </Card>
           )}
 
-          {/* Attribution + IDX link */}
           {listing.detailUrl && (
-            <div className="mt-8">
+            <Card className="bg-white p-6">
               <a
                 href={listing.detailUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-cabernet underline hover:text-cabernet/80"
+                className="text-sm font-medium text-cabernet underline hover:text-cabernet/80"
               >
-                View full MLS record on our search portal ↗
+                View full MLS record on our search portal
               </a>
-            </div>
+            </Card>
           )}
         </div>
 
-        {/* ── Right: CTA sidebar ── */}
         <aside className="space-y-4">
           <Card accent="cabernet" elevated className="sticky top-24">
             <h2 className="heading-card text-cabernet">Interested in This Home?</h2>
             <p className="mt-2 text-sm text-espresso/80">
-              Book a free strategy call to discuss this listing, get a comparative market
-              analysis, or schedule a tour.
+              Book a free buyer strategy call to review this listing, compare nearby homes, and
+              map out your strongest offer approach.
             </p>
             <Button href="/contact" className="mt-4 w-full">
               {siteConfig.ctas.strategyCall}
@@ -211,24 +227,19 @@ export function ListingDetail({ listing }: ListingDetailProps) {
                 </a>
               </p>
             )}
-            <div className="mt-4 border-t border-dove/30 pt-4 text-xs text-espresso/60 space-y-1">
+            <div className="mt-4 space-y-1 border-t border-dove/30 pt-4 text-xs text-espresso/60">
               <p>{siteConfig.agent.name}</p>
               <p>{siteConfig.brokerage.name}</p>
-              {siteConfig.agent.dreNumber && (
-                <p>DRE #{siteConfig.agent.dreNumber}</p>
-              )}
+              {siteConfig.agent.dreNumber && <p>DRE #{siteConfig.agent.dreNumber}</p>}
             </div>
           </Card>
         </aside>
       </div>
 
-      {/* Disclaimers */}
-      <footer className="mt-12 space-y-2 border-t border-dove/30 pt-6 text-xs text-espresso/55 leading-relaxed">
-        {listing.listingAgentId && (
-          <p>Listing agent ID: {listing.listingAgentId}.</p>
-        )}
+      <footer className="mt-12 space-y-2 border-t border-dove/30 pt-6 text-xs leading-relaxed text-espresso/55">
         <p>{franchiseText}</p>
         <p>{siteConfig.disclaimer}</p>
+        <p>{sdmlsDisclaimer}</p>
       </footer>
     </article>
   );

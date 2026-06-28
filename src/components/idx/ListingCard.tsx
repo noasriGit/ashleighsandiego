@@ -19,45 +19,85 @@ type ListingCardProps = {
 //   listing.isOnSite === false → <a href={detailUrl}> to the branded subdomain
 //                                 (savedlinks result or supplemental listing)
 export function ListingCard({ listing, size = "default" }: ListingCardProps) {
-  const specs = [
-    listing.beds && `${listing.beds} bd`,
-    listing.baths && `${listing.baths} ba`,
-    listing.sqft && `${listing.sqft} sqft`,
-  ].filter(Boolean);
-
   const compact = size === "compact";
-  const imageHeight = compact ? "h-40" : "h-48";
+  const imageRatio = compact ? "aspect-[4/3]" : "aspect-video";
   const bodyPadding = compact ? "p-4" : "p-5";
-  const priceSize = compact ? "text-base" : "text-lg";
+  const priceSize = compact ? "text-xl" : "text-2xl";
 
   const displayAddr =
     listing.displayAddress !== false ? listing.address : "Address withheld";
+  const locationLine = [listing.city, listing.state, listing.zipcode]
+    .filter(Boolean)
+    .join(", ");
+  const imageCount = listing.allImages?.length ?? (listing.imageUrl ? 1 : 0);
+  const statusLabel = listing.status
+    ? listing.status.charAt(0).toUpperCase() + listing.status.slice(1).toLowerCase()
+    : undefined;
+  const specs = [
+    listing.beds && `${listing.beds} Beds`,
+    listing.baths && `${listing.baths} Baths`,
+    listing.sqft && `${Number(listing.sqft.replace(/[^0-9]/g, "")).toLocaleString()} Sq Ft`,
+  ].filter(Boolean);
 
   const inner = (
-    <Card hover className="overflow-hidden p-0">
-      {listing.imageUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element -- external MLS image host, varies per listing
-        <img
-          src={listing.imageUrl}
-          alt={displayAddr}
-          className={`${imageHeight} w-full object-cover`}
-          loading="lazy"
-        />
-      ) : (
-        <div
-          className={`flex ${imageHeight} w-full items-center justify-center bg-rose/40 text-sm text-espresso/50`}
-        >
-          No photo available
-        </div>
-      )}
+    <Card
+      hover
+      className="group overflow-hidden border border-dove/35 bg-white p-0 transition-all duration-200 hover:-translate-y-0.5 hover:border-cabernet/40"
+    >
+      <div className={`relative ${imageRatio} overflow-hidden bg-rose/30`}>
+        {listing.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element -- external MLS image host, varies per listing
+          <img
+            src={listing.imageUrl}
+            alt={displayAddr}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-sm text-espresso/55">
+            No photo available
+          </div>
+        )}
+
+        {statusLabel && (
+          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-cabernet shadow-sm backdrop-blur">
+            {statusLabel}
+          </span>
+        )}
+
+        {imageCount > 1 && (
+          <span className="absolute bottom-3 right-3 rounded-full bg-espresso/75 px-2.5 py-1 text-xs font-medium text-white">
+            {imageCount} photos
+          </span>
+        )}
+      </div>
+
       <div className={bodyPadding}>
         {listing.price && (
-          <p className={`${priceSize} font-semibold text-cabernet`}>{listing.price}</p>
+          <p className={`${priceSize} font-semibold leading-tight text-cabernet`}>{listing.price}</p>
         )}
-        <p className="mt-1 text-sm text-espresso">{displayAddr}</p>
-        {listing.city && <p className="text-sm text-espresso/70">{listing.city}</p>}
+        <p className="mt-2 line-clamp-2 text-sm font-medium text-espresso">{displayAddr}</p>
+        {locationLine && (
+          <p className="mt-1 text-xs uppercase tracking-wide text-espresso/60">{locationLine}</p>
+        )}
+
         {specs.length > 0 && (
-          <p className="mt-2 text-sm text-espresso/80">{specs.join(" \u00b7 ")}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {specs.map((spec) => (
+              <span
+                key={spec}
+                className="rounded-full border border-dove/35 bg-pearl px-2.5 py-1 text-xs font-medium text-espresso/85"
+              >
+                {spec}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {!listing.price && !locationLine && specs.length === 0 && (
+          <p className="mt-3 text-sm text-espresso/65">
+            View listing details and current market status.
+          </p>
         )}
       </div>
     </Card>
@@ -66,13 +106,12 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
   const linkLabel = [
     listing.price,
     displayAddr,
-    listing.city,
+    locationLine || listing.city,
     specs.length > 0 ? specs.join(", ") : undefined,
   ]
     .filter(Boolean)
     .join(" — ");
 
-  // On-site featured listing: use Next.js Link for client-side navigation.
   if (listing.isOnSite && listing.idxId && listing.listingId) {
     return (
       <Link
@@ -85,7 +124,6 @@ export function ListingCard({ listing, size = "default" }: ListingCardProps) {
     );
   }
 
-  // Savedlinks / non-featured listing: external link to the branded subdomain.
   if (listing.detailUrl) {
     return (
       <a

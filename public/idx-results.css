@@ -1037,3 +1037,58 @@
     justify-content: center;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Hardening overrides (v9)
+   - Protect against IDX template selector drift.
+   - Keep map, grid, and photos stable when wrappers are enabled.
+   ═══════════════════════════════════════════════════════════════════ */
+
+#IDX-resultsContainer .IDX-resultsPhoto img,
+#IDX-resultsContainer .IDX-resultsPhotoImg,
+.IDX-resultsPhoto img,
+.idx-listing-card__image,
+.idx-listing-card__link img {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+}
+
+#IDX-resultsMap,
+#IDX-resultsMapWrap,
+.IDX-resultsMapWrap,
+#IDX-mapWrapper,
+#IDX-map,
+.idx-map {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.idx-results__listings,
+.idx-results__category,
+#IDX-resultsContainer .IDX-resultsCellsContainer,
+#IDX-resultsContainer .IDX-grid,
+#IDX-resultsContainer .IDX-resultsRow {
+  width: 100% !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .idx-listing-card__actions a,
+  .idx-listing-card__actions .IDX-resultsAction,
+  .IDX-resultsCellActions a,
+  .IDX-resultsCellActions .IDX-resultsAction {
+    width: auto !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #IDX-resultsContainer .IDX-resultsCellsContainer,
+  #IDX-resultsContainer .IDX-grid,
+  #IDX-resultsContainer .idx-results__listings,
+  #IDX-resultsContainer .idx-results__category {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}

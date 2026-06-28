@@ -495,3 +495,69 @@ body.IDX-wrapper-standard,
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---- Template drift hardening (v4) ---- */
+@media (min-width: 1024px) {
+  .IDX-wrapper-standard #IDX-detailsWrapper .IDX-row,
+  .IDX-wrapper-standard #IDX-detailsContainer .IDX-row,
+  .IDX-wrapper-standard #IDX-detailsBody .IDX-row,
+  .IDX-wrapper-standard .IDX-detailsMainWrap,
+  .IDX-wrapper-standard .IDX-detailsPageWrap {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 340px !important;
+    gap: 32px !important;
+    align-items: start !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsContact,
+  .IDX-wrapper-standard .IDX-detailsContactForm,
+  .IDX-wrapper-standard .IDX-contactForm {
+    position: sticky !important;
+    top: 6rem !important;
+    align-self: start !important;
+  }
+}
+
+.IDX-wrapper-standard #IDX-mainPhotos img,
+.IDX-wrapper-standard #IDX-detailsTopPhotos img,
+.IDX-wrapper-standard .IDX-galleryImage,
+.IDX-wrapper-standard .IDX-photo img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 280px !important;
+  object-fit: cover !important;
+  display: block !important;
+  position: static !important;
+}
+
+.IDX-wrapper-standard .IDX-detailsStatus,
+.IDX-wrapper-standard #IDX-detailsStatus,
+.IDX-wrapper-standard .IDX-statusLabel,
+.IDX-wrapper-standard .IDX-field-status .IDX-text {
+  text-transform: capitalize !important;
+}
+
+.IDX-wrapper-standard .IDX-status-active,
+.IDX-wrapper-standard [class*="active"] .IDX-detailsStatus,
+.IDX-wrapper-standard [class*="Active"] .IDX-detailsStatus {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+.IDX-wrapper-standard .IDX-status-pending,
+.IDX-wrapper-standard [class*="pending"] .IDX-detailsStatus,
+.IDX-wrapper-standard [class*="Pending"] .IDX-detailsStatus {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.IDX-wrapper-standard .IDX-status-sold,
+.IDX-wrapper-standard .IDX-status-closed,
+.IDX-wrapper-standard [class*="sold"] .IDX-detailsStatus,
+.IDX-wrapper-standard [class*="Sold"] .IDX-detailsStatus,
+.IDX-wrapper-standard [class*="closed"] .IDX-detailsStatus,
+.IDX-wrapper-standard [class*="Closed"] .IDX-detailsStatus {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
