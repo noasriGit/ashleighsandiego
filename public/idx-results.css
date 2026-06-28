@@ -43,41 +43,27 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Top action bar — New Search / Modify / Save Search
+   Top action bar — hide New Search / Modify / Save Search
+   (search lives on sdcommunities.com/search-homes)
    ═══════════════════════════════════════════════════════════════ */
 
-/* Precision Listings */
+.idx-results .IDX-topAction,
+.idx-results .IDX-top-action__group,
+.idx-results .IDX-top-action__group--no-refinement,
 .idx-results .IDX-newSearch,
 .idx-results .IDX-modifySearch,
 .idx-results #IDX-saveSearch,
-/* Legacy */
-.IDX-topAction a,
+.idx-results .IDX-save-search--no-refinement,
+.IDX-topAction,
+.IDX-top-action__group,
+.IDX-top-action__group--no-refinement,
 #IDX-newSearch,
 #IDX-modifySearch,
 #IDX-refineSearchFormToggle,
 #IDX-saveSearch {
-  background-color: var(--sd-cabernet) !important;
-  border-color: var(--sd-cabernet) !important;
-  color: var(--sd-white) !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-}
-
-.idx-results .IDX-newSearch:hover,
-.idx-results .IDX-modifySearch:hover,
-.idx-results #IDX-saveSearch:hover,
-.IDX-topAction a:hover,
-#IDX-newSearch:hover,
-#IDX-modifySearch:hover,
-#IDX-refineSearchFormToggle:hover,
-#IDX-saveSearch:hover {
-  background-color: var(--sd-cabernet-dark) !important;
-  border-color: var(--sd-cabernet-dark) !important;
-}
-
-#IDX-saveSearch.IDX-disabled {
-  background-color: var(--sd-earth) !important;
-  border-color: var(--sd-earth) !important;
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -165,6 +151,69 @@
 .idx-listing-card__actions .IDX-resultsAction {
   border-radius: 8px !important;
   font-weight: 600 !important;
+}
+
+/* Map sidebar — full-width cards (Precision Listings) */
+.idx-results--map .idx-results__listings {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  padding-bottom: 48px !important;
+  box-sizing: border-box !important;
+}
+
+.idx-results--map .idx-results__category,
+.idx-results--map .idx-results__category--active {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.idx-results--map .idx-results__listing {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.idx-results--map .idx-listing-card {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.idx-results--map .idx-listing-card__content,
+.idx-results--map .idx-listing-card__content--narrow {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+.idx-results--map .idx-listing-card__link {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.idx-results--map .idx-listing-card__image,
+.idx-results--map .idx-listing-card__link img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 160px !important;
+  aspect-ratio: 4 / 3 !important;
+  object-fit: cover !important;
+}
+
+/* Results page bottom breathing room */
+.idx-results,
+#IDX-main.IDX-category-results {
+  padding-bottom: 48px !important;
+}
+
+.idx-results__listings,
+#idx-results-content {
+  padding-bottom: 48px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
