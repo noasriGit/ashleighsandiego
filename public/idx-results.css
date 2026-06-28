@@ -1124,3 +1124,44 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
+
+/* Final safety override: disable IDX split map layout and keep full-width cards. */
+.idx-results--map .idx-results__content,
+#IDX-resultsContainer .idx-results--map .idx-results__content,
+#IDX-resultsContainer .idx-results--map #IDX-resultsRow,
+#IDX-resultsRow.idx-results--map,
+#IDX-resultsRow.idx-results--map.IDX-row {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+.idx-results--map #IDX-map,
+.idx-results--map .idx-map,
+.idx-results--map #IDX-resultsMap,
+.idx-results--map #IDX-resultsMapWrap,
+.idx-results--map .IDX-resultsMapWrap,
+#IDX-resultsContainer .idx-results--map #IDX-map,
+#IDX-resultsContainer .idx-results--map #IDX-resultsMap,
+#IDX-resultsContainer .idx-results--map #IDX-resultsMapWrap,
+#IDX-resultsContainer .idx-results--map .IDX-resultsMapWrap {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.idx-results--map .idx-results__listings,
+.idx-results--map .idx-results__category,
+#IDX-resultsContainer .idx-results--map .IDX-resultsCellsContainer,
+#IDX-resultsContainer .idx-results--map .IDX-grid,
+#IDX-resultsContainer .idx-results--map .IDX-resultsCell {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
