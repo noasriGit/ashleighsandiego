@@ -1,63 +1,63 @@
 {
   "_comment": "Manual IDX saved-search overrides. Run `npm run idx:sync-searches` to populate from the IDX API after creating saved links in the Control Panel. Keys match community slugs from communities.ts.",
   "_general": {
-    "savedSearchId": "3794",
+    "savedSearchId": "4387",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/general"
   },
   "_military": {
-    "savedSearchId": "3793",
+    "savedSearchId": "4386",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/military"
   },
   "la-jolla": {
-    "savedSearchId": "3780",
+    "savedSearchId": "4373",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/la-jolla"
   },
   "pacific-beach": {
-    "savedSearchId": "3781",
+    "savedSearchId": "4374",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/pacific-beach"
   },
   "clairemont": {
-    "savedSearchId": "3783",
+    "savedSearchId": "4376",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/clairemont"
   },
   "mission-valley": {
-    "savedSearchId": "3784",
+    "savedSearchId": "4377",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/mission-valley"
   },
   "del-mar": {
-    "savedSearchId": "3785",
+    "savedSearchId": "4378",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/del-mar"
   },
   "carmel-valley": {
-    "savedSearchId": "3786",
+    "savedSearchId": "4379",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/carmel-valley"
   },
   "point-loma": {
-    "savedSearchId": "3787",
+    "savedSearchId": "4380",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/point-loma"
   },
   "bay-park": {
-    "savedSearchId": "3789",
+    "savedSearchId": "4382",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/bay-park"
   },
   "ocean-beach": {
-    "savedSearchId": "3790",
+    "savedSearchId": "4383",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/ocean-beach"
   },
   "hillcrest": {
-    "savedSearchId": "3791",
+    "savedSearchId": "4384",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/hillcrest"
   },
   "north-park": {
-    "savedSearchId": "3792",
+    "savedSearchId": "4385",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/north-park"
   },
   "university-city": {
-    "savedSearchId": "3782",
+    "savedSearchId": "4375",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/university-city"
   },
   "sorrento-valley": {
-    "savedSearchId": "3788",
+    "savedSearchId": "4381",
     "savedSearchUrl": "https://sdcommunities.idxbroker.com/i/sorrento-valley"
   }
 }

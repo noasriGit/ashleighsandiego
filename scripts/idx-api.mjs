@@ -60,11 +60,38 @@ export async function fetchSavedLinks(apiKey) {
 
 /**
  * Create a saved link via PUT /clients/savedlinks.
+ *
+ * IDX expects nested queryString params in bracket notation:
+ *   queryString[zipcode][]=92037  (not queryString=zipcode%5B%5D%3D92037)
+ *
+ * Accepts either a flat `fields` object (legacy) or an explicit `zipCodes`/`cityIds`
+ * array so the body is built with proper nesting.
+ *
  * @returns API response (may include new link ID depending on account API version).
  */
 export async function createSavedLink(apiKey, fields) {
-  const body = new URLSearchParams(fields).toString();
-  return idxRequest(apiKey, "PUT", "/clients/savedlinks", body);
+  const { linkName, linkTitle, pageTitle, zipCodes, cityIds, idxID } = fields;
+
+  const params = new URLSearchParams();
+  if (linkName) params.set("linkName", linkName);
+  if (linkTitle) params.set("linkTitle", linkTitle);
+  if (pageTitle) params.set("pageTitle", pageTitle);
+
+  // IDX MLS prefix — required so the saved link targets the right feed.
+  const mlsId = idxID ?? "d010";
+  params.set("queryString[idxID]", mlsId);
+
+  // Zip codes / city IDs as array params.
+  if (Array.isArray(zipCodes)) {
+    zipCodes.forEach((zip) => params.append("queryString[zipcode][]", zip));
+  }
+  if (Array.isArray(cityIds)) {
+    cityIds.forEach((id) => params.append("queryString[city][]", String(id)));
+  }
+
+  params.append("queryString[a_status][]", "active");
+
+  return idxRequest(apiKey, "PUT", "/clients/savedlinks", params.toString());
 }
 
 /** List accepted PUT fields (empty PUT per IDX API docs). */

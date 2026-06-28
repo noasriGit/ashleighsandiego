@@ -16,7 +16,6 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { loadEnvFiles } from "./load-env.mjs";
 import { loadCommunitySearchTargets } from "./idx-communities.mjs";
-import { buildIdxQueryString } from "./idx-search-query.mjs";
 import {
   createSavedLink,
   fetchSavedLinks,
@@ -92,19 +91,17 @@ for (const target of targets) {
 
   const linkName = slug.replace(/^_/, "");
   const title = `${name} Homes for Sale`;
-  const queryString = buildIdxQueryString({ zipCodes });
 
   const fields = {
     linkName,
     linkTitle: title,
     pageTitle: `${title} | San Diego Relocation Home Guide`,
-    queryString,
+    zipCodes,
   };
 
   console.log(`  ${apply ? "+" : "→"} ${slug}`);
   console.log(`      linkName:     ${linkName}`);
   console.log(`      zips:         ${zipCodes.join(", ")}`);
-  console.log(`      queryString:  ${queryString}`);
 
   if (!apply) continue;
 
