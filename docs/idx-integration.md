@@ -47,8 +47,8 @@ in production. None of these require code changes.
 - [x] IDX subdomain: `sdcommunities.idxbroker.com` (no custom CNAME required)
 - [ ] **Includes wrapper** configured (Header/Footer URLs — see section 4)
 - [ ] Hosted assets deployed on sdcommunities.com (`idx-header.html`, `idx-footer.html`, CSS files)
-- [ ] Results custom CSS uploaded OR loaded via `idx-header.html` (see section 4)
-- [ ] Detail custom CSS uploaded OR loaded via `idx-header.html` (see section 4)
+- [ ] Results/detail CSS deployed and linked from `idx-footer.html` — see section 4
+      (panel paste into Categories → Results / Designs → Details is optional backup)
 
 ### Widget
 
@@ -131,18 +131,31 @@ Optional later: a fully branded host like `search.sdcommunities.com` via CNAME �
 - Re-upload or redeploy whenever `siteConfig.nav`, agent/brokerage details, or the franchise
   disclaimer change — hosted HTML is a static copy and does not track the main site automatically
 
-### Why Static wrapper breaks Results CSS
+### CSS loading (root cause, verified 2026-06-28)
 
-IDX injects **Static** wrapper HTML into the page body. Any `<link>` or `<style>` in that
-header (including `@import` in Global Custom CSS or in linked CSS files) can prevent
-**Categories → Results** Custom CSS from loading. Symptoms:
+Earlier versions assumed IDX strips `<link>`/`<script>` from the wrapper. **That is false
+for this account.** Inspecting the live rendered results page
+(`sdcommunities.idxbroker.com/idx/results/listings?...`) shows **both** the header
+`<link ... idx-wrapper.css>` **and** the footer `<script>` present in the served HTML, and
+`idx-results.css` / `idx-detail.css` return HTTP 200. IDX strips **nothing**.
 
-- Results look correct with wrapper **disabled**
-- Results lose styling with wrapper **enabled**, even after pasting `idx-results.css` or
-  adding `@import url("https://sdcommunities.com/idx-results.css");` to Global CSS
+So the wrapper itself never broke the pages. The real failure modes were operational:
 
-**Fix:** use an **Includes (cURL) wrapper** — IDX fetches header/footer from your site and
-loads styles from hosted files outside IDX's broken injection path.
+- A `<script>` loader works, but a plain `<link>` is simpler and is the standard channel.
+- The brand CSS must load **after** IDX's default head stylesheets to win the cascade —
+  hence results/detail `<link>`s live in `idx-footer.html` (bottom of body), not the header.
+- The CDN caches each CSS URL; **bump `?v=`** after editing a CSS file or the old version
+  keeps serving.
+
+**Current design (v12):** load everything via `<link>`, single source of truth = the hosted
+files in `public/`.
+
+1. `idx-header.html` → fonts `<link>` + `<link>` to `idx-wrapper.css?v=12` (header/footer chrome).
+2. `idx-footer.html` → `<link>` to `idx-results.css?v=12` and `idx-detail.css?v=12`
+   (loaded last so the brand layer overrides IDX defaults).
+
+Pasting the CSS into the **Custom CSS panels** (Categories → Results, Designs → Details) is an
+optional backup, not required.
 
 ### Middleware upload checklist (Designs panel)
 
@@ -156,17 +169,14 @@ these steps whenever `public/idx-header.html`, `public/idx-footer.html`, or the 
 
 Hosted fragments:
 
-The header file loads fonts + wrapper CSS only. **Results and detail CSS load from
-`idx-footer.html` only** — do NOT add them to the header. This ensures our custom CSS
-applies after IDX's own stylesheets (fixes partial styling: buttons styled but photos/map broken).
+The header loads fonts + `idx-wrapper.css` via `<link>`. The footer loads
+`idx-results.css` + `idx-detail.css` via `<link>` (placed last so they apply after IDX's
+default stylesheets). All four files are hosted on `sdcommunities.com`.
 
 | URL | Repo file |
 |-----|-----------|
 | `https://sdcommunities.com/idx-header.html` | [public/idx-header.html](../public/idx-header.html) |
 | `https://sdcommunities.com/idx-footer.html` | [public/idx-footer.html](../public/idx-footer.html) |
-
-The footer file loads `idx-results.css` and `idx-detail.css` via `<link>` tags **before**
-the `<footer>` markup.
 
 1. Go to **Design → Website → Wrappers** (some accounts: **Designs → Wrapper**).
 2. Create or edit the SD Communities wrapper.
@@ -176,54 +186,53 @@ the `<footer>` markup.
 6. Save and set this wrapper as **Primary** for `sdcommunities.idxbroker.com`.
 7. **Clear Static wrapper fields** if you previously pasted HTML there (leave blank or delete old wrapper).
 
-After switching to Includes:
-
-- **Remove** `@import url("https://sdcommunities.com/idx-results.css");` from **Global Custom CSS** (duplicate; styles load from header).
-- Categories → Results / Details Custom CSS is **optional** when header links are live (keep as backup if you prefer).
+The wrapper `<link>` tags load the CSS directly — no Custom CSS panel paste required (Steps 2/3
+are optional backup).
 
 Verify hosted files in a browser before saving in IDX:
 
-- `https://sdcommunities.com/idx-header.html`
-- `https://sdcommunities.com/idx-footer.html`
-- `https://sdcommunities.com/idx-wrapper.css` (must **not** contain `@import`)
+- `https://sdcommunities.com/idx-header.html` (fonts + `idx-wrapper.css` `<link>`s)
+- `https://sdcommunities.com/idx-footer.html` (`idx-results.css` + `idx-detail.css` `<link>`s)
+- `https://sdcommunities.com/idx-wrapper.css` (no `@import`)
 - `https://sdcommunities.com/idx-results.css`
 - `https://sdcommunities.com/idx-detail.css`
 
-#### Step 1b — Static wrapper (avoid — breaks Results CSS)
+#### Step 1b — Static wrapper
 
-Do **not** use Static wrapper with `<link>` tags. If you must use Static, use HTML-only
-fragments with inline `style=""` attributes and no stylesheets — see
-[`docs/idx-wrapper.html`](idx-wrapper.html) for the warning. Prefer Includes instead.
+A Static wrapper with `<link>` tags is fine (IDX does not strip them). Prefer **Includes** so
+the hosted files stay the single source of truth. See [`docs/idx-wrapper.html`](idx-wrapper.html).
 
-#### Step 2 — Results custom CSS (optional if header links deployed)
+#### Step 2 — Results custom CSS (OPTIONAL backup)
+
+Results CSS already loads from the footer `<link>`. Only do this if you want a panel-level
+backup or override:
 
 1. Go to **Design → Website → Custom CSS → Categories → Results**
    (some accounts: **Designs → Results → Custom CSS** — same field).
-2. Confirm the active results template (Standard, Platinum Grid, etc.).
-3. Select **all** existing CSS in the Results category, delete it, and paste the **entire**
-   contents of [`docs/idx-results.css`](idx-results.css) (full swap, not an append).
-4. Save Changes.
+2. Select **all** existing CSS in the Results category, delete it, and paste the **entire**
+   contents of [`public/idx-results.css`](../public/idx-results.css) (full swap, not an append).
+3. Save Changes.
 
-**If results still look unstyled with Includes wrapper:**
+**If results still look unstyled:**
 
-- Confirm `https://sdcommunities.com/idx-header.html` includes the `idx-results.css` link and returns 200.
-- Hard refresh in incognito; confirm `#IDX-resultsContainer` exists in DevTools.
-- Re-upload [`docs/idx-results.css`](idx-results.css) under **Categories → Results** as backup.
-
-**Do not rely on Global `@import` with wrapper enabled** — it does not fix Static wrapper interference and adds another `@import` that can block other stylesheets.
+- Confirm `idx-footer.html` (deployed) contains the `idx-results.css` `<link>` and the file
+  returns HTTP 200; **bump `?v=`** if you edited the CSS but the CDN serves an old copy.
+- Clear the IDX **wrapper cache** (Design → Wrappers) — Includes are cached ~3 hours.
+- Hard refresh in incognito; confirm `#IDX-main`/`.idx-results` exists and the cabernet/pearl
+  rules appear in DevTools computed styles.
 
 **If wrapper header/footer is unstyled:**
 
-- Deploy `public/idx-wrapper.css` (no `@import`) and confirm the URL loads.
-- Confirm Includes Header URL points to `idx-header.html`, not old Static paste.
+- Confirm `idx-wrapper.css` returns HTTP 200 and the header `<link>` points to it (bump `?v=`).
+- Confirm Includes Header URL points to `idx-header.html`, not an old Static paste.
 
-#### Step 3 — Details custom CSS (optional if header links deployed)
+#### Step 3 — Details custom CSS (OPTIONAL backup)
 
-1. Go to **Designs → Details**.
-2. Confirm the active template is **Standard**.
-3. Open the **Custom CSS** tab.
-4. Paste the **entire** contents of [`docs/idx-detail.css`](idx-detail.css) (full swap).
-5. Save.
+Detail CSS already loads from the footer `<link>`. To add a panel backup:
+
+1. Go to **Designs → Details** → active template **Standard** → **Custom CSS** tab.
+2. Paste the **entire** contents of [`public/idx-detail.css`](../public/idx-detail.css) (full swap).
+3. Save.
 
 #### Step 4 — Optional results CTA band
 
@@ -261,11 +270,16 @@ selector is missing, note the actual class/id and patch the CSS file before re-u
 
 **Common fixes:**
 
+- **ALL idx pages unstyled (raw Bootstrap)** → the deployed `idx-footer.html` is missing the
+  `idx-results.css`/`idx-detail.css` `<link>`s, the CSS files 404, or the IDX wrapper cache is
+  stale. Redeploy, confirm the files return 200, **bump `?v=`**, and clear the wrapper cache.
+- Edited CSS not showing → CDN is serving the cached `?v=` URL; bump the version in the wrapper.
 - Wrapper header/footer missing → wrapper not set as Primary, or Includes URLs wrong / not deployed.
-- **Results CSS works without wrapper but breaks with Static wrapper** → switch to **Includes** wrapper (`idx-header.html` + `idx-footer.html`). Remove Global `@import`. Do not paste `<link>` into Static header.
-- Styles partially applied → old Custom CSS not fully replaced; Bootstrap greens still visible.
-- Fonts not loading → confirm Google Fonts `<link>` in `idx-header.html` (not `@import` in CSS).
-- **Buttons styled but photos/map/grid broken** → results CSS was loading before IDX defaults. Redeploy `idx-footer.html` (loads `idx-results.css` after content) and hard refresh.
+- Wrapper header/footer **unstyled** → `idx-wrapper.css` 404s or the header `<link>` is wrong;
+  redeploy and confirm the file returns 200.
+- Styles partially applied → results/detail CSS loaded before IDX defaults; confirm the
+  `<link>`s are in `idx-footer.html` (bottom of body), not the header.
+- Fonts not loading → confirm the Google Fonts `<link>` in `idx-header.html` returns 200.
 
 ### Optional custom CNAME (not required for launch)
 
@@ -433,10 +447,10 @@ Run after uploading wrapper + CSS (section 4). Test in incognito at **375px** (m
 |-------|-----------|---------------------|
 | Includes header | `public/idx-header.html` | Deploy → `https://sdcommunities.com/idx-header.html` → Wrappers → Includes Header URL |
 | Includes footer | `public/idx-footer.html` | Deploy → `https://sdcommunities.com/idx-footer.html` → Wrappers → Includes Footer URL |
-| Wrapper CSS | `public/idx-wrapper.css` | Deploy (linked from header; no `@import`) |
-| Results CSS | `public/idx-results.css` | Deploy (linked from header) + optional Categories → Results |
-| Detail CSS | `public/idx-detail.css` | Deploy (linked from header) + optional Designs → Details |
-| Static wrapper (avoid) | `docs/idx-wrapper.html` | Warning doc only — use Includes instead |
+| Wrapper CSS | `public/idx-wrapper.css` | Deploy → linked from `idx-header.html` (`?v=`) |
+| Results CSS | `public/idx-results.css` | Deploy → linked from `idx-footer.html` (`?v=`); optional Categories → Results backup |
+| Detail CSS | `public/idx-detail.css` | Deploy → linked from `idx-footer.html` (`?v=`); optional Designs → Details backup |
+| Static wrapper (reference) | `docs/idx-wrapper.html` | Prefer Includes |
 
 ---
 

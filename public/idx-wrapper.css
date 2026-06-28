@@ -1,7 +1,7 @@
 /*
  * Wrapper-only styles for sdcommunities.idxbroker.com (header + footer).
- * Loaded via public/idx-header.html — NO @import (blocks other stylesheets).
- * Fonts: load via separate <link> in idx-header.html, not here.
+ * Loaded via <link> from public/idx-header.html (IDX does NOT strip <link>).
+ * Fonts load via a separate <link> in idx-header.html, not here. No @import.
  */
 .sd-header {
   position: sticky;

@@ -1,18 +1,13 @@
-<script>
-(function () {
-  var v = "11";
-  var sheets = [
-    "https://sdcommunities.com/idx-results.css?v=" + v,
-    "https://sdcommunities.com/idx-detail.css?v=" + v
-  ];
-  sheets.forEach(function (href) {
-    var el = document.createElement("link");
-    el.rel = "stylesheet";
-    el.href = href;
-    document.head.appendChild(el);
-  });
-})();
-</script>
+<!--
+  IDX wrapper footer (Includes / Static).
+  Results/detail CSS loads here via plain <link> (verified 2026-06-28: IDX does NOT
+  strip <link> or <script> — both survive in the live rendered page). Placing the
+  links in the footer makes them apply AFTER IDX's default head stylesheets, so the
+  brand layer wins the cascade. Bump ?v= after editing the CSS files so the CDN
+  serves the new version.
+-->
+<link rel="stylesheet" href="https://sdcommunities.com/idx-results.css?v=12" />
+<link rel="stylesheet" href="https://sdcommunities.com/idx-detail.css?v=12" />
 
 <footer class="sd-footer" id="sd-site-footer">
   <div class="sd-footer-inner">

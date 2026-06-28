@@ -1,7 +1,17 @@
+<!--
+  IDX wrapper header (Includes / Static).
+  Verified 2026-06-28 against the live rendered page: IDX strips NOTHING from the
+  wrapper — both <link> and <script> survive into the served HTML. So load CSS the
+  simple way, via <link> (single source of truth = the hosted CSS files):
+    - fonts + idx-wrapper.css here (header chrome)
+    - idx-results.css + idx-detail.css in idx-footer.html, so they cascade AFTER
+      IDX's default head stylesheets.
+  Bump ?v= whenever a CSS file changes so the CDN serves the new version.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Marcellus&amp;display=swap" />
-<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css" />
+<link rel="stylesheet" href="https://sdcommunities.com/idx-wrapper.css?v=12" />
 
 <header class="sd-header" id="sd-site-header">
   <div class="sd-header-row">

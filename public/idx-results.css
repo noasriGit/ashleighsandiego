@@ -1,12 +1,13 @@
 /*
- * IDX Results — Brand Layer (v11)
+ * IDX Results — Brand Layer (v12)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
  *
  * Deployed at:  https://sdcommunities.com/idx-results.css
- * Loaded from:  public/idx-footer.html  (after IDX default stylesheets)
- * Also paste:   Design → Website → Custom CSS → Categories → Results
+ * Loaded from:  public/idx-footer.html via <link> (after IDX default stylesheets).
+ *               IDX does NOT strip <link>/<script> (verified on the live page).
+ *               Optional backup: paste into Custom CSS → Categories → Results.
  */
 
 /* ═══════════════════════════════════════════════════════════════

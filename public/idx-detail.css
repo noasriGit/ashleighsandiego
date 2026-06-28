@@ -1,12 +1,13 @@
 /*
- * IDX Detail — Brand Layer (v11)
+ * IDX Detail — Brand Layer (v12)
  * Targets the Elm Street Standard Details template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
  *
  * Deployed at:  https://sdcommunities.com/idx-detail.css
- * Loaded from:  public/idx-footer.html  (after IDX default stylesheets)
- * Also paste:   Designs → Details → Custom CSS
+ * Loaded from:  public/idx-footer.html via <link> (after IDX default stylesheets).
+ *               IDX does NOT strip <link>/<script> (verified on the live page).
+ *               Optional backup: paste into Custom CSS → Designs → Details.
  */
 
 /* ═══════════════════════════════════════════════════════════════
