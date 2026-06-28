@@ -4,6 +4,9 @@ export const SITE_DOMAIN = "sdcommunities.com";
 /** IDX Broker search host (sdcommunities.idxbroker.com). */
 export const IDX_SEARCH_DOMAIN = "sdcommunities.idxbroker.com";
 
+/** San Diego MLS feed id on sdcommunities.idxbroker.com (listings use idxID d010). */
+export const IDX_MLS_ID = "d010";
+
 export const siteConfig = {
   name: "San Diego Relocation Home Guide",
   tagline:

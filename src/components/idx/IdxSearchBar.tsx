@@ -83,8 +83,8 @@ export function IdxSearchBar({
     const preset = PRICE_PRESETS.find((p) => p.value === pricePreset);
 
     const searchUrl = resolveIdxSearchFromFilters(IDX_BASE_URL, config, {
-      minPrice: preset && "minPrice" in preset ? preset.minPrice : undefined,
-      maxPrice: preset && "maxPrice" in preset ? preset.maxPrice : undefined,
+      minPrice: preset?.minPrice,
+      maxPrice: preset?.maxPrice,
       minBed: minBed ? Number(minBed) : undefined,
     });
 

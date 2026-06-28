@@ -1,7 +1,10 @@
 // Build IDX Broker search URLs from community search config.
 // See: https://support.idxbroker.com/hc/en-us/articles/34489458510619
+//
+// Results pages honor IDX shortcodes (lp/hp/bd/tb), not minPrice/maxPrice/minBed.
 
 import type { IdxSearchConfig } from "@/data/idx-search-config";
+import { IDX_MLS_ID } from "@/data/site-config";
 
 const IDX_RESULTS_PATH = "/idx/results/listings";
 
@@ -63,17 +66,27 @@ export function buildIdxSearchUrl(
 
   const minPrice = options.minPrice ?? config.minPrice;
   const maxPrice = options.maxPrice ?? config.maxPrice;
-  if (minPrice != null) params.set("minPrice", String(minPrice));
-  if (maxPrice != null) params.set("maxPrice", String(maxPrice));
-  if (options.minBed != null) params.set("minBed", String(options.minBed));
-  if (options.minBath != null) params.set("minBath", String(options.minBath));
+  // IDX results.php reads lp (low) / hp (high) price shortcodes, not minPrice/maxPrice.
+  if (minPrice != null) params.set("lp", String(minPrice));
+  if (maxPrice != null) params.set("hp", String(maxPrice));
+  if (options.minBed != null) params.set("bd", String(options.minBed));
+  if (options.minBath != null) params.set("tb", String(options.minBath));
+
+  params.set("idxID", IDX_MLS_ID);
 
   // Active listings only (standard IDX saved-link default).
   params.append("a_status[]", "active");
 
-  if (params.toString() === "a_status%5B%5D=active") {
-    // No geographic filter, only useful for _general when no saved search exists.
-    if (zipCodes.length === 0 && config.cityIds.length === 0) return root;
+  const hasGeo = zipCodes.length > 0 || config.cityIds.length > 0;
+  const hasCriteria =
+    hasGeo ||
+    minPrice != null ||
+    maxPrice != null ||
+    options.minBed != null ||
+    options.minBath != null;
+
+  if (!hasCriteria) {
+    return root;
   }
 
   return `${root}${IDX_RESULTS_PATH}?${params.toString()}`;
