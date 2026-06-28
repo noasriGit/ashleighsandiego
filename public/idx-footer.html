@@ -1,5 +1,18 @@
-<link rel="stylesheet" href="https://sdcommunities.com/idx-results.css?v=10" />
-<link rel="stylesheet" href="https://sdcommunities.com/idx-detail.css?v=10" />
+<script>
+(function () {
+  var v = "11";
+  var sheets = [
+    "https://sdcommunities.com/idx-results.css?v=" + v,
+    "https://sdcommunities.com/idx-detail.css?v=" + v
+  ];
+  sheets.forEach(function (href) {
+    var el = document.createElement("link");
+    el.rel = "stylesheet";
+    el.href = href;
+    document.head.appendChild(el);
+  });
+})();
+</script>
 
 <footer class="sd-footer" id="sd-site-footer">
   <div class="sd-footer-inner">
