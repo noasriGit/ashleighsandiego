@@ -108,7 +108,7 @@ export function Hero({
               width={backgroundImageWidth}
               height={backgroundImageHeight}
               priority
-              quality={75}
+              quality={90}
               sizes="100vw"
               className="h-full w-full object-contain"
             />
@@ -125,7 +125,7 @@ export function Hero({
                   alt={backgroundImageAlt}
                   fill
                   priority
-                  quality={75}
+                  quality={90}
                   sizes="100vw"
                   className="object-cover"
                   style={{ objectPosition: toObjectPosition(backgroundImagePosition) }}
@@ -137,7 +137,7 @@ export function Hero({
                 alt={backgroundImageAlt}
                 fill
                 priority
-                quality={75}
+                quality={90}
                 sizes="100vw"
                 className={cn(
                   "object-cover",

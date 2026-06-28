@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site-config";
 import { cn } from "@/lib/utils";
 
-const AUTO_OPEN_KEY = "contact-card-auto-opened";
 const DISMISSED_KEY = "contact-card-dismissed";
 
 type HeaderContactContextValue = {
@@ -45,6 +44,8 @@ export function HeaderContactProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
+    if (!allowAutoOpen) return;
+
     const hero = document.querySelector("[data-page-hero]");
     if (!hero) {
       const frame = window.requestAnimationFrame(() => setPastHero(true));
@@ -63,19 +64,7 @@ export function HeaderContactProvider({ children }: { children: ReactNode }) {
 
     observer.observe(hero);
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!allowAutoOpen) return;
-    if (!pastHero) return;
-
-    const alreadyAutoOpened = sessionStorage.getItem(AUTO_OPEN_KEY) === "true";
-    if (!alreadyAutoOpened) {
-      const frame = window.requestAnimationFrame(() => setOpen(true));
-      sessionStorage.setItem(AUTO_OPEN_KEY, "true");
-      return () => window.cancelAnimationFrame(frame);
-    }
-  }, [allowAutoOpen, pastHero]);
+  }, [allowAutoOpen]);
 
   function handleDismiss() {
     setOpen(false);
@@ -146,7 +135,7 @@ export function HeaderContactPanel() {
       )}
       {...(!open ? { inert: true } : {})}
     >
-      <div className="min-h-0 overflow-hidden border-t border-surface-muted bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90">
+      <div className="min-h-0 overflow-hidden border-t border-surface-muted bg-background shadow-lg">
         <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
           <div className="relative">
             <AgentContactCard id="header-contact-card" />

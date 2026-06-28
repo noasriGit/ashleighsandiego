@@ -1,14 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import { IdxSearchBar } from "@/components/idx/IdxSearchBar";
 import {
   HeaderContactNavSlot,
   HeaderContactPanel,
   HeaderContactProvider,
 } from "@/components/layout/HeaderContactCard";
 import { cn } from "@/lib/utils";
+
+const IdxSearchBar = dynamic(
+  () => import("@/components/idx/IdxSearchBar").then((mod) => mod.IdxSearchBar),
+  { ssr: false },
+);
 
 type HeaderInteractiveProps = {
   items: ReadonlyArray<{ label: string; href: string }>;

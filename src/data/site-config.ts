@@ -20,7 +20,7 @@ export const siteConfig = {
     dreNumber: "02351643",
     email: "AshleighDodero@bhhscal.com",
     phone: "703-229-2810",
-    photo: "/images/heroes/contact.jpg",
+    photo: "/images/hero2.JPG",
     bio: "Independent buyer guidance for relocating, military/VA, and first-time buyers across the La Jolla area and coastal San Diego.",
     instagram: {
       handle: "@ashleighdodero_realestate",

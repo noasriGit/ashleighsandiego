@@ -257,7 +257,6 @@ h6 {
   transition:
     opacity 0.7s ease,
     transform 0.7s ease;
-  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -298,12 +297,11 @@ h6 {
 }
 
 .hero-enter-bg {
-  animation: hero-enter-bg 1.4s ease-out both;
+  animation: hero-enter-bg 0.8s ease-out both;
 }
 
 .hero-enter-up {
-  animation: hero-enter-up 0.65s ease both;
-  will-change: opacity, transform;
+  animation: hero-enter-up 0.45s ease both;
 }
 
 .hero-enter-up--panel {

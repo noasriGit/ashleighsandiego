@@ -78,7 +78,7 @@ export default async function HomePage() {
         subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego, including first-time buyers, military/VA buyers, and out-of-area movers."
         primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
-        backgroundImage="/images/heroes/home.jpg"
+        backgroundImage="/images/hero1.jpg"
         backgroundImageAlt="San Diego coastal homes and neighborhoods"
         backgroundImageFit="cover"
         backgroundImagePosition="object-top"
@@ -214,7 +214,7 @@ export default async function HomePage() {
 
       <Section
         variant="espresso"
-        backgroundImage="/images/heroes/moving-to-la-jolla.jpg"
+        backgroundImage="/images/lajolla.jpg"
         backgroundImageAlt="Aerial view of La Jolla coastline, beach, and Pacific Ocean"
       >
         <div className="grid items-center gap-10 lg:grid-cols-2">

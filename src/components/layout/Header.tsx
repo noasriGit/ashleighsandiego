@@ -12,7 +12,7 @@ function navLinkLabel(item: (typeof siteConfig.nav)[number], compact = false) {
 
 export function Header() {
   return (
-    <header className="site-header relative sticky top-0 z-50 border-b border-surface-muted bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header className="site-header relative sticky top-0 z-50 border-b border-surface-muted bg-background">
       <div className="mx-auto flex max-w-6xl items-center px-4 py-4 pr-16 sm:px-6 sm:pr-20 lg:px-8 lg:pr-8">
         <Link
           href="/"
