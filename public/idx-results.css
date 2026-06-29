@@ -1,5 +1,5 @@
 /*
- * IDX Results — Brand Layer (v18 — welcome banner theme)
+ * IDX Results — Brand Layer (v19 — leadToolsBar theme)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -926,9 +926,60 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Welcome banner / subheader + global notices (all IDX pages)
-   DOM: #IDX-Subheader, #IDX-subheader, .alert, #IDX-registrationDefaultMessage
+   Welcome banner / lead toolbar + global notices (all IDX pages)
+   DOM: #IDX-leadToolsBar, #IDX-Subheader, .alert, #IDX-registrationDefaultMessage
    ═══════════════════════════════════════════════════════════════ */
+
+/* Lead welcome toolbar — replaces IDX default green (#8bc650) bar */
+#IDX-leadToolsBar,
+.IDX-leadToolsBar {
+  background-color: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  font-family: var(--sd-font-body) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  padding: 12px 16px !important;
+  margin: 0 0 8px !important;
+  min-height: 44px !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  border: none !important;
+  border-bottom: 1px solid var(--sd-cabernet-dark) !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, 0.08) !important;
+}
+
+#IDX-leadToolsBar a,
+.IDX-leadToolsBar a,
+#IDX-leadToolsBar .IDX-btn,
+.IDX-leadToolsBar .IDX-btn {
+  color: var(--sd-white) !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 4px !important;
+  min-height: auto !important;
+}
+
+#IDX-leadToolsBar a:hover,
+.IDX-leadToolsBar a:hover,
+#IDX-leadToolsBar .IDX-btn:hover,
+.IDX-leadToolsBar .IDX-btn:hover {
+  color: var(--sd-pearl) !important;
+  background: transparent !important;
+}
+
+#IDX-leadToolsBar strong,
+#IDX-leadToolsBar b,
+.IDX-leadToolsBar strong,
+.IDX-leadToolsBar b {
+  color: var(--sd-white) !important;
+  font-weight: 700 !important;
+}
 
 #IDX-Subheader,
 #IDX-subheader,
@@ -1051,6 +1102,13 @@
 }
 
 @media (max-width: 767px) {
+  #IDX-leadToolsBar,
+  .IDX-leadToolsBar {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+    line-height: 1.45 !important;
+  }
+
   #IDX-Subheader,
   #IDX-subheader,
   .IDX-Subheader,
