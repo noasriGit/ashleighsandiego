@@ -1,5 +1,5 @@
 /*
- * IDX Results — Brand Layer (v13 — mobile)
+ * IDX Results — Brand Layer (v14 — mobile/tablet)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -725,9 +725,7 @@
     overflow-y: visible !important;
     max-height: none !important;
   }
-}
 
-@media (max-width: 767px) {
   #idx-results-map-toggle,
   #idx-mobile-map-toggle {
     display: flex !important;
@@ -736,17 +734,7 @@
     margin: 8px 0 !important;
   }
 
-  #IDX-resultsCountWrap {
-    margin-left: 12px !important;
-    margin-right: 12px !important;
-  }
-
-  .idx-results,
-  #IDX-main.IDX-category-results {
-    overflow-x: hidden !important;
-  }
-
-  /* Map-mode cards → standard vertical list layout */
+  /* Map-mode cards → standard vertical list layout (stacked map view) */
   .idx-results--map .idx-listing-card {
     min-height: auto !important;
     height: auto !important;
@@ -828,6 +816,40 @@
     min-height: 44px !important;
     padding: 0 16px !important;
     font-size: 12px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #IDX-main .container,
+  #IDX-main .IDX-pageContainer,
+  .idx-results .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #IDX-main [class*="col-"],
+  .idx-results [class*="col-"] {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #IDX-resultsCountWrap {
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+  }
+
+  .idx-results,
+  #IDX-main.IDX-category-results {
+    overflow-x: hidden !important;
   }
 
   /* Pagination — centered, tappable */

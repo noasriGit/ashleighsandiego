@@ -1,5 +1,5 @@
 /*
- * IDX Detail — Brand Layer (v13 — mobile)
+ * IDX Detail — Brand Layer (v14 — mobile/tablet)
  * Targets the Elm Street Standard Details template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -369,37 +369,43 @@ body.IDX-wrapper-standard,
   }
 }
 
+@media (min-width: 1024px) and (max-height: 750px) {
+  .IDX-wrapper-standard #IDX-detailsContact,
+  .IDX-wrapper-standard .IDX-detailsContactForm,
+  .IDX-wrapper-standard .IDX-contactForm {
+    position: static !important;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════
-   Mobile
+   Mobile + tablet (single column, stacked tables)
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .IDX-wrapper-standard #IDX-detailsContainer {
-    padding: 16px 12px 40px !important;
+    padding: 20px 16px 48px !important;
   }
 
-  .IDX-wrapper-standard #IDX-detailsPrice,
-  .IDX-wrapper-standard .IDX-detailsPrice {
-    font-size: 1.5rem !important;
+  .IDX-wrapper-standard #IDX-detailsContainer > .IDX-row,
+  .IDX-wrapper-standard #IDX-detailsWrapper > .IDX-row,
+  .IDX-wrapper-standard .IDX-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
-  .IDX-wrapper-standard #IDX-detailsAddress,
-  .IDX-wrapper-standard .IDX-detailsAddress {
-    font-size: 1.1rem !important;
+  .IDX-wrapper-standard [class*="col-"] {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .IDX-wrapper-standard #IDX-mainPhotos img,
   .IDX-wrapper-standard #IDX-detailsTopPhotos img,
   .IDX-wrapper-standard .IDX-galleryImage,
   .IDX-wrapper-standard .IDX-photo img {
-    min-height: 200px !important;
-    border-radius: 12px !important;
-  }
-
-  .IDX-wrapper-standard #IDX-detailsGallery,
-  .IDX-wrapper-standard #IDX-mainPhotos,
-  .IDX-wrapper-standard .IDX-galleryWrap {
-    margin-bottom: 12px !important;
+    min-height: 220px !important;
     border-radius: 12px !important;
   }
 
@@ -468,5 +474,35 @@ body.IDX-wrapper-standard,
   .IDX-wrapper-standard #IDX-detailsMap iframe,
   .IDX-wrapper-standard .IDX-detailsMapWrap iframe {
     min-height: 240px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .IDX-wrapper-standard #IDX-detailsContainer {
+    padding: 16px 12px 40px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsPrice,
+  .IDX-wrapper-standard .IDX-detailsPrice {
+    font-size: 1.5rem !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsAddress,
+  .IDX-wrapper-standard .IDX-detailsAddress {
+    font-size: 1.1rem !important;
+  }
+
+  .IDX-wrapper-standard #IDX-mainPhotos img,
+  .IDX-wrapper-standard #IDX-detailsTopPhotos img,
+  .IDX-wrapper-standard .IDX-galleryImage,
+  .IDX-wrapper-standard .IDX-photo img {
+    min-height: 200px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsGallery,
+  .IDX-wrapper-standard #IDX-mainPhotos,
+  .IDX-wrapper-standard .IDX-galleryWrap {
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
   }
 }

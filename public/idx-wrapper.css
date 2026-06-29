@@ -3,6 +3,21 @@
  * Loaded via <link> from public/idx-header.html (IDX does NOT strip <link>).
  * Fonts load via a separate <link> in idx-header.html, not here. No @import.
  */
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+#IDX-main,
+.IDX-pageContainer,
+.IDX-wrapper-standard #IDX-detailsContainer {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
 .sd-header {
   position: sticky;
   top: 0;
@@ -114,7 +129,6 @@
 
 .sd-header .sd-mobile-menu {
   margin-left: auto;
-  position: relative;
 }
 
 @media (min-width: 1024px) {
@@ -143,6 +157,7 @@
   position: absolute;
   left: 0;
   right: 0;
+  width: 100%;
   top: 100%;
   background: #ffffff;
   border-bottom: 1px solid #ece3e5;
@@ -182,8 +197,26 @@
   text-decoration: none;
 }
 
-.sd-header .sd-search-pill {
+.sd-header-row--search .sd-search-pill {
   display: inline-flex;
+}
+
+.sd-header-row--search .sd-search-bar {
+  display: none;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .sd-header-row--search .sd-search-pill {
+    display: none;
+  }
+
+  .sd-header-row--search .sd-search-bar {
+    display: block;
+  }
+}
+
+.sd-header .sd-search-pill {
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
