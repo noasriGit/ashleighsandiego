@@ -4,6 +4,9 @@
 
 const API_BASE = "https://api.idxbroker.com";
 
+/** IDX system property types included in saved searches and browse URLs. */
+const RESIDENTIAL_PROPERTY_TYPES = ["sfr", "cnd", "mfr"];
+
 export async function idxRequest(apiKey, method, path, body) {
   const headers = {
     accesskey: apiKey,
@@ -88,6 +91,10 @@ export async function createSavedLink(apiKey, fields) {
   if (Array.isArray(cityIds)) {
     cityIds.forEach((id) => params.append("queryString[city][]", String(id)));
   }
+
+  RESIDENTIAL_PROPERTY_TYPES.forEach((pt) =>
+    params.append("queryString[pt][]", pt),
+  );
 
   params.append("queryString[a_status][]", "active");
 

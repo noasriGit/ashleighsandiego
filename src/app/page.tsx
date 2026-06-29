@@ -15,6 +15,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import { getLaunchCommunities } from "@/data/communities";
 import { communityContent } from "@/data/community-content";
+import { getHomeStatBandStats } from "@/data/home-stats";
 import { splitSections } from "@/data/page-images";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
@@ -89,14 +90,7 @@ export default async function HomePage() {
         mobileContactCard
       />
 
-      <StatBand
-        stats={[
-          { value: "13", label: "Neighborhood Guides" },
-          { value: `${siteConfig.geo.radiusMiles}-mile`, label: "Radius from La Jolla" },
-          { value: "5", label: "Buyer Paths" },
-          { value: "1", label: "Local Guide" },
-        ]}
-      />
+      <StatBand stats={getHomeStatBandStats()} />
 
       <Section kicker="Find Your Path">
         <h2 className="heading-section text-cabernet">Where Are You in Your Move?</h2>

@@ -20,6 +20,7 @@
 // Only import this module from Server Components / server code.
 
 import { getIdxSearchConfig } from "@/data/idx-search-config";
+import { filterResidentialListings } from "@/lib/idx-residential-filter";
 import { normalizeIdxUrl } from "@/lib/idx-search-url";
 import { cache } from "react";
 
@@ -239,10 +240,11 @@ function normalizeEnvelope(
   isOnSite: boolean,
 ): IdxListing[] {
   const { listings } = unwrapEnvelope(data);
-  return listings
-    .map((r) => normalizeListing(r, isOnSite))
-    .filter((l): l is IdxListing => l !== null)
-    .slice(0, limit);
+  return filterResidentialListings(
+    listings
+      .map((r) => normalizeListing(r, isOnSite))
+      .filter((l): l is IdxListing => l !== null),
+  ).slice(0, limit);
 }
 
 function isApiEnabled(): boolean {
@@ -303,9 +305,11 @@ const getAllFeaturedListingsCached = cache(async (): Promise<IdxListing[]> => {
     if (!data) break;
 
     const { listings: raw, next } = unwrapEnvelope(data);
-    const normalized = raw
-      .map((r) => normalizeListing(r, true))
-      .filter((l): l is IdxListing => l !== null);
+    const normalized = filterResidentialListings(
+      raw
+        .map((r) => normalizeListing(r, true))
+        .filter((l): l is IdxListing => l !== null),
+    );
 
     all.push(...normalized);
 
@@ -340,9 +344,11 @@ const getFeaturedListingCached = cache(
     if (!data) break;
 
     const { listings: raw, next } = unwrapEnvelope(data);
-    const normalized = raw
-      .map((r) => normalizeListing(r, true))
-      .filter((l): l is IdxListing => l !== null);
+    const normalized = filterResidentialListings(
+      raw
+        .map((r) => normalizeListing(r, true))
+        .filter((l): l is IdxListing => l !== null),
+    );
 
     const found = normalized.find(
       (listing) => listing.idxId === idxId && listing.listingId === listingId,
@@ -386,9 +392,11 @@ export async function getFeaturedListingsPage(
   if (!data) return { listings: [], hasMore: false };
 
   const { listings: raw, next, total } = unwrapEnvelope(data);
-  const listings = raw
-    .map((r) => normalizeListing(r, true))
-    .filter((l): l is IdxListing => l !== null);
+  const listings = filterResidentialListings(
+    raw
+      .map((r) => normalizeListing(r, true))
+      .filter((l): l is IdxListing => l !== null),
+  );
 
   return {
     listings,

@@ -5,6 +5,7 @@
 
 import type { IdxSearchConfig } from "@/data/idx-search-config";
 import { IDX_MLS_ID } from "@/data/site-config";
+import { RESIDENTIAL_IDX_PROPERTY_TYPES } from "@/lib/idx-residential-filter";
 
 const IDX_RESULTS_PATH = "/idx/results/listings";
 
@@ -73,7 +74,11 @@ export function buildIdxSearchUrl(
   if (maxPrice != null) params.set("hp", String(maxPrice));
   if (options.minBed != null) params.set("bd", String(options.minBed));
   if (options.minBath != null) params.set("tb", String(options.minBath));
-  if (options.propertyType) params.set("pt", options.propertyType);
+  if (options.propertyType) {
+    params.set("pt", options.propertyType);
+  } else {
+    RESIDENTIAL_IDX_PROPERTY_TYPES.forEach((pt) => params.append("pt[]", pt));
+  }
 
   params.set("idxID", IDX_MLS_ID);
 
@@ -81,13 +86,15 @@ export function buildIdxSearchUrl(
   params.append("a_status[]", "active");
 
   const hasGeo = zipCodes.length > 0 || config.cityIds.length > 0;
+  const appliesResidentialFilter = !options.propertyType;
   const hasCriteria =
     hasGeo ||
     minPrice != null ||
     maxPrice != null ||
     options.minBed != null ||
     options.minBath != null ||
-    Boolean(options.propertyType);
+    Boolean(options.propertyType) ||
+    appliesResidentialFilter;
 
   if (!hasCriteria) {
     return root;

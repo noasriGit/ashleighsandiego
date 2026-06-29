@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ListingDetail } from "@/components/idx/ListingDetail";
 import { getFeaturedListing } from "@/lib/idx-api";
+import { isResidentialListing } from "@/lib/idx-residential-filter";
 import { siteConfig } from "@/data/site-config";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
@@ -12,7 +13,7 @@ export async function generateMetadata({
   const { idxId, listingId } = await params;
   const listing = await getFeaturedListing(idxId, listingId);
 
-  if (!listing) {
+  if (!listing || !isResidentialListing(listing)) {
     return { title: "Listing Not Found" };
   }
 
@@ -40,7 +41,7 @@ export default async function ListingDetailPage({
   const { idxId, listingId } = await params;
   const listing = await getFeaturedListing(idxId, listingId);
 
-  if (!listing) {
+  if (!listing || !isResidentialListing(listing)) {
     notFound();
   }
 
