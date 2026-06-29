@@ -45,6 +45,7 @@ body {
 
 .sd-header-row--search {
   border-top: 1px solid #ece3e5;
+  background: #f5f1f2;
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 12px;

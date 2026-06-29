@@ -1,5 +1,5 @@
 /*
- * IDX Results — Brand Layer (v17 — hide mobile footer bar)
+ * IDX Results — Brand Layer (v18 — welcome banner theme)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -926,18 +926,142 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Alerts / notices
+   Welcome banner / subheader + global notices (all IDX pages)
+   DOM: #IDX-Subheader, #IDX-subheader, .alert, #IDX-registrationDefaultMessage
    ═══════════════════════════════════════════════════════════════ */
 
+#IDX-Subheader,
+#IDX-subheader,
+.IDX-Subheader,
+#IDX-SubheaderWrap,
+.IDX-subheader,
+.IDX-subheader-content,
+#IDX-customSubheader {
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-left: 4px solid var(--sd-cabernet) !important;
+  border-radius: 12px !important;
+  color: var(--sd-espresso) !important;
+  font-family: var(--sd-font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  padding: 16px 20px !important;
+  margin: 16px 16px 0 !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, 0.06) !important;
+  box-sizing: border-box !important;
+}
+
+#IDX-Subheader h1,
+#IDX-Subheader h2,
+#IDX-Subheader h3,
+#IDX-subheader h1,
+#IDX-subheader h2,
+#IDX-subheader h3,
+.IDX-Subheader h1,
+.IDX-Subheader h2,
+.IDX-Subheader h3 {
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-weight: 400 !important;
+  margin: 0 0 8px !important;
+}
+
+#IDX-Subheader a,
+#IDX-subheader a,
+.IDX-Subheader a,
+.IDX-subheader a {
+  color: var(--sd-cabernet) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+#IDX-Subheader a:hover,
+#IDX-subheader a:hover,
+.IDX-Subheader a:hover,
+.IDX-subheader a:hover {
+  color: var(--sd-cabernet-dark) !important;
+  text-decoration: underline !important;
+}
+
+#IDX-Subheader p,
+#IDX-subheader p,
+.IDX-Subheader p,
+.IDX-subheader p {
+  color: var(--sd-espresso) !important;
+  margin: 0 0 8px !important;
+}
+
+#IDX-Subheader p:last-child,
+#IDX-subheader p:last-child,
+.IDX-Subheader p:last-child,
+.IDX-subheader p:last-child {
+  margin-bottom: 0 !important;
+}
+
+#IDX-main .alert,
+#IDX-main .alert-success,
+#IDX-main .alert-info,
+#IDX-main .alert-warning,
+#IDX-main .alert-danger,
 #IDX-resultsContent .alert,
 #IDX-resultsContent .alert-success,
 #IDX-resultsContent .alert-info,
-#IDX-resultsContent .alert-warning {
+#IDX-resultsContent .alert-warning,
+#IDX-resultsContent .alert-danger,
+.IDX-wrapper-standard .alert,
+.IDX-wrapper-standard .alert-success,
+.IDX-wrapper-standard .alert-info,
+.IDX-wrapper-standard .alert-warning,
+.IDX-wrapper-standard .alert-danger {
   background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
+  border-left: 4px solid var(--sd-cabernet) !important;
   border-radius: 8px !important;
   color: var(--sd-espresso) !important;
   box-shadow: none !important;
+  font-family: var(--sd-font-body) !important;
+}
+
+#IDX-main .alert a,
+#IDX-resultsContent .alert a,
+.IDX-wrapper-standard .alert a {
+  color: var(--sd-cabernet) !important;
+  font-weight: 600 !important;
+}
+
+#IDX-registrationDefaultMessage,
+.IDX-registrationDefaultMessage,
+#IDX-registrationContent > p:first-of-type {
+  background-color: var(--sd-pearl) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: 8px !important;
+  color: var(--sd-espresso) !important;
+  padding: 12px 16px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Results header band */
+.idx-results__header {
+  background-color: var(--sd-white) !important;
+  border: 1px solid var(--sd-rose) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  margin: 12px 0 16px !important;
+  box-shadow: 0 1px 4px rgba(42, 34, 35, 0.04) !important;
+}
+
+@media (max-width: 767px) {
+  #IDX-Subheader,
+  #IDX-subheader,
+  .IDX-Subheader,
+  #IDX-SubheaderWrap,
+  .IDX-subheader,
+  .IDX-subheader-content,
+  #IDX-customSubheader {
+    margin: 12px 12px 0 !important;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
