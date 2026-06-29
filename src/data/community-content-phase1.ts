@@ -113,9 +113,9 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
   "civita": {
     slug: "civita",
     heroImage: "/images/neighborhoods/civita-hero.jpg",
-    heroImageAlt: "Mission Valley West hills near Civita master-planned community",
+    heroImageAlt: "San Diego-Coronado Bridge near Civita in Mission Valley",
     thumbnail: "/images/neighborhoods/civita-thumb.jpg",
-    thumbnailAlt: "Mission Valley redevelopment hills, San Diego",
+    thumbnailAlt: "Mission Bay waterfront near Mission Valley, San Diego",
     stats: [
       { value: "92108", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -184,9 +184,9 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
   "north-clairemont": {
     slug: "north-clairemont",
     heroImage: "/images/neighborhoods/north-clairemont-hero.jpg",
-    heroImageAlt: "Hillside residential neighborhood in North Clairemont, San Diego",
+    heroImageAlt: "Balboa Park California Tower near North Clairemont, San Diego",
     thumbnail: "/images/neighborhoods/north-clairemont-thumb.jpg",
-    thumbnailAlt: "Canyon-adjacent homes in North Clairemont, San Diego",
+    thumbnailAlt: "San Diego skyline viewed from central neighborhoods",
     stats: [
       { value: "92117", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -219,9 +219,9 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
   "serra-mesa": {
     slug: "serra-mesa",
     heroImage: "/images/neighborhoods/serra-mesa-hero.jpg",
-    heroImageAlt: "Mission Valley corridor near Serra Mesa, San Diego",
+    heroImageAlt: "La Jolla coastline near Serra Mesa, San Diego",
     thumbnail: "/images/neighborhoods/serra-mesa-thumb.jpg",
-    thumbnailAlt: "Central San Diego mesa neighborhood near SDSU",
+    thumbnailAlt: "Ocean waves along the San Diego coast",
     stats: [
       { value: "92123", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -289,9 +289,9 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
   "linda-vista": {
     slug: "linda-vista",
     heroImage: "/images/neighborhoods/linda-vista-hero.jpg",
-    heroImageAlt: "Palm-lined residential street near Linda Vista, San Diego",
+    heroImageAlt: "San Diego skyline near Linda Vista and Mission Valley",
     thumbnail: "/images/neighborhoods/linda-vista-thumb.jpg",
-    thumbnailAlt: "Central San Diego neighborhood street near Linda Vista",
+    thumbnailAlt: "San Diego-Coronado Bridge and bay near central San Diego",
     stats: [
       { value: "92111", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -502,9 +502,9 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
   "muirlands": {
     slug: "muirlands",
     heroImage: "/images/neighborhoods/muirlands-hero.jpg",
-    heroImageAlt: "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
+    heroImageAlt: "La Jolla coastline near the Muirlands enclave",
     thumbnail: "/images/neighborhoods/muirlands-thumb.jpg",
-    thumbnailAlt: "Hillside La Jolla canyon views in Muirlands",
+    thumbnailAlt: "Sunset ocean waves along the La Jolla coast",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },

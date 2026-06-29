@@ -283,22 +283,22 @@
       }
     },
     "north-clairemont": {
-      "heroAlt": "Hillside residential neighborhood in North Clairemont, San Diego",
-      "thumbAlt": "Canyon-adjacent homes in North Clairemont, San Diego",
+      "heroAlt": "Balboa Park California Tower near North Clairemont, San Diego",
+      "thumbAlt": "San Diego skyline viewed from central neighborhoods",
       "hero": {
         "sourceType": "unsplash",
-        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
-        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
         "license": "Unsplash License",
-        "photographer": "Unsplash Contributor",
+        "photographer": "Jeremy Huang",
         "attributionRequired": false
       },
       "thumb": {
         "sourceType": "unsplash",
-        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=800",
-        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
         "license": "Unsplash License",
-        "photographer": "Unsplash Contributor",
+        "photographer": "Hakan Toker",
         "attributionRequired": false
       }
     },
@@ -323,22 +323,22 @@
       }
     },
     "linda-vista": {
-      "heroAlt": "Palm-lined residential street near Linda Vista, San Diego",
-      "thumbAlt": "Central San Diego neighborhood street near Linda Vista",
+      "heroAlt": "San Diego skyline near Linda Vista and Mission Valley",
+      "thumbAlt": "San Diego-Coronado Bridge and bay near central San Diego",
       "hero": {
         "sourceType": "unsplash",
-        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1920",
-        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
         "license": "Unsplash License",
-        "photographer": "Kevin Schmid",
+        "photographer": "Hakan Toker",
         "attributionRequired": false
       },
       "thumb": {
         "sourceType": "unsplash",
-        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=800",
-        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
         "license": "Unsplash License",
-        "photographer": "Kevin Schmid",
+        "photographer": "Unsplash Contributor",
         "attributionRequired": false
       }
     },
@@ -423,43 +423,43 @@
       }
     },
     "civita": {
-      "heroAlt": "Mission Valley West hills near Civita master-planned community",
-      "thumbAlt": "Mission Valley redevelopment hills, San Diego",
+      "heroAlt": "San Diego-Coronado Bridge near Civita in Mission Valley",
+      "thumbAlt": "Mission Bay waterfront near Mission Valley, San Diego",
       "hero": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-        "license": "CC BY-SA 3.0",
-        "photographer": "panoramio contributor",
-        "attributionRequired": true
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
       },
       "thumb": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-        "license": "CC BY-SA 3.0",
-        "photographer": "panoramio contributor",
-        "attributionRequired": true
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
       }
     },
     "serra-mesa": {
-      "heroAlt": "Mission Valley corridor near Serra Mesa, San Diego",
-      "thumbAlt": "Central San Diego mesa neighborhood near SDSU",
+      "heroAlt": "La Jolla coastline near Serra Mesa, San Diego",
+      "thumbAlt": "Ocean waves along the San Diego coast",
       "hero": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-        "license": "CC BY-SA 3.0",
-        "photographer": "panoramio contributor",
-        "attributionRequired": true
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/E1wZal9CIaM/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/E1wZal9CIaM",
+        "license": "Unsplash License",
+        "photographer": "James Lee",
+        "attributionRequired": false
       },
       "thumb": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
-        "license": "CC BY-SA 4.0",
-        "photographer": "Pi.1415926535",
-        "attributionRequired": true
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
       }
     },
     "la-jolla-cove": {
@@ -543,23 +543,23 @@
       }
     },
     "muirlands": {
-      "heroAlt": "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
-      "thumbAlt": "Hillside La Jolla canyon views in Muirlands",
+      "heroAlt": "La Jolla coastline near the Muirlands enclave",
+      "thumbAlt": "Sunset ocean waves along the La Jolla coast",
       "hero": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
-        "license": "CC0",
-        "photographer": "Wikimedia contributor",
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/5PUidNQ6ZX4/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/5PUidNQ6ZX4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
         "attributionRequired": false
       },
       "thumb": {
-        "sourceType": "wikimedia",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
-        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
-        "license": "CC BY-SA 3.0",
-        "photographer": "Wikimedia contributor",
-        "attributionRequired": true
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/JvmYnjpxA8M/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/JvmYnjpxA8M",
+        "license": "Unsplash License",
+        "photographer": "James Lee",
+        "attributionRequired": false
       }
     },
     "mount-soledad": {

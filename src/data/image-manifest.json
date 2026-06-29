@@ -882,16 +882,16 @@
       "route": "/neighborhoods/north-clairemont",
       "filePath": "/images/neighborhoods/north-clairemont-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Hillside residential neighborhood in North Clairemont, San Diego",
+      "altText": "Balboa Park California Tower near North Clairemont, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+          "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
           "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
+          "photographer": "Jeremy Huang",
           "attributionRequired": false
         }
       ]
@@ -903,16 +903,16 @@
       "route": "/neighborhoods/north-clairemont",
       "filePath": "/images/neighborhoods/north-clairemont-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Canyon-adjacent homes in North Clairemont, San Diego",
+      "altText": "San Diego skyline viewed from central neighborhoods",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
           "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
+          "photographer": "Hakan Toker",
           "attributionRequired": false
         }
       ]
@@ -966,16 +966,16 @@
       "route": "/neighborhoods/linda-vista",
       "filePath": "/images/neighborhoods/linda-vista-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Park Boulevard view through Linda Vista, San Diego",
+      "altText": "San Diego skyline near Linda Vista and Mission Valley",
       "selectedCandidateIndex": 0,
-      "status": "failed",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/University_Heights_San_Diego_Park_Blvd_view.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_San_Diego_Park_Blvd_view.jpg",
-          "license": "CC0",
-          "photographer": "Wikimedia contributor",
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
+          "license": "Unsplash License",
+          "photographer": "Hakan Toker",
           "attributionRequired": false
         }
       ]
@@ -987,16 +987,16 @@
       "route": "/neighborhoods/linda-vista",
       "filePath": "/images/neighborhoods/linda-vista-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Central San Diego mesa neighborhood near Linda Vista",
+      "altText": "San Diego-Coronado Bridge and bay near central San Diego",
       "selectedCandidateIndex": 0,
-      "status": "failed",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/University_Heights_San_Diego_Park_Blvd_view.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_San_Diego_Park_Blvd_view.jpg",
-          "license": "CC0",
-          "photographer": "Wikimedia contributor",
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor",
           "attributionRequired": false
         }
       ]
@@ -1176,17 +1176,17 @@
       "route": "/neighborhoods/civita",
       "filePath": "/images/neighborhoods/civita-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Mission Valley West hills near Civita master-planned community",
+      "altText": "San Diego-Coronado Bridge near Civita in Mission Valley",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-          "license": "CC BY-SA 3.0",
-          "photographer": "panoramio contributor",
-          "attributionRequired": true
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor",
+          "attributionRequired": false
         }
       ]
     },
@@ -1197,17 +1197,17 @@
       "route": "/neighborhoods/civita",
       "filePath": "/images/neighborhoods/civita-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Mission Valley redevelopment hills, San Diego",
+      "altText": "Mission Bay waterfront near Mission Valley, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-          "license": "CC BY-SA 3.0",
-          "photographer": "panoramio contributor",
-          "attributionRequired": true
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor",
+          "attributionRequired": false
         }
       ]
     },
@@ -1218,17 +1218,17 @@
       "route": "/neighborhoods/serra-mesa",
       "filePath": "/images/neighborhoods/serra-mesa-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Mission Valley corridor near Serra Mesa, San Diego",
+      "altText": "La Jolla coastline near Serra Mesa, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
-          "license": "CC BY-SA 3.0",
-          "photographer": "panoramio contributor",
-          "attributionRequired": true
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/E1wZal9CIaM/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/E1wZal9CIaM",
+          "license": "Unsplash License",
+          "photographer": "James Lee",
+          "attributionRequired": false
         }
       ]
     },
@@ -1239,17 +1239,17 @@
       "route": "/neighborhoods/serra-mesa",
       "filePath": "/images/neighborhoods/serra-mesa-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Central San Diego mesa neighborhood near SDSU",
+      "altText": "Ocean waves along the San Diego coast",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
-          "license": "CC BY-SA 4.0",
-          "photographer": "Pi.1415926535",
-          "attributionRequired": true
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor",
+          "attributionRequired": false
         }
       ]
     },
@@ -1428,16 +1428,16 @@
       "route": "/neighborhoods/muirlands",
       "filePath": "/images/neighborhoods/muirlands-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
+      "altText": "La Jolla coastline near the Muirlands enclave",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
-          "license": "CC0",
-          "photographer": "Wikimedia contributor",
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/5PUidNQ6ZX4/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/5PUidNQ6ZX4",
+          "license": "Unsplash License",
+          "photographer": "Unsplash Contributor",
           "attributionRequired": false
         }
       ]
@@ -1449,17 +1449,17 @@
       "route": "/neighborhoods/muirlands",
       "filePath": "/images/neighborhoods/muirlands-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Hillside La Jolla canyon views in Muirlands",
+      "altText": "Sunset ocean waves along the La Jolla coast",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
-          "sourceType": "wikimedia",
-          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
-          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
-          "license": "CC BY-SA 3.0",
-          "photographer": "Wikimedia contributor",
-          "attributionRequired": true
+          "sourceType": "unsplash",
+          "downloadUrl": "https://unsplash.com/photos/JvmYnjpxA8M/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/JvmYnjpxA8M",
+          "license": "Unsplash License",
+          "photographer": "James Lee",
+          "attributionRequired": false
         }
       ]
     },
