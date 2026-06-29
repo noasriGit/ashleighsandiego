@@ -1,5 +1,5 @@
 /*
- * IDX Detail — Brand Layer (v14 — mobile/tablet)
+ * IDX Detail — Brand Layer (v15 — mobile cleanup)
  * Targets the Elm Street Standard Details template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -230,13 +230,17 @@ body.IDX-wrapper-standard,
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Buttons
+   Buttons — primary text CTAs only (not icon-only hot actions)
+   DOM: #IDX-detailsTopActions, #IDX-detailsHotActions,
+        #IDX-detailsContact, .idx-details__mobile-menu
    ═══════════════════════════════════════════════════════════════ */
 
-.IDX-wrapper-standard .IDX-btn,
-.IDX-wrapper-standard .IDX-detailsActions a,
 .IDX-wrapper-standard #IDX-detailsContact button,
-.IDX-wrapper-standard #IDX-detailsContact input[type="submit"] {
+.IDX-wrapper-standard #IDX-detailsContact input[type="submit"],
+.IDX-wrapper-standard #IDX-detailsTopActions .IDX-btn-primary,
+.IDX-wrapper-standard #IDX-detailsTopActions a.IDX-topAction:not(.IDX-modifySearch):not(.IDX-newSearch),
+.IDX-wrapper-standard .idx-details__mobile-menu .IDX-btn,
+.IDX-wrapper-standard #idx-details-mobile-menu .IDX-btn {
   background-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
   border: none !important;
@@ -248,19 +252,287 @@ body.IDX-wrapper-standard,
   min-height: 44px !important;
   cursor: pointer !important;
   text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
 }
 
-.IDX-wrapper-standard .IDX-btn:hover,
-.IDX-wrapper-standard .IDX-detailsActions a:hover,
 .IDX-wrapper-standard #IDX-detailsContact button:hover,
-.IDX-wrapper-standard #IDX-detailsContact input[type="submit"]:hover {
+.IDX-wrapper-standard #IDX-detailsContact input[type="submit"]:hover,
+.IDX-wrapper-standard #IDX-detailsTopActions .IDX-btn-primary:hover,
+.IDX-wrapper-standard #IDX-detailsTopActions a.IDX-topAction:not(.IDX-modifySearch):not(.IDX-newSearch):hover,
+.IDX-wrapper-standard .idx-details__mobile-menu .IDX-btn:hover,
+.IDX-wrapper-standard #idx-details-mobile-menu .IDX-btn:hover {
   background-color: var(--sd-cabernet-dark) !important;
+  color: var(--sd-white) !important;
 }
 
 .IDX-wrapper-standard .IDX-btn-secondary {
   background-color: var(--sd-white) !important;
   color: var(--sd-cabernet) !important;
   border: 1px solid var(--sd-cabernet) !important;
+}
+
+/* Icon / chip buttons — virtual tour, open house, share, nav arrows */
+.IDX-wrapper-standard #IDX-detailsHotActions a,
+.IDX-wrapper-standard #IDX-detailsHotActions .IDX-btn,
+.IDX-wrapper-standard .IDX-detailsVirtualTour a,
+.IDX-wrapper-standard .IDX-detailsOpenHouse a,
+.IDX-wrapper-standard #IDX-detailsWrapper .IDX-resultsVirtualTour a,
+.IDX-wrapper-standard #IDX-detailsTopNav a,
+.IDX-wrapper-standard #IDX-detailsTopNav .IDX-btn,
+.IDX-wrapper-standard .IDX-detailsActions a {
+  background-color: var(--sd-white) !important;
+  color: var(--sd-cabernet) !important;
+  border: 1px solid var(--sd-cabernet) !important;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  font-family: var(--sd-font-body) !important;
+  font-size: 14px !important;
+  min-height: 44px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsHotActions a:hover,
+.IDX-wrapper-standard #IDX-detailsHotActions .IDX-btn:hover,
+.IDX-wrapper-standard .IDX-detailsVirtualTour a:hover,
+.IDX-wrapper-standard .IDX-detailsOpenHouse a:hover,
+.IDX-wrapper-standard #IDX-detailsWrapper .IDX-resultsVirtualTour a:hover,
+.IDX-wrapper-standard #IDX-detailsTopNav a:hover,
+.IDX-wrapper-standard .IDX-detailsActions a:hover {
+  background-color: var(--sd-pearl) !important;
+  color: var(--sd-cabernet-dark) !important;
+  border-color: var(--sd-cabernet-dark) !important;
+}
+
+/* Ensure Font Awesome / SVG icons stay visible on chip buttons */
+.IDX-wrapper-standard #IDX-detailsHotActions a i,
+.IDX-wrapper-standard #IDX-detailsHotActions a svg,
+.IDX-wrapper-standard #IDX-detailsHotActions a .fa,
+.IDX-wrapper-standard .IDX-detailsVirtualTour a i,
+.IDX-wrapper-standard .IDX-detailsVirtualTour a svg,
+.IDX-wrapper-standard .IDX-detailsOpenHouse a i,
+.IDX-wrapper-standard .IDX-detailsOpenHouse a svg,
+.IDX-wrapper-standard #IDX-detailsTopNav a i,
+.IDX-wrapper-standard #IDX-detailsTopNav a svg,
+.IDX-wrapper-standard .IDX-detailsActions a i,
+.IDX-wrapper-standard .IDX-detailsActions a svg {
+  color: inherit !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* idx-favorite web component on detail page */
+.IDX-wrapper-standard #IDX-detailsHotActions idx-favorite,
+.IDX-wrapper-standard .IDX-detailsSaveProperty idx-favorite,
+.IDX-wrapper-standard #IDX-detailsHotAction-favorite idx-favorite {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--sd-cabernet) !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Contact hot action — primary full-width CTA */
+.IDX-wrapper-standard #IDX-detailsHotAction-contact a,
+.IDX-wrapper-standard #IDX-detailsHotActions .IDX-detailsContactLink a,
+.IDX-wrapper-standard #IDX-detailsHotActions a.IDX-detailsContact {
+  background-color: var(--sd-cabernet) !important;
+  color: var(--sd-white) !important;
+  border: none !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsHotAction-contact a:hover,
+.IDX-wrapper-standard #IDX-detailsHotActions .IDX-detailsContactLink a:hover,
+.IDX-wrapper-standard #IDX-detailsHotActions a.IDX-detailsContact:hover {
+  background-color: var(--sd-cabernet-dark) !important;
+  color: var(--sd-white) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Top navigation — hide redundant search; compact prev/next
+   DOM: #IDX-detailsTopNav, #IDX-detailsTopActions
+   ═══════════════════════════════════════════════════════════════ */
+
+.IDX-wrapper-standard #IDX-detailsTopActions .IDX-modifySearch,
+.IDX-wrapper-standard #IDX-detailsTopActions .IDX-newSearch,
+.IDX-wrapper-standard #IDX-detailsTopActions #IDX-modifySearch,
+.IDX-wrapper-standard #IDX-detailsTopActions #IDX-newSearch,
+.IDX-wrapper-standard #IDX-detailsTopNav .IDX-modifySearch,
+.IDX-wrapper-standard #IDX-detailsTopNav .IDX-newSearch,
+.IDX-wrapper-standard #IDX-detailsTopNav #IDX-modifySearch,
+.IDX-wrapper-standard #IDX-detailsTopNav #IDX-newSearch {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsTopNav,
+.IDX-wrapper-standard #IDX-detailsTopActions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsTopNav .IDX-detailsTopNav--prevNext,
+.IDX-wrapper-standard #IDX-detailsTopActions .IDX-detailsTopNav--prevNext,
+.IDX-wrapper-standard #IDX-detailsTopNav .IDX-topAction--prevNext {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Hot actions — horizontal chip row (not full-width stacked pills)
+   DOM: #IDX-detailsHotActions, #IDX-detailsHotAction-print,
+        #IDX-detailsHotAction-favorite, .IDX-detailsVirtualTour
+   ═══════════════════════════════════════════════════════════════ */
+
+.IDX-wrapper-standard #IDX-detailsHotActions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+  margin: 12px 0 !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsHotActions > div {
+  flex: 0 1 auto !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsHotActions > div a,
+.IDX-wrapper-standard #IDX-detailsHotActions > div .IDX-btn {
+  width: auto !important;
+  min-width: 44px !important;
+  white-space: nowrap !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Social share + AI Redesign — in-flow, no overlap
+   DOM: #IDX-detailsShare, .IDX-shareButtons, #IDX-ai-redesign-widget
+   ═══════════════════════════════════════════════════════════════ */
+
+.IDX-wrapper-standard #IDX-detailsShare,
+.IDX-wrapper-standard .IDX-detailsShare,
+.IDX-wrapper-standard .IDX-shareButtons,
+.IDX-wrapper-standard .IDX-socialShare,
+.IDX-wrapper-standard [class*="share-buttons"],
+.IDX-wrapper-standard [class*="ShareButtons"] {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 16px 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsShare a,
+.IDX-wrapper-standard .IDX-shareButtons a,
+.IDX-wrapper-standard .IDX-socialShare a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--sd-rose) !important;
+  background-color: var(--sd-white) !important;
+  box-sizing: border-box !important;
+}
+
+.IDX-wrapper-standard #IDX-ai-redesign-widget,
+.IDX-wrapper-standard idx-ai-redesign,
+.IDX-wrapper-standard [class*="ai-redesign"],
+.IDX-wrapper-standard [class*="AI-redesign"] {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  float: none !important;
+  display: block !important;
+  max-width: 100% !important;
+  margin: 16px auto !important;
+  z-index: 1 !important;
+}
+
+/* Sticky mobile footer — favorites + print flyer (mobile only) */
+.IDX-wrapper-standard .idx-details__mobile-menu,
+.IDX-wrapper-standard #idx-details-mobile-menu,
+.IDX-wrapper-standard .IDX-detailsMobileFooter,
+.IDX-wrapper-standard #IDX-detailsMobileFooter {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .IDX-wrapper-standard .idx-details__mobile-menu,
+  .IDX-wrapper-standard #idx-details-mobile-menu,
+  .IDX-wrapper-standard .IDX-detailsMobileFooter,
+  .IDX-wrapper-standard #IDX-detailsMobileFooter {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 90 !important;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    background-color: var(--sd-white) !important;
+    border-top: 1px solid var(--sd-rose) !important;
+    box-shadow: 0 -4px 16px rgba(42, 34, 35, 0.08) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.IDX-wrapper-standard .idx-details__mobile-menu .IDX-btn,
+.IDX-wrapper-standard #idx-details-mobile-menu .IDX-btn,
+.IDX-wrapper-standard .IDX-detailsMobileFooter .IDX-btn,
+.IDX-wrapper-standard #IDX-detailsMobileFooter .IDX-btn {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-height: 44px !important;
+  font-size: 13px !important;
+  padding: 10px 12px !important;
+}
+
+/* Property header — hide empty spec fields / trailing separators */
+.IDX-wrapper-standard #IDX-detailsAddress span:empty,
+.IDX-wrapper-standard .IDX-detailsAddress span:empty,
+.IDX-wrapper-standard .IDX-detailsPropInfo span:empty,
+.IDX-wrapper-standard .IDX-detailsMiddleInfo span:empty,
+.IDX-wrapper-standard #IDX-detailsAddress .IDX-field:empty,
+.IDX-wrapper-standard .IDX-detailsPropInfo .IDX-field:empty {
+  display: none !important;
+}
+
+.IDX-wrapper-standard #IDX-detailsAddress .IDX-detailsSeparator:last-child,
+.IDX-wrapper-standard .IDX-detailsPropInfo .IDX-detailsSeparator:last-child {
+  display: none !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -322,6 +594,16 @@ body.IDX-wrapper-standard,
 
 .IDX-wrapper-standard #IDX-detailsWrapper a:hover {
   color: var(--sd-cabernet-dark) !important;
+}
+
+/* Preserve white text on filled primary buttons inside details wrapper */
+.IDX-wrapper-standard #IDX-detailsWrapper #IDX-detailsContact button,
+.IDX-wrapper-standard #IDX-detailsWrapper #IDX-detailsContact input[type="submit"],
+.IDX-wrapper-standard #IDX-detailsWrapper #IDX-detailsHotAction-contact a,
+.IDX-wrapper-standard #IDX-detailsWrapper #IDX-detailsHotActions .IDX-detailsContactLink a,
+.IDX-wrapper-standard #IDX-detailsWrapper .idx-details__mobile-menu .IDX-btn,
+.IDX-wrapper-standard #IDX-detailsWrapper #idx-details-mobile-menu .IDX-btn {
+  color: var(--sd-white) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -436,8 +718,7 @@ body.IDX-wrapper-standard,
     padding: 16px !important;
   }
 
-  .IDX-wrapper-standard .IDX-btn,
-  .IDX-wrapper-standard .IDX-detailsActions a,
+  /* Contact submit stays full-width; icon/chip buttons stay compact */
   .IDX-wrapper-standard #IDX-detailsContact button,
   .IDX-wrapper-standard #IDX-detailsContact input[type="submit"] {
     display: block !important;
@@ -446,9 +727,22 @@ body.IDX-wrapper-standard,
     min-height: 44px !important;
   }
 
+  /* Hot actions: horizontal chips, not stacked full-width blocks */
+  .IDX-wrapper-standard #IDX-detailsHotActions {
+    justify-content: flex-start !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsHotActions > div a,
+  .IDX-wrapper-standard #IDX-detailsHotActions > div .IDX-btn {
+    width: auto !important;
+  }
+
+  /* Prev/next in action row: side-by-side, not stacked */
   .IDX-wrapper-standard .IDX-detailsActions {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
     gap: 8px !important;
   }
 
@@ -456,12 +750,15 @@ body.IDX-wrapper-standard,
   .IDX-wrapper-standard .IDX-detailsVirtualTour a,
   .IDX-wrapper-standard .IDX-detailsOpenHouse a,
   .IDX-wrapper-standard #IDX-detailsWrapper .IDX-resultsVirtualTour a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    min-height: 44px !important;
-    box-sizing: border-box !important;
+    width: auto !important;
+    flex: 0 1 auto !important;
+    min-width: 44px !important;
+  }
+
+  /* Top nav: tighter layout on tablet/mobile */
+  .IDX-wrapper-standard #IDX-detailsTopNav,
+  .IDX-wrapper-standard #IDX-detailsTopActions {
+    margin-bottom: 8px !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsContact input,
@@ -479,7 +776,48 @@ body.IDX-wrapper-standard,
 
 @media (max-width: 767px) {
   .IDX-wrapper-standard #IDX-detailsContainer {
-    padding: 16px 12px 40px !important;
+    padding: 16px 12px calc(40px + 72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Hide mid-page print/favorite duplicates — sticky footer owns these on mobile */
+  .IDX-wrapper-standard #IDX-detailsHotAction-print,
+  .IDX-wrapper-standard #IDX-detailsHotAction-favorite,
+  .IDX-wrapper-standard #IDX-detailsHotActions .IDX-detailsSaveProperty {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* AI Redesign: in-flow above share bar, not floating over it */
+  .IDX-wrapper-standard #IDX-ai-redesign-widget,
+  .IDX-wrapper-standard idx-ai-redesign,
+  .IDX-wrapper-standard [class*="ai-redesign"],
+  .IDX-wrapper-standard [class*="AI-redesign"] {
+    margin: 12px 0 8px !important;
+    transform: none !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsShare,
+  .IDX-wrapper-standard .IDX-shareButtons,
+  .IDX-wrapper-standard .IDX-socialShare {
+    margin-bottom: 24px !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsHotAction-contact {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsHotAction-contact a,
+  .IDX-wrapper-standard #IDX-detailsHotActions .IDX-detailsContactLink a {
+    width: 100% !important;
+    display: flex !important;
+  }
+
+  .IDX-wrapper-standard #IDX-detailsTopNav .IDX-btn,
+  .IDX-wrapper-standard #IDX-detailsTopActions .IDX-btn {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsPrice,

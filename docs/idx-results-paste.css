@@ -54,13 +54,9 @@
 .idx-results .IDX-modifySearch,
 .idx-results #IDX-saveSearch,
 .idx-results .IDX-save-search--no-refinement,
-.IDX-topAction,
-.IDX-top-action__group,
-.IDX-top-action__group--no-refinement,
-#IDX-newSearch,
-#IDX-modifySearch,
-#IDX-refineSearchFormToggle,
-#IDX-saveSearch {
+.idx-results #IDX-newSearch,
+.idx-results #IDX-modifySearch,
+.idx-results #IDX-refineSearchFormToggle {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
