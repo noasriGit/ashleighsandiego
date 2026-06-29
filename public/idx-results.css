@@ -1,5 +1,5 @@
 /*
- * IDX Results — Brand Layer (v14 — mobile/tablet)
+ * IDX Results — Brand Layer (v15 — mobile stacked cards)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -178,18 +178,6 @@
   max-width: 100% !important;
 }
 
-.idx-results--map .idx-results__content,
-.idx-results--map #idx-results-content {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 44%) !important;
-  gap: 10px !important;
-  column-gap: 10px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box !important;
-}
-
 .idx-results--map #IDX-map,
 .idx-results--map .idx-map {
   min-width: 0 !important;
@@ -199,7 +187,6 @@
   padding: 0 !important;
 }
 
-/* Map sidebar — full-width, taller cards without overflow */
 .idx-results--map .idx-results__listings {
   width: 100% !important;
   min-width: 0 !important;
@@ -208,7 +195,6 @@
   padding-bottom: 48px !important;
   margin: 0 !important;
   overflow-x: hidden !important;
-  overflow-y: auto !important;
   box-sizing: border-box !important;
 }
 
@@ -228,7 +214,188 @@
   box-sizing: border-box !important;
 }
 
-.idx-results--map .idx-listing-card {
+/* ═══════════════════════════════════════════════════════════════
+   Map-mode cards — stacked list layout (mobile + tablet, <1200px)
+   DOM order is actions → content → image; flex order puts image first.
+   Desktop overlay layout is scoped to min-width: 1200px below.
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1199px) {
+  .idx-results--map .idx-results__content,
+  .idx-results--map #idx-results-content {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .idx-results--map #IDX-map,
+  .idx-results--map .idx-map {
+    min-height: 45vh !important;
+    max-height: 50vh !important;
+  }
+
+  .idx-results--map #idx-results-content.idx-map--toggle #IDX-map,
+  .idx-results--map #idx-results-content.idx-map--toggle .idx-map {
+    display: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .idx-results--map .idx-results__listings {
+    overflow-y: visible !important;
+    max-height: none !important;
+  }
+
+  #idx-results-map-toggle,
+  #idx-mobile-map-toggle {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 8px 0 !important;
+  }
+
+  .idx-results--map .idx-listing-card,
+  .idx-results .idx-listing-card {
+    min-height: auto !important;
+    height: auto !important;
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .idx-results--map .idx-listing-card__link,
+  .idx-results .idx-listing-card__link {
+    position: static !important;
+    inset: auto !important;
+    order: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+
+  .idx-results--map .idx-listing-card__image-overlay,
+  .idx-results .idx-listing-card__image-overlay {
+    display: none !important;
+  }
+
+  .idx-results--map .idx-listing-card__image,
+  .idx-results--map .idx-listing-card__link img,
+  .idx-results .idx-listing-card__image,
+  .idx-results .idx-listing-card__link img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 240px !important;
+    aspect-ratio: 16 / 10 !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .idx-results--map .idx-listing-card__content,
+  .idx-results--map .idx-listing-card__content--narrow,
+  .idx-results .idx-listing-card__content,
+  .idx-results .idx-listing-card__content--narrow {
+    position: static !important;
+    z-index: auto !important;
+    order: 2 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 14px !important;
+    overflow: visible !important;
+    background: var(--sd-white) !important;
+    background-color: var(--sd-white) !important;
+  }
+
+  .idx-results--map .idx-listing-card__price,
+  .idx-results .idx-listing-card__price {
+    font-size: 1.125rem !important;
+    text-shadow: none !important;
+  }
+
+  .idx-results--map .idx-listing-card__actions,
+  .idx-results .idx-listing-card__actions {
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    order: 3 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0 14px 14px !important;
+    pointer-events: auto !important;
+  }
+
+  .idx-results--map .IDX-resultsSaveProperty,
+  .idx-results .IDX-resultsSaveProperty {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .idx-results--map .IDX-resultsOpenHouse,
+  .idx-results--map .IDX-resultsVirtualTour,
+  .idx-results .IDX-resultsOpenHouse,
+  .idx-results .IDX-resultsVirtualTour {
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
+    max-width: none !important;
+  }
+
+  .idx-results--map .IDX-resultsVirtualTour ~ .IDX-resultsOpenHouse,
+  .idx-results .IDX-resultsVirtualTour ~ .IDX-resultsOpenHouse {
+    bottom: auto !important;
+  }
+
+  .idx-results--map .IDX-resultsOpenHouse a,
+  .idx-results--map .IDX-resultsOpenHouse .IDX-open-house,
+  .idx-results--map .IDX-resultsVirtualTour a,
+  .idx-results .IDX-resultsOpenHouse a,
+  .idx-results .IDX-resultsOpenHouse .IDX-open-house,
+  .idx-results .IDX-resultsVirtualTour a {
+    min-height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 12px !important;
+  }
+  .idx-results--map .idx-listing-card__status .idx-label,
+  .idx-results .idx-listing-card__status .idx-label {
+    color: var(--sd-earth) !important;
+  }
+
+  .idx-results--map .idx-listing-card__status .idx-text,
+  .idx-results .idx-listing-card__status .idx-text {
+    color: var(--sd-espresso) !important;
+  }
+}
+
+/* Map-mode cards — desktop sidebar overlay (≥1200px only) */
+
+@media (min-width: 1200px) {
+  .idx-results--map .idx-results__listings {
+    overflow-y: auto !important;
+  }
+
+  .idx-results--map .idx-results__content,
+  .idx-results--map #idx-results-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 44%) !important;
+    gap: 10px !important;
+    column-gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .idx-results--map .idx-listing-card {
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
@@ -378,27 +545,6 @@
   border-color: var(--sd-cabernet) !important;
 }
 
-.idx-results--map .IDX-mediaContentOH {
-  position: absolute !important;
-  left: -9999px !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-}
-
-/* Dynamic community title (set by idx-results-titles.js) */
-#idx-results-active-title,
-.idx-results__category--title {
-  font-family: var(--sd-font-display) !important;
-  color: var(--sd-cabernet) !important;
-  font-size: 1.35rem !important;
-  font-weight: 400 !important;
-  line-height: 1.25 !important;
-  padding: 10px 0 12px !important;
-  margin: 0 !important;
-  border-bottom: 1px solid var(--sd-rose) !important;
-}
-
 .idx-results--map .IDX-resultsVirtualTour {
   position: absolute !important;
   bottom: 12px !important;
@@ -432,6 +578,32 @@
   background: var(--sd-cabernet) !important;
   border-color: var(--sd-cabernet) !important;
   color: var(--sd-white) !important;
+}
+}
+
+.idx-results--map .IDX-mediaContentOH {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.idx-results--map .idx-listing-card__mls-logo {
+  display: none !important;
+}
+
+/* Dynamic community title (set by idx-results-titles.js) */
+#idx-results-active-title,
+.idx-results__category--title {
+  font-family: var(--sd-font-display) !important;
+  color: var(--sd-cabernet) !important;
+  font-size: 1.35rem !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  padding: 10px 0 12px !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--sd-rose) !important;
 }
 
 /* Results page bottom breathing room */
@@ -695,128 +867,6 @@
   color: var(--sd-cabernet);
   font-weight: 600;
   text-decoration: none;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   Mobile / tablet — map stack, list cards, tap targets (≤1199px)
-   ═══════════════════════════════════════════════════════════════ */
-
-@media (max-width: 1199px) {
-  .idx-results--map .idx-results__content,
-  .idx-results--map #idx-results-content {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-
-  .idx-results--map #IDX-map,
-  .idx-results--map .idx-map {
-    min-height: 45vh !important;
-    max-height: 50vh !important;
-  }
-
-  .idx-results--map #idx-results-content.idx-map--toggle #IDX-map,
-  .idx-results--map #idx-results-content.idx-map--toggle .idx-map {
-    display: none !important;
-    min-height: 0 !important;
-    max-height: none !important;
-  }
-
-  .idx-results--map .idx-results__listings {
-    overflow-y: visible !important;
-    max-height: none !important;
-  }
-
-  #idx-results-map-toggle,
-  #idx-mobile-map-toggle {
-    display: flex !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 8px 0 !important;
-  }
-
-  /* Map-mode cards → standard vertical list layout (stacked map view) */
-  .idx-results--map .idx-listing-card {
-    min-height: auto !important;
-    height: auto !important;
-    position: static !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .idx-results--map .idx-listing-card__link {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    flex-shrink: 0 !important;
-  }
-
-  .idx-results--map .idx-listing-card__image,
-  .idx-results--map .idx-listing-card__link img {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: 220px !important;
-    aspect-ratio: 16 / 10 !important;
-    object-fit: cover !important;
-  }
-
-  .idx-results--map .idx-listing-card__content,
-  .idx-results--map .idx-listing-card__content--narrow {
-    position: static !important;
-    z-index: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    padding: 14px !important;
-    overflow: visible !important;
-  }
-
-  .idx-results--map .idx-listing-card__price {
-    font-size: 1.125rem !important;
-    text-shadow: none !important;
-  }
-
-  .idx-results--map .idx-listing-card__actions {
-    position: static !important;
-    inset: auto !important;
-    z-index: auto !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 0 14px 14px !important;
-    pointer-events: auto !important;
-  }
-
-  .idx-results--map .IDX-resultsSaveProperty {
-    position: static !important;
-    top: auto !important;
-    right: auto !important;
-    width: 44px !important;
-    height: 44px !important;
-    flex-shrink: 0 !important;
-    margin-left: auto !important;
-  }
-
-  .idx-results--map .IDX-resultsOpenHouse,
-  .idx-results--map .IDX-resultsVirtualTour {
-    position: static !important;
-    bottom: auto !important;
-    left: auto !important;
-    max-width: none !important;
-  }
-
-  .idx-results--map .IDX-resultsVirtualTour ~ .IDX-resultsOpenHouse {
-    bottom: auto !important;
-  }
-
-  .idx-results--map .IDX-resultsOpenHouse a,
-  .idx-results--map .IDX-resultsOpenHouse .IDX-open-house,
-  .idx-results--map .IDX-resultsVirtualTour a {
-    min-height: 44px !important;
-    padding: 0 16px !important;
-    font-size: 12px !important;
-  }
 }
 
 @media (max-width: 1023px) {
