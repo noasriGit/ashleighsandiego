@@ -1,5 +1,5 @@
 /*
- * IDX Results — Brand Layer (v16 — mobile stacked cards + text)
+ * IDX Results — Brand Layer (v17 — hide mobile footer bar)
  * Targets the Elm Street Precision Listings / IDX Default template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -61,6 +61,15 @@
 #IDX-modifySearch,
 #IDX-refineSearchFormToggle,
 #IDX-saveSearch {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* IDX sticky mobile footer — Save / New Search / Modify / Show Map */
+.idx-results__mobile-menu,
+#idx-results-mobile-menu,
+.idx-results .idx-results__mobile-menu {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -455,7 +464,7 @@
 
   .idx-results--map .idx-results__listings,
   #IDX-main.IDX-wrapper-standard .idx-results__listings {
-    padding-bottom: calc(48px + var(--idx-mobile-menu-height, 65px)) !important;
+    padding-bottom: 24px !important;
   }
 
   #IDX-main.IDX-wrapper-standard .IDX-resultsOpenHouse a,
