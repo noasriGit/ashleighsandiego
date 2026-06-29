@@ -1,5 +1,5 @@
 /*
- * IDX Detail — Brand Layer (v15 — mobile cleanup)
+ * IDX Detail — Brand Layer (v16 — hide mobile top nav)
  * Targets the Elm Street Standard Details template.
  * Uses !important on visual properties to beat IDX's Bootstrap stylesheet
  * regardless of which wrapper type is active (Static or Includes).
@@ -359,7 +359,8 @@ body.IDX-wrapper-standard,
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Top navigation — hide redundant search; compact prev/next
+   Top navigation — hide Modify/New Search on all breakpoints;
+   hide entire top bar on mobile (Back/Prev/Next live in wrapper)
    DOM: #IDX-detailsTopNav, #IDX-detailsTopActions
    ═══════════════════════════════════════════════════════════════ */
 
@@ -814,10 +815,24 @@ body.IDX-wrapper-standard,
     display: flex !important;
   }
 
-  .IDX-wrapper-standard #IDX-detailsTopNav .IDX-btn,
-  .IDX-wrapper-standard #IDX-detailsTopActions .IDX-btn {
-    font-size: 13px !important;
-    padding: 10px 12px !important;
+  /* Hide top nav bar — Back to Results, Modify/New Search, Prev/Next */
+  .IDX-wrapper-standard #IDX-detailsTopNav,
+  .IDX-wrapper-standard #IDX-detailsTopActions,
+  .IDX-wrapper-standard .IDX-detailsTopNav,
+  .IDX-wrapper-standard .IDX-backToResults,
+  .IDX-wrapper-standard #IDX-backToResults,
+  .IDX-wrapper-standard .IDX-previousListing,
+  .IDX-wrapper-standard .IDX-nextListing,
+  .IDX-wrapper-standard #IDX-previousListing,
+  .IDX-wrapper-standard #IDX-nextListing {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
   }
 
   .IDX-wrapper-standard #IDX-detailsPrice,
