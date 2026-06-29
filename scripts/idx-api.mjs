@@ -5,7 +5,7 @@
 const API_BASE = "https://api.idxbroker.com";
 
 /** IDX system property types included in saved searches and browse URLs. */
-const RESIDENTIAL_PROPERTY_TYPES = ["sfr", "cnd", "mfr"];
+const RESIDENTIAL_PROPERTY_TYPES = ["sfr", "cnd"];
 
 export async function idxRequest(apiKey, method, path, body) {
   const headers = {

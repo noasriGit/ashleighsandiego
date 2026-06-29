@@ -1,21 +1,25 @@
 /**
- * Residential-only inventory filter for IDX listings.
+ * Owner-occupier inventory filter for IDX featured + saved-search pools.
  *
  * IDX Broker system property type codes (Settings → MLS → Property Types):
  *   sfr — Single Family Residential (houses, townhomes)
  *   cnd — Condos
- *   mfr — Multifamily Residential (apartments, duplexes)
  *
- * Excluded everywhere: commercial, land, rentals, business opportunity, farms, etc.
+ * Excluded: income / multifamily (mfr, ri), commercial, land, rentals, etc.
  */
 
-export const RESIDENTIAL_IDX_PROPERTY_TYPES = ["sfr", "cnd", "mfr"] as const;
+export const RESIDENTIAL_IDX_PROPERTY_TYPES = ["sfr", "cnd"] as const;
 
 const EXCLUDED_IDX_PROPERTY_TYPES = new Set([
   "com",
   "ld",
   "rnt",
   "ri",
+  "rentalincome",
+  "inc",
+  "income",
+  "mfr",
+  "mf",
   "bo",
   "frm",
   "lse",
@@ -24,10 +28,10 @@ const EXCLUDED_IDX_PROPERTY_TYPES = new Set([
 ]);
 
 const EXCLUDED_LABEL_PATTERN =
-  /\b(commercial|office|retail|industrial|warehouse|business opportuni|lots?\s*(&|and)\s*land|vacant land|\bland\b|farm|agricultural|rental income|\blease\b|\brent\b|mobile home|\bother\b)/i;
+  /\b(commercial|office|retail|industrial|warehouse|business opportuni|lots?\s*(&|and)\s*land|vacant land|\bland\b|farm|agricultural|rental income|residential income|\bincome propert|\bincome\b|investment propert|multi.?family|multifamily|duplex|triplex|fourplex|apartment building|\bapartments?\b|\blease\b|\brent\b|mobile home|\bother\b)/i;
 
 const RESIDENTIAL_LABEL_PATTERN =
-  /\b(single family|single-family|condo|condominium|townhome|town home|townhouse|multi.?family|multifamily|apartment|duplex|triplex|fourplex|residential|pud\b|detached)/i;
+  /\b(single family|single-family|condo|condominium|townhome|town home|townhouse|pud\b|detached)/i;
 
 /** True when a listing's property type is residential buyer inventory. */
 export function isResidentialPropertyType(propertyType?: string): boolean {
