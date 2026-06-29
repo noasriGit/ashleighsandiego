@@ -170,9 +170,9 @@ export const communityContent: Record<string, CommunityContent> = {
   "mission-valley": {
     slug: "mission-valley",
     heroImage: "/images/neighborhoods/mission-valley-hero.jpg",
-    heroImageAlt: "San Diego downtown skyline and bay",
+    heroImageAlt: "Mission Valley West commercial corridor, San Diego",
     thumbnail: "/images/neighborhoods/mission-valley-thumb.jpg",
-    thumbnailAlt: "San Diego-Coronado Bridge and downtown skyline",
+    thumbnailAlt: "Mission Valley freeway corridor and hills, San Diego",
     stats: [
       { value: "92108", label: "ZIP Code" },
       { value: "I-8 · I-805 · I-15", label: "Freeway Access" },
@@ -306,9 +306,9 @@ export const communityContent: Record<string, CommunityContent> = {
   "sorrento-valley": {
     slug: "sorrento-valley",
     heroImage: "/images/neighborhoods/sorrento-valley-hero.jpg",
-    heroImageAlt: "Geisel Library and UC San Diego campus near Sorrento Valley",
+    heroImageAlt: "Sorrento Valley biotech and office corridor, San Diego",
     thumbnail: "/images/neighborhoods/sorrento-valley-thumb.jpg",
-    thumbnailAlt: "Geisel Library at UC San Diego",
+    thumbnailAlt: "Sorrento Valley business park near I-805, San Diego",
     stats: [
       { value: "92121", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },

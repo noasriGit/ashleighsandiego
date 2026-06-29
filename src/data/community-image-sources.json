@@ -1,0 +1,866 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-29",
+  "communities": {
+    "la-jolla": {
+      "heroAlt": "La Jolla Cove coastline and Pacific Ocean, San Diego",
+      "thumbAlt": "La Jolla Cove rocks and shoreline",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/hTSD1SN8k8o/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/hTSD1SN8k8o",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "pacific-beach": {
+      "heroAlt": "Pacific Beach pier and shoreline, San Diego",
+      "thumbAlt": "Pacific Beach boardwalk and ocean on a sunny day",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/yARug8j9dYY/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/yARug8j9dYY",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "university-city": {
+      "heroAlt": "Geisel Library at UC San Diego in University City",
+      "thumbAlt": "UC San Diego Geisel Library exterior",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/V6SB2FADGmU/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/V6SB2FADGmU",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/NRvDcp5v6IY/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/NRvDcp5v6IY",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "clairemont": {
+      "heroAlt": "Residential street with palm trees in central San Diego",
+      "thumbAlt": "Palm-lined neighborhood street in San Diego",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "license": "Unsplash License",
+        "photographer": "Kevin Schmid",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "license": "Unsplash License",
+        "photographer": "Kevin Schmid",
+        "attributionRequired": false
+      }
+    },
+    "mission-valley": {
+      "heroAlt": "Mission Valley West commercial corridor, San Diego",
+      "thumbAlt": "Mission Valley freeway corridor and hills, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Pi.1415926535",
+        "attributionRequired": true
+      }
+    },
+    "del-mar": {
+      "heroAlt": "Del Mar coastline with beach and bluffs, San Diego County",
+      "thumbAlt": "Surfer walking on Del Mar beach",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/aVbPtUinKXU/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/aVbPtUinKXU",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/LBCIMRXifP8/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/LBCIMRXifP8",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "carmel-valley": {
+      "heroAlt": "Hillside San Diego neighborhood overlooking the Pacific Ocean",
+      "thumbAlt": "San Diego hillside neighborhood with ocean views",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "point-loma": {
+      "heroAlt": "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
+      "thumbAlt": "Point Loma lighthouse overlooking the Pacific",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/VF0HUhocN_4/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/VF0HUhocN_4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/VF0HUhocN_4/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/VF0HUhocN_4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "sorrento-valley": {
+      "heroAlt": "Sorrento Valley biotech and office corridor, San Diego",
+      "thumbAlt": "Sorrento Valley business park near I-805, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/70/Sorrento_Valley%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%281%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Sorrento_Valley,_San_Diego,_CA,_USA_-_panoramio_(1).jpg",
+        "license": "CC BY 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Sorrento_Valley%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%283%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Sorrento_Valley,_San_Diego,_CA,_USA_-_panoramio_(3).jpg",
+        "license": "CC BY 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      }
+    },
+    "bay-park": {
+      "heroAlt": "Mission Bay waterfront near Bay Park, San Diego",
+      "thumbAlt": "Mission Bay resort area near Bay Park",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/c3mDifd49y8/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/c3mDifd49y8",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/c3mDifd49y8/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/c3mDifd49y8",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "ocean-beach": {
+      "heroAlt": "Sunset at Ocean Beach Pier, San Diego",
+      "thumbAlt": "Ocean Beach shoreline and waves, San Diego",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/JcVmixOBaW4/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/JcVmixOBaW4",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/JvmYnjpxA8M/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/JvmYnjpxA8M",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "hillcrest": {
+      "heroAlt": "Balboa Park architecture near Hillcrest, San Diego",
+      "thumbAlt": "Balboa Park California Tower near Hillcrest",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/POtCTjgoiTY/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/POtCTjgoiTY",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
+        "license": "Unsplash License",
+        "photographer": "Jeremy Huang",
+        "attributionRequired": false
+      }
+    },
+    "north-park": {
+      "heroAlt": "Walkable street with shops and restaurants in San Diego",
+      "thumbAlt": "Walkable commercial street in San Diego",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/7OBq594bcvQ/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/7OBq594bcvQ",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/7OBq594bcvQ/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/7OBq594bcvQ",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "bay-ho": {
+      "heroAlt": "Vacation Isle waterfront on Mission Bay, San Diego",
+      "thumbAlt": "Mission Bay canals near Bay Ho, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/4th_of_July_at_Vacation_Isle%2C_Mission_Bay%2C_San_Diego%2C_California_015.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:4th_of_July_at_Vacation_Isle,_Mission_Bay,_San_Diego,_California_015.jpg",
+        "license": "CC BY 4.0",
+        "photographer": "Sebastian Wallroth",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/MissionBayByPhilKonstantin.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:MissionBayByPhilKonstantin.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Philkon (Phil Konstantin)",
+        "attributionRequired": true
+      }
+    },
+    "north-clairemont": {
+      "heroAlt": "Hillside residential neighborhood in North Clairemont, San Diego",
+      "thumbAlt": "Canyon-adjacent homes in North Clairemont, San Diego",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
+        "license": "Unsplash License",
+        "photographer": "Unsplash Contributor",
+        "attributionRequired": false
+      }
+    },
+    "kearny-mesa": {
+      "heroAlt": "Fashion Valley transit hub near Kearny Mesa, San Diego",
+      "thumbAlt": "Commercial corridor near Kearny Mesa, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Pi.1415926535",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Pi.1415926535",
+        "attributionRequired": true
+      }
+    },
+    "linda-vista": {
+      "heroAlt": "Palm-lined residential street near Linda Vista, San Diego",
+      "thumbAlt": "Central San Diego neighborhood street near Linda Vista",
+      "hero": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=1920",
+        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "license": "Unsplash License",
+        "photographer": "Kevin Schmid",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "unsplash",
+        "downloadUrl": "https://unsplash.com/photos/1OBMU3mLNUo/download?force=true&w=800",
+        "sourcePageUrl": "https://unsplash.com/photos/1OBMU3mLNUo",
+        "license": "Unsplash License",
+        "photographer": "Kevin Schmid",
+        "attributionRequired": false
+      }
+    },
+    "mission-hills": {
+      "heroAlt": "Presidio of San Diego ruins in Presidio Park, Mission Hills",
+      "thumbAlt": "Historic Presidio Park overlooking Mission Hills, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Presidio_of_San_Diego_ruins.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Presidio_of_San_Diego_ruins.jpg",
+        "license": "Public domain",
+        "photographer": "Historic photograph",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Presidio_of_San_Diego_ruins.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Presidio_of_San_Diego_ruins.jpg",
+        "license": "Public domain",
+        "photographer": "Historic photograph",
+        "attributionRequired": false
+      }
+    },
+    "torrey-pines": {
+      "heroAlt": "Torrey Pines State Natural Reserve coastal bluffs, San Diego",
+      "thumbAlt": "Torrey Pines bluff trail overlooking the Pacific Ocean",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Blacks-Beach-Trail-From-Torrey-Pines-Gliderport.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Blacks-Beach-Trail-From-Torrey-Pines-Gliderport.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "RightCowLeftCoast",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mission_manzanita%2C_Torrey_Pines_State_Reserve.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_manzanita,_Torrey_Pines_State_Reserve.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      }
+    },
+    "del-mar-heights": {
+      "heroAlt": "Del Mar Fairgrounds above Del Mar Heights, San Diego County",
+      "thumbAlt": "Del Mar Fairgrounds grandstand and racetrack",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Del_Mar_Fairgrounds.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Del_Mar_Fairgrounds.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Jessicaowenphotos",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Del_Mar_Fairgrounds.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Del_Mar_Fairgrounds.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Jessicaowenphotos",
+        "attributionRequired": true
+      }
+    },
+    "torrey-hills": {
+      "heroAlt": "Mount Soledad view from Torrey Hills, San Diego",
+      "thumbAlt": "Hillside neighborhood between Carmel Valley and Torrey Pines",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      }
+    },
+    "civita": {
+      "heroAlt": "Mission Valley West hills near Civita master-planned community",
+      "thumbAlt": "Mission Valley redevelopment hills, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      }
+    },
+    "serra-mesa": {
+      "heroAlt": "Mission Valley corridor near Serra Mesa, San Diego",
+      "thumbAlt": "Central San Diego mesa neighborhood near SDSU",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "panoramio contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Pi.1415926535",
+        "attributionRequired": true
+      }
+    },
+    "la-jolla-cove": {
+      "heroAlt": "La Jolla Cove sea lions and rocky coastline, San Diego",
+      "thumbAlt": "Sea lions resting on rocks at La Jolla Cove",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/La_Jolla_Cove_%2812139852426%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:La_Jolla_Cove_(12139852426).jpg",
+        "license": "CC BY-SA 2.0",
+        "photographer": "Tomás Del Coro",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/La_Jolla_Cove_1_2014-01-09.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:La_Jolla_Cove_1_2014-01-09.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "FASTILY",
+        "attributionRequired": true
+      }
+    },
+    "la-jolla-shores": {
+      "heroAlt": "Scripps Pier at La Jolla Shores beach, San Diego",
+      "thumbAlt": "La Jolla Shores sandy beach and calm Pacific waters",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Scripps_Pier_La_Jolla_CA.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Scripps_Pier_La_Jolla_CA.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Mkeipper",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/La_Jolla_Shores_from_Scripps_Pier.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:La_Jolla_Shores_from_Scripps_Pier.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "RightCowLeftCoast",
+        "attributionRequired": true
+      }
+    },
+    "la-jolla-village": {
+      "heroAlt": "Girard Avenue streetscape in La Jolla Village, San Diego",
+      "thumbAlt": "La Jolla Village shops along Girard Avenue",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/San_Diego_La_Jolla_7807_Girard_Avenue_Union_Bank.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:San_Diego_La_Jolla_7807_Girard_Avenue_Union_Bank.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "JiriMatejicek",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/San_Diego_La_Jolla_7509_Girard_Avenue.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:San_Diego_La_Jolla_7509_Girard_Avenue.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "JiriMatejicek",
+        "attributionRequired": true
+      }
+    },
+    "bird-rock": {
+      "heroAlt": "Bird Rock Cafe on La Jolla Boulevard, Bird Rock",
+      "thumbAlt": "Local shops along La Jolla Boulevard in Bird Rock",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Bird_Rock_Cafe.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Bird_Rock_Cafe.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Jennifer",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Bird_Rock_Cafe.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Bird_Rock_Cafe.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Jennifer",
+        "attributionRequired": true
+      }
+    },
+    "muirlands": {
+      "heroAlt": "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
+      "thumbAlt": "Hillside La Jolla canyon views in Muirlands",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      }
+    },
+    "mount-soledad": {
+      "heroAlt": "Mount Soledad National Veterans Memorial overlooking San Diego",
+      "thumbAlt": "Mount Soledad memorial cross and panoramic bay views",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      }
+    },
+    "windansea": {
+      "heroAlt": "Windansea Beach surf shack and rocky coastline, La Jolla",
+      "thumbAlt": "Windansea Beach waves along the La Jolla coast",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Windansea_Beach_-_1.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Windansea_Beach_-_1.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "RightCowLeftCoast",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Windansea_Beach_-_7.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Windansea_Beach_-_7.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "RightCowLeftCoast",
+        "attributionRequired": true
+      }
+    },
+    "crown-point": {
+      "heroAlt": "Rowing crews on Mission Bay near Crown Point, San Diego",
+      "thumbAlt": "Mission Bay waterways in Crown Point, Pacific Beach",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/San_Diego_Crew_Classic_2008.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:San_Diego_Crew_Classic_2008.jpg",
+        "license": "CC BY-SA 2.0",
+        "photographer": "Steve Burt",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/San_Diego_Crew_Classic_2008.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:San_Diego_Crew_Classic_2008.jpg",
+        "license": "CC BY-SA 2.0",
+        "photographer": "Steve Burt",
+        "attributionRequired": true
+      }
+    },
+    "mission-beach": {
+      "heroAlt": "Mission Beach boardwalk and Pacific Ocean, San Diego",
+      "thumbAlt": "Mission Beach boardwalk on a sunny day",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Mission_Beach_Boardwalk.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Beach_Boardwalk.jpg",
+        "license": "CC BY 4.0",
+        "photographer": "Blervis",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Mission_Beach_Boardwalk.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Beach_Boardwalk.jpg",
+        "license": "CC BY 4.0",
+        "photographer": "Blervis",
+        "attributionRequired": true
+      }
+    },
+    "mission-bay": {
+      "heroAlt": "Mission Bay Park sunset, San Diego",
+      "thumbAlt": "Mission Bay waterfront recreation area, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Mission_Bay_Park_Sunset_San_Diego_6D2B4215.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Bay_Park_Sunset_San_Diego_6D2B4215.jpg",
+        "license": "CC BY 3.0",
+        "photographer": "Tony Webster",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/MissionBayByPhilKonstantin.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:MissionBayByPhilKonstantin.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Philkon (Phil Konstantin)",
+        "attributionRequired": true
+      }
+    },
+    "morena": {
+      "heroAlt": "Liberty Station promenade near Morena, San Diego",
+      "thumbAlt": "Liberty Station public market area near Morena Boulevard",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Promenade_-_Liberty_station.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Promenade_-_Liberty_station.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Alan Islas",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Liberty_Station%2C_San_Diego.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Liberty_Station,_San_Diego.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Alan Islas",
+        "attributionRequired": true
+      }
+    },
+    "old-town": {
+      "heroAlt": "Old Town San Diego historic plaza and adobe buildings",
+      "thumbAlt": "Old Town San Diego State Historic Park streetscape",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Old_Town_San_Diego.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_San_Diego.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Antoine Taveneaux",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Old_Town_San_Diego.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_San_Diego.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Antoine Taveneaux",
+        "attributionRequired": true
+      }
+    },
+    "midway-district": {
+      "heroAlt": "Aerial view of San Diego International Airport and Midway area",
+      "thumbAlt": "San Diego airport and Liberty Station from above",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Aerial_photograph_of_San_Diego_airport_and_Liberty_Station_park.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Aerial_photograph_of_San_Diego_airport_and_Liberty_Station_park.jpg",
+        "license": "CC0",
+        "photographer": "Mertbiol",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Aerial_photograph_of_San_Diego_airport_and_Liberty_Station_park.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Aerial_photograph_of_San_Diego_airport_and_Liberty_Station_park.jpg",
+        "license": "CC0",
+        "photographer": "Mertbiol",
+        "attributionRequired": false
+      }
+    },
+    "point-loma-heights": {
+      "heroAlt": "Cabrillo National Monument overlooking Point Loma Heights",
+      "thumbAlt": "Cabrillo National Monument visitor center on Point Loma",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Cabrillo_National_Monument_in_San_Diego_2015.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Cabrillo_National_Monument_in_San_Diego_2015.jpg",
+        "license": "CC BY-SA 2.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Cabrillo_National_Monument_Visitor_Center.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Cabrillo_National_Monument_Visitor_Center.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      }
+    },
+    "university-heights": {
+      "heroAlt": "University Heights Library on Washington Street, San Diego",
+      "thumbAlt": "University Heights neighborhood branch library",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/University_Heights_Library_San_Diego.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_Library_San_Diego.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/University_Heights_San_Diego_Park_Blvd_view.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_San_Diego_Park_Blvd_view.jpg",
+        "license": "CC0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      }
+    },
+    "normal-heights": {
+      "heroAlt": "Normal Heights neighborhood streetscape, San Diego",
+      "thumbAlt": "Residential street in Normal Heights near Adams Avenue",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Normal_Heights_%28San_Diego%2C_California%29.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Normal_Heights_(San_Diego,_California).jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/NormalHeightsSmall.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:NormalHeightsSmall.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": true
+      }
+    },
+    "bankers-hill": {
+      "heroAlt": "Balboa Park Botanical Building close-up near Bankers Hill",
+      "thumbAlt": "Botanical Building lily pond in Balboa Park, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Close_up_view_of_the_Botanical_Building_in_Balboa_Park%2C_San_Diego_dllu.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Close_up_view_of_the_Botanical_Building_in_Balboa_Park,_San_Diego_dllu.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Dllu",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Front_view_of_the_Botanical_Building_in_Balboa_Park%2C_San_Diego_dllu.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Botanical_Building_in_Balboa_Park,_San_Diego_dllu.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Dllu",
+        "attributionRequired": true
+      }
+    },
+    "little-italy": {
+      "heroAlt": "Little Italy neighborhood street in downtown San Diego",
+      "thumbAlt": "Little Italy sign and urban village streetscape",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Little_Italy%2C_San_Diego-1.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Little_Italy,_San_Diego-1.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Visitor7",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Little_Italy_Sign_in_San_Diego.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Little_Italy_Sign_in_San_Diego.jpg",
+        "license": "Public domain",
+        "photographer": "Wikimedia contributor",
+        "attributionRequired": false
+      }
+    },
+    "downtown-san-diego": {
+      "heroAlt": "Gaslamp Quarter historic streetscape, downtown San Diego",
+      "thumbAlt": "Gaslamp Quarter nightlife district, San Diego",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Gaslamp_Quarter_01.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Gaslamp_Quarter_01.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Bernard Gagnon",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/San_Diego_%28California%2C_USA%29%2C_Gaslamp_Quarter_--_2012_--_5411.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:San_Diego_(California,_USA),_Gaslamp_Quarter_--_2012_--_5411.jpg",
+        "license": "CC BY-SA 4.0",
+        "photographer": "Dietmar Rabich",
+        "attributionRequired": true
+      }
+    },
+    "balboa-park": {
+      "heroAlt": "Balboa Park Botanical Building and lily pond, San Diego",
+      "thumbAlt": "Balboa Park Botanical Building reflected in the lily pond",
+      "hero": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Balboa_Park_Botanical_Building_01.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Balboa_Park_Botanical_Building_01.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Bernard Gagnon",
+        "attributionRequired": true
+      },
+      "thumb": {
+        "sourceType": "wikimedia",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Balboa_Park_Botanical_Building_01.jpg",
+        "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Balboa_Park_Botanical_Building_01.jpg",
+        "license": "CC BY-SA 3.0",
+        "photographer": "Bernard Gagnon",
+        "attributionRequired": true
+      }
+    }
+  }
+}

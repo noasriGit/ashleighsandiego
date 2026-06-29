@@ -5,10 +5,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "torrey-hills": {
     slug: "torrey-hills",
-    heroImage: "/images/neighborhoods/carmel-valley-hero.jpg",
-    heroImageAlt: "Hillside San Diego neighborhood overlooking the Pacific Ocean",
-    thumbnail: "/images/neighborhoods/carmel-valley-thumb.jpg",
-    thumbnailAlt: "San Diego hillside neighborhood with ocean views",
+    heroImage: "/images/neighborhoods/torrey-hills-hero.jpg",
+    heroImageAlt: "Mount Soledad view from Torrey Hills, San Diego",
+    thumbnail: "/images/neighborhoods/torrey-hills-thumb.jpg",
+    thumbnailAlt: "Hillside neighborhood between Carmel Valley and Torrey Pines",
     stats: [
       { value: "92130", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -41,10 +41,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "mission-hills": {
     slug: "mission-hills",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/mission-hills-hero.jpg",
+    heroImageAlt: "Presidio of San Diego ruins in Presidio Park, Mission Hills",
+    thumbnail: "/images/neighborhoods/mission-hills-thumb.jpg",
+    thumbnailAlt: "Historic Presidio Park overlooking Mission Hills, San Diego",
     stats: [
       { value: "92103", label: "ZIP Code" },
       { value: "I-5 · SR-163", label: "Freeway Access" },
@@ -77,10 +77,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "torrey-pines": {
     slug: "torrey-pines",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/torrey-pines-hero.jpg",
+    heroImageAlt: "Torrey Pines State Natural Reserve coastal bluffs, San Diego",
+    thumbnail: "/images/neighborhoods/torrey-pines-thumb.jpg",
+    thumbnailAlt: "Torrey Pines bluff trail overlooking the Pacific Ocean",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -112,10 +112,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "civita": {
     slug: "civita",
-    heroImage: "/images/neighborhoods/mission-valley-hero.jpg",
-    heroImageAlt: "San Diego downtown skyline and bay",
-    thumbnail: "/images/neighborhoods/mission-valley-thumb.jpg",
-    thumbnailAlt: "San Diego-Coronado Bridge and downtown skyline",
+    heroImage: "/images/neighborhoods/civita-hero.jpg",
+    heroImageAlt: "Mission Valley West hills near Civita master-planned community",
+    thumbnail: "/images/neighborhoods/civita-thumb.jpg",
+    thumbnailAlt: "Mission Valley redevelopment hills, San Diego",
     stats: [
       { value: "92108", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -148,10 +148,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "del-mar-heights": {
     slug: "del-mar-heights",
-    heroImage: "/images/neighborhoods/del-mar-hero.jpg",
-    heroImageAlt: "Del Mar coastline with beach and bluffs, San Diego County",
-    thumbnail: "/images/neighborhoods/del-mar-thumb.jpg",
-    thumbnailAlt: "Surfer walking on Del Mar beach",
+    heroImage: "/images/neighborhoods/del-mar-heights-hero.jpg",
+    heroImageAlt: "Del Mar Fairgrounds above Del Mar Heights, San Diego County",
+    thumbnail: "/images/neighborhoods/del-mar-heights-thumb.jpg",
+    thumbnailAlt: "Del Mar Fairgrounds grandstand and racetrack",
     stats: [
       { value: "92014", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -183,10 +183,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "north-clairemont": {
     slug: "north-clairemont",
-    heroImage: "/images/neighborhoods/clairemont-hero.jpg",
-    heroImageAlt: "Residential street with palm trees in central San Diego",
-    thumbnail: "/images/neighborhoods/clairemont-thumb.jpg",
-    thumbnailAlt: "Palm-lined neighborhood street in San Diego",
+    heroImage: "/images/neighborhoods/north-clairemont-hero.jpg",
+    heroImageAlt: "Hillside residential neighborhood in North Clairemont, San Diego",
+    thumbnail: "/images/neighborhoods/north-clairemont-thumb.jpg",
+    thumbnailAlt: "Canyon-adjacent homes in North Clairemont, San Diego",
     stats: [
       { value: "92117", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -218,10 +218,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "serra-mesa": {
     slug: "serra-mesa",
-    heroImage: "/images/neighborhoods/mission-valley-hero.jpg",
-    heroImageAlt: "San Diego downtown skyline and bay",
-    thumbnail: "/images/neighborhoods/mission-valley-thumb.jpg",
-    thumbnailAlt: "San Diego-Coronado Bridge and downtown skyline",
+    heroImage: "/images/neighborhoods/serra-mesa-hero.jpg",
+    heroImageAlt: "Mission Valley corridor near Serra Mesa, San Diego",
+    thumbnail: "/images/neighborhoods/serra-mesa-thumb.jpg",
+    thumbnailAlt: "Central San Diego mesa neighborhood near SDSU",
     stats: [
       { value: "92123", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -253,10 +253,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "kearny-mesa": {
     slug: "kearny-mesa",
-    heroImage: "/images/neighborhoods/clairemont-hero.jpg",
-    heroImageAlt: "Residential street with palm trees in central San Diego",
-    thumbnail: "/images/neighborhoods/clairemont-thumb.jpg",
-    thumbnailAlt: "Palm-lined neighborhood street in San Diego",
+    heroImage: "/images/neighborhoods/kearny-mesa-hero.jpg",
+    heroImageAlt: "Fashion Valley transit hub near Kearny Mesa, San Diego",
+    thumbnail: "/images/neighborhoods/kearny-mesa-thumb.jpg",
+    thumbnailAlt: "Commercial corridor near Kearny Mesa, San Diego",
     stats: [
       { value: "92111", label: "ZIP Code" },
       { value: "I-805 · I-15", label: "Freeway Access" },
@@ -288,10 +288,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "linda-vista": {
     slug: "linda-vista",
-    heroImage: "/images/neighborhoods/mission-valley-hero.jpg",
-    heroImageAlt: "San Diego downtown skyline and bay",
-    thumbnail: "/images/neighborhoods/mission-valley-thumb.jpg",
-    thumbnailAlt: "San Diego-Coronado Bridge and downtown skyline",
+    heroImage: "/images/neighborhoods/linda-vista-hero.jpg",
+    heroImageAlt: "Palm-lined residential street near Linda Vista, San Diego",
+    thumbnail: "/images/neighborhoods/linda-vista-thumb.jpg",
+    thumbnailAlt: "Central San Diego neighborhood street near Linda Vista",
     stats: [
       { value: "92111", label: "ZIP Code" },
       { value: "I-805 · I-8", label: "Freeway Access" },
@@ -324,10 +324,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "bay-ho": {
     slug: "bay-ho",
-    heroImage: "/images/neighborhoods/bay-park-hero.jpg",
-    heroImageAlt: "Mission Bay waterfront near Bay Park, San Diego",
-    thumbnail: "/images/neighborhoods/bay-park-thumb.jpg",
-    thumbnailAlt: "Mission Bay resort area near Bay Park",
+    heroImage: "/images/neighborhoods/bay-ho-hero.jpg",
+    heroImageAlt: "Vacation Isle waterfront on Mission Bay, San Diego",
+    thumbnail: "/images/neighborhoods/bay-ho-thumb.jpg",
+    thumbnailAlt: "Mission Bay canals near Bay Ho, San Diego",
     stats: [
       { value: "92110", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -361,10 +361,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "la-jolla-cove": {
     slug: "la-jolla-cove",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/la-jolla-cove-hero.jpg",
+    heroImageAlt: "La Jolla Cove sea lions and rocky coastline, San Diego",
+    thumbnail: "/images/neighborhoods/la-jolla-cove-thumb.jpg",
+    thumbnailAlt: "Sea lions resting on rocks at La Jolla Cove",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -396,10 +396,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "la-jolla-shores": {
     slug: "la-jolla-shores",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/la-jolla-shores-hero.jpg",
+    heroImageAlt: "Scripps Pier at La Jolla Shores beach, San Diego",
+    thumbnail: "/images/neighborhoods/la-jolla-shores-thumb.jpg",
+    thumbnailAlt: "La Jolla Shores sandy beach and calm Pacific waters",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -431,10 +431,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "la-jolla-village": {
     slug: "la-jolla-village",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/la-jolla-village-hero.jpg",
+    heroImageAlt: "Girard Avenue streetscape in La Jolla Village, San Diego",
+    thumbnail: "/images/neighborhoods/la-jolla-village-thumb.jpg",
+    thumbnailAlt: "La Jolla Village shops along Girard Avenue",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5 · I-805", label: "Freeway Access" },
@@ -466,10 +466,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "bird-rock": {
     slug: "bird-rock",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/bird-rock-hero.jpg",
+    heroImageAlt: "Bird Rock Cafe on La Jolla Boulevard, Bird Rock",
+    thumbnail: "/images/neighborhoods/bird-rock-thumb.jpg",
+    thumbnailAlt: "Local shops along La Jolla Boulevard in Bird Rock",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -501,10 +501,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "muirlands": {
     slug: "muirlands",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/muirlands-hero.jpg",
+    heroImageAlt: "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
+    thumbnail: "/images/neighborhoods/muirlands-thumb.jpg",
+    thumbnailAlt: "Hillside La Jolla canyon views in Muirlands",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -536,10 +536,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "mount-soledad": {
     slug: "mount-soledad",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/mount-soledad-hero.jpg",
+    heroImageAlt: "Mount Soledad National Veterans Memorial overlooking San Diego",
+    thumbnail: "/images/neighborhoods/mount-soledad-thumb.jpg",
+    thumbnailAlt: "Mount Soledad memorial cross and panoramic bay views",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -571,10 +571,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "windansea": {
     slug: "windansea",
-    heroImage: "/images/neighborhoods/la-jolla-hero.jpg",
-    heroImageAlt: "La Jolla Cove coastline and Pacific Ocean, San Diego",
-    thumbnail: "/images/neighborhoods/la-jolla-thumb.jpg",
-    thumbnailAlt: "La Jolla Cove rocks and shoreline",
+    heroImage: "/images/neighborhoods/windansea-hero.jpg",
+    heroImageAlt: "Windansea Beach surf shack and rocky coastline, La Jolla",
+    thumbnail: "/images/neighborhoods/windansea-thumb.jpg",
+    thumbnailAlt: "Windansea Beach waves along the La Jolla coast",
     stats: [
       { value: "92037", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -608,10 +608,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "crown-point": {
     slug: "crown-point",
-    heroImage: "/images/neighborhoods/pacific-beach-hero.jpg",
-    heroImageAlt: "Pacific Beach pier and shoreline, San Diego",
-    thumbnail: "/images/neighborhoods/pacific-beach-thumb.jpg",
-    thumbnailAlt: "Pacific Beach boardwalk and ocean on a sunny day",
+    heroImage: "/images/neighborhoods/crown-point-hero.jpg",
+    heroImageAlt: "Rowing crews on Mission Bay near Crown Point, San Diego",
+    thumbnail: "/images/neighborhoods/crown-point-thumb.jpg",
+    thumbnailAlt: "Mission Bay waterways in Crown Point, Pacific Beach",
     stats: [
       { value: "92109", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -643,10 +643,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "mission-beach": {
     slug: "mission-beach",
-    heroImage: "/images/neighborhoods/pacific-beach-hero.jpg",
-    heroImageAlt: "Pacific Beach pier and shoreline, San Diego",
-    thumbnail: "/images/neighborhoods/pacific-beach-thumb.jpg",
-    thumbnailAlt: "Pacific Beach boardwalk and ocean on a sunny day",
+    heroImage: "/images/neighborhoods/mission-beach-hero.jpg",
+    heroImageAlt: "Mission Beach boardwalk and Pacific Ocean, San Diego",
+    thumbnail: "/images/neighborhoods/mission-beach-thumb.jpg",
+    thumbnailAlt: "Mission Beach boardwalk on a sunny day",
     stats: [
       { value: "92109", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -678,10 +678,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "mission-bay": {
     slug: "mission-bay",
-    heroImage: "/images/neighborhoods/pacific-beach-hero.jpg",
-    heroImageAlt: "Pacific Beach pier and shoreline, San Diego",
-    thumbnail: "/images/neighborhoods/pacific-beach-thumb.jpg",
-    thumbnailAlt: "Pacific Beach boardwalk and ocean on a sunny day",
+    heroImage: "/images/neighborhoods/mission-bay-hero.jpg",
+    heroImageAlt: "Mission Bay Park sunset, San Diego",
+    thumbnail: "/images/neighborhoods/mission-bay-thumb.jpg",
+    thumbnailAlt: "Mission Bay waterfront recreation area, San Diego",
     stats: [
       { value: "92109", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -715,10 +715,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "morena": {
     slug: "morena",
-    heroImage: "/images/neighborhoods/bay-park-hero.jpg",
-    heroImageAlt: "Mission Bay waterfront near Bay Park, San Diego",
-    thumbnail: "/images/neighborhoods/bay-park-thumb.jpg",
-    thumbnailAlt: "Mission Bay resort area near Bay Park",
+    heroImage: "/images/neighborhoods/morena-hero.jpg",
+    heroImageAlt: "Liberty Station promenade near Morena, San Diego",
+    thumbnail: "/images/neighborhoods/morena-thumb.jpg",
+    thumbnailAlt: "Liberty Station public market area near Morena Boulevard",
     stats: [
       { value: "92110", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -750,10 +750,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "old-town": {
     slug: "old-town",
-    heroImage: "/images/neighborhoods/point-loma-hero.jpg",
-    heroImageAlt: "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
-    thumbnail: "/images/neighborhoods/point-loma-thumb.jpg",
-    thumbnailAlt: "Point Loma lighthouse overlooking the Pacific",
+    heroImage: "/images/neighborhoods/old-town-hero.jpg",
+    heroImageAlt: "Old Town San Diego historic plaza and adobe buildings",
+    thumbnail: "/images/neighborhoods/old-town-thumb.jpg",
+    thumbnailAlt: "Old Town San Diego State Historic Park streetscape",
     stats: [
       { value: "92110", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -785,10 +785,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "midway-district": {
     slug: "midway-district",
-    heroImage: "/images/neighborhoods/point-loma-hero.jpg",
-    heroImageAlt: "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
-    thumbnail: "/images/neighborhoods/point-loma-thumb.jpg",
-    thumbnailAlt: "Point Loma lighthouse overlooking the Pacific",
+    heroImage: "/images/neighborhoods/midway-district-hero.jpg",
+    heroImageAlt: "Aerial view of San Diego International Airport and Midway area",
+    thumbnail: "/images/neighborhoods/midway-district-thumb.jpg",
+    thumbnailAlt: "San Diego airport and Liberty Station from above",
     stats: [
       { value: "92110", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -820,10 +820,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "point-loma-heights": {
     slug: "point-loma-heights",
-    heroImage: "/images/neighborhoods/point-loma-hero.jpg",
-    heroImageAlt: "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
-    thumbnail: "/images/neighborhoods/point-loma-thumb.jpg",
-    thumbnailAlt: "Point Loma lighthouse overlooking the Pacific",
+    heroImage: "/images/neighborhoods/point-loma-heights-hero.jpg",
+    heroImageAlt: "Cabrillo National Monument overlooking Point Loma Heights",
+    thumbnail: "/images/neighborhoods/point-loma-heights-thumb.jpg",
+    thumbnailAlt: "Cabrillo National Monument visitor center on Point Loma",
     stats: [
       { value: "92106", label: "ZIP Code" },
       { value: "I-5 · I-8", label: "Freeway Access" },
@@ -855,10 +855,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "university-heights": {
     slug: "university-heights",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/university-heights-hero.jpg",
+    heroImageAlt: "University Heights Library on Washington Street, San Diego",
+    thumbnail: "/images/neighborhoods/university-heights-thumb.jpg",
+    thumbnailAlt: "University Heights neighborhood branch library",
     stats: [
       { value: "92116", label: "ZIP Code" },
       { value: "I-805 · SR-163", label: "Freeway Access" },
@@ -890,10 +890,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "normal-heights": {
     slug: "normal-heights",
-    heroImage: "/images/neighborhoods/north-park-hero.jpg",
-    heroImageAlt: "Walkable street with shops and restaurants in San Diego",
-    thumbnail: "/images/neighborhoods/north-park-thumb.jpg",
-    thumbnailAlt: "Walkable commercial street in San Diego",
+    heroImage: "/images/neighborhoods/normal-heights-hero.jpg",
+    heroImageAlt: "Normal Heights neighborhood streetscape, San Diego",
+    thumbnail: "/images/neighborhoods/normal-heights-thumb.jpg",
+    thumbnailAlt: "Residential street in Normal Heights near Adams Avenue",
     stats: [
       { value: "92116", label: "ZIP Code" },
       { value: "SR-163 · I-805", label: "Freeway Access" },
@@ -925,10 +925,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "bankers-hill": {
     slug: "bankers-hill",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/bankers-hill-hero.jpg",
+    heroImageAlt: "Balboa Park Botanical Building close-up near Bankers Hill",
+    thumbnail: "/images/neighborhoods/bankers-hill-thumb.jpg",
+    thumbnailAlt: "Botanical Building lily pond in Balboa Park, San Diego",
     stats: [
       { value: "92101", label: "ZIP Code" },
       { value: "I-5 · SR-163", label: "Freeway Access" },
@@ -960,10 +960,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "little-italy": {
     slug: "little-italy",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/little-italy-hero.jpg",
+    heroImageAlt: "Little Italy neighborhood street in downtown San Diego",
+    thumbnail: "/images/neighborhoods/little-italy-thumb.jpg",
+    thumbnailAlt: "Little Italy sign and urban village streetscape",
     stats: [
       { value: "92101", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -995,10 +995,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "downtown-san-diego": {
     slug: "downtown-san-diego",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/downtown-san-diego-hero.jpg",
+    heroImageAlt: "Gaslamp Quarter historic streetscape, downtown San Diego",
+    thumbnail: "/images/neighborhoods/downtown-san-diego-thumb.jpg",
+    thumbnailAlt: "Gaslamp Quarter nightlife district, San Diego",
     stats: [
       { value: "92101", label: "ZIP Code" },
       { value: "I-5", label: "Freeway Access" },
@@ -1031,10 +1031,10 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
 
   "balboa-park": {
     slug: "balboa-park",
-    heroImage: "/images/neighborhoods/hillcrest-hero.jpg",
-    heroImageAlt: "Balboa Park architecture near Hillcrest, San Diego",
-    thumbnail: "/images/neighborhoods/hillcrest-thumb.jpg",
-    thumbnailAlt: "Balboa Park California Tower near Hillcrest",
+    heroImage: "/images/neighborhoods/balboa-park-hero.jpg",
+    heroImageAlt: "Balboa Park Botanical Building and lily pond, San Diego",
+    thumbnail: "/images/neighborhoods/balboa-park-thumb.jpg",
+    thumbnailAlt: "Balboa Park Botanical Building reflected in the lily pond",
     stats: [
       { value: "92101", label: "ZIP Code" },
       { value: "I-805 · SR-163", label: "Freeway Access" },

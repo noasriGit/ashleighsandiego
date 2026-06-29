@@ -32,8 +32,10 @@ Complete for each community before setting `hasGuide: true` and deploying.
 - [ ] ZIP verified in `community-zips.ts`
 - [ ] `nearbyComparisons` slugs point to live guides
 - [ ] Parent guide cross-links updated (if child of existing guide)
-- [ ] Hero/thumbnail sourced OR gradient fallback documented
-- [ ] `image-manifest.json` + `ATTRIBUTION.md` updated if images added
+- [ ] Hero/thumbnail sourced at `/images/neighborhoods/{slug}-hero.jpg` and `{slug}-thumb.jpg`
+- [ ] Alt text matches the actual photo subject (see `docs/community-research/image-briefs.md`)
+- [ ] Subarea image visually distinct from parent in `/neighborhoods` grid
+- [ ] `community-image-sources.json`, `image-manifest.json`, and `ATTRIBUTION.md` updated if images added
 
 ## IDX & listings
 
