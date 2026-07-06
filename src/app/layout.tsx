@@ -90,6 +90,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${marcellus.variable} h-full antialiased`}>
       <head>
+        <Script
+          id="ahrefs-analytics"
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ITJM8TPWFbLGKSaaNr5eNA"
+          strategy="afterInteractive"
+          async
+        />
         <AnalyticsPlaceholders />
       </head>
       <body className="flex min-h-full flex-col">
