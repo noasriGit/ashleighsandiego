@@ -13,6 +13,7 @@ import { StatBand } from "@/components/ui/StatBand";
 import { SplitSection } from "@/components/ui/SplitSection";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { Tabs } from "@/components/ui/Tabs";
+import { RelatedPages } from "@/components/seo/RelatedPages";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
@@ -20,14 +21,14 @@ import { marketingHeroes, splitSections } from "@/data/page-images";
 import { militaryFaqs } from "@/data/faqs";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
-import { faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
+import { agentServiceSchema, faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
-  title: "Military & VA Relocation San Diego | PCS Buyer Guide",
+  title: "Military Realtor San Diego | PCS & VA Buyer Guide",
   description:
-    "PCS to San Diego? Get neighborhood guidance for military buyers near Naval Base San Diego, MCAS Miramar, Point Loma, and NAS North Island.",
-  path: "/military-va-relocation-san-diego",
-  keywords: getKeywordsForPage("/military-va-relocation-san-diego"),
+    "PCS to San Diego? Work with a military-focused realtor for neighborhood guidance near Naval Base San Diego, MCAS Miramar, Point Loma, and NAS North Island.",
+  path: "/military-realtor-san-diego",
+  keywords: getKeywordsForPage("/military-realtor-san-diego"),
 });
 
 const sections = [
@@ -36,14 +37,14 @@ const sections = [
     kicker: "PCS Basics",
     title: "PCS & Military Relocation Overview",
     content:
-      "Receiving PCS orders to San Diego is a significant move, and the city offers diverse neighborhoods with very different commutes to major installations. Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island each have distinct geographic considerations.\n\nWe help military buyers understand neighborhoods, commute patterns, and the home-buying process, as one focus area within our broader San Diego relocation guidance.",
+      "Receiving PCS orders to San Diego is a significant move, and the city offers diverse neighborhoods with very different commutes to major installations. Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island each have distinct geographic considerations.\n\nAs your military realtor, I help buyers understand neighborhoods, commute patterns, and the home-buying process end to end.",
   },
   {
     id: "neighborhoods",
     kicker: "Where to Look",
     title: "Neighborhoods to Consider",
     content:
-      "Military buyers often evaluate Point Loma, Clairemont, Mission Valley, Pacific Beach, and La Jolla-area communities depending on duty station and BAH. Coastal areas offer lifestyle benefits; inland areas often provide more space per dollar.\n\nFactor your BAH rate, family size, and school needs into neighborhood selection.",
+      "Military buyers often evaluate Point Loma, Clairemont, Mission Valley, Pacific Beach, and La Jolla-area communities depending on duty station and BAH. Coastal areas offer lifestyle benefits; inland areas and county suburbs often provide more space per dollar.\n\nFactor your BAH rate, family size, and school needs into neighborhood selection.",
   },
 ];
 
@@ -62,9 +63,9 @@ const baseTabs = [
   },
   {
     label: "NAS North Island",
-    bases: "Coronado-adjacent areas and the Point Loma peninsula offer the shortest commutes.",
-    neighborhoods: "Point Loma, Coronado-adjacent areas",
-    note: "Bridge and ferry access shape the daily commute, factor timing into your search.",
+    bases: "Coronado and the Point Loma peninsula offer the shortest commutes.",
+    neighborhoods: "Point Loma, Coronado",
+    note: "Bridge access shapes the daily commute, factor timing into your search.",
   },
   {
     label: "MCAS Miramar",
@@ -74,7 +75,7 @@ const baseTabs = [
   },
 ];
 
-export default async function MilitaryPage() {
+export default async function MilitaryRealtorPage() {
   const browseUrl = getIdxBrowseUrl("_military");
   const liveCount = await getSavedSearchCount(getIdxSearchConfig("_military").savedSearchId);
 
@@ -83,25 +84,29 @@ export default async function MilitaryPage() {
       <JsonLd
         data={[
           webPageSchema(
-            "Military & VA Relocation San Diego",
-            "PCS buyer guide for military relocation to San Diego.",
-            "/military-va-relocation-san-diego",
+            "Military Realtor San Diego",
+            "PCS and VA buyer guide for military relocation to San Diego.",
+            "/military-realtor-san-diego",
           ),
           breadcrumbSchema([
-            { name: "Military / VA Relocation", path: "/military-va-relocation-san-diego" },
+            { name: "Military Realtor San Diego", path: "/military-realtor-san-diego" },
           ]),
+          agentServiceSchema({
+            areaServed: ["Point Loma", "Clairemont", "Mission Valley", "San Diego"],
+            knowsAbout: ["PCS relocation", "VA loans", "Military housing allowance (BAH)"],
+          }),
           faqSchema(militaryFaqs),
         ]}
       />
 
       <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: "Military / VA Relocation" }]} />
+        <Breadcrumbs items={[{ label: "Military Realtor San Diego" }]} />
       </div>
 
       <PageHero
         kicker="Military / VA Buyers"
         headline="PCS to San Diego? Build Your Military Buyer Plan."
-        subheadline="Neighborhood guidance for military and VA buyers, commute to bases, housing options, and buyer support without the hard sell."
+        subheadline="Neighborhood guidance for military and VA buyers: commute to bases, housing options, and buyer support without the hard sell."
         primaryCta={{ label: "Build Your PCS Buyer Plan", href: "/contact" }}
         secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
         heroImage={marketingHeroes.militaryVa.src}
@@ -112,7 +117,7 @@ export default async function MilitaryPage() {
         variant="espresso"
         stats={[
           { value: "4", label: "Major Installations" },
-          { value: `${siteConfig.geo.radiusMiles}-mile`, label: "La Jolla Radius" },
+          { value: "43+", label: "Neighborhood Guides" },
           { value: "Coastal", label: "& Inland Options" },
           { value: "VA", label: "Buyer Friendly" },
         ]}
@@ -154,15 +159,15 @@ export default async function MilitaryPage() {
         kicker="VA Loans"
         heading="VA Buyer Education"
         body={[
-          "VA loans offer significant benefits for eligible military buyers, but eligibility, entitlement, and terms depend on your service history and lender guidelines. We guide you through the home search and purchase process.",
-          "For VA loan eligibility, funding fees, and financing advice, consult a licensed VA-approved lender. We can provide lender introductions upon request.",
+          "VA loans offer significant benefits for eligible military buyers, but eligibility, entitlement, and terms depend on your service history and lender guidelines. As your military realtor, I guide you through the home search and purchase process.",
+          "For VA loan eligibility, funding fees, and financing advice, consult a licensed VA-approved lender. I can provide lender introductions upon request.",
         ]}
         imageSrc={splitSections["military-va-relocation-san-diego/va-buyer-education"].src}
         imageAlt={splitSections["military-va-relocation-san-diego/va-buyer-education"].alt}
         imagePosition="right"
       >
         <CalloutBlock type="tip" label="Important">
-          Consult a licensed lender for VA loan eligibility and financing advice. We provide home
+          Consult a licensed lender for VA loan eligibility and financing advice. I provide home
           search and buyer guidance, not lending or legal advice.
         </CalloutBlock>
       </SplitSection>
@@ -191,7 +196,7 @@ export default async function MilitaryPage() {
         <div className="grid gap-10 lg:grid-cols-2">
           <LeadMagnet
             title="San Diego Military / VA Buyer Checklist"
-            description="Free checklist for PCS buyers, base commute, BAH planning, and pre-tour prep."
+            description="Free checklist for PCS buyers: base commute, BAH planning, and pre-tour prep."
             leadType="military-checklist"
             checklistItems={[
               "Identify commute to your duty station",
@@ -212,6 +217,14 @@ export default async function MilitaryPage() {
           </div>
         </div>
       </Section>
+
+      <RelatedPages
+        items={[
+          { title: "San Diego Neighborhoods", description: "Compare all San Diego neighborhoods from the homepage.", href: "/" },
+          { title: "Moving to San Diego", description: "The general relocation process, for context beyond PCS specifics.", href: "/moving-to-san-diego" },
+          { title: "Affordable Neighborhoods", description: "Where BAH budgets stretch furthest.", href: "/affordable-neighborhoods-san-diego" },
+        ]}
+      />
 
       <CTABanner
         headline="Build Your San Diego PCS Buyer Plan"

@@ -51,9 +51,9 @@ export const laJollaFaqs = [
       "La Jolla offers coastal village living with ocean views, upscale dining, and proximity to UCSD and Scripps. Subareas like La Jolla Shores, Bird Rock, and the Village each have distinct character.",
   },
   {
-    question: "Is La Jolla good for families relocating to San Diego?",
+    question: "What schools serve La Jolla?",
     answer:
-      "La Jolla is popular with relocating families due to schools, safety, and beach access. Budget and housing type will determine which subarea fits best.",
+      "La Jolla is served by several San Diego Unified schools, and specific attendance boundaries vary by address. Verify current boundaries directly with the district before deciding on a subarea. Budget and housing type will also determine which subarea fits best.",
   },
   {
     question: "What are alternatives to La Jolla with lower price points?",

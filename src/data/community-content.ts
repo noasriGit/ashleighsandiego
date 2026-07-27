@@ -55,12 +55,12 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "I-5 and I-805 provide freeway access. Commute to Sorrento Valley biotech corridor is straightforward. Downtown is roughly 20–30 minutes depending on traffic. Many buyers work remotely or commute to UTC, Sorrento Valley, or central San Diego.",
     nearbyComparisons: [
-      { name: "La Jolla Shores", slug: "la-jolla-shores", note: "Family-friendly beach pocket with calmer waters" },
+      { name: "La Jolla Shores", slug: "la-jolla-shores", note: "Flat, sandy beach pocket with calmer waters" },
       { name: "Pacific Beach", slug: "pacific-beach", note: "More casual beach town feel at generally lower price points" },
       { name: "University City", slug: "university-city", note: "More central, newer condos, closer to UTC shopping" },
     ],
     faqs: [
-      { question: "Is La Jolla good for relocating families?", answer: "Yes, La Jolla offers strong schools, beach access, and family-friendly subareas like La Jolla Shores and Bird Rock. Budget and housing type preferences will determine which subarea fits best." },
+      { question: "Which La Jolla subareas have the most single-family homes?", answer: "La Jolla Shores and Bird Rock have the highest concentration of single-family homes with yards, close to schools and beach access. The Village skews toward condos and townhomes. Budget and housing type preferences will determine which subarea fits best." },
       { question: "What is the commute like from La Jolla?", answer: "La Jolla has good freeway access via I-5 and I-805. Commutes to Sorrento Valley, UTC, and downtown San Diego are common. Traffic on I-5 can be heavy during peak hours." },
       { question: "Are there condo options in La Jolla?", answer: "Yes, the Village and nearby areas have condo and townhome options, though inventory can be limited. Condos can be a good entry point for buyers who want the La Jolla address." },
     ],
@@ -94,7 +94,7 @@ export const communityContent: Record<string, CommunityContent> = {
       { name: "Mission Beach", slug: "mission-beach", note: "Boardwalk-focused beach town between PB and Belmont Park" },
     ],
     faqs: [
-      { question: "Is Pacific Beach family-friendly?", answer: "PB can work for families, especially in quieter pockets away from Garnet. Schools and noise levels vary by block. Crown Point and north PB tend to be calmer." },
+      { question: "Are there quieter residential pockets in Pacific Beach?", answer: "Crown Point and north PB, away from Garnet Avenue, are the quietest residential pockets. Noise levels vary block by block, tour at different times of day before deciding." },
       { question: "How does Pacific Beach compare to La Jolla?", answer: "PB is more casual and social with a younger demographic. La Jolla is quieter and more upscale. PB generally offers lower entry prices for coastal living." },
       { question: "Are there condos in Pacific Beach?", answer: "Yes, condos and townhomes are common, especially near the beach and Garnet Avenue. They can be a good option for buyers who want coastal access without a single-family budget." },
     ],
@@ -197,7 +197,7 @@ export const communityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "Is Mission Valley good for first-time buyers?", answer: "Mission Valley can offer more affordable condo and townhome options compared to coastal areas. It's worth comparing commute needs and lifestyle preferences." },
-      { question: "What is Civita?", answer: "Civita is a newer master-planned community within Mission Valley with modern homes, parks, and amenities. It's popular with families and first-time buyers." },
+      { question: "What is Civita?", answer: "Civita is a newer master-planned community within Mission Valley with modern homes, parks, and amenities. It offers a range of unit sizes, from one-bedroom condos to multi-bedroom townhomes." },
       { question: "Is Mission Valley walkable?", answer: "Some areas near Fashion Valley and trolley stations are walkable. Overall, Mission Valley is more car-dependent than neighborhoods like Hillcrest or North Park." },
     ],
   },
@@ -226,12 +226,12 @@ export const communityContent: Record<string, CommunityContent> = {
       "I-5 provides direct freeway access. Sorrento Valley is 10–15 minutes south. Downtown is 25–30 minutes. Many Del Mar residents work locally, remotely, or commute south to biotech hubs.",
     nearbyComparisons: [
       { name: "La Jolla", slug: "la-jolla", note: "Similar upscale coastal feel, more UCSD proximity" },
-      { name: "Carmel Valley", slug: "carmel-valley", note: "More suburban, family-oriented, slightly lower prices" },
+      { name: "Carmel Valley", slug: "carmel-valley", note: "More suburban, newer construction, slightly lower prices" },
       { name: "Solana Beach", slug: "del-mar", note: "Neighboring coastal community with train access" },
     ],
     faqs: [
       { question: "How does Del Mar compare to La Jolla?", answer: "Both are upscale coastal communities. Del Mar feels slightly more village-quaint and is north of La Jolla. La Jolla has more UCSD and biotech proximity." },
-      { question: "Is Del Mar good for families?", answer: "Del Mar is popular with families who value schools, safety, and coastal lifestyle. Budget is typically the main consideration for relocating buyers." },
+      { question: "What school district serves Del Mar?", answer: "Del Mar is served by the Del Mar Union School District and San Dieguito Union High School District. Verify current attendance boundaries for a specific address, since they can change." },
       { question: "Are there condo options in Del Mar?", answer: "Condo inventory is limited compared to La Jolla or UTC. Most buyers focus on single-family homes or townhomes in Del Mar Heights." },
     ],
   },
@@ -255,9 +255,9 @@ export const communityContent: Record<string, CommunityContent> = {
     housingOverview:
       "Carmel Valley features newer single-family homes, townhomes, and select condos. Master-planned communities offer parks, pools, and community centers. Torrey Hills is a popular subarea.",
     lifestyle:
-      "Family-oriented with excellent parks, trails, and community events. Carmel Valley Road provides shopping and dining. Less coastal than Del Mar or La Jolla but more space and newer construction.",
+      "Master-planned with extensive parks, trails, and community events. Carmel Valley Road provides shopping and dining. Less coastal than Del Mar or La Jolla but more space and newer construction.",
     commute:
-      "Close to I-5 and I-805. Sorrento Valley and UTC are 10–15 minutes. UCSD is 15–20 minutes. One of the best areas for biotech corridor commuters who want family-friendly neighborhoods.",
+      "Close to I-5 and I-805. Sorrento Valley and UTC are 10–15 minutes. UCSD is 15–20 minutes. One of the best areas for biotech corridor commuters who want newer master-planned neighborhoods.",
     nearbyComparisons: [
       { name: "Torrey Hills", slug: "torrey-hills", note: "Established family pocket closer to Torrey Pines" },
       { name: "Del Mar", slug: "del-mar", note: "Coastal and upscale, higher price points" },
@@ -266,7 +266,7 @@ export const communityContent: Record<string, CommunityContent> = {
     faqs: [
       { question: "Is Carmel Valley good for relocating families?", answer: "Carmel Valley is one of the most popular areas for relocating families due to schools, safety, and amenities. Budget and commute preferences should guide your search." },
       { question: "How far is Carmel Valley from the beach?", answer: "Del Mar beaches are 10–15 minutes. La Jolla is 15–20 minutes. You trade immediate beach access for more home and yard space." },
-      { question: "What is Torrey Hills?", answer: "Torrey Hills is a subarea of Carmel Valley popular with families. It offers a mix of single-family homes and townhomes with good school access." },
+      { question: "What is Torrey Hills?", answer: "Torrey Hills is a subarea of Carmel Valley with a mix of single-family homes and townhomes, neighborhood parks, and access to Carmel Valley schools." },
     ],
   },
   "point-loma": {
@@ -328,12 +328,12 @@ export const communityContent: Record<string, CommunityContent> = {
       "This is the biotech corridor, many residents walk or have a 5-minute drive to work. I-5 and I-805 provide regional access. UTC is 5–10 minutes. La Jolla is 10–15 minutes.",
     nearbyComparisons: [
       { name: "University City", slug: "university-city", note: "More residential character, UTC shopping nearby" },
-      { name: "Carmel Valley", slug: "carmel-valley", note: "More family-oriented, 10–15 minute commute" },
+      { name: "Carmel Valley", slug: "carmel-valley", note: "More master-planned housing, 10–15 minute commute" },
       { name: "Mira Mesa", slug: "sorrento-valley", note: "More affordable option further inland" },
     ],
     faqs: [
       { question: "Is Sorrento Valley good for biotech commuters?", answer: "Sorrento Valley is ideal for biotech and tech professionals, many campuses are in walking distance or a short drive. It's one of the top choices for commute-focused buyers." },
-      { question: "Are there family-friendly options in Sorrento Valley?", answer: "Families often look at nearby Carmel Valley or University City for schools and parks, while keeping Sorrento Valley on the list for commute. Evaluate based on your priorities." },
+      { question: "Are there single-family homes in Sorrento Valley?", answer: "Single-family inventory is limited; most buyers looking for houses with yards compare nearby Carmel Valley or University City instead, while keeping Sorrento Valley on the list for commute." },
       { question: "What types of homes are in Sorrento Valley?", answer: "Condos and townhomes dominate the inventory. Newer developments offer modern amenities. Single-family homes are less common." },
     ],
   },
@@ -367,7 +367,7 @@ export const communityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does Bay Park compare to Clairemont?", answer: "Bay Park offers hillside views and bay breezes at a slight premium over flat Clairemont. Both provide central location and single-family home options." },
-      { question: "Is Bay Park good for families?", answer: "Bay Park is popular with families who want views, space, and central access. School boundaries should be verified for specific addresses." },
+      { question: "What size homes are typical in Bay Park?", answer: "Bay Park has a mix of 2-4 bedroom single-family homes, many with views and yard space. School boundaries should be verified for specific addresses." },
       { question: "How close is Bay Park to Mission Bay?", answer: "Mission Bay is 5–10 minutes by car. You get bay proximity without Pacific Beach prices or crowds." },
     ],
   },

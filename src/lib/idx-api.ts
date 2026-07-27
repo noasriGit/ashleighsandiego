@@ -466,6 +466,29 @@ export async function getSavedLinkResults(
   return normalizeEnvelope(data, limit, false);
 }
 
+/** Paginated slice of a saved search's MLS results (up to 250 total). */
+export async function getSavedLinkListingsPage(
+  savedLinkId: string | undefined,
+  offset = 0,
+  limit = 50,
+): Promise<FeaturedPage> {
+  if (!savedLinkId || !isApiEnabled()) {
+    return { listings: [], hasMore: false };
+  }
+
+  const all = await getSavedLinkResults(savedLinkId, 250);
+  const listings = all.slice(offset, offset + limit);
+  const total = all.length;
+  const hasMore = offset + limit < total;
+
+  return {
+    listings,
+    total,
+    hasMore,
+    nextOffset: hasMore ? offset + limit : undefined,
+  };
+}
+
 /**
  * Live property count for a single saved search via the per-link count endpoint.
  * Preferred over getAllSavedSearchCounts() because the bulk endpoint returns 400

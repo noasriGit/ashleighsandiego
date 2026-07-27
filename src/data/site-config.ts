@@ -8,17 +8,17 @@ export const IDX_SEARCH_DOMAIN = "sdcommunities.idxbroker.com";
 export const IDX_MLS_ID = "d010";
 
 export const siteConfig = {
-  name: "San Diego Relocation Home Guide",
+  name: "SDCommunities",
   tagline:
-    "Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego.",
+    "The San Diego neighborhood guide, compare communities, commutes, and home prices before you search for a home.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? `https://${SITE_DOMAIN}`,
   description:
-    "Moving to San Diego? Get clear neighborhood guidance, home search tools, and a step-by-step buyer plan before you start touring homes.",
+    "Compare San Diego neighborhoods by commute, budget, and lifestyle, then connect with a local buyer's agent to search homes with confidence.",
 
   agent: {
     name: "Ashleigh Dodero",
     dreNumber: "02351643",
-    email: "AshleighDodero@bhhscal.com",
+    email: "ashleigh@serhant.com",
     phone: "703-229-2810",
     photo: "/images/hero2.JPG",
     bio: "Independent buyer guidance for relocating, military/VA, and first-time buyers across the La Jolla area and coastal San Diego.",
@@ -28,20 +28,23 @@ export const siteConfig = {
     },
   },
 
+  // TODO: confirm exact Serhant San Diego office address before deploy.
   brokerage: {
-    name: "Berkshire Hathaway HomeServices California Properties",
+    name: "SERHANT.",
     licenseNumber: "",
-    officeAddress: "1299 Prospect St, La Jolla, California 92037",
+    officeAddress: "San Diego, California",
+    logo: "/images/serhant-logo.png",
+    logoWhite: "/images/serhant-logo-white.jpeg",
   },
 
-  // Agent-level operating note (shown alongside the required BHHS franchise disclaimer).
+  // Agent-level operating note (shown alongside the required Serhant disclosure).
   disclaimer:
-    "This website is independently operated by Ashleigh Dodero, California DRE #02351643, a sales professional affiliated with Berkshire Hathaway HomeServices California Properties. All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your home is currently listed with a Broker, this is not intended as a solicitation.",
+    "This website is independently operated by Ashleigh Dodero, California DRE #02351643, a sales professional affiliated with SERHANT. All information is deemed reliable but not guaranteed. Not intended as legal, tax, lending, or financial advice. If your home is currently listed with a Broker, this is not intended as a solicitation.",
 
-  // BHHS-required franchise disclaimer (HomeServices of America-owned variant).
+  // TODO: replace with Serhant's official required disclosure copy once confirmed.
   // {year} is replaced at render time. Source: brand-guidelines.ts
   franchiseDisclaimer:
-    "©{year} BHH Affiliates, LLC. An independently operated subsidiary of HomeServices of America, Inc., a Berkshire Hathaway affiliate, and a franchisee of BHH Affiliates, LLC. Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate. Equal Housing Opportunity.",
+    "©{year} SERHANT. All rights reserved. SERHANT. and the SERHANT. logo are trademarks of Serhant LLC. Equal Housing Opportunity.",
 
   // Required SDMLS IDX disclaimer, show on the IDX homepage and any page displaying SDMLS data.
   // {year} is replaced at render time via getSdmlsIdxDisclaimer().
@@ -50,7 +53,7 @@ export const siteConfig = {
 
   ctas: {
     strategyCall: "Book a Free Buyer Strategy Call",
-    searchHomes: "Search Homes Near La Jolla",
+    searchHomes: "Search San Diego Homes",
     relocationChecklist: "Get the Relocation Checklist",
     customSearch: "Request a Custom Home Search",
     compareNeighborhoods: "Compare Neighborhoods",
@@ -62,12 +65,13 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Relocating to San Diego", shortLabel: "Relocating", href: "/relocating-to-san-diego" },
-    { label: "Moving to La Jolla", shortLabel: "La Jolla", href: "/moving-to-la-jolla" },
-    { label: "Neighborhoods", href: "/neighborhoods" },
-    { label: "Search Homes", href: "/search-homes" },
-    { label: "Military / VA", href: "/military-va-relocation-san-diego" },
-    { label: "First-Time Buyers", shortLabel: "First-Time Buyers", href: "/first-time-home-buyer-san-diego" },
+    { label: "Neighborhoods", href: "/san-diego-neighborhood-map" },
+    { label: "Moving to San Diego", shortLabel: "Moving Here", href: "/moving-to-san-diego" },
+    { label: "La Jolla", href: "/la-jolla-neighborhoods" },
+    { label: "Condos", href: "/san-diego-condos-for-sale" },
+    { label: "Suburbs", href: "/san-diego-suburbs" },
+    { label: "Military / VA", shortLabel: "Military", href: "/military-realtor-san-diego" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
 } as const;

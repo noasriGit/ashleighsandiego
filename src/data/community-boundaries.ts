@@ -18,9 +18,9 @@ export const COMMUNITY_BOUNDARIES_URL = "/geo/community-boundaries.geojson";
 
 /** Brand-aligned fill colors by tier (hex). */
 export const TIER_FILL_COLORS: Record<1 | 2 | 3, string> = {
-  1: "#670038",
-  2: "#72595e",
-  3: "#2a2223",
+  1: "#001a72",
+  2: "#3d5a80",
+  3: "#0a1128",
 };
 
 /** Approximate centroid of a polygon ring (for future map features). */

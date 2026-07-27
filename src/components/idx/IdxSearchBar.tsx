@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { communities, getLaunchCommunitySlugs } from "@/data/communities";
@@ -81,10 +81,12 @@ export function IdxSearchBar({
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [minBed, setMinBed] = useState("");
+  const [lastRouteDefaultArea, setLastRouteDefaultArea] = useState(routeDefaultArea);
 
-  useEffect(() => {
+  if (routeDefaultArea !== lastRouteDefaultArea) {
+    setLastRouteDefaultArea(routeDefaultArea);
     setAreaSlug(routeDefaultArea);
-  }, [routeDefaultArea]);
+  }
 
   if (!idxEnabled) {
     return (

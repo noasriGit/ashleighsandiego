@@ -15,7 +15,10 @@
     "idx:verify": "node scripts/verify-idx-launch.mjs",
     "keywords:generate-community": "node scripts/generate-community-keywords.mjs",
     "geo:generate-boundaries": "node scripts/generate-community-boundaries.mjs",
-    "geo:validate-boundaries": "node scripts/validate-community-boundaries.mjs"
+    "geo:validate-boundaries": "node scripts/validate-community-boundaries.mjs",
+    "fairhousing:scan": "node scripts/check-fair-housing-terms.mjs",
+    "routes:validate": "node scripts/check-routes.mjs",
+    "verify": "npm run lint && npm run routes:validate && npm run fairhousing:scan && npm run geo:validate-boundaries"
   },
   "dependencies": {
     "clsx": "^2.1.1",

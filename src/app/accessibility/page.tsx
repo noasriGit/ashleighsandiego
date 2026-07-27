@@ -7,8 +7,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 export const metadata = generatePageMetadata({
   title: "Accessibility Statement",
   description:
-    "Accessibility statement for San Diego Relocation Home Guide. Learn about our accessibility efforts and how to report barriers.",
+    "Accessibility statement for SDCommunities. Learn about our accessibility efforts and how to report barriers.",
   path: "/accessibility",
+  noindex: true,
 });
 
 export default function AccessibilityPage() {

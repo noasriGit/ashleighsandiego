@@ -23,7 +23,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     housingOverview:
       "Torrey Hills sits between Carmel Valley and Torrey Pines with a mix of single-family homes, townhomes, and select condos. Many streets date to the 1990s–2000s with established landscaping and cul-de-sac layouts. Inventory tends toward family-sized floor plans rather than the newer tract homes found deeper in Carmel Valley.",
     lifestyle:
-      "The area feels suburban and family-oriented with neighborhood parks and easy access to Carmel Valley Road shopping. Torrey Pines State Natural Reserve and coastal trails are a short drive west. Daily errands often route through Carmel Valley or UTC rather than a dedicated village center within Torrey Hills itself.",
+      "The area feels suburban and quiet with neighborhood parks and easy access to Carmel Valley Road shopping. Torrey Pines State Natural Reserve and coastal trails are a short drive west. Daily errands often route through Carmel Valley or UTC rather than a dedicated village center within Torrey Hills itself.",
     commute:
       "I-5 and I-805 are roughly 5–10 minutes away. Sorrento Valley and UTC employers are typically 10–15 minutes by car. UCSD is roughly 15–20 minutes. Downtown San Diego is roughly 25–30 minutes depending on traffic.",
     nearbyComparisons: [
@@ -130,7 +130,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     housingOverview:
       "Civita is a master-planned community within Mission Valley featuring newer single-family homes, townhomes, and condos built from the 2010s onward. Floor plans emphasize open layouts, energy-efficient construction, and attached garages. Unlike older Mission Valley condo towers, Civita offers a suburban-within-urban feel with dedicated parks and walking paths.",
     lifestyle:
-      "Civita Park serves as the community hub with playgrounds, sports courts, and gathering spaces. Shopping and dining are a short drive to Fashion Valley or Mission Valley Mall. The area lacks the neighborhood history of Clairemont or Hillcrest but compensates with modern amenities and a family-friendly layout.",
+      "Civita Park serves as the community hub with playgrounds, sports courts, and gathering spaces. Shopping and dining are a short drive to Fashion Valley or Mission Valley Mall. The area lacks the neighborhood history of Clairemont or Hillcrest but compensates with modern amenities and a park-centered layout.",
     commute:
       "Civita sits near the I-805 and I-8 interchange, one of San Diego's best-connected freeway nodes. Downtown is roughly 10–15 minutes. UTC is roughly 15–20 minutes. Most central San Diego job centers are reachable within roughly 20–25 minutes.",
     nearbyComparisons: [
@@ -409,12 +409,12 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Relocating families who want a flat, sandy beach and calm water access",
       "Buyers seeking single-family homes within walking distance of the ocean",
       "Outdoor enthusiasts interested in kayaking, snorkeling, and beach activities",
-      "UCSD-affiliated buyers who want a family-friendly La Jolla subarea",
+      "UCSD-affiliated buyers who want a flat-terrain, low-density La Jolla subarea",
     ],
     housingOverview:
       "La Jolla Shores features single-family homes, duplexes, and beach-adjacent condos on flat terrain between the sand and La Jolla Village Drive. Unlike the Cove's bluff-top density, Shores offers wider streets, larger lots, and a beach-town residential feel. Many homes date to the 1950s–70s with ocean-view premiums on Avenida de la Playa.",
     lifestyle:
-      "La Jolla Shores Beach is the anchor with calm water, kayak rentals, and the Scripps Pier visible offshore. The Shores commercial strip offers casual dining and a grocery store. Kellogg Park provides grassy beachfront space. The subarea is family-oriented with a relaxed beach-neighborhood pace.",
+      "La Jolla Shores Beach is the anchor with calm water, kayak rentals, and the Scripps Pier visible offshore. The Shores commercial strip offers casual dining and a grocery store. Kellogg Park provides grassy beachfront space. The subarea has a relaxed, low-density beach-neighborhood pace.",
     commute:
       "I-5 is roughly 5–10 minutes. UCSD and Scripps are roughly 5–10 minutes north. Sorrento Valley is roughly 10–15 minutes. Downtown is roughly 25–30 minutes depending on traffic.",
     nearbyComparisons: [
@@ -423,8 +423,8 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { name: "Pacific Beach", slug: "pacific-beach", note: "More casual beach town with boardwalk energy" },
     ],
     faqs: [
-      { question: "How does La Jolla Shores differ from La Jolla Cove?", answer: "La Jolla Shores has a flat, sandy beach with family homes and calm water, while the Cove sits on bluffs with sea lions and more condo inventory. Shores is generally considered the most family-friendly beach subarea in La Jolla." },
-      { question: "Is La Jolla Shores good for relocating families?", answer: "La Jolla Shores is popular with relocating families due to beach access, flat terrain, and a neighborhood feel. School boundaries should be verified for specific addresses." },
+      { question: "How does La Jolla Shores differ from La Jolla Cove?", answer: "La Jolla Shores has a flat, sandy beach with single-family homes and calm water, while the Cove sits on bluffs with sea lions and more condo inventory. Shores has the lowest housing density of La Jolla's coastal subareas." },
+      { question: "What housing types are available in La Jolla Shores?", answer: "Single-family homes and duplexes dominate, with some beach-adjacent condos. Lots tend to be larger than the Cove or Village. School boundaries should be verified for specific addresses." },
       { question: "Can you walk to the beach from La Jolla Shores homes?", answer: "Many properties on streets near Avenida de la Playa are within walking distance of the beach. Inland streets require a short walk or drive." },
     ],
   },
@@ -530,7 +530,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     faqs: [
       { question: "How does Muirlands differ from other La Jolla subareas?", answer: "Muirlands is a hillside enclave with larger lots, canyon views, and a secluded residential character. Unlike the Village or Shores, it has no commercial core and limited walkability to shops or beaches." },
       { question: "Are there view homes in Muirlands?", answer: "Yes, many streets offer canyon, ocean, or city views depending on orientation and elevation. View quality varies block by block." },
-      { question: "Is Muirlands good for families?", answer: "Muirlands attracts families who want space, views, and La Jolla schools. The tradeoff is less walkable access to beaches and village amenities compared to Shores or Bird Rock." },
+      { question: "What size lots are typical in Muirlands?", answer: "Muirlands lots tend to be larger than the Village or Cove, with more space, hillside views, and access to La Jolla schools. The tradeoff is less walkable access to beaches and village amenities compared to Shores or Bird Rock." },
     ],
   },
 
@@ -598,7 +598,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { name: "Pacific Beach", slug: "pacific-beach", note: "More boardwalk energy and Garnet Avenue nightlife" },
     ],
     faqs: [
-      { question: "How does Windansea differ from La Jolla Shores?", answer: "Windansea has a rocky surf beach and cottage-style homes on bluff-top streets, while Shores offers a flat sandy beach and family-oriented residential streets. Windansea has a more bohemian, surf-focused character." },
+      { question: "How does Windansea differ from La Jolla Shores?", answer: "Windansea has a rocky surf beach and cottage-style homes on bluff-top streets, while Shores offers a flat sandy beach and wider residential lots. Windansea has a more bohemian, surf-focused character." },
       { question: "Is Windansea good for surf enthusiasts?", answer: "Windansea Beach is one of San Diego's iconic surf breaks. Buyers who prioritize surf access often find this subarea appealing despite limited on-site commercial amenities." },
       { question: "What housing types exist in Windansea?", answer: "Cottages, mid-century homes, and occasional new construction on small lots. The housing stock is eclectic and often smaller in scale than other La Jolla subareas." },
     ],
@@ -706,7 +706,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does Mission Bay differ from Mission Beach?", answer: "Mission Bay focuses on bay-front condos and recreation along calm water, while Mission Beach is the narrow ocean boardwalk strip between sea and bay. Mission Bay suits buyers who prioritize bay activities over surf beach access." },
-      { question: "Are there family-friendly activities in Mission Bay?", answer: "Mission Bay Park has playgrounds, calm swimming areas, and picnic facilities. The bay's protected water is well suited to families with young children learning water sports." },
+      { question: "What recreation is available at Mission Bay Park?", answer: "Mission Bay Park has playgrounds, calm swimming areas, and picnic facilities. The bay's protected water is well suited to beginners learning to kayak, paddleboard, or sail." },
       { question: "What housing types exist in Mission Bay?", answer: "Condos and townhomes dominate bay-front inventory. Canal-side single-family homes are more common in Crown Point on the bay's western peninsula." },
     ],
   },

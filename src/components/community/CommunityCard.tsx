@@ -22,8 +22,8 @@ const lifestyleGradient: Record<LifestyleTag, string> = {
   "Commute-friendly": "from-earth to-espresso",
   "More affordable nearby": "from-dove to-earth",
   "Nightlife/walkability": "from-cabernet via-blush to-earth",
-  "Family-oriented": "from-blush to-rose",
-  "Military/commute considerations": "from-espresso to-earth",
+  "Parks and Recreation Access": "from-blush to-rose",
+  "Near Military Installations": "from-espresso to-earth",
 };
 
 export function CommunityCard({

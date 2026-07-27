@@ -5,8 +5,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Privacy Policy",
-  description: "Privacy policy for San Diego Relocation Home Guide.",
+  description: "Privacy policy for SDCommunities.",
   path: "/privacy-policy",
+  noindex: true,
 });
 
 export default function PrivacyPolicyPage() {

@@ -22,6 +22,7 @@ export const metadata = generatePageMetadata({
     "First time buying in San Diego? Learn about affordability, property types, pre-approval, and neighborhoods near La Jolla before you tour homes.",
   path: "/first-time-home-buyer-san-diego",
   keywords: getKeywordsForPage("/first-time-home-buyer-san-diego"),
+  noindex: true,
 });
 
 const sections = [

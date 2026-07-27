@@ -1,5 +1,4 @@
 import { communities } from "@/data/communities";
-import { siteConfig } from "@/data/site-config";
 
 /** Buyer-path landing pages linked from the homepage bento grid. */
 export const HOME_BUYER_PATH_COUNT = 5;
@@ -15,8 +14,8 @@ export function getHomeStatBandStats() {
       label: "Neighborhood Guides",
     },
     {
-      value: String(siteConfig.geo.radiusMiles),
-      label: `Mile Radius from ${siteConfig.geo.center}`,
+      value: "Coastal to Inland",
+      label: "Every Price Point",
     },
     {
       value: String(HOME_BUYER_PATH_COUNT),

@@ -296,7 +296,7 @@
       "targetDimensions": "1920x1080",
       "altText": "La Jolla Cove coastline and Pacific Ocean, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -317,7 +317,7 @@
       "targetDimensions": "800x450",
       "altText": "La Jolla Cove rocks and shoreline",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -338,7 +338,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Pacific Beach pier and shoreline, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -359,7 +359,7 @@
       "targetDimensions": "800x450",
       "altText": "Pacific Beach boardwalk and ocean on a sunny day",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -380,7 +380,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Geisel Library at UC San Diego in University City",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -401,7 +401,7 @@
       "targetDimensions": "800x450",
       "altText": "UC San Diego Geisel Library exterior",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -422,7 +422,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Residential street with palm trees in central San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -443,7 +443,7 @@
       "targetDimensions": "800x450",
       "altText": "Palm-lined neighborhood street in San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -464,7 +464,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mission Valley West commercial corridor, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -485,7 +485,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Valley freeway corridor and hills, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -506,7 +506,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Del Mar coastline with beach and bluffs, San Diego County",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -527,7 +527,7 @@
       "targetDimensions": "800x450",
       "altText": "Surfer walking on Del Mar beach",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -548,7 +548,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Hillside San Diego neighborhood overlooking the Pacific Ocean",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -569,7 +569,7 @@
       "targetDimensions": "800x450",
       "altText": "San Diego hillside neighborhood with ocean views",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -590,7 +590,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Old Point Loma Lighthouse at Cabrillo National Monument, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -611,7 +611,7 @@
       "targetDimensions": "800x450",
       "altText": "Point Loma lighthouse overlooking the Pacific",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -632,7 +632,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Sorrento Valley biotech and office corridor, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -653,7 +653,7 @@
       "targetDimensions": "800x450",
       "altText": "Sorrento Valley business park near I-805, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -674,7 +674,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mission Bay waterfront near Bay Park, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -695,7 +695,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Bay resort area near Bay Park",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -716,7 +716,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Sunset at Ocean Beach Pier, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -737,7 +737,7 @@
       "targetDimensions": "800x450",
       "altText": "Ocean Beach shoreline and waves, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -758,7 +758,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Balboa Park architecture near Hillcrest, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -779,7 +779,7 @@
       "targetDimensions": "800x450",
       "altText": "Balboa Park California Tower near Hillcrest",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -800,7 +800,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Walkable street with shops and restaurants in San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -821,7 +821,7 @@
       "targetDimensions": "800x450",
       "altText": "Walkable commercial street in San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
@@ -842,7 +842,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Vacation Isle waterfront on Mission Bay, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -863,7 +863,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Bay canals near Bay Ho, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -882,16 +882,16 @@
       "route": "/neighborhoods/north-clairemont",
       "filePath": "/images/neighborhoods/north-clairemont-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "Balboa Park California Tower near North Clairemont, San Diego",
+      "altText": "Hillside residential neighborhood in North Clairemont, San Diego",
       "selectedCandidateIndex": 0,
       "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/eB3dm1_rgPw/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/eB3dm1_rgPw",
+          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=1920",
+          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
           "license": "Unsplash License",
-          "photographer": "Jeremy Huang",
+          "photographer": "Unsplash Contributor",
           "attributionRequired": false
         }
       ]
@@ -903,16 +903,16 @@
       "route": "/neighborhoods/north-clairemont",
       "filePath": "/images/neighborhoods/north-clairemont-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "San Diego skyline viewed from central neighborhoods",
+      "altText": "Canyon-adjacent homes in North Clairemont, San Diego",
       "selectedCandidateIndex": 0,
       "status": "downloaded",
       "candidates": [
         {
           "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
+          "downloadUrl": "https://unsplash.com/photos/nI4qmAU8ywc/download?force=true&w=800",
+          "sourcePageUrl": "https://unsplash.com/photos/nI4qmAU8ywc",
           "license": "Unsplash License",
-          "photographer": "Hakan Toker",
+          "photographer": "Unsplash Contributor",
           "attributionRequired": false
         }
       ]
@@ -926,7 +926,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Fashion Valley transit hub near Kearny Mesa, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -947,7 +947,7 @@
       "targetDimensions": "800x450",
       "altText": "Commercial corridor near Kearny Mesa, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -966,16 +966,16 @@
       "route": "/neighborhoods/linda-vista",
       "filePath": "/images/neighborhoods/linda-vista-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "San Diego skyline near Linda Vista and Mission Valley",
+      "altText": "Park Boulevard view through Linda Vista, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/BhTgjLZ_v2U/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/BhTgjLZ_v2U",
-          "license": "Unsplash License",
-          "photographer": "Hakan Toker",
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/University_Heights_San_Diego_Park_Blvd_view.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_San_Diego_Park_Blvd_view.jpg",
+          "license": "CC0",
+          "photographer": "Wikimedia contributor",
           "attributionRequired": false
         }
       ]
@@ -987,16 +987,16 @@
       "route": "/neighborhoods/linda-vista",
       "filePath": "/images/neighborhoods/linda-vista-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "San Diego-Coronado Bridge and bay near central San Diego",
+      "altText": "Central San Diego mesa neighborhood near Linda Vista",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
-          "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/56/University_Heights_San_Diego_Park_Blvd_view.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:University_Heights_San_Diego_Park_Blvd_view.jpg",
+          "license": "CC0",
+          "photographer": "Wikimedia contributor",
           "attributionRequired": false
         }
       ]
@@ -1010,7 +1010,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Presidio of San Diego ruins in Presidio Park, Mission Hills",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1031,7 +1031,7 @@
       "targetDimensions": "800x450",
       "altText": "Historic Presidio Park overlooking Mission Hills, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1052,7 +1052,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Torrey Pines State Natural Reserve coastal bluffs, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1073,7 +1073,7 @@
       "targetDimensions": "800x450",
       "altText": "Torrey Pines bluff trail overlooking the Pacific Ocean",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1094,7 +1094,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Del Mar Fairgrounds above Del Mar Heights, San Diego County",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1115,7 +1115,7 @@
       "targetDimensions": "800x450",
       "altText": "Del Mar Fairgrounds grandstand and racetrack",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1136,7 +1136,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mount Soledad view from Torrey Hills, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1157,7 +1157,7 @@
       "targetDimensions": "800x450",
       "altText": "Hillside neighborhood between Carmel Valley and Torrey Pines",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1176,17 +1176,17 @@
       "route": "/neighborhoods/civita",
       "filePath": "/images/neighborhoods/civita-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "San Diego-Coronado Bridge near Civita in Mission Valley",
+      "altText": "Mission Valley West hills near Civita master-planned community",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/v7dV427jMug/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/v7dV427jMug",
-          "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
-          "attributionRequired": false
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+          "license": "CC BY-SA 3.0",
+          "photographer": "panoramio contributor",
+          "attributionRequired": true
         }
       ]
     },
@@ -1197,17 +1197,17 @@
       "route": "/neighborhoods/civita",
       "filePath": "/images/neighborhoods/civita-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Mission Bay waterfront near Mission Valley, San Diego",
+      "altText": "Mission Valley redevelopment hills, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/SE8FKO1Ljy4/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/SE8FKO1Ljy4",
-          "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
-          "attributionRequired": false
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+          "license": "CC BY-SA 3.0",
+          "photographer": "panoramio contributor",
+          "attributionRequired": true
         }
       ]
     },
@@ -1218,17 +1218,17 @@
       "route": "/neighborhoods/serra-mesa",
       "filePath": "/images/neighborhoods/serra-mesa-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "La Jolla coastline near Serra Mesa, San Diego",
+      "altText": "Mission Valley corridor near Serra Mesa, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/E1wZal9CIaM/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/E1wZal9CIaM",
-          "license": "Unsplash License",
-          "photographer": "James Lee",
-          "attributionRequired": false
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mission_Valley_West%2C_San_Diego%2C_CA%2C_USA_-_panoramio_%287%29.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mission_Valley_West,_San_Diego,_CA,_USA_-_panoramio_(7).jpg",
+          "license": "CC BY-SA 3.0",
+          "photographer": "panoramio contributor",
+          "attributionRequired": true
         }
       ]
     },
@@ -1239,17 +1239,17 @@
       "route": "/neighborhoods/serra-mesa",
       "filePath": "/images/neighborhoods/serra-mesa-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Ocean waves along the San Diego coast",
+      "altText": "Central San Diego mesa neighborhood near SDSU",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/1Q7riqHc2l0/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/1Q7riqHc2l0",
-          "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
-          "attributionRequired": false
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fashion_Valley_station_2019.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Fashion_Valley_station_2019.jpg",
+          "license": "CC BY-SA 4.0",
+          "photographer": "Pi.1415926535",
+          "attributionRequired": true
         }
       ]
     },
@@ -1262,7 +1262,7 @@
       "targetDimensions": "1920x1080",
       "altText": "La Jolla Cove sea lions and rocky coastline, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1283,7 +1283,7 @@
       "targetDimensions": "800x450",
       "altText": "Sea lions resting on rocks at La Jolla Cove",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1304,7 +1304,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Scripps Pier at La Jolla Shores beach, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1325,7 +1325,7 @@
       "targetDimensions": "800x450",
       "altText": "La Jolla Shores sandy beach and calm Pacific waters",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1346,7 +1346,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Girard Avenue streetscape in La Jolla Village, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1367,7 +1367,7 @@
       "targetDimensions": "800x450",
       "altText": "La Jolla Village shops along Girard Avenue",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1388,7 +1388,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Bird Rock Cafe on La Jolla Boulevard, Bird Rock",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1409,7 +1409,7 @@
       "targetDimensions": "800x450",
       "altText": "Local shops along La Jolla Boulevard in Bird Rock",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1428,16 +1428,16 @@
       "route": "/neighborhoods/muirlands",
       "filePath": "/images/neighborhoods/muirlands-hero.jpg",
       "targetDimensions": "1920x1080",
-      "altText": "La Jolla coastline near the Muirlands enclave",
+      "altText": "Panoramic view from Mount Soledad toward Muirlands, La Jolla",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/5PUidNQ6ZX4/download?force=true&w=1920",
-          "sourcePageUrl": "https://unsplash.com/photos/5PUidNQ6ZX4",
-          "license": "Unsplash License",
-          "photographer": "Unsplash Contributor",
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Mount_Soledad_-_Looking_North.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mount_Soledad_-_Looking_North.jpg",
+          "license": "CC0",
+          "photographer": "Wikimedia contributor",
           "attributionRequired": false
         }
       ]
@@ -1449,17 +1449,17 @@
       "route": "/neighborhoods/muirlands",
       "filePath": "/images/neighborhoods/muirlands-thumb.jpg",
       "targetDimensions": "800x450",
-      "altText": "Sunset ocean waves along the La Jolla coast",
+      "altText": "Hillside La Jolla canyon views in Muirlands",
       "selectedCandidateIndex": 0,
-      "status": "downloaded",
+      "status": "failed",
       "candidates": [
         {
-          "sourceType": "unsplash",
-          "downloadUrl": "https://unsplash.com/photos/JvmYnjpxA8M/download?force=true&w=800",
-          "sourcePageUrl": "https://unsplash.com/photos/JvmYnjpxA8M",
-          "license": "Unsplash License",
-          "photographer": "James Lee",
-          "attributionRequired": false
+          "sourceType": "wikimedia",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Soledad_from_Torrey_Pines.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Soledad_from_Torrey_Pines.jpg",
+          "license": "CC BY-SA 3.0",
+          "photographer": "Wikimedia contributor",
+          "attributionRequired": true
         }
       ]
     },
@@ -1472,7 +1472,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mount Soledad National Veterans Memorial overlooking San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1493,7 +1493,7 @@
       "targetDimensions": "800x450",
       "altText": "Mount Soledad memorial cross and panoramic bay views",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1514,7 +1514,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Windansea Beach surf shack and rocky coastline, La Jolla",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1535,7 +1535,7 @@
       "targetDimensions": "800x450",
       "altText": "Windansea Beach waves along the La Jolla coast",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1556,7 +1556,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Rowing crews on Mission Bay near Crown Point, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1577,7 +1577,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Bay waterways in Crown Point, Pacific Beach",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1598,7 +1598,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mission Beach boardwalk and Pacific Ocean, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1619,7 +1619,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Beach boardwalk on a sunny day",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1640,7 +1640,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Mission Bay Park sunset, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1661,7 +1661,7 @@
       "targetDimensions": "800x450",
       "altText": "Mission Bay waterfront recreation area, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1682,7 +1682,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Liberty Station promenade near Morena, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1703,7 +1703,7 @@
       "targetDimensions": "800x450",
       "altText": "Liberty Station public market area near Morena Boulevard",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1724,7 +1724,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Old Town San Diego historic plaza and adobe buildings",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1745,7 +1745,7 @@
       "targetDimensions": "800x450",
       "altText": "Old Town San Diego State Historic Park streetscape",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1766,7 +1766,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Aerial view of San Diego International Airport and Midway area",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1787,7 +1787,7 @@
       "targetDimensions": "800x450",
       "altText": "San Diego airport and Liberty Station from above",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1808,7 +1808,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Cabrillo National Monument overlooking Point Loma Heights",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1829,7 +1829,7 @@
       "targetDimensions": "800x450",
       "altText": "Cabrillo National Monument visitor center on Point Loma",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1850,7 +1850,7 @@
       "targetDimensions": "1920x1080",
       "altText": "University Heights Library on Washington Street, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1871,7 +1871,7 @@
       "targetDimensions": "800x450",
       "altText": "University Heights neighborhood branch library",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1892,7 +1892,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Normal Heights neighborhood streetscape, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1913,7 +1913,7 @@
       "targetDimensions": "800x450",
       "altText": "Residential street in Normal Heights near Adams Avenue",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1934,7 +1934,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Balboa Park Botanical Building close-up near Bankers Hill",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1955,7 +1955,7 @@
       "targetDimensions": "800x450",
       "altText": "Botanical Building lily pond in Balboa Park, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1976,7 +1976,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Little Italy neighborhood street in downtown San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -1997,7 +1997,7 @@
       "targetDimensions": "800x450",
       "altText": "Little Italy sign and urban village streetscape",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -2018,7 +2018,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Gaslamp Quarter historic streetscape, downtown San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -2039,7 +2039,7 @@
       "targetDimensions": "800x450",
       "altText": "Gaslamp Quarter nightlife district, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -2060,7 +2060,7 @@
       "targetDimensions": "1920x1080",
       "altText": "Balboa Park Botanical Building and lily pond, San Diego",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",
@@ -2081,7 +2081,7 @@
       "targetDimensions": "800x450",
       "altText": "Balboa Park Botanical Building reflected in the lily pond",
       "selectedCandidateIndex": 0,
-      "status": "pending",
+      "status": "failed",
       "candidates": [
         {
           "sourceType": "wikimedia",

@@ -32,6 +32,9 @@ export async function generateMetadata({
     alternates: {
       canonical: `${siteConfig.url}/listings/${idxId}/${listingId}`,
     },
+    // Individual featured-listing pages are noindex,follow — they rotate/expire
+    // constantly and would otherwise generate thin, unstable indexed URLs.
+    robots: { index: false, follow: true },
   };
 }
 

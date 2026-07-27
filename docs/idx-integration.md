@@ -24,10 +24,28 @@ in production. None of these require code changes.
 ### Branding / compliance (must match `src/data/site-config.ts`)
 
 - [ ] Agent profile: name, DRE #, email, phone, photo
-- [ ] Brokerage: "Berkshire Hathaway HomeServices California Properties", license #, office address
+- [ ] Brokerage: "SERHANT.", license #, office address
 - [ ] Equal Housing Opportunity logo enabled site-wide
-- [ ] BHHS franchise disclaimer configured (copy from `siteConfig.franchiseDisclaimer`,
+- [ ] Serhant franchise disclaimer configured (copy from `siteConfig.franchiseDisclaimer`,
       replacing `{year}` with the current year)
+
+### Serhant rebrand checklist (post-deploy, manual)
+
+The codebase change from Berkshire Hathaway HomeServices to SERHANT. does not touch the IDX
+Broker control panel. Complete these steps in the control panel after merging the rebrand:
+
+- [ ] Update agent profile email to `ashleigh@serhant.com` (keep DRE #02351643 and phone)
+- [ ] Update brokerage name to "SERHANT." and enter the confirmed office address and license #
+- [ ] Replace the franchise disclaimer text with the copy in `siteConfig.franchiseDisclaimer`
+      (currently a placeholder pending Serhant's official required disclosure copy)
+- [ ] Re-upload `public/idx-header.html` and `public/idx-footer.html` to the Includes
+      wrapper (Header URL / Footer URL) so the IDX subdomain matches the rebranded main site
+- [ ] Confirm the `?v=` query strings on `idx-wrapper.css`, `idx-results.css`, and
+      `idx-detail.css` in the re-uploaded wrapper files match the versions bumped in this
+      rebrand (wrapper: v24, results: v29, detail: v25) so browsers don't serve cached BHHS colors
+- [ ] Swap the text "SERHANT." wordmark in the header for the official logo file once received
+      (update both `src/components/layout/HeaderInteractive.tsx` and `public/idx-header.html`)
+- [ ] Run the Visual QA checklist in section 10 against the live IDX subdomain
 
 ### Lead settings
 
@@ -313,16 +331,16 @@ If you later want `search.sdcommunities.com` instead of `sdcommunities.idxbroker
 
 ## 5. Brand Colors (for IDX Custom CSS + wrapper)
 
-From `src/app/globals.css` (BHHS Traditional theme):
+From `src/app/globals.css` (Serhant theme, TODO: confirm exact hex values from the Serhant brand guide):
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| Cabernet (primary) | `#670038` | Buttons, links, headings |
-| Espresso (text) | `#2a2223` | Body text |
-| Earth | `#72595e` | Secondary accents |
-| Dove | `#aa979c` | Borders |
-| Pearl (bg) | `#f5f1f2` | Page background |
-| Rose | `#ece3e5` | Cards / soft fills |
+| Serhant Blue (primary) | `#001a72` | Buttons, links, headings |
+| Navy (text) | `#0a1128` | Body text |
+| Slate | `#3d5a80` | Secondary accents |
+| Silver | `#a9b4c4` | Borders |
+| Cloud (bg) | `#f4f6fa` | Page background |
+| Mist | `#e4eaf5` | Cards / soft fills |
 | White | `#ffffff` | Surfaces |
 
 ---
@@ -435,7 +453,7 @@ See **section 10** for IDX subdomain visual QA (wrapper, CSS, mobile/desktop) af
 - [ ] With `NEXT_PUBLIC_IDX_ENABLED=false`: placeholder + form on all pages, no JS errors
 - [ ] Invalid `IDX_API_KEY`: pages render without listing cards, no 500s
 - [ ] Lighthouse on `/neighborhoods/la-jolla`: no iframe, correct canonical, no mixed content
-- [ ] **On-site detail (Phase 1):** Click a featured card → `/listings/[idxId]/[listingId]` stays on main domain; full gallery, specs, remarks, map render; BHHS disclaimer present
+- [ ] **On-site detail (Phase 1):** Click a featured card → `/listings/[idxId]/[listingId]` stays on main domain; full gallery, specs, remarks, map render; Serhant disclaimer present
 - [ ] **Soft 404:** `/listings/unknown/999` shows "not found" page with subdomain CTA, not a hard error
 - [ ] **Geo guard:** No Florida demo listings appear on `/neighborhoods/la-jolla` when the filtered featured set is empty
 - [ ] **Card links:** Featured card uses `<a href="/listings/...">` (internal); savedlinks card uses external `href` pointing to branded subdomain
@@ -451,15 +469,15 @@ Run after uploading wrapper + CSS (section 4). Test in incognito at **375px** (m
 
 | Test | URL | Pass criteria |
 |------|-----|---------------|
-| Results (zip filter) | `https://sdcommunities.idxbroker.com/idx/results/listings?zipcode[]=92037&a_status[]=active` | BHHS logo header, pearl background, cabernet prices, white rounded cards in 3-col grid (desktop), no green Bootstrap alerts |
+| Results (zip filter) | `https://sdcommunities.idxbroker.com/idx/results/listings?zipcode[]=92037&a_status[]=active` | Serhant logo header, cloud background, Serhant-blue prices, white rounded cards in 3-col grid (desktop), no green Bootstrap alerts |
 | Saved search | Community saved-link URL (e.g. La Jolla from Control Panel) | Same branding; community-filtered results |
-| Detail click-through | Any listing from results | Rounded gallery, cabernet price, styled contact form, pearl page background |
+| Detail click-through | Any listing from results | Rounded gallery, Serhant-blue price, styled contact form, cloud page background |
 | Mobile 375px | Same URLs | No horizontal scroll; buttons and pagination ≥44px tall |
-| Desktop 1280px | Same URLs | 3-column card grid; sticky BHHS header |
-| Footer compliance | All pages | Franchise + SDMLS + agent disclaimers; Equal Housing line; cabernet footer |
+| Desktop 1280px | Same URLs | 3-column card grid; sticky Serhant header |
+| Footer compliance | All pages | Franchise + SDMLS + agent disclaimers; Equal Housing line; Serhant-blue footer |
 | Return path | Header logo + nav links | All resolve to `https://sdcommunities.com/...` |
 | Search pill | Header second row | "Search homes on sdcommunities.com" links to `/search-homes` |
-| Main site parity | Compare to `https://sdcommunities.com/neighborhoods/la-jolla` | Same logo, fonts (Marcellus headings, Manrope body), cabernet CTAs, card feel |
+| Main site parity | Compare to `https://sdcommunities.com/neighborhoods/la-jolla` | Same logo, fonts (Marcellus headings, Manrope body), Serhant-blue CTAs, card feel |
 
 ### Asset file reference
 

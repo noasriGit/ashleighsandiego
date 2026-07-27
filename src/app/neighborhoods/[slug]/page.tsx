@@ -9,7 +9,7 @@ import { Section } from "@/components/ui/Section";
 import { StatBand } from "@/components/ui/StatBand";
 import { CalloutBlock } from "@/components/ui/CalloutBlock";
 import { ComparisonCards } from "@/components/community/ComparisonCards";
-import { Card } from "@/components/ui/Card";
+import { RelatedPages } from "@/components/seo/RelatedPages";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   getCommunityBySlug,
@@ -37,8 +37,8 @@ const heroGradient: Record<LifestyleTag, string> = {
   "Commute-friendly": "bg-gradient-to-br from-earth via-espresso to-espresso",
   "More affordable nearby": "bg-gradient-to-br from-espresso via-earth to-cabernet",
   "Nightlife/walkability": "bg-gradient-to-tr from-cabernet via-cabernet to-espresso",
-  "Family-oriented": "bg-gradient-to-br from-earth via-cabernet to-espresso",
-  "Military/commute considerations": "bg-gradient-to-br from-espresso via-cabernet to-earth",
+  "Parks and Recreation Access": "bg-gradient-to-br from-earth via-cabernet to-espresso",
+  "Near Military Installations": "bg-gradient-to-br from-espresso via-cabernet to-earth",
 };
 
 export async function generateStaticParams() {
@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: PageProps) {
     description: `${community.tagline} Guide for relocating buyers considering ${community.name}, San Diego.`,
     path,
     keywords: getKeywordsForPage(path),
+    noindex: true,
   });
 }
 
@@ -225,21 +226,14 @@ export default async function CommunityPage({ params }: PageProps) {
         <FaqSection faqs={content.faqs} />
       </Section>
 
-      {related.length > 0 && (
-        <Section variant="sand" kicker="Keep Exploring">
-          <h2 className="heading-section text-cabernet">Related Neighborhoods</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {related.map((c) => (
-              <Link key={c.slug} href={`/neighborhoods/${c.slug}`}>
-                <Card hover accent="cabernet">
-                  <h3 className="heading-card text-cabernet">{c.name}</h3>
-                  <p className="mt-1 text-sm text-espresso/80">{c.tagline}</p>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
+      <RelatedPages
+        title="Related Neighborhoods"
+        items={related.map((c) => ({
+          title: c.name,
+          description: c.tagline,
+          href: `/neighborhoods/${c.slug}`,
+        }))}
+      />
 
       <CTABanner
         headline={`Need Help Narrowing Your Search in ${community.name}?`}

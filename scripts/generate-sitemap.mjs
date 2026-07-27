@@ -4,6 +4,10 @@
  * Next.js metadata routes can return 200 in browsers while GSC reports
  * "Couldn't fetch". A plain static file avoids that class of issues.
  *
+ * Sources:
+ *   - src/data/routes.ts (entries with inSitemap: true)
+ *   - src/data/communities.ts (hasGuide: true neighborhood guides)
+ *
  * Usage: node scripts/generate-sitemap.mjs
  */
 
@@ -20,19 +24,38 @@ loadEnvFiles(root);
 const SITE_DOMAIN = "sdcommunities.com";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${SITE_DOMAIN}`;
 
-const staticPages = [
-  "",
-  "/relocating-to-san-diego",
-  "/moving-to-la-jolla",
-  "/military-va-relocation-san-diego",
-  "/first-time-home-buyer-san-diego",
-  "/neighborhoods",
-  "/search-homes",
-  "/contact",
-  "/privacy-policy",
-  "/terms",
-  "/accessibility",
-];
+function getSitemapRoutes() {
+  const source = readFileSync(join(root, "src/data/routes.ts"), "utf8");
+  const routes = [];
+  const blockRe = /\{\s*path:\s*"([^"]+)"[\s\S]*?inSitemap:\s*(true|false)/g;
+  let match;
+
+  while ((match = blockRe.exec(source)) !== null) {
+    if (match[2] === "true") {
+      routes.push(match[1]);
+    }
+  }
+
+  return routes;
+}
+
+function getRouteMeta(path) {
+  const source = readFileSync(join(root, "src/data/routes.ts"), "utf8");
+  const escaped = path.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const blockRe = new RegExp(
+    `\\{[\\s\\S]*?path:\\s*"${escaped}"[\\s\\S]*?changeFrequency:\\s*"(\\w+)"[\\s\\S]*?priority:\\s*([\\d.]+)`,
+  );
+  const match = blockRe.exec(source);
+  if (match) {
+    return { changeFrequency: match[1], priority: match[2] };
+  }
+
+  if (path.startsWith("/neighborhoods/")) {
+    return { changeFrequency: "monthly", priority: "0.8" };
+  }
+
+  return { changeFrequency: "monthly", priority: "0.8" };
+}
 
 function getLaunchCommunitySlugs() {
   const source = readFileSync(join(root, "src/data/communities.ts"), "utf8");
@@ -47,6 +70,7 @@ function getLaunchCommunitySlugs() {
   return slugs;
 }
 
+const staticPages = getSitemapRoutes();
 const communityPages = getLaunchCommunitySlugs().map(
   (slug) => `/neighborhoods/${slug}`,
 );
@@ -65,9 +89,7 @@ function escapeXml(value) {
 const urlEntries = allPages
   .map((path) => {
     const url = `${baseUrl}${path}`;
-    const changeFrequency = path === "" ? "weekly" : "monthly";
-    const priority =
-      path === "" ? "1.0" : path.includes("neighborhoods/") ? "0.8" : "0.9";
+    const { changeFrequency, priority } = getRouteMeta(path);
 
     return `  <url>
     <loc>${escapeXml(url)}</loc>

@@ -53,15 +53,16 @@ export function HeaderInteractive({ items }: HeaderInteractiveProps) {
         <Link
           href="/"
           className="mr-6 flex shrink-0 items-center lg:mr-10"
-          aria-label={`${siteConfig.name} home`}
+          aria-label={`${siteConfig.name} home, affiliated with ${siteConfig.brokerage.name}`}
         >
           <Image
-            src="/images/berkshirelogo.webp"
-            alt="Berkshire Hathaway HomeServices California Properties"
+            src={siteConfig.brokerage.logo}
+            alt={siteConfig.brokerage.name}
             width={220}
             height={52}
             sizes="(max-width: 640px) 190px, 220px"
             className="block h-9 w-auto max-w-[190px] object-contain object-left sm:h-10 sm:max-w-[220px]"
+            priority
           />
         </Link>
 
@@ -69,7 +70,7 @@ export function HeaderInteractive({ items }: HeaderInteractiveProps) {
           className="ml-auto hidden min-w-0 items-center divide-x divide-espresso/15 lg:flex"
           aria-label="Main navigation"
         >
-          {items.slice(0, 5).map((item) => (
+          {items.slice(0, 6).map((item) => (
             <Link
               key={item.href}
               href={item.href}

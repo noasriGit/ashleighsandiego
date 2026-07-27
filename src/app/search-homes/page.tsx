@@ -19,6 +19,7 @@ export const metadata = generatePageMetadata({
     "Search homes for sale near La Jolla and surrounding San Diego neighborhoods. Condos, townhomes, and single-family homes within the La Jolla area radius.",
   path: "/search-homes",
   keywords: ["La Jolla homes for sale", "San Diego relocation homes", "homes near La Jolla"],
+  noindex: true,
 });
 
 const quickLinks = [

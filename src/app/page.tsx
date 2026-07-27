@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { BentoGrid } from "@/components/ui/BentoGrid";
 import { StatBand } from "@/components/ui/StatBand";
-import { SplitSection } from "@/components/ui/SplitSection";
+import { Tabs } from "@/components/ui/Tabs";
+import { Card } from "@/components/ui/Card";
 import { CommunityCard } from "@/components/community/CommunityCard";
 import { Hero } from "@/components/marketing/Hero";
-import { Timeline } from "@/components/marketing/Timeline";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { CommunityListings } from "@/components/idx/CommunityListings";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -16,14 +16,14 @@ import { siteConfig } from "@/data/site-config";
 import { getLaunchCommunities } from "@/data/communities";
 import { communityContent } from "@/data/community-content";
 import { getHomeStatBandStats } from "@/data/home-stats";
-import { splitSections } from "@/data/page-images";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
-import { homeFaqs, buyerRoadmapSteps } from "@/data/faqs";
+import { homeFaqs } from "@/data/faqs";
 import { generatePageMetadata } from "@/lib/metadata";
 import {
   realEstateAgentSchema,
   localBusinessSchema,
+  webSiteSchema,
   faqSchema,
   webPageSchema,
 } from "@/lib/schema";
@@ -37,17 +37,64 @@ const FaqSection = dynamic(
 );
 
 export const metadata = generatePageMetadata({
-  title: "San Diego Relocation Home Guide | Neighborhood Guidance & Home Search",
+  title: "San Diego Neighborhoods | Compare Communities Before You Buy",
   description: siteConfig.description,
   path: "/",
   keywords: [
-    "moving to San Diego",
-    "relocating to San Diego",
-    "La Jolla homes",
     "San Diego neighborhoods",
+    "best neighborhoods in San Diego",
+    "where to live in San Diego",
+    "moving to San Diego",
     "San Diego relocation realtor",
   ],
 });
+
+const regionGroups = [
+  {
+    label: "Coastal",
+    items: [
+      { name: "La Jolla", href: "/la-jolla-neighborhoods" },
+      { name: "Pacific Beach", href: "/neighborhoods/pacific-beach" },
+      { name: "Del Mar", href: "/del-mar-new-luxury-homes" },
+      { name: "Point Loma", href: "/neighborhoods/point-loma" },
+      { name: "Ocean Beach", href: "/neighborhoods/ocean-beach" },
+    ],
+  },
+  {
+    label: "Central",
+    items: [
+      { name: "University City / UTC", href: "/neighborhoods/university-city" },
+      { name: "Hillcrest", href: "/neighborhoods/hillcrest" },
+      { name: "North Park", href: "/neighborhoods/north-park" },
+      { name: "Downtown San Diego", href: "/downtown-san-diego-condos-for-sale" },
+      { name: "Mission Valley", href: "/san-diego-condos-for-sale#mission-valley" },
+    ],
+  },
+  {
+    label: "Inland & Suburbs",
+    items: [
+      { name: "Clairemont", href: "/neighborhoods/clairemont" },
+      { name: "Carmel Valley", href: "/neighborhoods/carmel-valley" },
+      { name: "Sorrento Valley", href: "/neighborhoods/sorrento-valley" },
+      { name: "San Diego Suburbs", href: "/san-diego-suburbs" },
+      { name: "Cities Near San Diego", href: "/cities-near-san-diego" },
+    ],
+  },
+];
+
+const commuteGroups = [
+  { name: "Biotech / UCSD / Sorrento Valley", description: "University City, Sorrento Valley, Carmel Valley", href: "/neighborhoods/university-city" },
+  { name: "Downtown & Central San Diego", description: "Hillcrest, North Park, Mission Valley, downtown", href: "/downtown-san-diego-condos-for-sale" },
+  { name: "Military Installations", description: "Point Loma, Clairemont, Mission Valley near the bases", href: "/military-realtor-san-diego" },
+  { name: "Remote / Flexible Commute", description: "Coastal lifestyle first: La Jolla, Del Mar, Encinitas", href: "/la-jolla-neighborhoods" },
+];
+
+const housingTypeGroups = [
+  { name: "Condos & Townhomes", description: "Downtown high-rises, La Jolla Village, Mission Valley", href: "/san-diego-condos-for-sale" },
+  { name: "New Construction & Luxury", description: "Del Mar, Carmel Valley master plans", href: "/del-mar-new-luxury-homes" },
+  { name: "Value Single-Family Homes", description: "Clairemont, North Clairemont, Serra Mesa", href: "/affordable-neighborhoods-san-diego" },
+  { name: "Suburban & County-Wide", description: "Poway, La Mesa, Encinitas, Carlsbad", href: "/san-diego-suburbs" },
+];
 
 export default async function HomePage() {
   const featuredCommunities = getLaunchCommunities().filter((c) => c.tier === 1).slice(0, 6);
@@ -64,8 +111,9 @@ export default async function HomePage() {
         data={[
           realEstateAgentSchema(),
           localBusinessSchema(),
+          webSiteSchema(),
           webPageSchema(
-            "San Diego Relocation Home Guide",
+            "San Diego Neighborhoods",
             siteConfig.description,
             "/",
           ),
@@ -74,11 +122,11 @@ export default async function HomePage() {
       />
 
       <Hero
-        kicker="Berkshire Hathaway HomeServices California Properties"
-        headline="Moving to San Diego? Start With a Clear Home-Buying Plan."
-        subheadline="Neighborhood guidance, relocation resources, and home search support for buyers moving to San Diego, including first-time buyers, military/VA buyers, and out-of-area movers."
-        primaryCta={{ label: siteConfig.ctas.strategyCall, href: "/contact" }}
-        secondaryCta={{ label: siteConfig.ctas.searchHomes, href: "/search-homes" }}
+        kicker="SERHANT."
+        headline="San Diego Neighborhoods, Compared for Buyers."
+        subheadline="43 neighborhood guides across the coast, central San Diego, and inland communities, grouped so you can shortlist an area by commute, budget, and lifestyle before you tour a single home."
+        primaryCta={{ label: "Find My Neighborhood", href: "#find-neighborhood" }}
+        secondaryCta={{ label: "Open the Neighborhood Map", href: "/san-diego-neighborhood-map" }}
         backgroundImage="/images/hero1.jpg"
         backgroundImageAlt="San Diego coastal homes and neighborhoods"
         backgroundImageFit="cover"
@@ -92,19 +140,85 @@ export default async function HomePage() {
 
       <StatBand stats={getHomeStatBandStats()} />
 
-      <Section kicker="Find Your Path">
-        <h2 className="heading-section text-cabernet">Where Are You in Your Move?</h2>
+      <Section id="find-neighborhood" kicker="Find Your Neighborhood">
+        <h2 className="heading-section text-cabernet">Browse by Commute, Housing Type, or Region</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          Choose the path that fits your situation. Each guide is tailored to your priorities, commute, budget, schools, and lifestyle.
+          Pick the filter that matches how you actually make decisions. Every path leads to a
+          buyer-focused guide, not just a list of ZIP codes.
+        </p>
+        <div className="mt-8">
+          <Tabs
+            ariaLabel="Browse San Diego neighborhoods"
+            tabs={[
+              {
+                label: "By Region",
+                content: (
+                  <div className="grid gap-6 sm:grid-cols-3">
+                    {regionGroups.map((group) => (
+                      <div key={group.label}>
+                        <p className="kicker mb-3">{group.label}</p>
+                        <ul className="space-y-2">
+                          {group.items.map((item) => (
+                            <li key={item.name}>
+                              <Link href={item.href} className="text-espresso hover:text-cabernet hover:underline">
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ),
+              },
+              {
+                label: "By Commute",
+                content: (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {commuteGroups.map((item) => (
+                      <Link key={item.name} href={item.href}>
+                        <Card hover accent="cabernet" className="h-full">
+                          <h3 className="heading-card text-cabernet">{item.name}</h3>
+                          <p className="mt-1 text-sm text-espresso/80">{item.description}</p>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                ),
+              },
+              {
+                label: "By Housing Type",
+                content: (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {housingTypeGroups.map((item) => (
+                      <Link key={item.name} href={item.href}>
+                        <Card hover accent="cabernet" className="h-full">
+                          <h3 className="heading-card text-cabernet">{item.name}</h3>
+                          <p className="mt-1 text-sm text-espresso/80">{item.description}</p>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                ),
+              },
+            ]}
+          />
+        </div>
+      </Section>
+
+      <Section variant="sand" kicker="Start Here">
+        <h2 className="heading-section text-cabernet">Where Are You in Your Search?</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Choose the path that fits your situation. Each guide is tailored to your priorities: commute, budget, schools, and lifestyle.
         </p>
         <div className="mt-10">
           <BentoGrid
             items={[
               {
-                title: "Relocating to San Diego",
+                title: "Moving to San Diego",
                 description:
-                  "Moving from out of area? Get neighborhood guidance and a step-by-step buyer plan before you start touring.",
-                href: "/relocating-to-san-diego",
+                  "Relocating from out of area? Get a step-by-step buyer plan before you start touring.",
+                href: "/moving-to-san-diego",
                 eyebrow: "Start here",
                 span: "feature",
                 highlight: true,
@@ -114,30 +228,30 @@ export default async function HomePage() {
               {
                 title: "Military / VA Buyers",
                 description:
-                  "PCS orders to San Diego? Understand neighborhoods, base commutes, and the buyer process for military families.",
-                href: "/military-va-relocation-san-diego",
+                  "PCS orders to San Diego? Understand neighborhoods, base commutes, and the buyer process.",
+                href: "/military-realtor-san-diego",
                 eyebrow: "PCS",
               },
               {
-                title: "First-Time Homebuyers",
+                title: "Affordable Neighborhoods",
                 description:
-                  "New to buying? Learn about San Diego affordability, property types, and what to know before touring.",
-                href: "/first-time-home-buyer-san-diego",
-                eyebrow: "New buyers",
+                  "Watching your budget? See where relocating buyers are finding the most value right now.",
+                href: "/affordable-neighborhoods-san-diego",
+                eyebrow: "Budget-focused",
               },
               {
-                title: "Comparing Neighborhoods",
+                title: "La Jolla Neighborhoods",
                 description:
-                  "Not sure which community fits? Explore guides for La Jolla, Pacific Beach, UTC, Del Mar, and more.",
-                href: "/neighborhoods",
-                eyebrow: "Explore",
+                  "8 distinct subareas, from the Village to Bird Rock to Muirlands, compared side by side.",
+                href: "/la-jolla-neighborhoods",
+                eyebrow: "Coastal",
               },
               {
-                title: "Professionals Moving for Work",
+                title: "San Diego Condos",
                 description:
-                  "Biotech, healthcare, or university role? Find neighborhoods that match your commute and lifestyle.",
-                href: "/neighborhoods",
-                eyebrow: "Career move",
+                  "Downtown high-rises to La Jolla Village walk-ups, compared building by building.",
+                href: "/san-diego-condos-for-sale",
+                eyebrow: "Condo living",
                 span: "wide",
               },
             ]}
@@ -145,12 +259,12 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section variant="sand" kicker="Featured Communities">
+      <Section kicker="Featured Communities">
         <h2 className="heading-section text-cabernet">
-          Neighborhood Guides Near La Jolla
+          Popular Neighborhood Guides
         </h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          Explore buyer guides for communities within a {siteConfig.geo.radiusMiles}-mile radius of {siteConfig.geo.center}.
+          A starting sample of our 43 full neighborhood guides, covering housing stock, lifestyle, and commute.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredCommunities.map((community) => {
@@ -165,85 +279,9 @@ export default async function HomePage() {
             );
           })}
         </div>
-        <Button href="/neighborhoods" variant="outline" className="mt-8">
+        <Button href="/san-diego-neighborhood-map" variant="outline" className="mt-8">
           {siteConfig.ctas.compareNeighborhoods}
         </Button>
-      </Section>
-
-      <Timeline
-        kicker="Your Roadmap"
-        title="Your Relocation Buyer Roadmap"
-        intro="A clear plan helps you compare neighborhoods, understand your budget, and tour homes with confidence."
-        steps={buyerRoadmapSteps}
-      />
-
-      <SplitSection
-        id="military-va"
-        variant="sand"
-        kicker="Military & VA"
-        heading="Military & VA Relocation Support"
-        body={[
-          "PCS orders to San Diego bring unique timing and location considerations. We help military buyers understand neighborhoods near Naval Base San Diego, MCAS Miramar, Naval Base Point Loma, and NAS North Island, without making the entire site military-only.",
-          "Consult a licensed lender for VA loan eligibility and financing advice. We focus on neighborhood education, home search, and buyer guidance.",
-        ]}
-        cta={{ label: "Build Your PCS Buyer Plan", href: "/military-va-relocation-san-diego" }}
-        imageSrc={splitSections["home/military-va"].src}
-        imageAlt={splitSections["home/military-va"].alt}
-        imagePosition="right"
-      />
-
-      <SplitSection
-        id="first-time-buyer"
-        kicker="First-Time Buyers"
-        heading="First-Time Buyer Support"
-        body={[
-          "Buying your first home in San Diego comes with unique challenges, affordability, property types, and competitive markets. We help first-time buyers understand neighborhoods, get pre-approved, and tour with a plan.",
-          "Whether you're relocating or buying locally, a clear roadmap helps you avoid costly mistakes.",
-        ]}
-        cta={{ label: "First-Time Buyer Guide", href: "/first-time-home-buyer-san-diego" }}
-        imageSrc={splitSections["home/first-time-buyer"].src}
-        imageAlt={splitSections["home/first-time-buyer"].alt}
-        imagePosition="left"
-      />
-
-      <Section
-        variant="espresso"
-        backgroundImage="/images/lajolla.jpg"
-        backgroundImageAlt="Aerial view of La Jolla coastline, beach, and Pacific Ocean"
-      >
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <p className="kicker mb-3 text-white/70">Coverage Area</p>
-            <h2 className="text-white">
-              {siteConfig.geo.radiusMiles}-Mile Radius from {siteConfig.geo.center}
-            </h2>
-            <p className="mt-4 max-w-xl text-white/85 leading-relaxed">
-              Our guides cover coastal, central, and inland communities within approximately {siteConfig.geo.radiusMiles} miles of La Jolla, from Del Mar to Point Loma, UTC to North Park.
-            </p>
-            <Button
-              href="/neighborhoods"
-              variant="secondary"
-              className="mt-8"
-            >
-              {siteConfig.ctas.compareNeighborhoods}
-            </Button>
-          </div>
-          <div className="flex justify-center">
-            <div className="relative flex h-64 w-64 items-center justify-center">
-              <span className="absolute inset-0 rounded-full border border-white/20 bg-white/5" />
-              <span className="absolute inset-8 rounded-full border border-white/25 bg-white/5" />
-              <span className="absolute inset-16 rounded-full border border-white/30 bg-white/10" />
-              <span className="relative flex flex-col items-center gap-1 text-center">
-                <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                </svg>
-                <span className="text-sm font-medium text-white">{siteConfig.geo.center}</span>
-                <span className="text-xs text-white/70">{siteConfig.geo.radiusMiles}-mile radius</span>
-              </span>
-            </div>
-          </div>
-        </div>
       </Section>
 
       <Section variant="sand">
@@ -264,10 +302,12 @@ export default async function HomePage() {
             <p className="kicker mb-3">Your Local Guide</p>
             <h2 className="heading-section text-cabernet">Guidance From a Local Buyer Specialist</h2>
             <p className="mt-4 leading-relaxed text-espresso/90">
-              Hi, I&apos;m {siteConfig.agent.name}. I help relocating buyers understand San Diego neighborhoods, compare areas near La Jolla, and build a clear home-buying plan.
+              Hi, I&apos;m {siteConfig.agent.name}. I help buyers understand San Diego neighborhoods, compare
+              areas across the county, and build a clear home-buying plan.
             </p>
             <p className="mt-4 leading-relaxed text-espresso/90">
-              Whether you&apos;re moving for military orders, a new job, or a lifestyle change, I&apos;m here to provide guidance, resources, and responsive support throughout your search.
+              Whether you&apos;re moving for military orders, a new job, or a lifestyle change, I&apos;m here to
+              provide guidance, resources, and responsive support throughout your search.
             </p>
             <div className="mt-6 flex items-center gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-cabernet/20">
@@ -290,8 +330,8 @@ export default async function HomePage() {
                 </p>
               </div>
             </div>
-            <Button href="/contact" className="mt-6 self-start">
-              {siteConfig.ctas.strategyCall}
+            <Button href="/about" variant="outline" className="mt-6 self-start">
+              More About Our Approach
             </Button>
           </div>
         </div>
@@ -299,14 +339,14 @@ export default async function HomePage() {
 
       <CommunityListings
         title="Featured San Diego Listings"
-        description="A sample of current homes for sale near La Jolla and across San Diego."
+        description="A sample of current homes for sale across San Diego."
         listings={generalListings}
         count={generalCount}
         viewAllUrl={getIdxBrowseUrl() ?? undefined}
-        variant="sand"
+        variant="pearl"
       />
 
-      <Section>
+      <Section variant="sand">
         <FaqSection faqs={homeFaqs} />
       </Section>
 

@@ -5,8 +5,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Terms & Disclaimer",
-  description: "Terms of use and disclaimer for San Diego Relocation Home Guide.",
+  description: "Terms of use and disclaimer for SDCommunities.",
   path: "/terms",
+  noindex: true,
 });
 
 export default function TermsPage() {

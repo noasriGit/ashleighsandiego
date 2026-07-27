@@ -15,13 +15,13 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --sd-cabernet:       #670038;
-  --sd-cabernet-dark:  #52002c;
-  --sd-espresso:       #2a2223;
-  --sd-earth:          #72595e;
-  --sd-dove:           #aa979c;
-  --sd-pearl:          #f5f1f2;
-  --sd-rose:           #ece3e5;
+  --sd-cabernet:       #001a72;
+  --sd-cabernet-dark:  #001355;
+  --sd-espresso:       #0a1128;
+  --sd-earth:          #3d5a80;
+  --sd-dove:           #a9b4c4;
+  --sd-pearl:          #f4f6fa;
+  --sd-rose:           #e4eaf5;
   --sd-white:          #ffffff;
   --sd-font-body:      "Manrope", system-ui, -apple-system, sans-serif;
   --sd-font-display:   "Marcellus", Georgia, serif;
@@ -132,12 +132,12 @@
   background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
   border-radius: 16px !important;
-  box-shadow: 0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05) !important;
+  box-shadow: 0 1px 4px rgba(10, 17, 40, .06), 0 4px 12px rgba(10, 17, 40, .05) !important;
 }
 
 .idx-listing-card:hover {
   border-color: var(--sd-dove) !important;
-  box-shadow: 0 8px 24px rgba(42, 34, 35, .12) !important;
+  box-shadow: 0 8px 24px rgba(10, 17, 40, .12) !important;
 }
 
 .idx-listing-card__image,
@@ -307,7 +307,7 @@
   border-radius: 50% !important;
   background: rgba(255, 255, 255, 0.96) !important;
   border: 1px solid var(--sd-rose) !important;
-  box-shadow: 0 2px 10px rgba(42, 34, 35, 0.18) !important;
+  box-shadow: 0 2px 10px rgba(10, 17, 40, 0.18) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -317,7 +317,7 @@
 
 .idx-results--map .IDX-resultsSaveProperty:hover {
   border-color: var(--sd-cabernet) !important;
-  box-shadow: 0 4px 14px rgba(103, 0, 56, 0.22) !important;
+  box-shadow: 0 4px 14px rgba(0, 26, 114, 0.22) !important;
 }
 
 .idx-results--map .IDX-resultsSaveProperty idx-favorite {
@@ -360,7 +360,7 @@
   text-transform: uppercase !important;
   white-space: nowrap !important;
   line-height: 1 !important;
-  box-shadow: 0 2px 8px rgba(42, 34, 35, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(10, 17, 40, 0.12) !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   max-width: 100% !important;
@@ -407,7 +407,7 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: rgba(42, 34, 35, 0.88) !important;
+  background: rgba(10, 17, 40, 0.88) !important;
   color: var(--sd-white) !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-radius: 999px !important;
@@ -420,7 +420,7 @@
   text-transform: uppercase !important;
   white-space: nowrap !important;
   line-height: 1 !important;
-  box-shadow: 0 2px 8px rgba(42, 34, 35, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(10, 17, 40, 0.25) !important;
   box-sizing: border-box !important;
 }
 
@@ -449,7 +449,7 @@
   background-color: var(--sd-white) !important;
   border: 1px solid var(--sd-rose) !important;
   border-radius: 16px !important;
-  box-shadow: 0 1px 4px rgba(42, 34, 35, .06), 0 4px 12px rgba(42, 34, 35, .05) !important;
+  box-shadow: 0 1px 4px rgba(10, 17, 40, .06), 0 4px 12px rgba(10, 17, 40, .05) !important;
   float: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -458,7 +458,7 @@
 
 .IDX-resultsCell:hover {
   border-color: var(--sd-dove) !important;
-  box-shadow: 0 8px 24px rgba(42, 34, 35, .12) !important;
+  box-shadow: 0 8px 24px rgba(10, 17, 40, .12) !important;
 }
 
 .IDX-field-price .IDX-text,

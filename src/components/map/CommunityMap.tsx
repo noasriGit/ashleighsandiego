@@ -363,12 +363,12 @@ export function CommunityMap({
                 "line-color": [
                   "case",
                   ["==", ["feature-state", "hover"], true],
-                  "#670038",
+                  "#001a72",
                   ["==", ["feature-state", "highlight"], true],
-                  "#670038",
+                  "#001a72",
                   ["in", ["get", "slug"], ["literal", visibleSlugs]],
                   "#ffffff",
-                  "#aa979c",
+                  "#a9b4c4",
                 ],
                 "line-width": [
                   "case",

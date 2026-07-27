@@ -1,0 +1,27 @@
+name: Verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Route registry consistency (docs/seo-rebuild-plan.md §17)
+        run: npm run routes:validate
+      - name: Fair Housing prohibited-term scan (docs/seo-rebuild-plan.md §15)
+        run: npm run fairhousing:scan
+      - name: Community boundary validation
+        run: npm run geo:validate-boundaries
+      - name: Build
+        run: npm run build

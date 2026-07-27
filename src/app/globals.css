@@ -1,61 +1,61 @@
 @import "tailwindcss";
 
 /*
- * BHHS brand tokens, see src/data/brand-guidelines.ts
- * Default site theme: Traditional (Cabernet primary)
+ * Serhant brand tokens, see src/data/brand-guidelines.ts
+ * Primary brand blue: #001a72
  */
 :root {
   /* Core */
-  --bhhs-cabernet: #670038;
-  --bhhs-black: #000000;
-  --bhhs-white: #ffffff;
-  --bhhs-neutral-tint: #f2f2f2;
+  --serhant-blue: #001a72;
+  --serhant-black: #000000;
+  --serhant-white: #ffffff;
+  --serhant-neutral-tint: #f2f2f2;
 
-  /* Traditional theme */
-  --bhhs-espresso: #2a2223;
-  --bhhs-earth: #72595e;
-  --bhhs-dove: #aa979c;
-  --bhhs-pearl: #f5f1f2;
-  --bhhs-rose: #ece3e5;
-  --bhhs-blush: #c299af;
+  /* Supporting palette */
+  --serhant-navy: #0a1128;
+  --serhant-slate: #3d5a80;
+  --serhant-silver: #a9b4c4;
+  --serhant-cloud: #f4f6fa;
+  --serhant-mist: #e4eaf5;
+  --serhant-sky: #7c93c7;
 
   /* Semantic site tokens */
-  --background: var(--bhhs-pearl);
-  --foreground: var(--bhhs-espresso);
-  --primary: var(--bhhs-cabernet);
-  --primary-foreground: var(--bhhs-white);
-  --muted: var(--bhhs-dove);
-  --muted-foreground: var(--bhhs-earth);
-  --accent: var(--bhhs-blush);
-  --surface: var(--bhhs-white);
-  --surface-muted: var(--bhhs-neutral-tint);
+  --background: var(--serhant-cloud);
+  --foreground: var(--serhant-navy);
+  --primary: var(--serhant-blue);
+  --primary-foreground: var(--serhant-white);
+  --muted: var(--serhant-silver);
+  --muted-foreground: var(--serhant-slate);
+  --accent: var(--serhant-sky);
+  --surface: var(--serhant-white);
+  --surface-muted: var(--serhant-neutral-tint);
 
   /* Sticky header height, used by full-viewport heroes */
   --site-header-height: 4.5rem;
 
   /*
    * Legacy aliases, existing Tailwind classes (navy, ocean, etc.)
-   * map to BHHS Traditional palette values.
+   * map to Serhant palette values.
    */
-  --navy: var(--bhhs-cabernet);
-  --ocean: var(--bhhs-earth);
-  --sand: var(--bhhs-rose);
-  --charcoal: var(--bhhs-espresso);
-  --gray-light: var(--bhhs-neutral-tint);
-  --gray-muted: var(--bhhs-dove);
+  --navy: var(--serhant-blue);
+  --ocean: var(--serhant-slate);
+  --sand: var(--serhant-mist);
+  --charcoal: var(--serhant-navy);
+  --gray-light: var(--serhant-neutral-tint);
+  --gray-muted: var(--serhant-silver);
 }
 
 @theme inline {
-  /* BHHS palette */
-  --color-cabernet: var(--bhhs-cabernet);
-  --color-espresso: var(--bhhs-espresso);
-  --color-earth: var(--bhhs-earth);
-  --color-dove: var(--bhhs-dove);
-  --color-pearl: var(--bhhs-pearl);
-  --color-rose: var(--bhhs-rose);
-  --color-blush: var(--bhhs-blush);
-  --color-bhhs-black: var(--bhhs-black);
-  --color-bhhs-white: var(--bhhs-white);
+  /* Serhant palette (mapped from legacy Tailwind class names to avoid a sitewide rename) */
+  --color-cabernet: var(--serhant-blue);
+  --color-espresso: var(--serhant-navy);
+  --color-earth: var(--serhant-slate);
+  --color-dove: var(--serhant-silver);
+  --color-pearl: var(--serhant-cloud);
+  --color-rose: var(--serhant-mist);
+  --color-blush: var(--serhant-sky);
+  --color-bhhs-black: var(--serhant-black);
+  --color-bhhs-white: var(--serhant-white);
 
   /* Semantic */
   --color-background: var(--background);
@@ -364,10 +364,10 @@ h6 {
 .community-map-popup.maplibregl-popup .maplibregl-popup-content {
   padding: 0.75rem 0.875rem;
   border-radius: 0.75rem;
-  box-shadow: 0 10px 30px rgb(42 34 35 / 0.15);
-  border: 1px solid rgb(103 0 56 / 0.12);
+  box-shadow: 0 10px 30px rgb(10 17 40 / 0.15);
+  border: 1px solid rgb(0 26 114 / 0.12);
 }
 
 .community-map-popup.maplibregl-popup .maplibregl-popup-tip {
-  border-top-color: var(--bhhs-white);
+  border-top-color: var(--serhant-white);
 }

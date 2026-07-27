@@ -33,7 +33,6 @@ export function PageHero({
   secondaryCta,
   heroImage,
   heroImageAlt = "",
-  fallbackGradient = true,
   gradientClassName,
   badges,
   layout = "centered",

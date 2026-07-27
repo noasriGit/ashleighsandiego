@@ -5,7 +5,6 @@
 
 import type { IdxSearchConfig } from "@/data/idx-search-config";
 import { IDX_MLS_ID } from "@/data/site-config";
-import { RESIDENTIAL_IDX_PROPERTY_TYPES } from "@/lib/idx-residential-filter";
 
 const IDX_RESULTS_PATH = "/idx/results/listings";
 
@@ -74,10 +73,10 @@ export function buildIdxSearchUrl(
   if (maxPrice != null) params.set("hp", String(maxPrice));
   if (options.minBed != null) params.set("bd", String(options.minBed));
   if (options.minBath != null) params.set("tb", String(options.minBath));
+  // Only set pt when explicitly requested (e.g. rentals). Do not append pt[]=sfr/cnd —
+  // that array form returns zero results on the IDX results page for this account.
   if (options.propertyType) {
     params.set("pt", options.propertyType);
-  } else {
-    RESIDENTIAL_IDX_PROPERTY_TYPES.forEach((pt) => params.append("pt[]", pt));
   }
 
   params.set("idxID", IDX_MLS_ID);
@@ -86,15 +85,13 @@ export function buildIdxSearchUrl(
   params.append("a_status[]", "active");
 
   const hasGeo = zipCodes.length > 0 || config.cityIds.length > 0;
-  const appliesResidentialFilter = !options.propertyType;
   const hasCriteria =
     hasGeo ||
     minPrice != null ||
     maxPrice != null ||
     options.minBed != null ||
     options.minBath != null ||
-    Boolean(options.propertyType) ||
-    appliesResidentialFilter;
+    Boolean(options.propertyType);
 
   if (!hasCriteria) {
     return root;
@@ -106,30 +103,36 @@ export function buildIdxSearchUrl(
 /**
  * Resolve the best browse URL for a community.
  *
- * When zip/city filters exist in config, prefer the dynamic results URL built from
- * community-zips.ts — IDX saved /i/ links may exist before their queryString is
- * configured in the Control Panel (common during MLS onboarding).
- *
- * Falls back to savedSearchUrl for entries without geographic filters, then dynamic.
+ * Prefer the branded saved-search landing (/i/{slug}) when one is configured and the
+ * caller has not added extra filters. Fall back to a dynamic zip/city results URL
+ * when building a filtered search or when no saved link exists yet.
  */
 export function resolveIdxBrowseUrl(
   baseUrl: string,
   config: IdxSearchConfig,
   options?: IdxSearchUrlOptions,
 ): string | null {
-  const zipCodes = options?.zipCodes ?? config.zipCodes;
-  const hasGeoFilter = zipCodes.length > 0 || config.cityIds.length > 0;
-  const dynamic = buildIdxSearchUrl(baseUrl, config, options);
+  const hasUserFilters = Boolean(
+    options?.minPrice != null ||
+      options?.maxPrice != null ||
+      options?.minBed != null ||
+      options?.minBath != null ||
+      options?.propertyType ||
+      options?.zipCodes,
+  );
 
-  if (hasGeoFilter && dynamic) {
-    return dynamic;
+  if (!hasUserFilters && config.savedSearchUrl) {
+    return normalizeIdxUrl(config.savedSearchUrl, baseUrl) ?? config.savedSearchUrl;
   }
+
+  const dynamic = buildIdxSearchUrl(baseUrl, config, options);
+  if (dynamic) return dynamic;
 
   if (config.savedSearchUrl) {
     return normalizeIdxUrl(config.savedSearchUrl, baseUrl) ?? config.savedSearchUrl;
   }
 
-  return dynamic;
+  return null;
 }
 
 /**

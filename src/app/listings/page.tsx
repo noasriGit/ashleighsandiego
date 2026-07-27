@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { ListingCard } from "@/components/idx/ListingCard";
 import { ListingsFilterBar } from "@/components/idx/ListingsFilterBar";
-import { getFeaturedListingsPage } from "@/lib/idx-api";
+import { getFeaturedListingsPage, getSavedLinkListingsPage } from "@/lib/idx-api";
 import { communities } from "@/data/communities";
 import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { siteConfig } from "@/data/site-config";
@@ -45,10 +45,12 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     title,
     description,
     alternates: {
-      canonical: `${siteConfig.url}/listings${community ? `?community=${community}` : ""}${pageNum > 1 ? `${community ? "&" : "?"}page=${pageNum}` : ""}`,
+      // Canonicalizes to the bare route regardless of query params — /listings
+      // is a noindex,follow utility page (docs/seo-rebuild-plan.md §12), so every
+      // filtered/paginated variant should point back at the same canonical.
+      canonical: `${siteConfig.url}/listings`,
     },
-    // Paginated interior pages shouldn't be indexed independently.
-    ...(pageNum > 1 && { robots: { index: false } }),
+    robots: { index: false, follow: true },
   };
 }
 
@@ -58,11 +60,15 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
   const offset = (pageNum - 1) * PAGE_SIZE;
 
   const filters = resolveFilters(community);
-  const { listings, total, hasMore } = await getFeaturedListingsPage(
-    offset,
-    PAGE_SIZE,
-    filters,
-  );
+  const searchConfig = community ? getIdxSearchConfig(community) : undefined;
+
+  const pageResult =
+    community && searchConfig?.savedSearchId
+      ? await getSavedLinkListingsPage(searchConfig.savedSearchId, offset, PAGE_SIZE)
+      : await getFeaturedListingsPage(offset, PAGE_SIZE, filters);
+
+  const { listings, total, hasMore } = pageResult;
+  const usesSavedSearch = Boolean(community && searchConfig?.savedSearchId);
 
   const label = communityLabel(community);
   const pageTitle = community ? `${label} Homes for Sale` : "Featured Homes for Sale";
@@ -111,8 +117,9 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
         <h1 className="hero-enter-up hero-enter-up--2 heading-section">{pageTitle}</h1>
         {total !== undefined && (
           <p className="hero-enter-up hero-enter-up--3 mt-2 text-white/80">
-            {total.toLocaleString()} featured {total === 1 ? "listing" : "listings"} in{" "}
-            {label}
+            {total.toLocaleString()}{" "}
+            {usesSavedSearch ? "MLS" : "featured"}{" "}
+            {total === 1 ? "listing" : "listings"} in {label}
           </p>
         )}
       </Section>
@@ -126,7 +133,9 @@ export default async function ListingsBrowsePage({ searchParams }: PageProps) {
           <div className="rounded-xl border border-dashed border-dove/50 bg-pearl p-12 text-center">
             <p className="text-espresso/70">
               {community
-                ? `No featured listings found in ${label} right now.`
+                ? usesSavedSearch
+                  ? `No MLS listings found in ${label} right now.`
+                  : `No featured listings found in ${label} right now.`
                 : "No featured listings available right now."}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
