@@ -182,9 +182,21 @@ h4 {
   line-height: var(--leading-h4);
 }
 
-footer h4 {
+footer .grid h3 {
+  font-size: 1.125rem;
+  line-height: 1.375;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+footer .grid h4 {
   font-size: 0.875rem;
   line-height: 1.375;
+  overflow-wrap: anywhere;
+}
+
+footer .grid > div {
+  overflow-wrap: anywhere;
 }
 
 h5 {

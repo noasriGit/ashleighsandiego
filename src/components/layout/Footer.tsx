@@ -23,8 +23,8 @@ export function Footer() {
                 className="object-contain object-left"
               />
             </div>
-            <h3 className="font-serif text-lg font-semibold text-white">{siteConfig.name}</h3>
-            <p className="mt-2 text-sm text-white/90">{siteConfig.tagline}</p>
+            <h3 className="font-serif text-lg font-semibold leading-snug text-white">{siteConfig.name}</h3>
+            <p className="mt-2 text-sm break-words text-white/90">{siteConfig.tagline}</p>
           </div>
 
           <div className="min-w-0">
