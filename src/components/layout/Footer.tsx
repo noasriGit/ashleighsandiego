@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t border-surface-muted bg-cabernet text-white">
       <Container className="py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <div className="min-w-0">
             <div className="relative mb-4 h-9 w-[148px] max-w-full">
               <Image
@@ -28,8 +28,8 @@ export function Footer() {
           </div>
 
           <div className="min-w-0">
-            <h4 className="font-semibold text-white">Neighborhoods</h4>
-            <ul className="mt-3 space-y-2 text-sm">
+            <h4 className="text-sm font-semibold leading-snug text-white">Neighborhoods</h4>
+            <ul className="mt-3 space-y-2 text-sm break-words">
               <li><Link href="/" className="text-white/90 hover:text-white">San Diego Neighborhoods</Link></li>
               <li><Link href="/san-diego-neighborhood-map" className="text-white/90 hover:text-white">Neighborhood Map</Link></li>
               <li><Link href="/la-jolla-neighborhoods" className="text-white/90 hover:text-white">La Jolla Neighborhoods</Link></li>
@@ -40,8 +40,8 @@ export function Footer() {
           </div>
 
           <div className="min-w-0">
-            <h4 className="font-semibold text-white">Buying Here</h4>
-            <ul className="mt-3 space-y-2 text-sm">
+            <h4 className="text-sm font-semibold leading-snug text-white">Buying Here</h4>
+            <ul className="mt-3 space-y-2 text-sm break-words">
               <li><Link href="/moving-to-san-diego" className="text-white/90 hover:text-white">Moving to San Diego</Link></li>
               <li><Link href="/living-in-san-diego" className="text-white/90 hover:text-white">Living in San Diego</Link></li>
               <li><Link href="/military-realtor-san-diego" className="text-white/90 hover:text-white">Military / VA Buyers</Link></li>
@@ -50,8 +50,8 @@ export function Footer() {
           </div>
 
           <div className="min-w-0">
-            <h4 className="font-semibold text-white">Condos &amp; Luxury</h4>
-            <ul className="mt-3 space-y-2 text-sm">
+            <h4 className="text-sm font-semibold leading-snug text-white">Condos &amp; Luxury</h4>
+            <ul className="mt-3 space-y-2 text-sm break-words">
               <li><Link href="/san-diego-condos-for-sale" className="text-white/90 hover:text-white">San Diego Condos</Link></li>
               <li><Link href="/downtown-san-diego-condos-for-sale" className="text-white/90 hover:text-white">Downtown Condos</Link></li>
               <li><Link href="/la-jolla-condos-for-sale" className="text-white/90 hover:text-white">La Jolla Condos</Link></li>
@@ -61,8 +61,8 @@ export function Footer() {
           </div>
 
           <div className="min-w-0">
-            <h4 className="font-semibold text-white">Get Started</h4>
-            <ul className="mt-3 space-y-2 text-sm">
+            <h4 className="text-sm font-semibold leading-snug text-white">Get Started</h4>
+            <ul className="mt-3 space-y-2 text-sm break-words">
               <li><Link href="/about" className="text-white/90 hover:text-white">About</Link></li>
               <li><Link href="/contact" className="text-white/90 hover:text-white">Book a Strategy Call</Link></li>
               <li><Link href="/contact" className="text-white/90 hover:text-white">Contact</Link></li>
@@ -79,12 +79,14 @@ export function Footer() {
           </p>
           <p className="mt-1">{brokerage.name}</p>
           <p className="mt-1">{brokerage.officeAddress}</p>
-          <p className="mt-2">
+          <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
             <a href={`tel:${agent.phone.replace(/[^0-9+]/g, "")}`} className="text-white/90 hover:text-white">
               {agent.phone}
             </a>
-            {" · "}
-            <a href={`mailto:${agent.email}`} className="text-white/90 hover:text-white">
+            <span aria-hidden="true" className="text-white/60">
+              ·
+            </span>
+            <a href={`mailto:${agent.email}`} className="break-all text-white/90 hover:text-white">
               {agent.email}
             </a>
           </p>

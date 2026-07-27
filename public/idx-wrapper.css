@@ -463,6 +463,11 @@ body {
   gap: 32px;
 }
 
+.sd-footer-grid > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 @media (min-width: 640px) {
   .sd-footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -470,6 +475,12 @@ body {
 }
 
 @media (min-width: 1024px) {
+  .sd-footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
   .sd-footer-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -479,9 +490,11 @@ body {
 .sd-footer-grid h4 {
   font-family: "Marcellus", Georgia, serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1rem;
+  line-height: 1.375;
   color: #ffffff;
   margin: 0 0 12px;
+  overflow-wrap: anywhere;
 }
 
 .sd-footer-grid p {
@@ -504,6 +517,7 @@ body {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 .sd-footer-grid a:hover {
@@ -521,6 +535,14 @@ body {
 
 .sd-footer-legal p {
   margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.sd-footer-legal p.sd-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
 }
 
 .sd-footer-legal a {
