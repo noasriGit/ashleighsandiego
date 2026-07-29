@@ -7,9 +7,13 @@ import { siteConfig } from "@/data/site-config";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
+type PageProps = {
+  params: Promise<{ idxId: string; listingId: string }>;
+};
+
 export async function generateMetadata({
   params,
-}: PageProps<"/listings/[idxId]/[listingId]">): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { idxId, listingId } = await params;
   const listing = await getFeaturedListing(idxId, listingId);
 
@@ -40,7 +44,7 @@ export async function generateMetadata({
 
 export default async function ListingDetailPage({
   params,
-}: PageProps<"/listings/[idxId]/[listingId]">) {
+}: PageProps) {
   const { idxId, listingId } = await params;
   const listing = await getFeaturedListing(idxId, listingId);
 

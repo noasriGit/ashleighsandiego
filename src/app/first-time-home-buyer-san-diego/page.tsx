@@ -17,12 +17,11 @@ import { marketingHeroes } from "@/data/page-images";
 import { faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
-  title: "First-Time Home Buyer San Diego | Buyer's Guide",
+  title: "First-Time Home Buyer San Diego",
   description:
     "First time buying in San Diego? Learn about affordability, property types, pre-approval, and neighborhoods near La Jolla before you tour homes.",
   path: "/first-time-home-buyer-san-diego",
   keywords: getKeywordsForPage("/first-time-home-buyer-san-diego"),
-  noindex: true,
 });
 
 const sections = [

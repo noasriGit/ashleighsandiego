@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  verify:
+    name: Lint, typecheck, SEO, build
+    runs-on: ubuntu-latest
+
+    env:
+      NEXT_PUBLIC_SITE_URL: https://sdcommunities.com
+      NEXT_PUBLIC_IDX_ENABLED: "false"
+      IDX_API_ENABLED: "false"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Route registry consistency
+        run: npm run routes:validate
+
+      - name: SEO architecture verify
+        run: npm run seo:verify
+
+      - name: Fair Housing scan
+        run: npm run fairhousing:scan
+
+      - name: Community boundary validation
+        run: npm run geo:validate-boundaries
+
+      - name: Production build
+        run: npm run build

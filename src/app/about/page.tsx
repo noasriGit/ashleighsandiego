@@ -12,9 +12,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { aboutPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
-  title: "About",
+  title: "About Ashleigh Dodero",
   description:
-    "About SDCommunities and agent Ashleigh Dodero, San Diego neighborhood guidance and buyer representation for relocating, military, and first-time buyers.",
+    "About Ashleigh Dodero, California DRE #02351643, and how SDCommunities helps relocating, military, and first-time buyers compare San Diego neighborhoods.",
   path: "/about",
 });
 

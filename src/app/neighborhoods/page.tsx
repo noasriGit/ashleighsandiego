@@ -14,7 +14,6 @@ export const metadata = generatePageMetadata({
   description:
     "The full directory of San Diego neighborhood buyer guides. Start at the San Diego Neighborhoods overview or the interactive neighborhood map for a guided comparison.",
   path: "/neighborhoods",
-  noindex: true,
 });
 
 const sorted = [...communities].filter((c) => c.hasGuide).sort((a, b) => a.name.localeCompare(b.name));

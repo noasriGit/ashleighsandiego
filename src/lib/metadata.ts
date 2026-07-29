@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getRouteByPath } from "@/data/routes";
 import { siteConfig } from "@/data/site-config";
 
 type PageMetadataOptions = {
@@ -8,8 +9,8 @@ type PageMetadataOptions = {
   keywords?: string[];
   /**
    * When true, emits `robots: { index: false, follow: true }`.
-   * `follow` is intentional and required — these pages carry internal links
-   * that route equity to the indexable cluster pages. See docs/seo-rebuild-plan.md §12.
+   * When omitted, falls back to `routes.ts` indexable flag for the path.
+   * `follow` is intentional — noindex pages still pass link equity.
    */
   noindex?: boolean;
 };
@@ -22,13 +23,16 @@ export function generatePageMetadata({
   noindex,
 }: PageMetadataOptions): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const route = getRouteByPath(path);
+  const resolvedNoindex =
+    noindex ?? (route !== undefined ? !route.indexable : false);
 
   return {
     title,
     description,
     keywords,
     alternates: { canonical: url },
-    ...(noindex && {
+    ...(resolvedNoindex && {
       robots: {
         index: false,
         follow: true,

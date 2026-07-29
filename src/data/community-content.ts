@@ -1,4 +1,10 @@
 import { phase1CommunityContent } from "./community-content-phase1";
+import {
+  getCommunitySeoExtension,
+  type CommunitySeoExtension,
+} from "./community-seo-extensions";
+
+export type CommunitySubarea = NonNullable<CommunitySeoExtension["subareas"]>[number];
 
 export type CommunityContent = {
   slug: string;
@@ -28,6 +34,18 @@ export type CommunityContent = {
    * when present; the page omits the band entirely when absent.
    */
   stats?: { value: string; label: string }[];
+  expertSummary?: string;
+  differsFromParent?: string;
+  bestFitBuyers?: string[];
+  notIdealFor?: string[];
+  housingStockNotes?: string;
+  buyerMisunderstandings?: string[];
+  considerations?: string[];
+  subareas?: CommunitySubarea[];
+  sources?: { label: string; url?: string }[];
+  reviewedBy?: string;
+  publishedAt?: string;
+  lastSubstantialUpdate?: string;
 };
 
 export const communityContent: Record<string, CommunityContent> = {
@@ -227,7 +245,7 @@ export const communityContent: Record<string, CommunityContent> = {
     nearbyComparisons: [
       { name: "La Jolla", slug: "la-jolla", note: "Similar upscale coastal feel, more UCSD proximity" },
       { name: "Carmel Valley", slug: "carmel-valley", note: "More suburban, newer construction, slightly lower prices" },
-      { name: "Solana Beach", slug: "del-mar", note: "Neighboring coastal community with train access" },
+      { name: "Del Mar Heights", slug: "del-mar-heights", note: "Hillside homes with canyon views above the village" },
     ],
     faqs: [
       { question: "How does Del Mar compare to La Jolla?", answer: "Both are upscale coastal communities. Del Mar feels slightly more village-quaint and is north of La Jolla. La Jolla has more UCSD and biotech proximity." },
@@ -329,7 +347,7 @@ export const communityContent: Record<string, CommunityContent> = {
     nearbyComparisons: [
       { name: "University City", slug: "university-city", note: "More residential character, UTC shopping nearby" },
       { name: "Carmel Valley", slug: "carmel-valley", note: "More master-planned housing, 10–15 minute commute" },
-      { name: "Mira Mesa", slug: "sorrento-valley", note: "More affordable option further inland" },
+      { name: "Clairemont", slug: "clairemont", note: "More affordable inland option with larger lots" },
     ],
     faqs: [
       { question: "Is Sorrento Valley good for biotech commuters?", answer: "Sorrento Valley is ideal for biotech and tech professionals, many campuses are in walking distance or a short drive. It's one of the top choices for commute-focused buyers." },
@@ -477,5 +495,11 @@ export const communityContent: Record<string, CommunityContent> = {
 };
 
 export function getCommunityContent(slug: string): CommunityContent | undefined {
-  return communityContent[slug];
+  const base = communityContent[slug];
+  if (!base) return undefined;
+
+  const seo = getCommunitySeoExtension(slug);
+  if (!seo) return base;
+
+  return { ...base, ...seo };
 }

@@ -4,9 +4,10 @@
  * Next.js metadata routes can return 200 in browsers while GSC reports
  * "Couldn't fetch". A plain static file avoids that class of issues.
  *
- * Sources:
- *   - src/data/routes.ts (entries with inSitemap: true)
- *   - src/data/communities.ts (hasGuide: true neighborhood guides)
+ * Sources (Wave 1):
+ *   - src/lib/seo-indexability.ts INDEXABLE_STATIC_PATHS
+ *   - src/lib/seo-indexability.ts WAVE1 + ACTIVE_REINTRODUCTION community slugs
+ *   - src/data/routes.ts (cross-check: inSitemap entries must match static set)
  *
  * Usage: node scripts/generate-sitemap.mjs
  */
@@ -24,19 +25,27 @@ loadEnvFiles(root);
 const SITE_DOMAIN = "sdcommunities.com";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${SITE_DOMAIN}`;
 
-function getSitemapRoutes() {
-  const source = readFileSync(join(root, "src/data/routes.ts"), "utf8");
-  const routes = [];
-  const blockRe = /\{\s*path:\s*"([^"]+)"[\s\S]*?inSitemap:\s*(true|false)/g;
-  let match;
+function readArrayExport(source, exportName) {
+  const re = new RegExp(
+    `export const ${exportName}[^=]*=\\s*\\[([\\s\\S]*?)\\]\\s*as const`,
+  );
+  const match = re.exec(source);
+  if (!match) return [];
+  return [...match[1].matchAll(/"([^"]*)"/g)].map((m) => m[1]);
+}
 
-  while ((match = blockRe.exec(source)) !== null) {
-    if (match[2] === "true") {
-      routes.push(match[1]);
-    }
-  }
-
-  return routes;
+function getWave1SitemapPaths() {
+  const source = readFileSync(
+    join(root, "src/lib/seo-indexability.ts"),
+    "utf8",
+  );
+  const staticPaths = readArrayExport(source, "INDEXABLE_STATIC_PATHS");
+  const wave1 = readArrayExport(source, "WAVE1_COMMUNITY_SLUGS");
+  const reintro = readArrayExport(source, "ACTIVE_REINTRODUCTION_CLUSTERS");
+  const communityPaths = [...new Set([...wave1, ...reintro])].map(
+    (slug) => `/neighborhoods/${slug}`,
+  );
+  return [...staticPaths, ...communityPaths];
 }
 
 function getRouteMeta(path) {
@@ -57,24 +66,7 @@ function getRouteMeta(path) {
   return { changeFrequency: "monthly", priority: "0.8" };
 }
 
-function getLaunchCommunitySlugs() {
-  const source = readFileSync(join(root, "src/data/communities.ts"), "utf8");
-  const slugs = [];
-
-  for (const match of source.matchAll(
-    /\{\s*slug:\s*"([^"]+)"[\s\S]*?hasGuide:\s*true/g,
-  )) {
-    slugs.push(match[1]);
-  }
-
-  return slugs;
-}
-
-const staticPages = getSitemapRoutes();
-const communityPages = getLaunchCommunitySlugs().map(
-  (slug) => `/neighborhoods/${slug}`,
-);
-const allPages = [...staticPages, ...communityPages];
+const allPages = getWave1SitemapPaths();
 const lastModified = new Date().toISOString();
 
 function escapeXml(value) {

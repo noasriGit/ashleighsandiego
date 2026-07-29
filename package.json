@@ -8,6 +8,7 @@
     "postbuild": "node scripts/generate-sitemap.mjs",
     "start": "next start",
     "lint": "eslint",
+    "seo:verify": "tsx scripts/verify-seo-architecture.ts",
     "idx:generate-config": "node scripts/generate-idx-search-config.mjs",
     "idx:generate-search-bar": "node scripts/generate-idx-search-bar.mjs",
     "idx:sync-searches": "node scripts/sync-idx-saved-searches.mjs",
@@ -18,7 +19,7 @@
     "geo:validate-boundaries": "node scripts/validate-community-boundaries.mjs",
     "fairhousing:scan": "node scripts/check-fair-housing-terms.mjs",
     "routes:validate": "node scripts/check-routes.mjs",
-    "verify": "npm run lint && npm run routes:validate && npm run fairhousing:scan && npm run geo:validate-boundaries"
+    "verify": "npm run lint && npm run routes:validate && npm run seo:verify && npm run fairhousing:scan && npm run geo:validate-boundaries"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -38,6 +39,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }

@@ -22,6 +22,7 @@ import { getIdxBrowseUrl, getIdxSearchConfig } from "@/data/idx-search-config";
 import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
+import { getRobotsForCommunity } from "@/lib/seo-indexability";
 import { faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import type { LifestyleTag } from "@/data/communities";
 
@@ -51,12 +52,13 @@ export async function generateMetadata({ params }: PageProps) {
   if (!community) return {};
 
   const path = `/neighborhoods/${slug}`;
+  const robots = getRobotsForCommunity(slug);
   return generatePageMetadata({
     title: `Living in ${community.name}: A Buyer's Guide`,
     description: `${community.tagline} Guide for relocating buyers considering ${community.name}, San Diego.`,
     path,
     keywords: getKeywordsForPage(path),
-    noindex: true,
+    noindex: Boolean(robots),
   });
 }
 
