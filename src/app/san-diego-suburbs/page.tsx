@@ -28,7 +28,7 @@ const suburbFaqs = [
     answer: "San Diego neighborhoods, like La Jolla or North Park, are part of the City of San Diego itself. Suburbs like Coronado, La Mesa, and Poway are separate incorporated cities with their own governments, schools, and services, located near but outside city limits.",
   },
   {
-    question: "What is the best San Diego suburb for families?",
+    question: "What is the best San Diego suburb for more space and yard?",
     answer: "It depends on priorities like commute, schools, and lot size. Poway and La Mesa are commonly compared for inland value, while Coronado and Solana Beach are compared for coastal access. A strategy call can narrow this down based on your specific budget and commute.",
   },
   {

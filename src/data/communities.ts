@@ -25,7 +25,7 @@ export type Community = {
 export const communities: Community[] = [
   // Tier 1, launch guides
   { slug: "la-jolla", name: "La Jolla", tagline: "Coastal village living with ocean views, UCSD proximity, and upscale amenities.", tier: 1, lifestyles: ["Coastal", "Close to UCSD/UTC", "Parks and Recreation Access"], hasGuide: true },
-  { slug: "pacific-beach", name: "Pacific Beach", tagline: "Beach-town energy with boardwalk access and a younger, active vibe.", tier: 1, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: true },
+  { slug: "pacific-beach", name: "Pacific Beach", tagline: "Beach-town energy with boardwalk access and an active, social atmosphere.", tier: 1, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: true },
   { slug: "university-city", name: "University City / UTC", tagline: "Central location near UCSD, biotech corridor, and Westfield UTC.", tier: 1, lifestyles: ["Close to UCSD/UTC", "Commute-friendly", "Parks and Recreation Access"], hasGuide: true },
   { slug: "clairemont", name: "Clairemont", tagline: "Established central neighborhoods with more space and value.", tier: 1, lifestyles: ["Commute-friendly", "More affordable nearby", "Parks and Recreation Access"], hasGuide: true },
   { slug: "mission-valley", name: "Mission Valley", tagline: "Central hub with freeway access, shopping, and condo options.", tier: 1, lifestyles: ["Commute-friendly", "More affordable nearby"], hasGuide: true },
@@ -37,7 +37,7 @@ export const communities: Community[] = [
   { slug: "bay-park", name: "Bay Park", tagline: "Hillside views and bay breezes between Clairemont and Mission Bay.", tier: 2, lifestyles: ["More affordable nearby", "Parks and Recreation Access"], hasGuide: true },
   { slug: "ocean-beach", name: "Ocean Beach", tagline: "Laid-back beach community with a strong local identity.", tier: 2, lifestyles: ["Coastal", "Nightlife/walkability"], hasGuide: true },
   { slug: "hillcrest", name: "Hillcrest", tagline: "Walkable urban village near Balboa Park with dining and nightlife.", tier: 2, lifestyles: ["Nightlife/walkability", "Commute-friendly"], hasGuide: true },
-  { slug: "north-park", name: "North Park", tagline: "Trendy, walkable neighborhood popular with young professionals.", tier: 2, lifestyles: ["Nightlife/walkability", "More affordable nearby"], hasGuide: true },
+  { slug: "north-park", name: "North Park", tagline: "Trendy, walkable neighborhood with craft breweries and independent restaurants.", tier: 2, lifestyles: ["Nightlife/walkability", "More affordable nearby"], hasGuide: true },
   // Tier 2, metadata only
   { slug: "bay-ho", name: "Bay Ho", tagline: "Quiet residential pocket near Mission Bay.", tier: 2, lifestyles: ["Parks and Recreation Access", "More affordable nearby"], hasGuide: true, parentSlug: "bay-park" },
   { slug: "north-clairemont", name: "North Clairemont", tagline: "Residential area with canyon views and central access.", tier: 2, lifestyles: ["Commute-friendly", "More affordable nearby"], hasGuide: true, parentSlug: "clairemont" },

@@ -55,7 +55,7 @@ const regionGroups = [
     items: [
       { name: "La Jolla", href: "/la-jolla-neighborhoods" },
       { name: "Pacific Beach", href: "/neighborhoods/pacific-beach" },
-      { name: "Del Mar", href: "/del-mar-new-luxury-homes" },
+      { name: "Del Mar", href: "/neighborhoods/del-mar" },
       { name: "Point Loma", href: "/neighborhoods/point-loma" },
       { name: "Ocean Beach", href: "/neighborhoods/ocean-beach" },
     ],
@@ -66,34 +66,32 @@ const regionGroups = [
       { name: "University City / UTC", href: "/neighborhoods/university-city" },
       { name: "Hillcrest", href: "/neighborhoods/hillcrest" },
       { name: "North Park", href: "/neighborhoods/north-park" },
-      { name: "Downtown San Diego", href: "/downtown-san-diego-condos-for-sale" },
-      { name: "Mission Valley", href: "/san-diego-condos-for-sale#mission-valley" },
+      { name: "Bay Park", href: "/neighborhoods/bay-park" },
+      { name: "Mission Valley", href: "/neighborhoods/mission-valley" },
     ],
   },
   {
-    label: "Inland & Suburbs",
+    label: "Inland",
     items: [
       { name: "Clairemont", href: "/neighborhoods/clairemont" },
       { name: "Carmel Valley", href: "/neighborhoods/carmel-valley" },
       { name: "Sorrento Valley", href: "/neighborhoods/sorrento-valley" },
-      { name: "San Diego Suburbs", href: "/san-diego-suburbs" },
-      { name: "Cities Near San Diego", href: "/cities-near-san-diego" },
     ],
   },
 ];
 
 const commuteGroups = [
   { name: "Biotech / UCSD / Sorrento Valley", description: "University City, Sorrento Valley, Carmel Valley", href: "/neighborhoods/university-city" },
-  { name: "Downtown & Central San Diego", description: "Hillcrest, North Park, Mission Valley, downtown", href: "/downtown-san-diego-condos-for-sale" },
+  { name: "Urban & Walkable Living", description: "Hillcrest, North Park, and Mission Valley", href: "/neighborhoods" },
   { name: "Military Installations", description: "Point Loma, Clairemont, Mission Valley near the bases", href: "/military-realtor-san-diego" },
-  { name: "Remote / Flexible Commute", description: "Coastal lifestyle first: La Jolla, Del Mar, Encinitas", href: "/la-jolla-neighborhoods" },
+  { name: "Remote / Flexible Commute", description: "Coastal lifestyle first: La Jolla, Del Mar, Point Loma", href: "/la-jolla-neighborhoods" },
 ];
 
 const housingTypeGroups = [
-  { name: "Condos & Townhomes", description: "Downtown high-rises, La Jolla Village, Mission Valley", href: "/san-diego-condos-for-sale" },
-  { name: "New Construction & Luxury", description: "Del Mar, Carmel Valley master plans", href: "/del-mar-new-luxury-homes" },
-  { name: "Value Single-Family Homes", description: "Clairemont, North Clairemont, Serra Mesa", href: "/affordable-neighborhoods-san-diego" },
-  { name: "Suburban & County-Wide", description: "Poway, La Mesa, Encinitas, Carlsbad", href: "/san-diego-suburbs" },
+  { name: "Condos & Townhomes", description: "Mission Valley and University City near UTC", href: "/neighborhoods/mission-valley" },
+  { name: "New Construction & Master-Planned", description: "Carmel Valley and Del Mar communities", href: "/neighborhoods/carmel-valley" },
+  { name: "Value Single-Family Homes", description: "Clairemont and central San Diego neighborhoods", href: "/neighborhoods/clairemont" },
+  { name: "Coastal Living", description: "La Jolla, Point Loma, and Ocean Beach", href: "/la-jolla-neighborhoods" },
 ];
 
 export default async function HomePage() {
@@ -124,9 +122,9 @@ export default async function HomePage() {
       <Hero
         kicker="SERHANT."
         headline="San Diego Neighborhoods, Compared for Buyers."
-        subheadline="43 neighborhood guides across the coast, central San Diego, and inland communities, grouped so you can shortlist an area by commute, budget, and lifestyle before you tour a single home."
+        subheadline="Curated San Diego neighborhood guides across the coast, central San Diego, and inland communities, grouped so you can shortlist an area by commute, budget, and lifestyle before you tour a single home."
         primaryCta={{ label: "Find My Neighborhood", href: "#find-neighborhood" }}
-        secondaryCta={{ label: "Open the Neighborhood Map", href: "/san-diego-neighborhood-map" }}
+        secondaryCta={{ label: "Browse Neighborhood Guides", href: "/neighborhoods" }}
         backgroundImage="/images/hero1.jpg"
         backgroundImageAlt="San Diego coastal homes and neighborhoods"
         backgroundImageFit="cover"
@@ -233,11 +231,11 @@ export default async function HomePage() {
                 eyebrow: "PCS",
               },
               {
-                title: "Affordable Neighborhoods",
+                title: "First-Time Home Buyers",
                 description:
-                  "Watching your budget? See where relocating buyers are finding the most value right now.",
-                href: "/affordable-neighborhoods-san-diego",
-                eyebrow: "Budget-focused",
+                  "New to the process? Get a clear rundown of financing, offers, and closing in San Diego.",
+                href: "/first-time-home-buyer-san-diego",
+                eyebrow: "Buyer basics",
               },
               {
                 title: "La Jolla Neighborhoods",
@@ -247,11 +245,11 @@ export default async function HomePage() {
                 eyebrow: "Coastal",
               },
               {
-                title: "San Diego Condos",
+                title: "Explore All Neighborhoods",
                 description:
-                  "Downtown high-rises to La Jolla Village walk-ups, compared building by building.",
-                href: "/san-diego-condos-for-sale",
-                eyebrow: "Condo living",
+                  "Browse every San Diego community guide by region, commute, and housing type.",
+                href: "/neighborhoods",
+                eyebrow: "Full directory",
                 span: "wide",
               },
             ]}
@@ -264,7 +262,7 @@ export default async function HomePage() {
           Popular Neighborhood Guides
         </h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          A starting sample of our 43 full neighborhood guides, covering housing stock, lifestyle, and commute.
+          Detailed guides to San Diego neighborhoods, covering housing stock, lifestyle, and commute.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredCommunities.map((community) => {
@@ -279,7 +277,7 @@ export default async function HomePage() {
             );
           })}
         </div>
-        <Button href="/san-diego-neighborhood-map" variant="outline" className="mt-8">
+        <Button href="/neighborhoods" variant="outline" className="mt-8">
           {siteConfig.ctas.compareNeighborhoods}
         </Button>
       </Section>

@@ -105,7 +105,7 @@ export const suburbs: Suburb[] = [
     category: "city",
     distanceFromDowntown: "20 minutes",
     description:
-      "An East County city in the inland valley with some of the region's most affordable single-family inventory and a diverse, established population base.",
+      "An East County city in the inland valley with some of the region's most affordable single-family inventory and an established housing stock.",
     goodFor: "Buyers prioritizing affordability and square footage over coastal or central-San-Diego proximity.",
   },
   {

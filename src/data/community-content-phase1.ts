@@ -15,13 +15,13 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { value: "Torrey Pines", label: "Nearby Anchor" },
     ],
     whoItsFor: [
-      "Families relocating for schools and master-planned amenities near UTC",
+      "Buyers relocating for schools and master-planned amenities near UTC",
       "Buyers who want Carmel Valley access at a slightly inland setting",
       "Professionals commuting to Sorrento Valley or UCSD",
       "Relocating buyers comparing Del Mar who want more yard space",
     ],
     housingOverview:
-      "Torrey Hills sits between Carmel Valley and Torrey Pines with a mix of single-family homes, townhomes, and select condos. Many streets date to the 1990s–2000s with established landscaping and cul-de-sac layouts. Inventory tends toward family-sized floor plans rather than the newer tract homes found deeper in Carmel Valley.",
+      "Torrey Hills sits between Carmel Valley and Torrey Pines with a mix of single-family homes, townhomes, and select condos. Many streets date to the 1990s–2000s with established landscaping and cul-de-sac layouts. Inventory tends toward 3+ bedroom floor plans rather than the newer tract homes found deeper in Carmel Valley.",
     lifestyle:
       "The area feels suburban and quiet with neighborhood parks and easy access to Carmel Valley Road shopping. Torrey Pines State Natural Reserve and coastal trails are a short drive west. Daily errands often route through Carmel Valley or UTC rather than a dedicated village center within Torrey Hills itself.",
     commute:
@@ -33,7 +33,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does Torrey Hills differ from Carmel Valley?", answer: "Torrey Hills is a specific residential pocket within the Carmel Valley area, generally closer to Torrey Pines and I-5. Housing stock is slightly older than newer Carmel Valley tracts, and the feel is more established neighborhood than master-planned community." },
-      { question: "Is Torrey Hills good for relocating families?", answer: "Torrey Hills is popular with relocating families who want Carmel Valley schools and amenities. Verify school boundaries for your target streets before buying." },
+      { question: "Is Torrey Hills good for buyers relocating for schools?", answer: "Torrey Hills is popular with buyers relocating for Carmel Valley schools and amenities. Verify school boundaries for your target streets before buying." },
       { question: "How far is Torrey Hills from the beach?", answer: "Torrey Pines beaches and the state reserve are roughly 10 minutes west. Del Mar beaches are roughly 10–15 minutes north." },
       { question: "What housing types are available in Torrey Hills?", answer: "Single-family homes dominate, with townhomes and some condos on select streets. Most properties offer 3+ bedrooms suited to family buyers." },
     ],
@@ -54,7 +54,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers seeking historic architecture near downtown and Balboa Park",
       "Professionals working at downtown or Hillcrest medical centers",
       "Relocating buyers who want walkable urban living with character homes",
-      "Empty nesters downsizing from larger suburban properties",
+      "Buyers downsizing from larger suburban properties",
     ],
     housingOverview:
       "Mission Hills features early-20th-century Craftsman, Spanish Revival, and Tudor-style homes on tree-lined streets. Many properties have been thoughtfully updated while retaining original character. Condos and townhomes appear on select corridors, but the area is primarily single-family with mature landscaping and canyon-adjacent lots.",
@@ -123,7 +123,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "First-time buyers seeking newer construction in central San Diego",
-      "Families relocating who want master-planned parks and community amenities",
+      "Buyers relocating who want master-planned parks and community amenities",
       "Commuters needing freeway access to multiple job centers",
       "Buyers comparing Mission Valley who prioritize new-home warranties",
     ],
@@ -140,7 +140,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does Civita differ from the rest of Mission Valley?", answer: "Civita is a newer master-planned pocket with single-family homes, townhomes, and modern condos built around Civita Park. The broader Mission Valley area has more 1970s–90s condo towers and commercial strip development." },
-      { question: "Is Civita good for relocating families?", answer: "Civita attracts families with its parks, newer construction, and central location. School boundaries should be verified for specific addresses within the community." },
+      { question: "Is Civita good for relocating buyers?", answer: "Civita attracts buyers with its parks, newer construction, and central location. School boundaries should be verified for specific addresses within the community." },
       { question: "Are there HOA fees in Civita?", answer: "Most Civita properties include HOA fees covering common area maintenance, parks, and community amenities. Review HOA documents during escrow for specific cost and coverage details." },
       { question: "What is the commute like from Civita?", answer: "Freeway access is excellent. Downtown, Kearny Mesa, and Sorrento Valley are all roughly 15–25 minutes depending on traffic and exact destination." },
     ],
@@ -158,7 +158,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { value: "Del Mar Village", label: "Nearby Anchor" },
     ],
     whoItsFor: [
-      "Families relocating for Del Mar schools with hillside lot preferences",
+      "Buyers relocating for Del Mar schools with hillside lot preferences",
       "Buyers who want canyon or ocean views above the coastal village",
       "Professionals with flexible commutes or remote work arrangements",
       "Relocating buyers comparing Carmel Valley who want Del Mar address proximity",
@@ -177,7 +177,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     faqs: [
       { question: "How does Del Mar Heights differ from Del Mar Village?", answer: "Del Mar Heights is the hillside residential area above the village with larger lots and view premiums. The village offers walkable dining and closer beach access. Both share the Del Mar address and school district." },
       { question: "Are there view properties in Del Mar Heights?", answer: "Yes, canyon, lagoon, and ocean views are common on elevated streets. View premiums vary by orientation and sightline quality." },
-      { question: "Is Del Mar Heights good for relocating families?", answer: "Del Mar Heights is popular with relocating families who want Del Mar schools and hillside living. Budget and lot-size preferences should guide your search." },
+      { question: "Is Del Mar Heights good for relocating buyers?", answer: "Del Mar Heights is popular with buyers relocating for Del Mar schools and hillside living. Budget and lot-size preferences should guide your search." },
     ],
   },
 
@@ -194,7 +194,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers seeking mid-century homes with canyon views in central San Diego",
-      "Families who want yards and central location without coastal premiums",
+      "Buyers who want yards and central location without coastal premiums",
       "Commuters to Kearny Mesa, UTC, or Mission Valley",
       "Relocating buyers comparing Bay Park who prefer flatter, established blocks",
     ],
@@ -211,7 +211,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does North Clairemont differ from Clairemont?", answer: "North Clairemont is the northern portion of the Clairemont area with more canyon-adjacent lots and hillside terrain. Housing styles and era are similar, but North Clairemont often offers better views and slightly larger lots." },
-      { question: "Is North Clairemont good for relocating families?", answer: "North Clairemont offers space, central location, and canyon access at value compared to coastal areas. Verify school boundaries for your target streets." },
+      { question: "Is North Clairemont good for relocating buyers?", answer: "North Clairemont offers space, central location, and canyon access at value compared to coastal areas. Verify school boundaries for your target streets." },
       { question: "What outdoor access does North Clairemont offer?", answer: "Tecolote Canyon Natural Park borders much of North Clairemont with trails and open space. Mission Bay and Pacific Beach are roughly 10–15 minutes by car." },
     ],
   },
@@ -230,7 +230,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     whoItsFor: [
       "Buyers seeking central location near SDSU and Mission Valley",
       "Commuters who need access to multiple freeway corridors",
-      "Families wanting single-family homes at central San Diego price points",
+      "Buyers wanting single-family homes at central San Diego price points",
       "Relocating buyers comparing Linda Vista who prefer established residential streets",
     ],
     housingOverview:
@@ -335,7 +335,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers seeking quiet residential streets near Mission Bay",
-      "Families who want Bay Park proximity at a slightly lower profile",
+      "Buyers who want Bay Park proximity at a slightly lower profile",
       "Commuters to central San Diego, Kearny Mesa, or downtown",
       "Relocating buyers comparing Clairemont who want bay-area breezes",
     ],
@@ -372,7 +372,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers who want to live steps from La Jolla's most iconic coastline",
-      "Empty nesters and professionals seeking walkable coastal dining",
+      "Buyers downsizing or seeking walkable coastal dining",
       "Relocating buyers prioritizing ocean views and village proximity",
       "Second-home or part-time residents drawn to the Cove atmosphere",
     ],
@@ -406,7 +406,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { value: "La Jolla Shores Beach", label: "Nearby Anchor" },
     ],
     whoItsFor: [
-      "Relocating families who want a flat, sandy beach and calm water access",
+      "Relocating buyers who want a flat, sandy beach and calm water access",
       "Buyers seeking single-family homes within walking distance of the ocean",
       "Outdoor enthusiasts interested in kayaking, snorkeling, and beach activities",
       "UCSD-affiliated buyers who want a flat-terrain, low-density La Jolla subarea",
@@ -444,7 +444,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers who want walkable dining and shopping in La Jolla",
       "Professionals seeking condo or townhome living near UTC and UCSD",
       "Relocating buyers who prioritize village amenities over beach proximity",
-      "Empty nesters downsizing from larger La Jolla single-family homes",
+      "Buyers downsizing from larger La Jolla single-family homes",
     ],
     housingOverview:
       "La Jolla Village is the commercial and residential hub inland from the coast, with a higher concentration of condos, townhomes, and mid-rise buildings along Prospect Street, Girard Avenue, and La Jolla Village Drive. Single-family homes exist on peripheral streets but the Village core skews toward multi-family and mixed-use inventory.",
@@ -476,7 +476,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { value: "Bird Rock", label: "Nearby Anchor" },
     ],
     whoItsFor: [
-      "Families relocating who want La Jolla schools with a neighborhood feel",
+      "Buyers relocating who want La Jolla schools with a neighborhood feel",
       "Buyers seeking single-family homes south of the Village bustle",
       "Professionals commuting to UTC, Sorrento Valley, or UCSD",
       "Relocating buyers comparing Pacific Beach who want La Jolla address",
@@ -494,7 +494,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     faqs: [
       { question: "How does Bird Rock differ from La Jolla Village?", answer: "Bird Rock is a quieter, primarily single-family neighborhood south of the Village with its own small commercial strip. The Village has more condos, dining density, and tourist foot traffic along Prospect Street." },
-      { question: "Is Bird Rock good for relocating families?", answer: "Bird Rock is one of the most popular La Jolla subareas for families due to single-family homes, local schools, and neighborhood feel. Verify boundaries for your target streets." },
+      { question: "Is Bird Rock good for relocating buyers?", answer: "Bird Rock is one of the most popular La Jolla subareas for buyers prioritizing single-family homes, local schools, and a neighborhood feel. Verify boundaries for your target streets." },
       { question: "What dining and shopping does Bird Rock offer?", answer: "Bird Rock Avenue and La Jolla Boulevard have local restaurants, coffee shops, and a farmers market. Larger retail runs typically go to La Jolla Village or UTC." },
     ],
   },
@@ -512,7 +512,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers seeking hillside La Jolla homes with canyon or ocean views",
-      "Families who want larger lots and privacy within the La Jolla address",
+      "Buyers who want larger lots and privacy within the La Jolla address",
       "Relocating professionals with flexible commutes or remote work",
       "Buyers comparing Mount Soledad who prefer Muirlands' established streets",
     ],
@@ -547,7 +547,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers who want panoramic views from La Jolla's highest elevation",
-      "Relocating families seeking privacy on larger hillside lots",
+      "Relocating buyers seeking privacy on larger hillside lots",
       "Professionals with remote or flexible work arrangements",
       "Buyers comparing Muirlands who want maximum view potential",
     ],
@@ -621,7 +621,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers who want canal-side or bay-adjacent living near Pacific Beach",
       "Water enthusiasts interested in paddleboarding, kayaking, and boating",
       "Relocating buyers comparing Mission Bay who want PB proximity",
-      "Young professionals seeking a quieter pocket within the PB area",
+      "Buyers seeking a quieter pocket within the PB area",
     ],
     housingOverview:
       "Crown Point is a peninsula jutting into Mission Bay with canal-front homes, bay-view condos, and select single-family properties on the fan-shaped street grid. Unlike the Garnet Avenue corridor, Crown Point offers waterfront living with docks and canal access on many properties. Housing includes 1960s–80s builds and renovated contemporary homes.",
@@ -654,7 +654,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers who want classic boardwalk beach-town living",
-      "Young professionals and couples drawn to active coastal lifestyle",
+      "Buyers drawn to an active coastal lifestyle",
       "Relocating buyers comparing Pacific Beach who want a narrower beach strip",
       "Remote workers who prioritize beach access over commute length",
     ],
@@ -689,7 +689,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers seeking bay-front condos with recreation access",
-      "Families who want calm water activities over ocean surf",
+      "Buyers who want calm water activities over ocean surf",
       "Relocating buyers comparing Crown Point who prefer resort-adjacent living",
       "Water sports enthusiasts and boat owners",
     ],
@@ -830,7 +830,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       { value: "Liberty Station", label: "Nearby Anchor" },
     ],
     whoItsFor: [
-      "Families relocating who want hillside Point Loma homes with bay views",
+      "Buyers relocating who want hillside Point Loma homes with bay views",
       "Buyers seeking single-family homes above the peninsula flats",
       "Military families considering Naval Base Point Loma proximity",
       "Relocating buyers comparing Ocean Beach who want more privacy and views",
@@ -849,7 +849,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     faqs: [
       { question: "How does Point Loma Heights differ from the Point Loma peninsula flats?", answer: "Point Loma Heights is the elevated residential area with hillside homes and views, while the flats include Liberty Station, bay-front condos, and commercial corridors at sea level." },
       { question: "Are there view homes in Point Loma Heights?", answer: "Yes, bay and city views are common on elevated streets. View quality and orientation vary by block and lot position on the hillside." },
-      { question: "Is Point Loma Heights good for military families?", answer: "Naval Base Point Loma is roughly 10 minutes away. The Heights offers residential privacy and family-sized homes convenient to base commutes." },
+      { question: "Is Point Loma Heights good for military buyers?", answer: "Naval Base Point Loma is roughly 10 minutes away. The Heights offers residential privacy and larger floor plans convenient to base commutes." },
     ],
   },
 
@@ -866,7 +866,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
     ],
     whoItsFor: [
       "Buyers seeking walkable urban living between Hillcrest and North Park",
-      "Young professionals who want Adams Avenue and University Avenue access",
+      "Buyers who want Adams Avenue and University Avenue access",
       "Relocating buyers comparing Normal Heights who want slightly more elevation",
       "First-time buyers interested in character bungalows and duplexes",
     ],
@@ -903,7 +903,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers who want residential quiet with Adams Avenue dining nearby",
       "First-time buyers seeking character homes at urban San Diego price points",
       "Relocating buyers comparing North Park who prefer less nightlife intensity",
-      "Families who want central location with neighborhood yard space",
+      "Buyers who want central location with neighborhood yard space",
     ],
     housingOverview:
       "Normal Heights offers Craftsman bungalows, ranch homes, and duplexes on flat residential streets between Adams Avenue and El Cajon Boulevard. Unlike North Park's 30th Street corridor intensity, Normal Heights is primarily residential with commercial activity concentrated along Adams Avenue's eastern segment. Lot sizes are generally modest but include usable yards.",
@@ -938,7 +938,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers seeking upscale urban living adjacent to Balboa Park",
       "Professionals working downtown who want a residential hilltop address",
       "Relocating buyers comparing Hillcrest who want closer downtown proximity",
-      "Empty nesters interested in historic homes with park access",
+      "Buyers downsizing who are interested in historic homes with park access",
     ],
     housingOverview:
       "Bankers Hill features historic mansions, Spanish Revival estates, and high-rise condos on the hill between Balboa Park and downtown. Unlike Hillcrest's mixed commercial-residential grid, Bankers Hill is predominantly residential with larger lot sizes on select streets. Condos in mid-rise and high-rise buildings offer downtown and bay views.",
@@ -973,7 +973,7 @@ export const phase1CommunityContent: Record<string, CommunityContent> = {
       "Buyers who want waterfront urban village living downtown",
       "Professionals seeking walkable dining and farmers market access",
       "Relocating buyers comparing downtown high-rises who prefer neighborhood feel",
-      "Empty nesters downsizing to condo living with cultural amenities",
+      "Buyers downsizing to condo living with cultural amenities",
     ],
     housingOverview:
       "Little Italy consists primarily of mid-rise and high-rise condos, lofts, and select townhomes along India Street and the waterfront. Unlike the Gaslamp's hotel and entertainment density, Little Italy maintains a residential village identity with ground-floor dining and the Saturday Mercato farmers market. Newer towers along the waterfront offer bay views.",

@@ -29,10 +29,10 @@ const UPDATED = "2026-07-01";
 export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
   "la-jolla": {
     expertSummary:
-      "La Jolla rewards buyers who match the right subarea to their budget and daily routine. I often see relocating buyers fall in love with the Cove or Village before realizing that La Jolla Shores or Bird Rock better fits family life and parking expectations.",
+      "La Jolla rewards buyers who match the right subarea to their budget and daily routine. I often see relocating buyers fall in love with the Cove or Village before realizing that La Jolla Shores or Bird Rock offer more yard space and easier parking.",
     bestFitBuyers: [
       "Buyers who want a La Jolla address with clear subarea trade-offs",
-      "Families comparing beach pockets vs hillside privacy",
+      "Buyers comparing beach pockets vs hillside privacy",
       "UCSD, Scripps, or biotech commuters with flexible budgets",
     ],
     notIdealFor: [
@@ -57,7 +57,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
         name: "Bird Rock",
         slug: "bird-rock",
         description: "Quieter single-family pocket south of the Village with a local commercial strip.",
-        buyingDistinction: "Strong choice for families who want La Jolla schools without Village tourist traffic.",
+        buyingDistinction: "Strong choice for buyers who want La Jolla schools without Village tourist traffic.",
       },
       {
         name: "La Jolla Village",
@@ -103,12 +103,12 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Pacific Beach is active, social, and beach-first. Buyers who want Garnet Avenue energy should compare Crown Point and north PB pockets if they need quieter blocks or bay access instead of boardwalk frontage.",
     bestFitBuyers: [
       "Beach-town buyers comfortable with weekend traffic",
-      "Young professionals and couples prioritizing lifestyle",
+      "Buyers prioritizing an active, walkable lifestyle",
       "Buyers comparing La Jolla who want lower coastal entry points",
     ],
     notIdealFor: [
       "Buyers seeking quiet, suburban streetscapes",
-      "Families sensitive to nightlife noise near Garnet",
+      "Buyers sensitive to nightlife noise near Garnet",
     ],
     housingStockNotes:
       "Mix of older single-family homes, duplexes, and beach-adjacent condos. Crown Point adds canal-front inventory within the same ZIP.",
@@ -146,7 +146,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "University City and UTC work best when commute anchors are clear—UCSD, Westfield UTC, or Sorrento Valley. I guide buyers to compare condo-heavy UTC blocks against single-family streets farther west.",
     bestFitBuyers: [
       "Biotech and UCSD-affiliated commuters",
-      "Families wanting newer construction near major shopping",
+      "Buyers wanting newer construction near major shopping",
       "Buyers prioritizing freeway access over beach weekends",
     ],
     notIdealFor: [
@@ -169,7 +169,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Clairemont is the value-and-space play in central San Diego. Buyers who need yards and freeway flexibility often start here before deciding whether Bay Park views or coastal premiums are worth the step up.",
     bestFitBuyers: [
       "First-time buyers seeking single-family homes under coastal prices",
-      "Families who prioritize lot size over walkability",
+      "Buyers who prioritize lot size over walkability",
       "Commuters split between Mission Valley, Kearny Mesa, and downtown",
     ],
     notIdealFor: [
@@ -249,7 +249,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Del Mar is village-coastal living with strong school demand and limited inventory. Buyers should compare Del Mar Heights hillside homes against flat village streets before anchoring on the Del Mar name alone.",
     bestFitBuyers: [
       "Upscale coastal buyers north of La Jolla",
-      "Families prioritizing village scale and schools",
+      "Buyers prioritizing village scale and schools",
       "Remote or hybrid professionals with flexible commutes",
     ],
     notIdealFor: [
@@ -277,11 +277,11 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
   },
   "carmel-valley": {
     expertSummary:
-      "Carmel Valley is the default recommendation for biotech families who want newer schools and parks without Del Mar pricing. Torrey Hills offers a slightly different pocket feel closer to Torrey Pines.",
+      "Carmel Valley is the default recommendation for biotech buyers who want newer schools and parks without Del Mar pricing. Torrey Hills offers a slightly different pocket feel closer to Torrey Pines.",
     bestFitBuyers: [
       "Biotech and UTC commuters with school-age children",
       "Buyers wanting master-planned amenities",
-      "Families comparing Del Mar who need more space per dollar",
+      "Buyers comparing Del Mar who need more space per dollar",
     ],
     notIdealFor: [
       "Buyers who need immediate beach access",
@@ -358,7 +358,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Relocating buyers with offices in Sorrento Mesa",
     ],
     notIdealFor: [
-      "Families seeking parks-and-schools suburban feel",
+      "Buyers seeking a parks-and-schools suburban feel",
       "Buyers who want walkable dining outside office hours",
     ],
     housingStockNotes:
@@ -377,7 +377,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Bay Park gives Clairemont buyers elevation and Mission Bay breezes without Pacific Beach prices. Morena and Bay Ho pockets add different price points—tour specific blocks before generalizing the area.",
     bestFitBuyers: [
       "Central buyers wanting views on a moderate budget",
-      "Families between Clairemont and Mission Bay",
+      "Buyers between Clairemont and Mission Bay",
       "Commuters to downtown or Kearny Mesa",
     ],
     notIdealFor: [
@@ -441,7 +441,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       "Condo buyers who want Balboa Park access",
     ],
     notIdealFor: [
-      "Large-yard suburban families",
+      "Buyers who need large yards or a suburban setting",
       "Daily Sorrento Valley commuters",
     ],
     housingStockNotes:

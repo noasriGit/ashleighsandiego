@@ -30,7 +30,7 @@ export const phase1GuideKeywords: KeywordMapping[] = [
   { keyword: "living in torrey hills", page: "/neighborhoods/torrey-hills", intent: "community-guide" },
   { keyword: "torrey hills san diego", page: "/neighborhoods/torrey-hills", intent: "community-guide" },
   { keyword: "torrey hills neighborhood guide", page: "/neighborhoods/torrey-hills", intent: "community-guide" },
-  { keyword: "torrey hills family area", page: "/neighborhoods/torrey-hills", intent: "community-guide" },
+  { keyword: "torrey hills homes for sale", page: "/neighborhoods/torrey-hills", intent: "community-guide" },
   { keyword: "living in civita san diego", page: "/neighborhoods/civita", intent: "community-guide" },
   { keyword: "civita neighborhood", page: "/neighborhoods/civita", intent: "community-guide" },
   { keyword: "civita mission valley community", page: "/neighborhoods/civita", intent: "community-guide" },
