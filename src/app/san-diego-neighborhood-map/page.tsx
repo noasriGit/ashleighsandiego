@@ -14,10 +14,19 @@ import { webPageSchema, breadcrumbSchema, itemListSchema } from "@/lib/schema";
 export const metadata = generatePageMetadata({
   title: "San Diego Neighborhood Map | Interactive Community Guide",
   description:
-    "Explore an interactive map of San Diego neighborhoods. Filter by lifestyle, coastal to inland, then open a buyer's guide for any community.",
+    "An interactive map of San Diego neighborhoods and communities. Explore coastal, central, and inland areas, filter by lifestyle, then open a buyer's guide for any zone.",
   path: "/san-diego-neighborhood-map",
   keywords: getKeywordsForPage("/san-diego-neighborhood-map"),
 });
+
+const featuredGuideLinks = [
+  { name: "La Jolla", slug: "la-jolla", note: "Coastal village anchor for the north-county side of the map." },
+  { name: "Mission Valley", slug: "mission-valley", note: "Central freeway hub linking coastal and inland zones." },
+  { name: "Hillcrest", slug: "hillcrest", note: "Walkable urban village bordering Balboa Park." },
+  { name: "Pacific Beach", slug: "pacific-beach", note: "Boardwalk beach town between La Jolla and Mission Bay." },
+  { name: "Point Loma", slug: "point-loma", note: "Peninsula separating San Diego Bay from the open ocean." },
+  { name: "University City", slug: "university-city", note: "UTC shopping and biotech corridor east of La Jolla." },
+];
 
 const launchCommunities = getLaunchCommunities();
 const byLetter = launchCommunities
@@ -60,8 +69,53 @@ export default function NeighborhoodMapPage() {
         heroImageAlt={marketingHeroes.neighborhoods.alt}
       />
 
-      <Section kicker="Explore">
+      <Section kicker="How the Map Reads">
+        <h2 className="heading-section text-cabernet">How San Diego&apos;s Regions Relate Geographically</h2>
+        <div className="mt-4 max-w-2xl space-y-4 text-espresso/90">
+          <p>
+            San Diego&apos;s neighborhoods generally fall into three geographic bands. The{" "}
+            <strong>coastal band</strong> (La Jolla, Pacific Beach, Ocean Beach, Point Loma, Del Mar)
+            runs along the Pacific from north to south. The <strong>central band</strong> (Hillcrest,
+            North Park, Mission Valley, Bay Park, University City) sits inland of the coast, connected
+            by I-5, I-805, SR-163, and the trolley Green and Orange Lines. The <strong>inland band</strong>{" "}
+            (Clairemont, Carmel Valley, Sorrento Valley) fills in the mesas and valleys east of the
+            central corridor, with I-15 and I-805 providing the main freeway spine.
+          </p>
+          <p>
+            Mission Valley sits roughly at the geographic center of the map, where I-8 crosses I-805 and
+            I-15, which is a large part of why it functions as a commute hub between the coastal and
+            inland bands. Hillcrest and North Park sit just south of Mission Valley along SR-163, closer
+            to Balboa Park and downtown. Use the map below to see how a specific community sits relative
+            to these bands before you compare commute and lifestyle trade-offs.
+          </p>
+        </div>
+      </Section>
+
+      <Section variant="sand" kicker="Explore">
         <NeighborhoodsExplorer communities={communities} />
+      </Section>
+
+      <Section kicker="Start With a Guide">
+        <h2 className="heading-section text-cabernet">Jump Into a Neighborhood Guide</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          The map above is built for exploration, every zone links to a full buyer&apos;s guide with
+          housing, lifestyle, and commute detail. These are the guides buyers start with most often:
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredGuideLinks.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/neighborhoods/${item.slug}`}
+              className="group flex flex-col rounded-xl border border-surface-muted border-t-2 border-t-transparent bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-t-cabernet hover:shadow-lg"
+            >
+              <h3 className="heading-card text-cabernet">{item.name}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-espresso/80">{item.note}</p>
+              <span className="mt-4 inline-flex items-center text-sm font-medium text-cabernet">
+                View guide &rarr;
+              </span>
+            </Link>
+          ))}
+        </div>
       </Section>
 
       {/* Server-rendered A-Z fallback: the map above loads client-side (ssr:false),
