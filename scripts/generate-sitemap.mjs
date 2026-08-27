@@ -4,10 +4,11 @@
  * Next.js metadata routes can return 200 in browsers while GSC reports
  * "Couldn't fetch". A plain static file avoids that class of issues.
  *
- * Sources (Wave 1):
- *   - src/lib/seo-indexability.ts INDEXABLE_STATIC_PATHS
- *   - src/lib/seo-indexability.ts WAVE1 + ACTIVE_REINTRODUCTION community slugs
- *   - src/data/routes.ts (cross-check: inSitemap entries must match static set)
+ * Sources:
+ *   - src/data/routes.ts — authoritative static-page indexability/sitemap state
+ *     (every entry with inSitemap: true)
+ *   - src/lib/seo-indexability.ts — WAVE1 + ACTIVE_REINTRODUCTION community slugs
+ *     (dynamic /neighborhoods/[slug] indexability)
  *
  * Usage: node scripts/generate-sitemap.mjs
  */
@@ -34,12 +35,34 @@ function readArrayExport(source, exportName) {
   return [...match[1].matchAll(/"([^"]*)"/g)].map((m) => m[1]);
 }
 
+/** Parse every top-level `{ path: "...", ... }` route object out of routes.ts. */
+function readRouteEntries(source) {
+  const blockRe = /\{[^{}]*path:\s*"([^"]*)"[^{}]*\}/g;
+  const entries = [];
+  let match;
+  while ((match = blockRe.exec(source)) !== null) {
+    const block = match[0];
+    entries.push({
+      path: match[1],
+      inSitemap: /inSitemap:\s*true/.test(block),
+    });
+  }
+  return entries;
+}
+
+function getStaticSitemapPaths() {
+  const source = readFileSync(join(root, "src/data/routes.ts"), "utf8");
+  return readRouteEntries(source)
+    .filter((entry) => entry.inSitemap)
+    .map((entry) => entry.path);
+}
+
 function getWave1SitemapPaths() {
+  const staticPaths = getStaticSitemapPaths();
   const source = readFileSync(
     join(root, "src/lib/seo-indexability.ts"),
     "utf8",
   );
-  const staticPaths = readArrayExport(source, "INDEXABLE_STATIC_PATHS");
   const wave1 = readArrayExport(source, "WAVE1_COMMUNITY_SLUGS");
   const reintro = readArrayExport(source, "ACTIVE_REINTRODUCTION_CLUSTERS");
   const communityPaths = [...new Set([...wave1, ...reintro])].map(

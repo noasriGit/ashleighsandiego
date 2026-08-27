@@ -1,10 +1,15 @@
 /**
- * Single source of truth for which URLs should be indexed and included in the sitemap.
- * Wave 1 focuses crawl budget on high-value hubs while subareas remain accessible.
+ * Single source of truth for which DYNAMIC neighborhood/community slugs should be
+ * indexed and included in the sitemap, plus controlled reintroduction clusters.
  *
- * Static paths use this repo's live destinations (redirect targets from the
- * sandiegohomes Wave 1 set where those routes were renamed).
+ * Static page indexability and sitemap membership are owned by `src/data/routes.ts`
+ * (see `RouteEntry.indexable` / `RouteEntry.inSitemap`, and the
+ * `getIndexableStaticPaths` / `getStaticSitemapPaths` / `isStaticPathIndexable` /
+ * `isStaticPathNoindex` helpers exported there) — import those directly instead of
+ * duplicating a second static-path list in this file.
  */
+
+import { getStaticSitemapPaths } from "@/data/routes";
 
 /** Tier-1 and selected Tier-2 neighborhood roots in the first indexing wave. */
 export const WAVE1_COMMUNITY_SLUGS = [
@@ -24,41 +29,6 @@ export const WAVE1_COMMUNITY_SLUGS = [
 ] as const;
 
 export type Wave1CommunitySlug = (typeof WAVE1_COMMUNITY_SLUGS)[number];
-
-/**
- * Static routes included in sitemap.xml (indexable editorial pages).
- * Mapped from Wave 1 recovery paths onto this repo's App Router destinations.
- */
-export const INDEXABLE_STATIC_PATHS = [
-  "",
-  "/about",
-  "/moving-to-san-diego",
-  "/la-jolla-neighborhoods",
-  "/military-realtor-san-diego",
-  "/first-time-home-buyer-san-diego",
-  "/neighborhoods",
-] as const;
-
-/** Static routes that remain live but should not be indexed or sitemapped. */
-export const NOINDEX_STATIC_PATHS = [
-  "/privacy-policy",
-  "/terms",
-  "/accessibility",
-  "/search-homes",
-  "/listings",
-  "/contact",
-  "/san-diego-neighborhood-map",
-  "/living-in-san-diego",
-  "/la-jolla-real-estate-agent",
-  "/affordable-neighborhoods-san-diego",
-  "/san-diego-suburbs",
-  "/cities-near-san-diego",
-  "/san-diego-condos-for-sale",
-  "/downtown-san-diego-condos-for-sale",
-  "/la-jolla-condos-for-sale",
-  "/del-mar-new-luxury-homes",
-  "/la-jolla-vs-del-mar",
-] as const;
 
 /**
  * Controlled reintroduction clusters (Phase 5).
@@ -97,20 +67,16 @@ export function isCommunityIndexable(slug: string): boolean {
   return getIndexableCommunitySlugs().includes(slug);
 }
 
-export function isStaticPathIndexable(path: string): boolean {
-  return (INDEXABLE_STATIC_PATHS as readonly string[]).includes(path);
-}
-
-export function isStaticPathNoindex(path: string): boolean {
-  return (NOINDEX_STATIC_PATHS as readonly string[]).includes(path);
-}
-
 export function getIndexableCommunityPaths(): string[] {
   return getIndexableCommunitySlugs().map((slug) => `/neighborhoods/${slug}`);
 }
 
+/**
+ * Full sitemap path list: static pages from `routes.ts` (`inSitemap: true`)
+ * plus indexable dynamic community paths from this file.
+ */
 export function getSitemapPaths(): string[] {
-  return [...INDEXABLE_STATIC_PATHS, ...getIndexableCommunityPaths()];
+  return [...getStaticSitemapPaths(), ...getIndexableCommunityPaths()];
 }
 
 export function getRobotsForCommunity(

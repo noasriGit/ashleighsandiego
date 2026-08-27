@@ -1,122 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sdcommunities.com</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <loc>https://sdcommunities.com/</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/san-diego-neighborhood-map</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/moving-to-san-diego</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/living-in-san-diego</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/military-realtor-san-diego</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/la-jolla-neighborhoods</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/san-diego-condos-for-sale</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sdcommunities.com/mission-valley-condos-for-sale</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/about</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sdcommunities.com/moving-to-san-diego</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://sdcommunities.com/la-jolla-neighborhoods</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://sdcommunities.com/military-realtor-san-diego</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sdcommunities.com/first-time-home-buyer-san-diego</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <loc>https://sdcommunities.com/neighborhoods</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sdcommunities.com/neighborhoods</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <loc>https://sdcommunities.com/first-time-home-buyer-san-diego</loc>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/la-jolla</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/pacific-beach</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/university-city</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/clairemont</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/mission-valley</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/del-mar</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/carmel-valley</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/point-loma</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/sorrento-valley</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/bay-park</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/ocean-beach</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/hillcrest</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sdcommunities.com/neighborhoods/north-park</loc>
-    <lastmod>2026-07-29T18:09:09.861Z</lastmod>
+    <lastmod>2026-08-27T16:38:21.517Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

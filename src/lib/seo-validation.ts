@@ -9,16 +9,19 @@ import {
   getLaunchCommunitySlugs,
 } from "@/data/communities";
 import { getCommunityContent } from "@/data/community-content";
-import { getPathRedirects, routes } from "@/data/routes";
+import {
+  getIndexableStaticPaths,
+  getNoindexStaticPaths,
+  getPathRedirects,
+  isStaticPathNoindex,
+  routes,
+} from "@/data/routes";
 import { siteConfig } from "@/data/site-config";
 import {
   ACTIVE_REINTRODUCTION_CLUSTERS,
   getIndexableCommunitySlugs,
   getSitemapPaths,
-  INDEXABLE_STATIC_PATHS,
   isCommunityIndexable,
-  isStaticPathNoindex,
-  NOINDEX_STATIC_PATHS,
   WAVE1_COMMUNITY_SLUGS,
 } from "@/lib/seo-indexability";
 
@@ -429,6 +432,49 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     }
   }
 
+  // --- routes.ts static-registry self-consistency ---
+  // routes.ts is the single authoritative source for static indexability + sitemap
+  // membership. `indexable` and `inSitemap` must agree for every static entry, and
+  // no path may be declared twice (duplicate canonical ownership).
+  const seenRoutePaths = new Map<string, number>();
+  for (const route of routes) {
+    seenRoutePaths.set(route.path, (seenRoutePaths.get(route.path) ?? 0) + 1);
+
+    if (route.indexable !== route.inSitemap) {
+      issues.push(
+        issue(
+          "routes-indexable-sitemap-mismatch",
+          `Route "${route.path}" has indexable=${route.indexable} but inSitemap=${route.inSitemap}; static routes must agree.`,
+          { sourceFile: ROUTES_FILE },
+        ),
+      );
+    }
+
+    if (route.indexable && route.path.startsWith("/listings")) {
+      issues.push(
+        issue(
+          "routes-listings-indexable",
+          `Listings route "${route.path}" must remain noindex/out of sitemap.`,
+          { sourceFile: ROUTES_FILE },
+        ),
+      );
+    }
+  }
+  for (const [path, count] of seenRoutePaths) {
+    if (count > 1) {
+      issues.push(
+        issue(
+          "duplicate-canonical-ownership",
+          `Path "${path || "/"}" is declared ${count} times in routes.ts (duplicate canonical ownership).`,
+          { sourceFile: ROUTES_FILE },
+        ),
+      );
+    }
+  }
+
+  const indexableStaticPaths = getIndexableStaticPaths();
+  const noindexStaticPaths = getNoindexStaticPaths();
+
   // --- Sitemap registry ---
   const sitemapPaths = getSitemapPaths();
   const unique = new Set<string>();
@@ -453,12 +499,12 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
           ),
         );
       }
-    } else if (!(INDEXABLE_STATIC_PATHS as readonly string[]).includes(path)) {
+    } else if (!indexableStaticPaths.includes(path)) {
       issues.push(
         issue(
           "sitemap-unapproved-static",
           `Sitemap includes unapproved static path "${path || "/"}".`,
-          { sourceFile: INDEXABILITY_FILE },
+          { sourceFile: ROUTES_FILE },
         ),
       );
     }
@@ -466,7 +512,7 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     if (isStaticPathNoindex(path)) {
       issues.push(
         issue("sitemap-utility", `Sitemap includes utility/noindex path "${path}".`, {
-          sourceFile: INDEXABILITY_FILE,
+          sourceFile: ROUTES_FILE,
         }),
       );
     }
@@ -480,13 +526,13 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     }
   }
 
-  for (const path of INDEXABLE_STATIC_PATHS) {
+  for (const path of indexableStaticPaths) {
     if (!unique.has(path)) {
       issues.push(
         issue(
           "sitemap-missing-static",
           `Approved indexable static path "${path || "/"}" missing from sitemap.`,
-          { sourceFile: INDEXABILITY_FILE },
+          { sourceFile: ROUTES_FILE },
         ),
       );
     }
@@ -505,7 +551,7 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     }
   }
 
-  const expectedCount = INDEXABLE_STATIC_PATHS.length + indexableSlugs.length;
+  const expectedCount = indexableStaticPaths.length + indexableSlugs.length;
   if (sitemapPaths.length !== expectedCount) {
     issues.push(
       issue(
@@ -516,49 +562,11 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     );
   }
 
-  // routes.ts must agree with Wave 1 static set
-  for (const route of routes) {
-    const isWave1Static =
-      route.path === "/"
-        ? (INDEXABLE_STATIC_PATHS as readonly string[]).includes("")
-        : (INDEXABLE_STATIC_PATHS as readonly string[]).includes(route.path);
-
-    if (isWave1Static) {
-      if (!route.indexable || !route.inSitemap) {
-        issues.push(
-          issue(
-            "routes-wave1-static-mismatch",
-            `Wave 1 static "${route.path}" must be indexable+inSitemap in routes.ts.`,
-            { sourceFile: ROUTES_FILE },
-          ),
-        );
-      }
-    } else if (route.path.startsWith("/listings")) {
-      if (route.indexable || route.inSitemap) {
-        issues.push(
-          issue(
-            "routes-listings-indexable",
-            `Listings route "${route.path}" must remain noindex/out of sitemap.`,
-            { sourceFile: ROUTES_FILE },
-          ),
-        );
-      }
-    } else if (route.indexable || route.inSitemap) {
-      issues.push(
-        issue(
-          "routes-non-wave1-indexable",
-          `Non–Wave 1 route "${route.path}" is still indexable/inSitemap.`,
-          { sourceFile: ROUTES_FILE },
-        ),
-      );
-    }
-  }
-
-  for (const path of NOINDEX_STATIC_PATHS) {
+  for (const path of noindexStaticPaths) {
     if (unique.has(path)) {
       issues.push(
         issue("sitemap-noindex-static", `Noindex static path "${path}" appears in sitemap.`, {
-          sourceFile: INDEXABILITY_FILE,
+          sourceFile: ROUTES_FILE,
         }),
       );
     }
@@ -654,6 +662,7 @@ export function validateSeoArchitecture(): SeoValidationIssue[] {
     "/military-realtor-san-diego",
     "/la-jolla-real-estate-agent",
     "/san-diego-condos-for-sale",
+    "/mission-valley-condos-for-sale",
     "/downtown-san-diego-condos-for-sale",
     "/la-jolla-condos-for-sale",
     "/del-mar-new-luxury-homes",
