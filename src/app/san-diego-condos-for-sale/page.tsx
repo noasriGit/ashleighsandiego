@@ -72,7 +72,7 @@ export default function SanDiegoCondosHubPage() {
       />
 
       <Section kicker="Condo Districts">
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <Card accent="cabernet">
             <h2 className="heading-card text-cabernet">Downtown San Diego</h2>
             <p className="mt-2 text-sm leading-relaxed text-espresso/90">
@@ -93,7 +93,86 @@ export default function SanDiegoCondosHubPage() {
               See La Jolla Condo Buildings →
             </Link>
           </Card>
+          <Card accent="cabernet">
+            <h2 className="heading-card text-cabernet">Mission Valley</h2>
+            <p className="mt-2 text-sm leading-relaxed text-espresso/90">
+              The most freeway- and trolley-connected condo district, mid-rise buildings along the San
+              Diego River corridor from the 1980s through recent construction.
+            </p>
+            <Link href="/mission-valley-condos-for-sale" className="mt-3 inline-block text-sm font-semibold text-cabernet hover:underline">
+              See Mission Valley Condos →
+            </Link>
+          </Card>
         </div>
+      </Section>
+
+      <Section variant="sand" kicker="Compare Districts">
+        <h2 className="heading-section text-cabernet">Comparing San Diego Condo Districts</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Every district has different building types, walkability, and HOA complexity. This is a
+          general comparison to help you pick a starting district, always confirm specifics
+          building-by-building.
+        </p>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-surface-muted text-espresso/70">
+                <th className="py-3 pr-4 font-semibold">District</th>
+                <th className="py-3 pr-4 font-semibold">Typical Building Type</th>
+                <th className="py-3 pr-4 font-semibold">Walkability Context</th>
+                <th className="py-3 pr-4 font-semibold">Commute Character</th>
+                <th className="py-3 font-semibold">General HOA Complexity</th>
+              </tr>
+            </thead>
+            <tbody className="text-espresso/90">
+              <tr className="border-b border-surface-muted">
+                <td className="py-3 pr-4 font-semibold">Downtown</td>
+                <td className="py-3 pr-4">High-rise towers, full-service</td>
+                <td className="py-3 pr-4">Walkable to Gaslamp, Petco Park, bay</td>
+                <td className="py-3 pr-4">Trolley-connected; less freeway-dependent</td>
+                <td className="py-3">Higher, staffed amenity buildings</td>
+              </tr>
+              <tr className="border-b border-surface-muted">
+                <td className="py-3 pr-4 font-semibold">La Jolla</td>
+                <td className="py-3 pr-4">Small-scale, low-rise buildings</td>
+                <td className="py-3 pr-4">Walkable within the Village; car-dependent elsewhere</td>
+                <td className="py-3 pr-4">Freeway-dependent (I-5)</td>
+                <td className="py-3">Varies; smaller HOAs, fewer units</td>
+              </tr>
+              <tr className="border-b border-surface-muted">
+                <td className="py-3 pr-4 font-semibold">Mission Valley</td>
+                <td className="py-3 pr-4">Mid-rise, mixed building ages</td>
+                <td className="py-3 pr-4">Car-dependent; some trolley-adjacent pockets</td>
+                <td className="py-3 pr-4">Freeway hub (I-8, I-805, I-15) plus trolley</td>
+                <td className="py-3">Varies widely by building age</td>
+              </tr>
+              <tr>
+                <td className="py-3 pr-4 font-semibold">University City / UTC</td>
+                <td className="py-3 pr-4">Mid-rise and garden-style</td>
+                <td className="py-3 pr-4">Walkable near Westfield UTC; car-dependent elsewhere</td>
+                <td className="py-3 pr-4">Central freeway access (I-5, I-805), near UCSD/biotech</td>
+                <td className="py-3">Varies; newer buildings often carry higher dues</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-xs text-espresso/60">
+          General characteristics only, not a substitute for building-specific HOA and financial
+          documents. Confirm current dues, reserves, and parking for any specific unit before offering.
+        </p>
+      </Section>
+
+      <Section kicker="University City / UTC">
+        <h2 className="heading-section text-cabernet">University City / UTC Condos</h2>
+        <p className="mt-4 max-w-2xl text-espresso/90">
+          University City and UTC combine newer mid-rise and garden-style condo product with proximity
+          to Westfield UTC, UC San Diego, and the Sorrento Valley biotech corridor. It&apos;s a common
+          alternative for buyers who want central freeway access without Mission Valley&apos;s
+          river-corridor building age range.
+        </p>
+        <Link href="/neighborhoods/university-city" className="mt-3 inline-block text-sm font-semibold text-cabernet hover:underline">
+          More on University City as a neighborhood →
+        </Link>
       </Section>
 
       <Section variant="sand" id="mission-valley" className="scroll-mt-24">
@@ -107,13 +186,18 @@ export default function SanDiegoCondosHubPage() {
           districts.
         </p>
         <p className="mt-4 max-w-2xl text-espresso/90">
-          Popular complexes include Element, Alvarado Estates-adjacent buildings, and the Civita
-          master-planned community, which mixes condos, townhomes, and single-family product with
-          shared parks and a rec center.
+          Named communities buyers frequently ask about include Civita, Escala, Mission Gate, The
+          Lido, and RiverScene, each with its own HOA structure, building age, and site plan worth
+          comparing individually.
         </p>
-        <Link href="/neighborhoods/mission-valley" className="mt-3 inline-block text-sm font-semibold text-cabernet hover:underline">
-          More on Mission Valley as a neighborhood →
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/mission-valley-condos-for-sale" className="text-sm font-semibold text-cabernet hover:underline">
+            See Mission Valley Condos for Sale →
+          </Link>
+          <Link href="/neighborhoods/mission-valley" className="text-sm font-semibold text-cabernet hover:underline">
+            More on Mission Valley as a neighborhood →
+          </Link>
+        </div>
       </Section>
 
       <Section variant="pearl">
@@ -135,7 +219,7 @@ export default function SanDiegoCondosHubPage() {
 
       <RelatedPages
         items={[
-          { title: "San Diego Neighborhoods", description: "Compare all San Diego neighborhoods from the homepage.", href: "/" },
+          { title: "Mission Valley Condos for Sale", description: "Current Mission Valley condo inventory and buying considerations.", href: "/mission-valley-condos-for-sale" },
           { title: "Downtown Condos for Sale", description: "Building-by-building downtown high-rise guide.", href: "/downtown-san-diego-condos-for-sale" },
           { title: "La Jolla Condos for Sale", description: "Building-by-building La Jolla condo guide.", href: "/la-jolla-condos-for-sale" },
         ]}

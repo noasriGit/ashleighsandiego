@@ -53,6 +53,7 @@ export function Footer() {
             <h4 className="text-sm font-semibold leading-snug text-white">Condos &amp; Luxury</h4>
             <ul className="mt-3 space-y-2 text-sm break-words">
               <li><Link href="/san-diego-condos-for-sale" className="text-white/90 hover:text-white">San Diego Condos</Link></li>
+              <li><Link href="/mission-valley-condos-for-sale" className="text-white/90 hover:text-white">Mission Valley Condos</Link></li>
               <li><Link href="/downtown-san-diego-condos-for-sale" className="text-white/90 hover:text-white">Downtown Condos</Link></li>
               <li><Link href="/la-jolla-condos-for-sale" className="text-white/90 hover:text-white">La Jolla Condos</Link></li>
               <li><Link href="/del-mar-new-luxury-homes" className="text-white/90 hover:text-white">Del Mar New Luxury Homes</Link></li>
