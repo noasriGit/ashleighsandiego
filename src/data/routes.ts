@@ -16,6 +16,7 @@ export type RouteCluster =
   | "county"
   | "condo"
   | "del-mar"
+  | "mission-valley"
   | "utility";
 
 export type RouteEntry = {
@@ -48,10 +49,12 @@ export const routes: RouteEntry[] = [
     path: "/san-diego-neighborhood-map",
     primaryKeyword: "san diego neighborhood map",
     cluster: "core",
-    indexable: false,
-    inSitemap: false,
+    indexable: true,
+    inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.8,
+    notes:
+      "Wave 2: indexed for interactive geographic exploration intent. Homepage keeps ownership of \"san diego neighborhoods\"; this page owns \"san diego neighborhood map\".",
   },
   {
     path: "/moving-to-san-diego",
@@ -67,10 +70,12 @@ export const routes: RouteEntry[] = [
     path: "/living-in-san-diego",
     primaryKeyword: "living in san diego",
     cluster: "process",
-    indexable: false,
-    inSitemap: false,
+    indexable: true,
+    inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.8,
+    notes:
+      "Wave 2: indexed after adding visible E-E-A-T signals (reviewed-by, published/updated dates, sources) and confirming intent split from /moving-to-san-diego (lifestyle/daily-life vs relocation process).",
   },
   {
     path: "/military-realtor-san-diego",
@@ -132,11 +137,23 @@ export const routes: RouteEntry[] = [
     path: "/san-diego-condos-for-sale",
     primaryKeyword: "san diego condos for sale",
     cluster: "condo",
-    indexable: false,
-    inSitemap: false,
+    indexable: true,
+    inSitemap: true,
     changeFrequency: "weekly",
     priority: 0.9,
-    notes: "Hub for the condo set; #mission-valley section replaces the dropped standalone route.",
+    notes:
+      "Wave 2: indexed after adding a district comparison table and prominent links to Mission Valley, downtown, and La Jolla condo pages. Child district pages (downtown, La Jolla) remain deferred until upgraded.",
+  },
+  {
+    path: "/mission-valley-condos-for-sale",
+    primaryKeyword: "condos for sale in mission valley san diego",
+    cluster: "mission-valley",
+    indexable: true,
+    inSitemap: true,
+    changeFrequency: "weekly",
+    priority: 0.8,
+    notes:
+      "Wave 2: transactional condo-inventory page, distinct intent from /neighborhoods/mission-valley (informational guide). Mission Valley is the strongest existing discovery page (GSC), so this captures adjacent commercial intent without cannibalizing the guide.",
   },
   {
     path: "/downtown-san-diego-condos-for-sale",
@@ -286,9 +303,36 @@ export function getPathRedirects(): { source: string; destination: string }[] {
   );
 }
 
-/** The 15 primary indexable content clusters (excludes /contact and /about utility pages). */
+/** Primary indexable content clusters (excludes /contact and /about utility pages). */
 export function getPrimaryClusterRoutes(): RouteEntry[] {
   return routes.filter(
     (r) => r.indexable && r.cluster !== "utility",
   );
+}
+
+/**
+ * Static paths in `routes.ts` that ship `index, follow` and belong in the sitemap.
+ * This is the authoritative static-page list — do not duplicate it elsewhere.
+ * Community/neighborhood indexability is dynamic and lives in `src/lib/seo-indexability.ts`.
+ */
+export function getIndexableStaticPaths(): string[] {
+  return routes.filter((r) => r.indexable).map((r) => r.path);
+}
+
+/** Static paths included in sitemap.xml. Should equal `getIndexableStaticPaths()`. */
+export function getStaticSitemapPaths(): string[] {
+  return routes.filter((r) => r.inSitemap).map((r) => r.path);
+}
+
+/** Static paths that remain live but must not be indexed or included in the sitemap. */
+export function getNoindexStaticPaths(): string[] {
+  return routes.filter((r) => !r.indexable).map((r) => r.path);
+}
+
+export function isStaticPathIndexable(path: string): boolean {
+  return routes.some((r) => r.path === path && r.indexable);
+}
+
+export function isStaticPathNoindex(path: string): boolean {
+  return routes.some((r) => r.path === path && !r.indexable);
 }

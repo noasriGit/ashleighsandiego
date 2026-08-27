@@ -34,6 +34,8 @@ export type CommunityContent = {
    * when present; the page omits the band entirely when absent.
    */
   stats?: { value: string; label: string }[];
+  metaTitle?: string;
+  metaDescription?: string;
   expertSummary?: string;
   differsFromParent?: string;
   bestFitBuyers?: string[];
@@ -46,6 +48,11 @@ export type CommunityContent = {
   reviewedBy?: string;
   publishedAt?: string;
   lastSubstantialUpdate?: string;
+  housingBreakdown?: { title: string; body: string }[];
+  namedCommunities?: { name: string; note: string }[];
+  buyerDueDiligence?: string[];
+  commuteContext?: { destination: string; note: string }[];
+  transactionalPage?: { label: string; href: string; description: string };
 };
 
 export const communityContent: Record<string, CommunityContent> = {
@@ -209,14 +216,16 @@ export const communityContent: Record<string, CommunityContent> = {
     commute:
       "Mission Valley sits at the intersection of I-8, I-805, and I-15, one of the best-connected areas in San Diego. Downtown, UTC, and most job centers are 15–25 minutes.",
     nearbyComparisons: [
-      { name: "Civita", slug: "civita", note: "Newer master-planned homes within Mission Valley" },
-      { name: "Clairemont", slug: "clairemont", note: "More single-family homes and neighborhood feel" },
-      { name: "Linda Vista", slug: "linda-vista", note: "Central location near USD and freeway corridors" },
+      { name: "Hillcrest", slug: "hillcrest", note: "Walkable urban village near Balboa Park, less freeway-driven than Mission Valley" },
+      { name: "Clairemont", slug: "clairemont", note: "More single-family homes and neighborhood feel, less condo inventory" },
+      { name: "University City", slug: "university-city", note: "More biotech/UCSD-oriented commute, newer condo and townhome stock" },
     ],
     faqs: [
       { question: "Is Mission Valley good for first-time buyers?", answer: "Mission Valley can offer more affordable condo and townhome options compared to coastal areas. It's worth comparing commute needs and lifestyle preferences." },
       { question: "What is Civita?", answer: "Civita is a newer master-planned community within Mission Valley with modern homes, parks, and amenities. It offers a range of unit sizes, from one-bedroom condos to multi-bedroom townhomes." },
       { question: "Is Mission Valley walkable?", answer: "Some areas near Fashion Valley and trolley stations are walkable. Overall, Mission Valley is more car-dependent than neighborhoods like Hillcrest or North Park." },
+      { question: "What is the difference between Mission Valley East and Mission Valley West?", answer: "Mission Valley West sits closer to Fashion Valley, Hazard Center, and the western trolley stations, while Mission Valley East (toward Camino del Rio) includes Civita, Rancho Mission Villas, and the corridor closer to SDSU and I-15. Ask your agent which side fits your commute before narrowing your search." },
+      { question: "Are there flood-zone considerations in Mission Valley?", answer: "Mission Valley follows the San Diego River corridor, so flood-zone status can vary parcel by parcel. Confirm current FEMA flood-zone designation and any related insurance requirements for a specific address before making an offer." },
     ],
   },
   "del-mar": {
@@ -443,18 +452,21 @@ export const communityContent: Record<string, CommunityContent> = {
     housingOverview:
       "Hillcrest features condos, townhomes, and historic single-family homes. Walkable density with mixed housing types. Price per square foot is higher due to location and walkability.",
     lifestyle:
-      "Hillcrest is San Diego's premier walkable urban village with dining, nightlife, and farmers markets. Balboa Park, museums, and the zoo are walking distance. Strong community identity and inclusivity.",
+      "Hillcrest is San Diego's premier walkable urban village, centered on the University Avenue and 5th/6th Avenue commercial corridors, with dining, nightlife, and a weekly farmers market. Balboa Park, museums, and the zoo are walking distance. Strong community identity and inclusivity.",
     commute:
-      "Central location with I-805 and SR-163 access. Downtown is 5–10 minutes. Medical centers (UCSD Hillcrest, Scripps) are nearby. Less ideal for UTC or Sorrento Valley commuters.",
+      "Central location with I-805 and SR-163 access. Downtown is a short drive. UC San Diego Health's Hillcrest campus and other nearby medical employers make it a common choice for healthcare workers. Street parking is limited on denser blocks, ask about deeded or assigned parking before touring a condo. Less ideal for UTC or Sorrento Valley commuters.",
     nearbyComparisons: [
       { name: "Mission Hills", slug: "mission-hills", note: "Historic homes on tree-lined streets nearby" },
       { name: "North Park", slug: "north-park", note: "Similar urban character, slightly more affordable" },
       { name: "Bankers Hill", slug: "bankers-hill", note: "Upscale urban living closer to downtown" },
+      { name: "University Heights", slug: "university-heights", note: "Quieter walkable pocket between Hillcrest and North Park" },
     ],
     faqs: [
       { question: "Is Hillcrest walkable?", answer: "Hillcrest is one of San Diego's most walkable neighborhoods. Daily errands, dining, and Balboa Park are accessible on foot." },
       { question: "Are there condo options in Hillcrest?", answer: "Yes, condos and townhomes are common in Hillcrest. They're popular with buyers who want urban lifestyle without yard maintenance." },
       { question: "How does Hillcrest compare to North Park?", answer: "Both are walkable urban neighborhoods. Hillcrest is closer to Balboa Park and medical centers. North Park has a trendier dining and craft-beer scene." },
+      { question: "How does Hillcrest compare to Mission Hills, University Heights, and Bankers Hill?", answer: "Mission Hills leans toward historic single-family homes on tree-lined streets. University Heights is a quieter, more residential pocket between Hillcrest and North Park. Bankers Hill skews toward upscale condo towers closer to downtown. Hillcrest itself is the densest and most walkable of the group, centered on its commercial corridors and Balboa Park proximity." },
+      { question: "What parking considerations should I expect in Hillcrest?", answer: "Street parking is limited and permit zones are common in denser blocks. Ask whether a condo or townhome includes a deeded or assigned parking space, since not all older buildings guarantee one." },
     ],
   },
   "north-park": {

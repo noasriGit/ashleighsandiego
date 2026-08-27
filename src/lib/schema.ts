@@ -1,24 +1,37 @@
 import { siteConfig } from "@/data/site-config";
 
+/**
+ * Stable @id anchors so every schema block below refers to the *same* WebSite,
+ * RealEstateAgent, and LocalBusiness entities instead of emitting disconnected
+ * duplicate objects on every page (docs/seo-rebuild-plan.md; SEO Wave 2, Phase 9).
+ */
+export const SCHEMA_IDS = {
+  website: `${siteConfig.url}/#website`,
+  agent: `${siteConfig.url}/#agent`,
+  business: `${siteConfig.url}/#business`,
+} as const;
+
+function agentSameAs(): string[] {
+  return [...siteConfig.sameAs, ...(siteConfig.agent.profileUrl ? [siteConfig.agent.profileUrl] : [])];
+}
+
 export function realEstateAgentSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
+    "@id": SCHEMA_IDS.agent,
     name: siteConfig.agent.name,
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.agent.email,
     telephone: siteConfig.agent.phone,
-    sameAs: [siteConfig.agent.instagram.url],
+    sameAs: agentSameAs(),
     areaServed: {
       "@type": "City",
       name: "San Diego",
       containedInPlace: { "@type": "State", name: "California" },
     },
-    memberOf: {
-      "@type": "Organization",
-      name: siteConfig.brokerage.name,
-    },
+    memberOf: { "@id": SCHEMA_IDS.business },
   };
 }
 
@@ -33,38 +46,43 @@ export function agentServiceSchema(options: {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
+    "@id": SCHEMA_IDS.agent,
     name: siteConfig.agent.name,
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.agent.email,
     telephone: siteConfig.agent.phone,
-    sameAs: [siteConfig.agent.instagram.url],
+    sameAs: agentSameAs(),
     areaServed: options.areaServed.map((name) => ({
       "@type": "Place",
       name,
     })),
     knowsAbout: options.knowsAbout,
-    memberOf: {
-      "@type": "Organization",
-      name: siteConfig.brokerage.name,
-    },
+    memberOf: { "@id": SCHEMA_IDS.business },
   };
 }
 
-// TODO: replace with structured street/city/zip once the Serhant office address is confirmed.
+/**
+ * Brokerage/local-business entity. `address` intentionally omits a street address
+ * until the exact SERHANT. San Diego office address is confirmed (see the TODO on
+ * `siteConfig.brokerage`) — do not fabricate a street address here.
+ */
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": SCHEMA_IDS.business,
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
+    ...(siteConfig.brokerage.url.length > 0 ? { sameAs: [siteConfig.brokerage.url] } : {}),
     address: {
       "@type": "PostalAddress",
       addressLocality: "San Diego",
       addressRegion: "CA",
       addressCountry: "US",
     },
+    employee: { "@id": SCHEMA_IDS.agent },
   };
 }
 
@@ -75,7 +93,7 @@ export function webPageSchema(title: string, description: string, path: string) 
     name: title,
     description,
     url: `${siteConfig.url}${path}`,
-    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+    isPartOf: { "@id": SCHEMA_IDS.website },
   };
 }
 
@@ -84,8 +102,10 @@ export function webSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": SCHEMA_IDS.website,
     name: siteConfig.name,
     url: siteConfig.url,
+    publisher: { "@id": SCHEMA_IDS.business },
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteConfig.url}/san-diego-neighborhood-map?q={search_term_string}`,
@@ -108,14 +128,8 @@ export function articleSchema(options: {
     headline: options.title,
     description: options.description,
     url: `${siteConfig.url}${options.path}`,
-    author: {
-      "@type": "Person",
-      name: siteConfig.agent.name,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.brokerage.name,
-    },
+    author: { "@id": SCHEMA_IDS.agent },
+    publisher: { "@id": SCHEMA_IDS.business },
     ...(options.datePublished && { datePublished: options.datePublished }),
     ...(options.dateModified && { dateModified: options.dateModified }),
   };
@@ -175,15 +189,7 @@ export function aboutPageSchema(path: string) {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     url: `${siteConfig.url}${path}`,
-    mainEntity: {
-      "@type": "Person",
-      name: siteConfig.agent.name,
-      jobTitle: "Real Estate Agent",
-      worksFor: {
-        "@type": "Organization",
-        name: siteConfig.brokerage.name,
-      },
-    },
+    mainEntity: { "@id": SCHEMA_IDS.agent },
   };
 }
 

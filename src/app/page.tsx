@@ -142,7 +142,11 @@ export default async function HomePage() {
         <h2 className="heading-section text-cabernet">Browse by Commute, Housing Type, or Region</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
           Pick the filter that matches how you actually make decisions. Every path leads to a
-          buyer-focused guide, not just a list of ZIP codes.
+          buyer-focused guide, not just a list of ZIP codes. Prefer to browse visually? Open the{" "}
+          <Link href="/san-diego-neighborhood-map" className="text-cabernet hover:underline">
+            interactive San Diego neighborhood map
+          </Link>{" "}
+          to see how these areas sit relative to each other before picking a filter.
         </p>
         <div className="mt-8">
           <Tabs

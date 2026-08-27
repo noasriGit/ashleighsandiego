@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { marketingHeroes } from "@/data/page-images";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/data/site-config";
 import { faqSchema, webPageSchema, breadcrumbSchema, articleSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
@@ -22,6 +23,18 @@ export const metadata = generatePageMetadata({
   path: "/living-in-san-diego",
   keywords: getKeywordsForPage("/living-in-san-diego"),
 });
+
+const REVIEWED_BY = siteConfig.agent.name;
+const PUBLISHED_AT = "2026-06-01";
+const LAST_UPDATED = "2026-08-01";
+
+const pageSources = [
+  { label: "FBI Uniform Crime Reporting (UCR) Program" },
+  { label: "San Diego Police Department crime statistics", url: "https://www.sandiego.gov/police/services/statistics" },
+  { label: "SANDAG (San Diego Association of Governments)", url: "https://www.sandag.org" },
+  { label: "National Weather Service San Diego", url: "https://www.weather.gov/sgx/" },
+  { label: "San Diego Metropolitan Transit System (MTS)", url: "https://www.sdmts.com" },
+];
 
 const lifestyleItems = [
   { title: "Weather", description: "Mild year-round temperatures (low-to-mid 70s°F most months) with minimal rain, June gloom marine-layer mornings are common near the coast." },
@@ -50,6 +63,8 @@ export default function LivingInSanDiegoPage() {
             title: "Living in San Diego: What Day-to-Day Life Is Actually Like",
             description: "Weather, cost of living, commute reality, and citywide safety data for people considering a move to San Diego.",
             path: "/living-in-san-diego",
+            datePublished: PUBLISHED_AT,
+            dateModified: LAST_UPDATED,
           }),
           faqSchema(livingFaqs),
         ]}
@@ -69,6 +84,18 @@ export default function LivingInSanDiegoPage() {
         heroImageAlt={marketingHeroes.neighborhoods.alt}
       />
 
+      <Section>
+        <p className="max-w-2xl text-sm text-espresso/70">
+          Reviewed by {REVIEWED_BY} · Published {PUBLISHED_AT} · Last updated {LAST_UPDATED}
+        </p>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          This page covers what daily life in San Diego is actually like: weather, cost of living,
+          transportation, and neighborhood-type trade-offs. If you&apos;re earlier in the process and
+          want the step-by-step relocation and buying timeline instead, see{" "}
+          <Link href="/moving-to-san-diego" className="text-cabernet hover:underline">Moving to San Diego</Link>.
+        </p>
+      </Section>
+
       <StatBand
         variant="espresso"
         stats={[
@@ -84,6 +111,56 @@ export default function LivingInSanDiegoPage() {
         <div className="mt-8">
           <FeatureHighlight columns={2} items={lifestyleItems} />
         </div>
+      </Section>
+
+      <Section variant="sand" kicker="Coastal vs. Inland">
+        <h2 className="heading-section text-cabernet">Coastal vs. Inland: What Actually Changes Day to Day</h2>
+        <div className="mt-4 max-w-2xl space-y-4 text-espresso/90">
+          <p>
+            Coastal neighborhoods like La Jolla, Pacific Beach, and Ocean Beach get more marine-layer
+            cloud cover in the mornings (June gloom season runs roughly May through July) and generally
+            cooler temperatures than inland areas a few miles east. Inland and central neighborhoods
+            like Clairemont, Mission Valley, and Carmel Valley tend to clear up earlier and run warmer,
+            with more direct freeway access and larger, more affordable homes on average.
+          </p>
+          <p>
+            The trade-off is largely about drive time and lifestyle, not just temperature: coastal
+            living usually means less car dependence for daily errands in walkable pockets, while
+            inland areas trade beach proximity for more space and generally easier parking.
+          </p>
+        </div>
+      </Section>
+
+      <Section kicker="Compare by Neighborhood Type">
+        <h2 className="heading-section text-cabernet">Which Neighborhood Type Fits Your Daily Life</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          &ldquo;Living in San Diego&rdquo; looks different depending on the neighborhood type you
+          choose. A few starting points:
+        </p>
+        <ul className="mt-6 max-w-2xl space-y-3 text-espresso/90">
+          <li>
+            <Link href="/neighborhoods/hillcrest" className="text-cabernet hover:underline">Hillcrest</Link>{" "}
+            and{" "}
+            <Link href="/neighborhoods/north-park" className="text-cabernet hover:underline">North Park</Link>{" "}
+            for walkable, urban daily life with less car dependence.
+          </li>
+          <li>
+            <Link href="/neighborhoods/mission-valley" className="text-cabernet hover:underline">Mission Valley</Link>{" "}
+            for a central, freeway- and trolley-connected commute hub.
+          </li>
+          <li>
+            <Link href="/la-jolla-neighborhoods" className="text-cabernet hover:underline">La Jolla</Link>{" "}
+            and{" "}
+            <Link href="/neighborhoods/del-mar" className="text-cabernet hover:underline">Del Mar</Link>{" "}
+            for coastal daily life with beach access as a daily-life factor, not just a weekend trip.
+          </li>
+          <li>
+            <Link href="/neighborhoods/clairemont" className="text-cabernet hover:underline">Clairemont</Link>{" "}
+            and{" "}
+            <Link href="/neighborhoods/carmel-valley" className="text-cabernet hover:underline">Carmel Valley</Link>{" "}
+            for more space and yard on a given budget, with a more car-dependent daily routine.
+          </li>
+        </ul>
       </Section>
 
       <SplitSection
@@ -118,6 +195,25 @@ export default function LivingInSanDiegoPage() {
 
       <Section variant="sand">
         <FaqSection faqs={livingFaqs} />
+      </Section>
+
+      <Section>
+        <div className="max-w-2xl text-sm text-espresso/80">
+          <p className="font-semibold text-espresso">Sources</p>
+          <ul className="mt-2 list-inside list-disc space-y-1">
+            {pageSources.map((source) => (
+              <li key={source.label}>
+                {source.url ? (
+                  <a href={source.url} className="text-cabernet hover:underline" target="_blank" rel="noopener noreferrer">
+                    {source.label}
+                  </a>
+                ) : (
+                  source.label
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </Section>
 
       <RelatedPages

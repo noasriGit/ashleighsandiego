@@ -23,7 +23,7 @@ import { getCommunityListings, getSavedSearchCount } from "@/lib/idx-api";
 import { getKeywordsForPage } from "@/data/keywords";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getRobotsForCommunity } from "@/lib/seo-indexability";
-import { faqSchema, webPageSchema, breadcrumbSchema } from "@/lib/schema";
+import { faqSchema, webPageSchema, breadcrumbSchema, articleSchema } from "@/lib/schema";
 import type { LifestyleTag } from "@/data/communities";
 
 type PageProps = {
@@ -53,9 +53,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   const path = `/neighborhoods/${slug}`;
   const robots = getRobotsForCommunity(slug);
+  const content = getCommunityContent(slug);
   return generatePageMetadata({
-    title: `Living in ${community.name}: A Buyer's Guide`,
-    description: `${community.tagline} Guide for relocating buyers considering ${community.name}, San Diego.`,
+    title: content?.metaTitle ?? `Living in ${community.name}: A Buyer's Guide`,
+    description:
+      content?.metaDescription ??
+      `${community.tagline} Guide for relocating buyers considering ${community.name}, San Diego.`,
     path,
     keywords: getKeywordsForPage(path),
     noindex: Boolean(robots),
@@ -107,8 +110,8 @@ export default async function CommunityPage({ params }: PageProps) {
       <JsonLd
         data={[
           webPageSchema(
-            `Living in ${community.name}: A Buyer's Guide`,
-            community.tagline,
+            content.metaTitle ?? `Living in ${community.name}: A Buyer's Guide`,
+            content.metaDescription ?? community.tagline,
             path,
           ),
           breadcrumbSchema([
@@ -116,6 +119,17 @@ export default async function CommunityPage({ params }: PageProps) {
             { name: community.name, path },
           ]),
           faqSchema(content.faqs),
+          ...(content.publishedAt || content.lastSubstantialUpdate
+            ? [
+                articleSchema({
+                  title: content.metaTitle ?? `Living in ${community.name}: A Buyer's Guide`,
+                  description: content.metaDescription ?? community.tagline,
+                  path,
+                  datePublished: content.publishedAt,
+                  dateModified: content.lastSubstantialUpdate,
+                }),
+              ]
+            : []),
         ]}
       />
 
@@ -168,6 +182,12 @@ export default async function CommunityPage({ params }: PageProps) {
           </aside>
 
           <div className="max-w-3xl">
+            {content.expertSummary && (
+              <CalloutBlock type="quote" label={`From ${content.reviewedBy ?? "our team"}`} className="mb-10">
+                {content.expertSummary}
+              </CalloutBlock>
+            )}
+
             <section id="overview" className="scroll-mt-28">
               <h2 className="heading-section text-cabernet">Who {community.name} Is Good For</h2>
               <ul className="mt-6 space-y-3">
@@ -183,12 +203,64 @@ export default async function CommunityPage({ params }: PageProps) {
             <section id="housing" className="mt-14 scroll-mt-28">
               <h2 className="heading-section text-cabernet">Housing Overview</h2>
               <p className="mt-4 leading-relaxed text-espresso/90">{content.housingOverview}</p>
+
+              {content.housingBreakdown && content.housingBreakdown.length > 0 && (
+                <div className="mt-8 space-y-6">
+                  {content.housingBreakdown.map((section) => (
+                    <div key={section.title}>
+                      <h3 className="heading-card text-cabernet">{section.title}</h3>
+                      <p className="mt-2 leading-relaxed text-espresso/90">{section.body}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {content.namedCommunities && content.namedCommunities.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="heading-card text-cabernet">Named Communities &amp; Buildings to Know</h3>
+                  <p className="mt-2 text-sm text-espresso/80">
+                    Confirm current HOA, pricing, and availability details directly, this list is a
+                    starting point for your search, not a substitute for live listing data.
+                  </p>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    {content.namedCommunities.map((item) => (
+                      <div key={item.name} className="rounded-xl border border-surface-muted bg-white p-5 shadow-sm">
+                        <p className="font-semibold text-espresso">{item.name}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-espresso/80">{item.note}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
+
+            {content.transactionalPage && (
+              <CalloutBlock type="tip" className="mt-10">
+                <Link href={content.transactionalPage.href} className="font-semibold text-cabernet hover:underline">
+                  {content.transactionalPage.label} &rarr;
+                </Link>
+                <p className="mt-2">{content.transactionalPage.description}</p>
+              </CalloutBlock>
+            )}
 
             <CalloutBlock type="tip" className="mt-10">
               Inventory and pricing vary by subarea. Tour with a clear budget and a short list of
               must-haves so you can move quickly when the right home appears.
             </CalloutBlock>
+
+            {content.buyerDueDiligence && content.buyerDueDiligence.length > 0 && (
+              <section id="due-diligence" className="mt-14 scroll-mt-28">
+                <h2 className="heading-section text-cabernet">Buyer Due-Diligence Considerations</h2>
+                <ul className="mt-6 space-y-3">
+                  {content.buyerDueDiligence.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-espresso/90">
+                      <span className="mt-1 text-cabernet" aria-hidden="true">&#10003;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <section id="lifestyle" className="mt-14 scroll-mt-28">
               <h2 className="heading-section text-cabernet">Lifestyle &amp; Amenities</h2>
@@ -198,7 +270,43 @@ export default async function CommunityPage({ params }: PageProps) {
             <section id="commute" className="mt-14 scroll-mt-28">
               <h2 className="heading-section text-cabernet">Commute Considerations</h2>
               <p className="mt-4 leading-relaxed text-espresso/90">{content.commute}</p>
+
+              {content.commuteContext && content.commuteContext.length > 0 && (
+                <ul className="mt-6 space-y-3">
+                  {content.commuteContext.map((item) => (
+                    <li key={item.destination} className="text-espresso/90">
+                      <span className="font-semibold text-espresso">{item.destination}: </span>
+                      {item.note}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </section>
+
+            {content.subareas && content.subareas.length > 0 && (
+              <section id="subareas" className="mt-14 scroll-mt-28">
+                <h2 className="heading-section text-cabernet">{community.name} Subareas</h2>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {content.subareas.map((sub) => (
+                    <div key={sub.slug} className="rounded-xl border border-surface-muted bg-white p-5 shadow-sm">
+                      <p className="font-semibold text-espresso">{sub.name}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-espresso/80">{sub.description}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-cabernet">{sub.buyingDistinction}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {content.buyerMisunderstandings && content.buyerMisunderstandings.length > 0 && (
+              <CalloutBlock type="tip" label="Common buyer misunderstandings" className="mt-14">
+                <ul className="space-y-2">
+                  {content.buyerMisunderstandings.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </CalloutBlock>
+            )}
           </div>
         </div>
       </Section>
@@ -227,6 +335,38 @@ export default async function CommunityPage({ params }: PageProps) {
       <Section id="faqs">
         <FaqSection faqs={content.faqs} />
       </Section>
+
+      {(content.reviewedBy || content.sources) && (
+        <Section variant="sand">
+          <div className="max-w-3xl text-sm text-espresso/80">
+            {content.reviewedBy && (
+              <p>
+                Reviewed by {content.reviewedBy}
+                {content.publishedAt && <> · Published {content.publishedAt}</>}
+                {content.lastSubstantialUpdate && <> · Last updated {content.lastSubstantialUpdate}</>}
+              </p>
+            )}
+            {content.sources && content.sources.length > 0 && (
+              <div className="mt-4">
+                <p className="font-semibold text-espresso">Sources</p>
+                <ul className="mt-2 list-inside list-disc space-y-1">
+                  {content.sources.map((source) => (
+                    <li key={source.label}>
+                      {source.url ? (
+                        <a href={source.url} className="text-cabernet hover:underline" target="_blank" rel="noopener noreferrer">
+                          {source.label}
+                        </a>
+                      ) : (
+                        source.label
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Section>
+      )}
 
       <RelatedPages
         title="Related Neighborhoods"

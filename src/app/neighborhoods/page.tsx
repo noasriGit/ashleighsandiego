@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { communities } from "@/data/communities";
+import { isCommunityIndexable } from "@/lib/seo-indexability";
 import { marketingHeroes } from "@/data/page-images";
 import { generatePageMetadata } from "@/lib/metadata";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
@@ -16,7 +17,9 @@ export const metadata = generatePageMetadata({
   path: "/neighborhoods",
 });
 
-const sorted = [...communities].filter((c) => c.hasGuide).sort((a, b) => a.name.localeCompare(b.name));
+const guides = communities.filter((c) => c.hasGuide);
+const featured = guides.filter((c) => isCommunityIndexable(c.slug)).sort((a, b) => a.name.localeCompare(b.name));
+const previews = guides.filter((c) => !isCommunityIndexable(c.slug)).sort((a, b) => a.name.localeCompare(b.name));
 
 export default function NeighborhoodsPage() {
   return (
@@ -46,10 +49,10 @@ export default function NeighborhoodsPage() {
         heroImageAlt={marketingHeroes.neighborhoods.alt}
       />
 
-      <Section kicker="A–Z Directory">
+      <Section id="featured" kicker="Featured Guides">
         <p className="max-w-2xl text-espresso/90">
-          Every guide below covers housing stock, lifestyle, and commute for one San Diego
-          community. Prefer a curated comparison first? Start with{" "}
+          These are our full buyer&apos;s guides, covering housing stock, lifestyle, and commute in
+          depth. Prefer a curated comparison first? Start with{" "}
           <Link href="/" className="text-cabernet hover:underline">San Diego Neighborhoods</Link>{" "}
           or the{" "}
           <Link href="/san-diego-neighborhood-map" className="text-cabernet hover:underline">
@@ -58,15 +61,36 @@ export default function NeighborhoodsPage() {
           .
         </p>
         <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((c) => (
+          {featured.map((c) => (
             <li key={c.slug}>
               <Link href={`/neighborhoods/${c.slug}`} className="text-espresso hover:text-cabernet hover:underline">
                 {c.name}
               </Link>
+              <p className="mt-1 text-sm text-espresso/70">{c.tagline}</p>
             </li>
           ))}
         </ul>
       </Section>
+
+      {previews.length > 0 && (
+        <Section variant="sand" kicker="Additional Neighborhood Previews">
+          <p className="max-w-2xl text-espresso/90">
+            These communities have a short preview page while we finish full buyer&apos;s guides.
+            Content, lifestyle detail, and comparisons will expand over time, start with a{" "}
+            <Link href="#featured" className="text-cabernet hover:underline">featured guide</Link>{" "}
+            above if you want the most complete picture today.
+          </p>
+          <ul className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+            {previews.map((c) => (
+              <li key={c.slug}>
+                <Link href={`/neighborhoods/${c.slug}`} className="text-espresso/70 hover:text-cabernet hover:underline">
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <CTABanner
         headline="Not Sure Which Neighborhood Fits?"
