@@ -22,20 +22,36 @@ export const siteConfig = {
     phone: "703-229-2810",
     photo: "/images/hero2.JPG",
     bio: "Independent buyer guidance for relocating, military/VA, and first-time buyers across the La Jolla area and coastal San Diego.",
+    // TODO: confirm a canonical Ashleigh Dodero agent profile URL (e.g. serhant.com agent
+    // page) once published, so `sameAs` on the RealEstateAgent schema can include it.
+    profileUrl: "",
     instagram: {
       handle: "@ashleighdodero_realestate",
       url: "https://www.instagram.com/ashleighdodero_realestate/",
     },
   },
 
-  // TODO: confirm exact Serhant San Diego office address before deploy.
+  // TODO: confirm exact Serhant San Diego office street address, suite, and ZIP before
+  // deploy (currently city/state-only; do not fabricate a street address). Once confirmed,
+  // this should map directly onto the PostalAddress in localBusinessSchema().
   brokerage: {
     name: "SERHANT.",
+    // TODO: confirm the brokerage's California license number (separate from the agent's
+    // individual DRE #02351643) before publishing it in schema.
     licenseNumber: "",
     officeAddress: "San Diego, California",
+    // TODO: confirm the correct SERHANT. corporate/brand URL to reference from schema
+    // (e.g. https://www.serhant.com) once approved for this site.
+    url: "",
     logo: "/images/serhant-logo.png",
     logoWhite: "/images/serhant-logo-white.jpeg",
   },
+
+  /**
+   * Social/profile URLs eligible for schema `sameAs`. Only include profiles that are
+   * live and controlled by this agent/brokerage — never fabricate a URL to fill a slot.
+   */
+  sameAs: ["https://www.instagram.com/ashleighdodero_realestate/"],
 
   // Agent-level operating note (shown alongside the required Serhant disclosure).
   disclaimer:
@@ -64,12 +80,14 @@ export const siteConfig = {
     radiusMiles: 12,
   },
 
+  // Primary nav favors indexable pages so sitewide link equity isn't spent on
+  // noindexed pages (docs/seo-rebuild-plan.md; SEO Wave 2, Phase 8). Noindexed
+  // pages (e.g. Condos, Suburbs) stay reachable via footer and contextual links
+  // instead of primary navigation until they're upgraded and indexed.
   nav: [
     { label: "Neighborhoods", href: "/san-diego-neighborhood-map" },
     { label: "Moving to San Diego", shortLabel: "Moving Here", href: "/moving-to-san-diego" },
     { label: "La Jolla", href: "/la-jolla-neighborhoods" },
-    { label: "Condos", href: "/san-diego-condos-for-sale" },
-    { label: "Suburbs", href: "/san-diego-suburbs" },
     { label: "Military / VA", shortLabel: "Military", href: "/military-realtor-san-diego" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
