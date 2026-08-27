@@ -8,6 +8,9 @@ export type CommunitySubarea = {
 };
 
 export type CommunitySeoExtension = {
+  /** Overrides the default "Living in {name}: A Buyer's Guide" <title>. */
+  metaTitle?: string;
+  metaDescription?: string;
   expertSummary?: string;
   differsFromParent?: string;
   bestFitBuyers?: string[];
@@ -20,6 +23,27 @@ export type CommunitySeoExtension = {
   reviewedBy?: string;
   publishedAt?: string;
   lastSubstantialUpdate?: string;
+  /**
+   * Structured H3 breakdown of housing types (homes/condos/townhomes/communities)
+   * for guides that need clearer topical hierarchy for Google. Optional — most
+   * guides rely on `housingOverview` alone.
+   */
+  housingBreakdown?: { title: string; body: string }[];
+  /**
+   * Named condo/community examples within the guide, worded as buyer
+   * considerations rather than unsupported factual claims (pricing, HOA dues,
+   * amenities, etc. are never included here).
+   */
+  namedCommunities?: { name: string; note: string }[];
+  /** Buyer due-diligence considerations (HOA, parking, building age, financing, flood zone, etc). */
+  buyerDueDiligence?: string[];
+  /** Commute context to major job/education anchors, described directionally (no invented times). */
+  commuteContext?: { destination: string; note: string }[];
+  /**
+   * Optional link to a dedicated transactional/commercial page for this community
+   * (e.g. a condo-for-sale landing page), kept distinct from this informational guide.
+   */
+  transactionalPage?: { label: string; href: string; description: string };
 };
 
 const REVIEWER = siteConfig.agent.name;
@@ -202,8 +226,11 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     lastSubstantialUpdate: UPDATED,
   },
   "mission-valley": {
+    metaTitle: "Mission Valley San Diego Homes & Condos | Buyer's Guide",
+    metaDescription:
+      "Mission Valley San Diego homes and condos: East vs West, Civita, Escala, Mission Gate, The Lido, RiverScene, HOA and financing considerations, trolley/freeway access, and how it compares to Hillcrest, Clairemont, and University City.",
     expertSummary:
-      "Mission Valley is a commute hub first and a neighborhood second. I help buyers decide whether condo convenience near Fashion Valley fits—or whether Civita's master-planned streets justify a different price band.",
+      "Mission Valley is a commute hub first and a neighborhood second. I help buyers decide whether condo convenience near Fashion Valley fits—or whether Civita's master-planned streets justify a different price band. Because the valley floor follows the San Diego River, I also walk buyers through flood-zone and HOA due diligence early, before they fall in love with a specific building.",
     bestFitBuyers: [
       "Central commuters needing I-8, I-805, and I-15 access",
       "Condo and townhome buyers on moderate budgets",
@@ -215,9 +242,48 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     ],
     housingStockNotes:
       "Condos and townhomes dominate the valley floor. Civita adds newer single-family and townhome product with HOA amenities.",
+    housingBreakdown: [
+      {
+        title: "Mission Valley Homes",
+        body: "Single-family housing is limited directly on the valley floor. Most single-family inventory sits in the hillside neighborhoods bordering Mission Valley, such as Linda Vista and Serra Mesa, rather than along the river corridor itself.",
+      },
+      {
+        title: "Mission Valley Condos",
+        body: "Condos make up the bulk of Mission Valley's for-sale inventory, ranging from older mid-rise buildings to newer construction. Named condo communities like Escala, Mission Gate, and The Lido come up often in buyer searches, each with its own HOA structure and building age worth reviewing individually.",
+      },
+      {
+        title: "Mission Valley Townhomes",
+        body: "Townhome product is concentrated in newer developments, including parts of Civita and Rancho Mission Villas, and generally offers more square footage and private entries than a condo tower.",
+      },
+      {
+        title: "Mission Valley Communities",
+        body: "Civita is the newest master-planned community in the valley, built around shared parks and a rec center. RiverScene sits along the river corridor itself, which makes flood-zone due diligence especially relevant for that specific building.",
+      },
+    ],
+    namedCommunities: [
+      { name: "Civita", note: "Master-planned community mixing condos, townhomes, and limited single-family product around shared parks; generally newer construction than the rest of the valley floor." },
+      { name: "Escala", note: "A well-known Mission Valley condo development. Verify current HOA financials, reserve study, and building age directly, as with any condo purchase." },
+      { name: "Mission Gate", note: "Established condo community near the Fashion Valley/I-8 corridor; confirm current HOA dues and parking assignment with your agent before touring." },
+      { name: "The Lido", note: "Condo community in Mission Valley. Treat named-building searches as a starting point and confirm current listing status and HOA details directly." },
+      { name: "RiverScene", note: "Condo community along the Mission Valley river corridor; ask specifically about flood-zone status and any river-adjacent HOA requirements." },
+      { name: "Rancho Mission Villas", note: "Townhome/condo community in Mission Valley; compare unit size and HOA structure against Civita and other newer product." },
+    ],
+    buyerDueDiligence: [
+      "Ask for the HOA budget, most recent reserve study, and any pending special assessments before writing an offer, reserve strength varies significantly by building age and management company.",
+      "Confirm deeded parking and storage assignments in writing; some Mission Valley buildings assign one space per unit, others assign none.",
+      "Ask your lender whether a specific building carries current FHA or VA approval before touring, non-approved buildings can eliminate certain financing options.",
+      "Building age varies widely across the valley floor. Ask for the exact year built and any major system replacements (roof, plumbing, elevators) rather than assuming based on the neighborhood name alone.",
+      "Because Mission Valley follows the San Diego River corridor, ask your agent and lender about the FEMA flood-zone designation for a specific address as part of standard due diligence. This varies parcel by parcel and should not be assumed either way.",
+    ],
+    commuteContext: [
+      { destination: "Downtown San Diego", note: "Reachable via I-8 to I-5, or by the MTS Green Line trolley from several Mission Valley stations." },
+      { destination: "UTC / UC San Diego", note: "I-805 runs north from Mission Valley toward University City, UTC, and the UCSD campus." },
+      { destination: "San Diego State University (SDSU)", note: "I-8 runs directly east from Mission Valley toward the SDSU campus." },
+    ],
     buyerMisunderstandings: [
       "Expecting neighborhood charm similar to Hillcrest or North Park",
       "Treating Civita and legacy Mission Valley condos as identical lifestyle choices",
+      "Assuming every Mission Valley address carries the same flood-zone status",
     ],
     subareas: [
       {
@@ -239,7 +305,16 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
         buyingDistinction: "Compare commute targets to Linda Vista before choosing.",
       },
     ],
-    sources: [{ label: "San Diego Metropolitan Transit System (MTS) trolley maps" }],
+    sources: [
+      { label: "San Diego Metropolitan Transit System (MTS) trolley maps" },
+      { label: "City of San Diego Mission Valley Community Plan" },
+      { label: "FEMA Flood Map Service Center", url: "https://msc.fema.gov/portal/home" },
+    ],
+    transactionalPage: {
+      label: "See Current Mission Valley Condos for Sale",
+      href: "/mission-valley-condos-for-sale",
+      description: "For live condo inventory and condo-specific buying considerations (HOA, financing, parking), see the dedicated Mission Valley condos page.",
+    },
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
     lastSubstantialUpdate: UPDATED,
@@ -433,11 +508,14 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     lastSubstantialUpdate: UPDATED,
   },
   hillcrest: {
+    metaTitle: "Hillcrest San Diego Homes & Condos | Neighborhood Guide",
+    metaDescription:
+      "Hillcrest San Diego homes and condos: housing stock, walkability, Balboa Park proximity, UC San Diego Health medical-employment context, parking, and how Hillcrest compares to North Park, Mission Hills, University Heights, and Bankers Hill.",
     expertSummary:
-      "Hillcrest is San Diego's walkable urban village near Balboa Park. Buyers should compare Mission Hills historic streets and Bankers Hill condo towers before assuming Hillcrest itself is the only fit.",
+      "Hillcrest is San Diego's walkable urban village near Balboa Park. Buyers should compare Mission Hills historic streets, University Heights' quieter pockets, and Bankers Hill condo towers before assuming Hillcrest itself is the only fit.",
     bestFitBuyers: [
       "Walkability and dining-first buyers",
-      "Healthcare workers near UCSD Hillcrest",
+      "Healthcare workers near UC San Diego Health Hillcrest and other nearby medical employers",
       "Condo buyers who want Balboa Park access",
     ],
     notIdealFor: [
