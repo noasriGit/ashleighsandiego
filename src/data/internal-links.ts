@@ -15,9 +15,9 @@ export type LinkPlanEntry = {
 };
 
 export const internalLinkPlan: LinkPlanEntry[] = [
-  { from: "/", linksTo: ["/san-diego-neighborhood-map", "/moving-to-san-diego", "/san-diego-suburbs", "/san-diego-condos-for-sale", "/affordable-neighborhoods-san-diego"] },
+  { from: "/", linksTo: ["/san-diego-neighborhood-map", "/moving-to-san-diego", "/military-realtor-san-diego", "/la-jolla-neighborhoods", "/mission-valley-condos-for-sale", "/san-diego-condos-for-sale", "/san-diego-suburbs", "/affordable-neighborhoods-san-diego"] },
   { from: "/san-diego-neighborhood-map", linksTo: ["/", "/neighborhoods"] },
-  { from: "/moving-to-san-diego", linksTo: ["/", "/living-in-san-diego", "/military-realtor-san-diego", "/affordable-neighborhoods-san-diego"] },
+  { from: "/moving-to-san-diego", linksTo: ["/", "/living-in-san-diego", "/military-realtor-san-diego", "/san-diego-neighborhood-map", "/affordable-neighborhoods-san-diego"] },
   { from: "/living-in-san-diego", linksTo: ["/", "/moving-to-san-diego", "/san-diego-suburbs"] },
   { from: "/military-realtor-san-diego", linksTo: ["/", "/moving-to-san-diego", "/affordable-neighborhoods-san-diego"] },
   { from: "/la-jolla-neighborhoods", linksTo: ["/", "/la-jolla-real-estate-agent", "/la-jolla-condos-for-sale", "/la-jolla-vs-del-mar"] },

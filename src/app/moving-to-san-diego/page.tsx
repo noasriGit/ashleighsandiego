@@ -35,7 +35,7 @@ const sections = [
     kicker: "Step One",
     title: "How to Choose the Right Area",
     content:
-      "Start with your non-negotiables: commute distance, budget, and lifestyle priorities. If you work in Sorrento Valley or UTC, University City and Carmel Valley are worth a look. If beach lifestyle is the priority, compare La Jolla, Pacific Beach, and Del Mar. If budget is the main constraint, Clairemont, Mission Valley, and the county suburbs offer more space per dollar.\n\nOur neighborhood comparison tools help you weigh these trade-offs before you invest time touring homes.",
+      "Start with your non-negotiables: commute distance, budget, and lifestyle priorities. If you work in Sorrento Valley or UTC, University City and Carmel Valley are worth a look. If beach lifestyle is the priority, compare La Jolla, Pacific Beach, and Del Mar. If budget is the main constraint, Clairemont, Mission Valley, and the county suburbs offer more space per dollar.\n\nOur neighborhood comparison tools help you weigh these trade-offs before you invest time touring homes. Use the interactive San Diego neighborhood map to see how these areas sit relative to each other before you shortlist.",
   },
   {
     id: "budget-commute",
@@ -110,12 +110,42 @@ export default async function MovingToSanDiegoPage() {
 
       <ContentSections sections={sections} />
 
+      <Section kicker="2026 Relocation Checklist">
+        <h2 className="heading-section text-cabernet">A Concise 2026 Relocation Checklist</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Use this as the process layer, not a lifestyle overview. For day-to-day living context,
+          see{" "}
+          <Link href="/living-in-san-diego" className="text-cabernet hover:underline">
+            living in San Diego
+          </Link>
+          . Confirm geography on the map after you shortlist published neighborhood guides.
+        </p>
+        <ol className="mt-6 max-w-2xl list-decimal space-y-3 pl-5 text-espresso/90">
+          <li>Write down commute, budget, and housing-type must-haves before you browse listings.</li>
+          <li>Shortlist two or three neighborhoods from the published buyer guides, then confirm geography on the map.</li>
+          <li>Get a lender pre-approval so your neighborhood list stays inside a realistic price range.</li>
+          <li>Plan one focused visit or a remote-tour sequence instead of trying to see the whole county at once.</li>
+          <li>
+            If you are moving on military orders, use the{" "}
+            <Link href="/military-realtor-san-diego" className="text-cabernet hover:underline">
+              military realtor San Diego
+            </Link>{" "}
+            process for base commute, VA coordination, and PCS timing.
+          </li>
+          <li>Align inspection, escrow, and move-in dates with your report or job start date.</li>
+        </ol>
+      </Section>
+
       <Section variant="sand" kicker="Where People Land">
         <h2 className="heading-section text-cabernet">Popular Starting Points by Priority</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
           Most relocating buyers start with one of these paths. See{" "}
           <Link href="/" className="text-cabernet hover:underline">San Diego Neighborhoods</Link> for
-          the full comparison, or jump straight to a focused guide:
+          the full comparison, or the{" "}
+          <Link href="/san-diego-neighborhood-map" className="text-cabernet hover:underline">
+            San Diego neighborhood map
+          </Link>{" "}
+          to place areas geographically before you jump to a focused guide:
         </p>
         <ul className="mt-6 space-y-3 text-espresso/90">
           <li>

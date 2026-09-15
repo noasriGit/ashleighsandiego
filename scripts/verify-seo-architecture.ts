@@ -14,6 +14,7 @@ import {
   getExpectedSitemapUrls,
   validateSeoArchitecture,
 } from "../src/lib/seo-validation";
+import { validateCrawlPriority } from "../src/lib/seo-crawl-priority";
 import { siteConfig } from "../src/data/site-config";
 import {
   getIndexableStaticPaths,
@@ -22,7 +23,7 @@ import {
 } from "../src/data/routes";
 
 function main() {
-  const issues = validateSeoArchitecture();
+  const issues = [...validateSeoArchitecture(), ...validateCrawlPriority(siteConfig.url)];
   const sitemapPaths = getSitemapPaths();
   const indexableSlugs = getIndexableCommunitySlugs();
   const urls = getExpectedSitemapUrls();

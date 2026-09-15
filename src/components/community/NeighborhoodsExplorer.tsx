@@ -33,7 +33,7 @@ export function NeighborhoodsExplorer({ communities }: NeighborhoodsExplorerProp
         <div>
           <h3 className="heading-card text-cabernet">Community Map</h3>
           <p className="mt-1 max-w-2xl text-sm text-espresso/80">
-            Hover or tap a zone to preview a neighborhood. Click to open its buyer guide.
+            Hover or tap a zone to preview a neighborhood. Published buyer guides open on click; other areas are labeled as in development.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

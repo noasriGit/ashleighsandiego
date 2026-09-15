@@ -48,7 +48,19 @@ export type CommunitySeoExtension = {
 
 const REVIEWER = siteConfig.agent.name;
 const PUBLISHED = "2026-06-01";
-const UPDATED = "2026-07-01";
+/**
+ * Git-verified lastSubstantialUpdate dates for Wave 1 guides.
+ * Not a shared blanket date — each value is the most recent substantial
+ * content update (not template, formatting, Fair Housing wording, photos,
+ * or deployment).
+ *
+ * 2026-07-29: 6e11121 added per-guide expert summaries, subareas, sources,
+ * and E-E-A-T fields in community-seo-extensions.ts.
+ * 2026-08-27: e15b350 expanded Mission Valley and Hillcrest with housing
+ * breakdowns, named communities, due diligence, and commute context.
+ */
+const WAVE1_EEAT_UPDATE = "2026-07-29";
+const MISSION_VALLEY_HILLCREST_EXPANSION = "2026-08-27";
 
 export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
   "la-jolla": {
@@ -118,9 +130,15 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       { label: "City of San Diego community planning", url: "https://www.sandiego.gov/planning" },
       { label: "San Diego Association of Governments (SANDAG)" },
     ],
+    transactionalPage: {
+      label: "Compare La Jolla's named neighborhoods",
+      href: "/la-jolla-neighborhoods",
+      description:
+        "This living guide covers daily life and buyer context in La Jolla. The subarea page compares La Jolla's named neighborhoods side by side.",
+    },
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "pacific-beach": {
     expertSummary:
@@ -163,7 +181,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "City of San Diego Pacific Beach community planning" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "university-city": {
     expertSummary:
@@ -186,7 +204,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "UC San Diego campus maps" }, { label: "Westfield UTC" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   clairemont: {
     expertSummary:
@@ -223,7 +241,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "City of San Diego Clairemont Mesa community plan" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "mission-valley": {
     metaTitle: "Mission Valley San Diego Homes & Condos | Buyer's Guide",
@@ -311,13 +329,13 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
       { label: "FEMA Flood Map Service Center", url: "https://msc.fema.gov/portal/home" },
     ],
     transactionalPage: {
-      label: "See Current Mission Valley Condos for Sale",
+      label: "View Mission Valley condos for sale",
       href: "/mission-valley-condos-for-sale",
       description: "For live condo inventory and condo-specific buying considerations (HOA, financing, parking), see the dedicated Mission Valley condos page.",
     },
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: MISSION_VALLEY_HILLCREST_EXPANSION,
   },
   "del-mar": {
     expertSummary:
@@ -348,7 +366,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "City of Del Mar community plan" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "carmel-valley": {
     expertSummary:
@@ -379,7 +397,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "City of San Diego Carmel Valley community plan" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "point-loma": {
     expertSummary:
@@ -422,7 +440,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "Liberty Station community" }, { label: "San Diego International Airport noise disclosures" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "sorrento-valley": {
     expertSummary:
@@ -445,7 +463,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "SANDAG employment center maps" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "bay-park": {
     expertSummary:
@@ -482,7 +500,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "City of San Diego Morena Corridor specific plan" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   "ocean-beach": {
     expertSummary:
@@ -505,7 +523,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "Ocean Beach MainStreet Association" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
   hillcrest: {
     metaTitle: "Hillcrest San Diego Homes & Condos | Neighborhood Guide",
@@ -557,7 +575,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "Balboa Park cultural partnership" }, { label: "City of San Diego Uptown community plan" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: MISSION_VALLEY_HILLCREST_EXPANSION,
   },
   "north-park": {
     expertSummary:
@@ -588,7 +606,7 @@ export const communitySeoExtensions: Record<string, CommunitySeoExtension> = {
     sources: [{ label: "North Park Main Street" }],
     reviewedBy: REVIEWER,
     publishedAt: PUBLISHED,
-    lastSubstantialUpdate: UPDATED,
+    lastSubstantialUpdate: WAVE1_EEAT_UPDATE,
   },
 };
 

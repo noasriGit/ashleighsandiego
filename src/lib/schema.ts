@@ -97,7 +97,7 @@ export function webPageSchema(title: string, description: string, path: string) 
   };
 }
 
-/** WebSite schema with a SearchAction, for the homepage only. */
+/** WebSite schema with a stable @id, for the homepage only. */
 export function webSiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -106,11 +106,6 @@ export function webSiteSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     publisher: { "@id": SCHEMA_IDS.business },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${siteConfig.url}/san-diego-neighborhood-map?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -147,7 +142,7 @@ export function collectionPageSchema(options: {
     name: options.title,
     description: options.description,
     url: `${siteConfig.url}${options.path}`,
-    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+    isPartOf: { "@id": SCHEMA_IDS.website },
   };
 }
 

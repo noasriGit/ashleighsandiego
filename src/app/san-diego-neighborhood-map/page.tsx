@@ -9,14 +9,16 @@ import { communities, getLaunchCommunities } from "@/data/communities";
 import { marketingHeroes } from "@/data/page-images";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getKeywordsForPage } from "@/data/keywords";
+import { getNeighborhoodGuideHref, isCommunityIndexable } from "@/lib/seo-indexability";
 import { webPageSchema, breadcrumbSchema, itemListSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
-  title: "San Diego Neighborhood Map | Interactive Community Guide",
+  title: "San Diego Neighborhood Map | SDCommunities",
   description:
-    "An interactive map of San Diego neighborhoods and communities. Explore coastal, central, and inland areas, filter by lifestyle, then open a buyer's guide for any zone.",
+    "Explore this interactive San Diego neighborhood map to compare coastal, central, and inland areas, then open published buyer guides before you tour.",
   path: "/san-diego-neighborhood-map",
   keywords: getKeywordsForPage("/san-diego-neighborhood-map"),
+  absoluteTitle: true,
 });
 
 const featuredGuideLinks = [
@@ -50,7 +52,12 @@ export default function NeighborhoodMapPage() {
           ),
           breadcrumbSchema([{ name: "Neighborhood Map", path: "/san-diego-neighborhood-map" }]),
           itemListSchema(
-            launchCommunities.map((c) => ({ name: c.name, path: `/neighborhoods/${c.slug}` })),
+            launchCommunities.map((c) => ({
+              name: c.name,
+              ...(isCommunityIndexable(c.slug)
+                ? { path: `/neighborhoods/${c.slug}` }
+                : {}),
+            })),
           ),
         ]}
       />
@@ -98,11 +105,14 @@ export default function NeighborhoodMapPage() {
       <Section kicker="Start With a Guide">
         <h2 className="heading-section text-cabernet">Jump Into a Neighborhood Guide</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          The map above is built for exploration, every zone links to a full buyer&apos;s guide with
-          housing, lifestyle, and commute detail. These are the guides buyers start with most often:
+          The map above is built for exploration. Published buyer guides cover housing, lifestyle,
+          and commute in depth; other mapped areas remain visible while those guides are in
+          development. These are the guides buyers start with most often:
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredGuideLinks.map((item) => (
+          {featuredGuideLinks
+            .filter((item) => isCommunityIndexable(item.slug))
+            .map((item) => (
             <Link
               key={item.slug}
               href={`/neighborhoods/${item.slug}`}
@@ -119,7 +129,7 @@ export default function NeighborhoodMapPage() {
       </Section>
 
       {/* Server-rendered A-Z fallback: the map above loads client-side (ssr:false),
-          so this list keeps every neighborhood link crawlable without JavaScript. */}
+          so this list keeps indexable neighborhood guides crawlable without JavaScript. */}
       <Section variant="sand" kicker="Full Directory">
         <h2 className="heading-section text-cabernet">Every Neighborhood, A–Z</h2>
         <p className="mt-2 max-w-2xl text-espresso/90">
@@ -136,13 +146,25 @@ export default function NeighborhoodMapPage() {
               <div key={letter}>
                 <p className="kicker mb-2">{letter}</p>
                 <ul className="space-y-2">
-                  {byLetter[letter]!.map((c) => (
-                    <li key={c.slug}>
-                      <Link href={`/neighborhoods/${c.slug}`} className="text-espresso hover:text-cabernet hover:underline">
-                        {c.name}
-                      </Link>
-                    </li>
-                  ))}
+                  {byLetter[letter]!.map((c) => {
+                    const href = getNeighborhoodGuideHref(c.slug);
+                    return (
+                      <li key={c.slug}>
+                        {href ? (
+                          <Link href={href} className="text-espresso hover:text-cabernet hover:underline">
+                            {c.name}
+                          </Link>
+                        ) : (
+                          <span className="text-espresso/70">
+                            {c.name}
+                            <span className="ml-2 text-xs font-medium uppercase tracking-wide text-espresso/50">
+                              Guide in development
+                            </span>
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

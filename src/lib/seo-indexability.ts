@@ -67,6 +67,15 @@ export function isCommunityIndexable(slug: string): boolean {
   return getIndexableCommunitySlugs().includes(slug);
 }
 
+/**
+ * Crawlable href for a community guide. Deferred (noindex) guides return
+ * undefined so hubs can render a non-link preview instead of an anchor.
+ */
+export function getNeighborhoodGuideHref(slug: string): string | undefined {
+  if (!isCommunityIndexable(slug)) return undefined;
+  return `/neighborhoods/${slug}`;
+}
+
 export function getIndexableCommunityPaths(): string[] {
   return getIndexableCommunitySlugs().map((slug) => `/neighborhoods/${slug}`);
 }

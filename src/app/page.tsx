@@ -88,7 +88,7 @@ const commuteGroups = [
 ];
 
 const housingTypeGroups = [
-  { name: "Condos & Townhomes", description: "Mission Valley and University City near UTC", href: "/neighborhoods/mission-valley" },
+  { name: "Condos & Townhomes", description: "Mission Valley condos and University City near UTC", href: "/mission-valley-condos-for-sale" },
   { name: "New Construction & Master-Planned", description: "Carmel Valley and Del Mar communities", href: "/neighborhoods/carmel-valley" },
   { name: "Value Single-Family Homes", description: "Clairemont and central San Diego neighborhoods", href: "/neighborhoods/clairemont" },
   { name: "Coastal Living", description: "La Jolla, Point Loma, and Ocean Beach", href: "/la-jolla-neighborhoods" },
@@ -267,6 +267,11 @@ export default async function HomePage() {
         </h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
           Detailed guides to San Diego neighborhoods, covering housing stock, lifestyle, and commute.
+          Condo shoppers can also{" "}
+          <Link href="/mission-valley-condos-for-sale" className="text-cabernet hover:underline">
+            browse Mission Valley condos for sale
+          </Link>
+          .
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredCommunities.map((community) => {

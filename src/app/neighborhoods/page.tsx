@@ -83,9 +83,10 @@ export default function NeighborhoodsPage() {
           <ul className="mt-8 grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
             {previews.map((c) => (
               <li key={c.slug}>
-                <Link href={`/neighborhoods/${c.slug}`} className="text-espresso/70 hover:text-cabernet hover:underline">
-                  {c.name}
-                </Link>
+                <p className="text-espresso/70">{c.name}</p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-espresso/50">
+                  Guide in development
+                </p>
               </li>
             ))}
           </ul>
