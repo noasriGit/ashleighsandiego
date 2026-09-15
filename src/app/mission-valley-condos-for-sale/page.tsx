@@ -16,11 +16,12 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { faqSchema, webPageSchema, breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 
 export const metadata = generatePageMetadata({
-  title: "Mission Valley Condos for Sale San Diego | Buyer's Guide",
+  title: "Mission Valley Condos for Sale | San Diego",
   description:
-    "Current Mission Valley condos for sale in San Diego, plus condo-specific buying considerations: HOA due diligence, parking, building age, and financing. Compare Mission Valley East vs West.",
+    "Browse Mission Valley condos for sale and compare East versus West, HOA considerations, parking, financing and current San Diego listings.",
   path: "/mission-valley-condos-for-sale",
   keywords: getKeywordsForPage("/mission-valley-condos-for-sale"),
+  absoluteTitle: true,
 });
 
 const namedCondoCommunities = [
@@ -130,6 +131,25 @@ export default async function MissionValleyCondosPage() {
         viewAllUrl={browseUrl ?? undefined}
         variant="sand"
       />
+
+      <Section kicker="Using Live Inventory">
+        <h2 className="heading-section text-cabernet">How to Use This Live Inventory</h2>
+        <p className="mt-4 max-w-2xl text-espresso/90">
+          As of September 2026, the listings above are a live sample of Mission Valley condo
+          inventory. Counts, photos, and status change as homes go pending or new units list. Use
+          this page to compare buildings and East versus West location, then confirm HOA documents,
+          parking, and financing on a specific unit before you offer. This sample is not a complete
+          market census and does not include pricing statistics.
+        </p>
+        <h3 className="heading-card mt-8 text-cabernet">Condo Versus Townhome Considerations</h3>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Many Mission Valley complexes mix condos and townhomes. Condos typically share more
+          building systems and a denser HOA structure. Townhomes may include a private entrance or
+          limited outdoor space, but they still require the same reserve, parking, and financing due
+          diligence. Confirm the legal property type on the listing and in the HOA documents, not
+          just the marketing label.
+        </p>
+      </Section>
 
       <Section kicker="Mission Valley Condo Overview">
         <h2 className="heading-section text-cabernet">Mission Valley Condo Overview</h2>

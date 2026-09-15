@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/generate-sitemap.mjs",
+    "postbuild": "tsx scripts/generate-sitemap.ts",
     "start": "next start",
     "lint": "eslint",
     "seo:verify": "tsx scripts/verify-seo-architecture.ts",

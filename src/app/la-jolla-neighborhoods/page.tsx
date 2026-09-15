@@ -81,8 +81,14 @@ export default async function LaJollaNeighborhoodsPage() {
       <Section kicker="Know the Map">
         <h2 className="heading-section text-cabernet">Every La Jolla Subarea, Compared</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">
-          Each subarea has its own housing stock, price point, and feel. Open a guide for the full
-          picture, housing overview, lifestyle, commute, and FAQs.
+          This page compares La Jolla&apos;s named neighborhoods, Village, Shores, Bird Rock,
+          Muirlands, and the rest, so you can see how housing stock and daily routines differ by
+          pocket. For daily life, commute context, and whether La Jolla fits as a whole, start with
+          the{" "}
+          <Link href="/neighborhoods/la-jolla" className="text-cabernet hover:underline">
+            La Jolla living guide
+          </Link>
+          . Each subarea card below is a starting point, not a second copy of that living guide.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {subareas.map((c) => (

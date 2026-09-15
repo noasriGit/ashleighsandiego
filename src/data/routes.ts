@@ -30,6 +30,11 @@ export type RouteEntry = {
   inSitemap: boolean;
   changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
   priority: number;
+  /**
+   * Verified content-update date as YYYY-MM-DD. Used as sitemap lastmod.
+   * Omit when no substantial update date is known — never substitute build time.
+   */
+  lastModified?: string;
   /** Path this URL 301-redirects from, if any (see next.config.ts). */
   redirectsFrom?: string[];
   notes?: string;
@@ -53,6 +58,7 @@ export const routes: RouteEntry[] = [
     inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.8,
+    lastModified: "2026-09-15",
     notes:
       "Wave 2: indexed for interactive geographic exploration intent. Homepage keeps ownership of \"san diego neighborhoods\"; this page owns \"san diego neighborhood map\".",
   },
@@ -64,6 +70,7 @@ export const routes: RouteEntry[] = [
     inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.9,
+    lastModified: "2026-09-15",
     redirectsFrom: ["/relocating-to-san-diego"],
   },
   {
@@ -85,6 +92,7 @@ export const routes: RouteEntry[] = [
     inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.8,
+    lastModified: "2026-09-15",
     redirectsFrom: ["/military-va-relocation-san-diego"],
   },
   {
@@ -95,6 +103,7 @@ export const routes: RouteEntry[] = [
     inSitemap: true,
     changeFrequency: "monthly",
     priority: 0.9,
+    lastModified: "2026-09-15",
     redirectsFrom: ["/moving-to-la-jolla"],
   },
   {
@@ -152,6 +161,7 @@ export const routes: RouteEntry[] = [
     inSitemap: true,
     changeFrequency: "weekly",
     priority: 0.8,
+    lastModified: "2026-09-15",
     notes:
       "Wave 2: transactional condo-inventory page, distinct intent from /neighborhoods/mission-valley (informational guide). Mission Valley is the strongest existing discovery page (GSC), so this captures adjacent commercial intent without cannibalizing the guide.",
   },

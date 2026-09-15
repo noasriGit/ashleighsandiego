@@ -13,6 +13,11 @@ type PageMetadataOptions = {
    * `follow` is intentional — noindex pages still pass link equity.
    */
   noindex?: boolean;
+  /**
+   * When true, the title is used as-is and is not wrapped by the root
+   * `%s | SDCommunities` template.
+   */
+  absoluteTitle?: boolean;
 };
 
 export function generatePageMetadata({
@@ -21,6 +26,7 @@ export function generatePageMetadata({
   path,
   keywords,
   noindex,
+  absoluteTitle,
 }: PageMetadataOptions): Metadata {
   const url = `${siteConfig.url}${path}`;
   const route = getRouteByPath(path);
@@ -28,7 +34,7 @@ export function generatePageMetadata({
     noindex ?? (route !== undefined ? !route.indexable : false);
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords,
     alternates: { canonical: url },

@@ -14,6 +14,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { ExpressionSpecification } from "maplibre-gl";
 import { CommunityMapPopup } from "@/components/map/CommunityMapPopup";
 import type { Community, LifestyleTag } from "@/data/communities";
+import { isCommunityIndexable } from "@/lib/seo-indexability";
 import {
   COMMUNITY_BOUNDARIES_URL,
   getMapStyleUrl,
@@ -274,7 +275,9 @@ export function CommunityMap({
         }
 
         if (selectedSlug === slug) {
-          router.push(`/neighborhoods/${slug}`);
+          if (isCommunityIndexable(slug)) {
+            router.push(`/neighborhoods/${slug}`);
+          }
           return;
         }
 
@@ -283,7 +286,11 @@ export function CommunityMap({
       }
 
       if (slug && communityBySlug[slug]) {
-        router.push(`/neighborhoods/${slug}`);
+        if (isCommunityIndexable(slug)) {
+          router.push(`/neighborhoods/${slug}`);
+        } else {
+          selectCommunity(slug, [event.lngLat.lng, event.lngLat.lat]);
+        }
       }
     },
     [

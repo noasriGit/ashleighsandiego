@@ -123,6 +123,44 @@ export default async function MilitaryRealtorPage() {
         ]}
       />
 
+      <Section kicker="PCS Sequence">
+        <h2 className="heading-section text-cabernet">PCS Planning Sequence</h2>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Treat the home search as a timeline that has to fit a report date, not a weekend of open
+          houses. This is the order most San Diego PCS buyers follow:
+        </p>
+        <ol className="mt-6 max-w-2xl list-decimal space-y-3 pl-5 text-espresso/90">
+          <li>Confirm report date, BAH, and whether you will tour in person, remotely, or both.</li>
+          <li>Map commute options to your duty station before you fall in love with a listing photo.</li>
+          <li>Get pre-approved with a VA-capable lender so building approval and entitlement questions surface early.</li>
+          <li>Shortlist neighborhoods, then tour or request live video walkthroughs on a compressed house-hunting window.</li>
+          <li>Coordinate inspection, appraisal, and closing dates against your report date and any overlap housing.</li>
+        </ol>
+        <h3 className="heading-card mt-10 text-cabernet">Remote Showing and Closing Logistics</h3>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Out-of-area military buyers can shortlist from published neighborhood guides, then use
+          video walkthroughs and a planned visit rather than trying to see the whole county at once.
+          Closing can be coordinated remotely when the timeline requires it. We provide neighborhood
+          education, virtual tours when needed, and a step-by-step buyer plan; a licensed lender and
+          escrow officer handle financing and closing mechanics.
+        </p>
+        <h3 className="heading-card mt-10 text-cabernet">VA Financing Coordination</h3>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Ask your lender early whether a specific building is VA-approved, especially for condos.
+          Non-approved buildings can rule out a VA loan before you write an offer. I coordinate the
+          home search around those constraints and can introduce VA-approved lenders on request. I
+          do not give lending, eligibility, or legal advice.
+        </p>
+        <h3 className="heading-card mt-10 text-cabernet">How to Research a Base Commute</h3>
+        <p className="mt-3 max-w-2xl text-espresso/90">
+          Start with the installation, not the neighborhood name. Drive or map the route at the hour
+          you would actually report, including gate location and whether I-5, I-8, I-15, or I-805 is
+          the spine. Then compare two or three published guides that sit on that corridor, Point Loma
+          and Ocean Beach for peninsula duty, Clairemont and University City for Miramar, Mission
+          Valley when you need freeway flexibility between installations.
+        </p>
+      </Section>
+
       <Section kicker="By Duty Station">
         <h2 className="heading-section text-cabernet">Neighborhoods Near Major Installations</h2>
         <p className="mt-3 max-w-2xl text-espresso/90">

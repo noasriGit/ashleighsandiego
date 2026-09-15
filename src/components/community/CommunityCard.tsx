@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 import type { Community, LifestyleTag } from "@/data/communities";
+import { getNeighborhoodGuideHref } from "@/lib/seo-indexability";
 
 type CommunityCardProps = {
   community: Community;
@@ -33,7 +34,8 @@ export function CommunityCard({
   highlighted = false,
   onHover,
 }: CommunityCardProps) {
-  const hasPage = community.hasGuide;
+  const href = getNeighborhoodGuideHref(community.slug);
+  const crawlable = Boolean(href);
   const gradient =
     lifestyleGradient[community.lifestyles[0]] ?? "from-cabernet to-espresso";
 
@@ -43,8 +45,8 @@ export function CommunityCard({
       accent={community.tier === 1 ? "cabernet" : undefined}
       className={cn(
         "flex h-full flex-col overflow-hidden p-0",
-        !hasPage && "opacity-75",
-        hasPage &&
+        !crawlable && "opacity-75",
+        crawlable &&
           "transition-[transform,box-shadow] duration-300 ease-out motion-reduce:transition-none group-hover:-translate-y-2 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-cabernet/15",
         highlighted && "ring-2 ring-cabernet/30 shadow-lg",
       )}
@@ -58,20 +60,20 @@ export function CommunityCard({
             sizes="(max-width: 1024px) 100vw, 33vw"
             className={cn(
               "object-cover transition-transform duration-500 ease-out motion-reduce:transition-none",
-              hasPage && "group-hover:scale-110",
+              crawlable && "group-hover:scale-110",
             )}
           />
         ) : (
           <div
             className={cn(
               "absolute inset-0 bg-cover opacity-20 transition-transform duration-500 ease-out motion-reduce:transition-none",
-              hasPage && "group-hover:scale-110",
+              crawlable && "group-hover:scale-110",
             )}
             style={{ backgroundImage: "url('/images/coastal-pattern.svg')" }}
           />
         )}
 
-        {hasPage && (
+        {crawlable && (
           <>
             <div
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cabernet/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none"
@@ -88,7 +90,7 @@ export function CommunityCard({
           <Badge
             className={cn(
               "absolute right-3 top-3 shrink-0 bg-white/90 text-cabernet transition-transform duration-300 motion-reduce:transition-none",
-              hasPage && "group-hover:scale-105",
+              crawlable && "group-hover:scale-105",
             )}
           >
             Featured
@@ -100,7 +102,7 @@ export function CommunityCard({
         <h3
           className={cn(
             "heading-card text-cabernet transition-[transform,color] duration-300 ease-out motion-reduce:transition-none",
-            hasPage && "group-hover:translate-x-1 group-hover:text-cabernet/90",
+            crawlable && "group-hover:translate-x-1 group-hover:text-cabernet/90",
           )}
         >
           {community.name}
@@ -112,7 +114,7 @@ export function CommunityCard({
               key={l}
               className={cn(
                 "text-xs transition-[transform,background-color] duration-300 motion-reduce:transition-none",
-                hasPage && "group-hover:-translate-y-0.5 group-hover:bg-blush/60",
+                crawlable && "group-hover:-translate-y-0.5 group-hover:bg-blush/60",
               )}
             >
               {l}
@@ -120,7 +122,7 @@ export function CommunityCard({
           ))}
         </div>
 
-        {hasPage ? (
+        {crawlable ? (
           <span
             className={cn(
               "mt-4 inline-flex items-center gap-1 text-sm font-medium text-cabernet",
@@ -142,16 +144,16 @@ export function CommunityCard({
             </svg>
           </span>
         ) : (
-          <p className="mt-3 text-xs text-muted-foreground">Guide coming soon</p>
+          <p className="mt-3 text-xs text-muted-foreground">Guide in development</p>
         )}
       </div>
     </Card>
   );
 
-  if (hasPage) {
+  if (href) {
     return (
       <Link
-        href={`/neighborhoods/${community.slug}`}
+        href={href}
         className="group block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cabernet focus-visible:ring-offset-2"
         aria-label={`${community.name}: ${community.tagline}`}
         onMouseEnter={() => onHover?.(community.slug)}
@@ -164,5 +166,13 @@ export function CommunityCard({
     );
   }
 
-  return content;
+  return (
+    <div
+      className="h-full"
+      onMouseEnter={() => onHover?.(community.slug)}
+      onMouseLeave={() => onHover?.(null)}
+    >
+      {content}
+    </div>
+  );
 }
