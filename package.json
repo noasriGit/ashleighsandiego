@@ -8,7 +8,7 @@
     "postbuild": "tsx scripts/generate-sitemap.ts",
     "start": "next start",
     "lint": "eslint",
-    "test:leads": "tsx --test --test-isolation=none src/lib/leads/*.test.ts src/app/api/leads/*.test.ts src/components/marketing/*.test.tsx",
+    "test:leads": "tsx --test src/lib/leads/*.test.ts src/app/api/leads/*.test.ts src/components/marketing/*.test.tsx",
     "seo:verify": "tsx scripts/verify-seo-architecture.ts",
     "idx:generate-config": "node scripts/generate-idx-search-config.mjs",
     "idx:generate-search-bar": "node scripts/generate-idx-search-bar.mjs",
