@@ -76,9 +76,10 @@ describe("LeadMagnet browser behavior", () => {
       });
 
       assert.equal(fetchCalls, 1);
-      assert.ok(resolveFetch);
+      const completeRequest = resolveFetch;
+      assert.ok(completeRequest);
       await act(async () => {
-        resolveFetch(Response.json({ success: false }, { status: 503 }));
+        completeRequest(Response.json({ success: false }, { status: 503 }));
         await Promise.resolve();
       });
 
