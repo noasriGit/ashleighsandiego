@@ -8,7 +8,7 @@
     "postbuild": "tsx scripts/generate-sitemap.ts",
     "start": "next start",
     "lint": "eslint",
-    "test:leads": "tsx --test --test-isolation=none src/lib/leads/*.test.ts src/app/api/leads/*.test.ts",
+    "test:leads": "tsx --test --test-isolation=none src/lib/leads/*.test.ts src/app/api/leads/*.test.ts src/components/marketing/*.test.tsx",
     "seo:verify": "tsx scripts/verify-seo-architecture.ts",
     "idx:generate-config": "node scripts/generate-idx-search-config.mjs",
     "idx:generate-search-bar": "node scripts/generate-idx-search-bar.mjs",
@@ -34,11 +34,13 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/geojson": "^7946.0.16",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "jsdom": "^30.1.2",
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
     "typescript": "^5"

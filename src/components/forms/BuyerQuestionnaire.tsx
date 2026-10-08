@@ -94,7 +94,7 @@ export function BuyerQuestionnaire() {
         <div role="status" aria-live="polite">
           <h2 className="heading-section text-cabernet">Thank You!</h2>
           <p className="mt-3 text-espresso/90">
-            Your information reached Ashleigh&apos;s team. They&apos;ll be in touch soon to schedule your free buyer strategy call.
+            Your submission was accepted for delivery. Ashleigh&apos;s team will follow up after processing it.
           </p>
         </div>
       </Card>

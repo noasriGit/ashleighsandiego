@@ -52,7 +52,7 @@ export function LeadMagnet({
         <div role="status" aria-live="polite">
           <h3 className="heading-card text-cabernet">Checklist Requested!</h3>
           <p className="mt-2 text-espresso/90">
-            Your request reached Ashleigh&apos;s team. They&apos;ll follow up with your checklist.
+            Your checklist request was accepted for delivery. The team will follow up after processing it.
           </p>
           <Button href="/contact" className="mt-4" variant="primary">
             Book a Strategy Call

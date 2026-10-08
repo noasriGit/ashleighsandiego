@@ -35,8 +35,23 @@ export function createLeadSubmissionController(
         "Idempotency-Key": requestId,
       },
       body: serializedPayload,
-    }).then((response) => {
+    }).then(async (response) => {
       if (!response.ok) throw new LeadSubmissionError();
+      try {
+        const acknowledgement: unknown = await response.json();
+        if (
+          !acknowledgement ||
+          typeof acknowledgement !== "object" ||
+          (acknowledgement as Record<string, unknown>).success !== true ||
+          (acknowledgement as Record<string, unknown>).delivery !== "accepted" ||
+          (acknowledgement as Record<string, unknown>).requestId !== requestId
+        ) {
+          throw new LeadSubmissionError();
+        }
+      } catch (error) {
+        if (error instanceof LeadSubmissionError) throw error;
+        throw new LeadSubmissionError();
+      }
     });
 
     const trackedSubmission = submission.finally(() => {

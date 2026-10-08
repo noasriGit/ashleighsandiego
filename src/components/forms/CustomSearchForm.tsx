@@ -94,7 +94,7 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
         <div role="status" aria-live="polite">
           <h3 className="heading-card text-cabernet">Request Received</h3>
           <p className="mt-2 text-espresso/90">
-            Your request reached Ashleigh&apos;s team. They&apos;ll review your criteria and follow up with matching homes.
+            Your submission was accepted for delivery. Ashleigh&apos;s team will follow up after processing your criteria.
           </p>
           <Button href="/contact" className="mt-4">
             Book a Strategy Call

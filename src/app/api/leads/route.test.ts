@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { createLeadHandler } from "./route";
+import { createLeadHandler } from "@/lib/leads/server";
 
 const VALID_LEAD = {
   leadType: "custom-search",
@@ -68,6 +68,7 @@ describe("lead delivery route", () => {
     const cases = [
       leadRequest("{"),
       leadRequest({ ...VALID_LEAD, email: "not-an-email" }),
+      leadRequest({ ...VALID_LEAD, leadType: "contact-test@example.invalid" }),
       leadRequest({ ...VALID_LEAD, unexpected: "field" }),
       new Request("https://sdcommunities.com/api/leads", {
         method: "POST",
@@ -146,6 +147,9 @@ describe("lead delivery route", () => {
     assert.deepEqual(deliveredBody, VALID_LEAD);
     assert.equal(deliveredRequestId, REQUEST_ID);
     const serializedLogs = JSON.stringify(logEntries);
-    assert.doesNotMatch(serializedLogs, /Test Person|test@example\.invalid|555-0100/);
+    assert.doesNotMatch(
+      serializedLogs,
+      /Test Person|test@example\.invalid|555-0100|test-request-0001/,
+    );
   });
 });
