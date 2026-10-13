@@ -41,21 +41,28 @@ function silentLogger() {
 describe("lead delivery route", () => {
   it("fails clearly when the delivery destination is not configured", async () => {
     let fetchCalls = 0;
-    const handler = createLeadHandler({
-      getResendConfig: () => ({ ...RESEND_CONFIG, apiKey: undefined }),
-      fetchImpl: async () => {
-        fetchCalls += 1;
-        return new Response(null, { status: 204 });
-      },
-      logger: silentLogger(),
-    });
+    const incompleteConfigs = [
+      { ...RESEND_CONFIG, apiKey: undefined },
+      { ...RESEND_CONFIG, from: undefined },
+      { ...RESEND_CONFIG, to: "" },
+    ];
 
-    const response = await handler(leadRequest());
-    const body = await response.json();
+    for (const config of incompleteConfigs) {
+      const handler = createLeadHandler({
+        getResendConfig: () => config,
+        fetchImpl: async () => {
+          fetchCalls += 1;
+          return new Response(null, { status: 204 });
+        },
+        logger: silentLogger(),
+      });
+      const response = await handler(leadRequest());
+      const body = await response.json();
 
-    assert.equal(response.status, 503);
-    assert.equal(body.success, false);
-    assert.equal(body.error.code, "delivery_unavailable");
+      assert.equal(response.status, 503);
+      assert.equal(body.success, false);
+      assert.equal(body.error.code, "delivery_unavailable");
+    }
     assert.equal(fetchCalls, 0);
   });
 

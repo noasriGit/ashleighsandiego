@@ -1,5 +1,3 @@
-import { siteConfig } from "@/data/site-config";
-
 const MAX_BODY_BYTES = 32_000;
 const DEFAULT_TIMEOUT_MS = 5_000;
 const RESEND_API_URL = "https://api.resend.com/emails";
@@ -76,7 +74,7 @@ function getDefaultResendConfig(): ResendConfig {
   return {
     apiKey: process.env.RESEND_API_KEY,
     from: process.env.RESEND_FROM_EMAIL,
-    to: siteConfig.agent.email,
+    to: process.env.LEAD_NOTIFICATION_EMAIL ?? "",
   };
 }
 
