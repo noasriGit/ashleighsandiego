@@ -502,6 +502,6 @@ Run after uploading wrapper + CSS (section 4). Test in incognito at **375px** (m
 | Domain DNS access (CNAME) | Phase 1 |
 | Saved search URLs (after creation) | Phase 1 |
 | Registration gate preference (# views) | Phase 1 IDX config |
-| CRM platform (for `CRM_WEBHOOK_URL`) | Phase 1 |
+| Existing Resend production variable confirmation (`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `LEAD_NOTIFICATION_EMAIL`) | Phase 1 |
 | IDX API key | Phase 2 |
 | MLS display rules (sold data, photos) | Phase 2 |

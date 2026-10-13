@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import {
+  createLeadSubmissionController,
+  LEAD_SUBMISSION_ERROR_MESSAGE,
+  LeadSubmissionError,
+} from "@/lib/leads/client";
 
 const PRIORITY_OPTIONS = [
   "Commute",
@@ -36,6 +41,10 @@ const TIMELINE_OPTIONS = [
 export function BuyerQuestionnaire() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [priorities, setPriorities] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const submitterRef = useRef<ReturnType<typeof createLeadSubmissionController> | null>(null);
+  if (submitterRef.current === null) submitterRef.current = createLeadSubmissionController();
+  const submitter = submitterRef.current;
 
   function togglePriority(priority: string) {
     setPriorities((prev) =>
@@ -46,37 +55,35 @@ export function BuyerQuestionnaire() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          leadType: "buyer-questionnaire",
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          outOfArea: formData.get("outOfArea"),
-          currentLocation: formData.get("currentLocation"),
-          timeline: formData.get("timeline"),
-          budget: formData.get("budget"),
-          preferredAreas: formData.get("preferredAreas"),
-          vaFinancing: formData.get("vaFinancing"),
-          firstTimeBuyer: formData.get("firstTimeBuyer"),
-          lenderIntro: formData.get("lenderIntro"),
-          priorities,
-          message: formData.get("message"),
-        }),
+      await submitter.submit({
+        leadType: "buyer-questionnaire",
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        outOfArea: formData.get("outOfArea"),
+        currentLocation: formData.get("currentLocation"),
+        timeline: formData.get("timeline"),
+        budget: formData.get("budget"),
+        preferredAreas: formData.get("preferredAreas"),
+        vaFinancing: formData.get("vaFinancing"),
+        firstTimeBuyer: formData.get("firstTimeBuyer"),
+        lenderIntro: formData.get("lenderIntro"),
+        priorities,
+        message: formData.get("message"),
       });
-
-      if (!res.ok) throw new Error("Failed");
       setStatus("success");
       form.reset();
       setPriorities([]);
-    } catch {
+    } catch (error) {
+      setErrorMessage(
+        error instanceof LeadSubmissionError ? error.message : LEAD_SUBMISSION_ERROR_MESSAGE,
+      );
       setStatus("error");
     }
   }
@@ -87,7 +94,7 @@ export function BuyerQuestionnaire() {
         <div role="status" aria-live="polite">
           <h2 className="heading-section text-cabernet">Thank You!</h2>
           <p className="mt-3 text-espresso/90">
-            Your information has been received. We&apos;ll be in touch soon to schedule your free buyer strategy call.
+            Your submission was accepted for delivery. Ashleigh&apos;s team will follow up after processing it.
           </p>
         </div>
       </Card>
@@ -169,7 +176,7 @@ export function BuyerQuestionnaire() {
         </Button>
         {status === "error" && (
           <p className="text-sm text-red-600" role="alert">
-            Something went wrong. Please try again.
+            {errorMessage}
           </p>
         )}
       </form>

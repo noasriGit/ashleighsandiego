@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import {
+  createLeadSubmissionController,
+  LEAD_SUBMISSION_ERROR_MESSAGE,
+  LeadSubmissionError,
+} from "@/lib/leads/client";
 
 const PRIORITY_OPTIONS = [
   "Commute",
@@ -41,6 +46,10 @@ type CustomSearchFormProps = {
 export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSearchFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [priorities, setPriorities] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const submitterRef = useRef<ReturnType<typeof createLeadSubmissionController> | null>(null);
+  if (submitterRef.current === null) submitterRef.current = createLeadSubmissionController();
+  const submitter = submitterRef.current;
 
   function togglePriority(priority: string) {
     setPriorities((prev) =>
@@ -51,32 +60,30 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          leadType: "custom-search",
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          budget: formData.get("budget"),
-          timeline: formData.get("timeline"),
-          preferredAreas: formData.get("preferredAreas") || defaultArea,
-          priorities,
-          message: formData.get("message"),
-        }),
+      await submitter.submit({
+        leadType: "custom-search",
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        budget: formData.get("budget"),
+        timeline: formData.get("timeline"),
+        preferredAreas: formData.get("preferredAreas") || defaultArea,
+        priorities,
+        message: formData.get("message"),
       });
-
-      if (!res.ok) throw new Error("Failed");
       setStatus("success");
       form.reset();
       setPriorities([]);
-    } catch {
+    } catch (error) {
+      setErrorMessage(
+        error instanceof LeadSubmissionError ? error.message : LEAD_SUBMISSION_ERROR_MESSAGE,
+      );
       setStatus("error");
     }
   }
@@ -87,7 +94,7 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
         <div role="status" aria-live="polite">
           <h3 className="heading-card text-cabernet">Request Received</h3>
           <p className="mt-2 text-espresso/90">
-            We&apos;ll review your criteria and send a custom list of matching homes. Want to discuss your search in detail?
+            Your submission was accepted for delivery. Ashleigh&apos;s team will follow up after processing your criteria.
           </p>
           <Button href="/contact" className="mt-4">
             Book a Strategy Call
@@ -152,7 +159,7 @@ export function CustomSearchForm({ defaultArea = "", compact = false }: CustomSe
         </Button>
         {status === "error" && (
           <p className="text-sm text-red-600" role="alert">
-            Something went wrong. Please try again.
+            {errorMessage}
           </p>
         )}
       </form>

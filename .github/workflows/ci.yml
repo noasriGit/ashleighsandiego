@@ -35,6 +35,9 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
+      - name: Lead delivery tests
+        run: npm run test:leads
+
       - name: Route registry consistency
         run: npm run routes:validate
 

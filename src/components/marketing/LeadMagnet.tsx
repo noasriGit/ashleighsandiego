@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import {
+  createLeadSubmissionController,
+  LEAD_SUBMISSION_ERROR_MESSAGE,
+  LeadSubmissionError,
+} from "@/lib/leads/client";
 
 type LeadMagnetProps = {
   title: string;
@@ -20,21 +25,23 @@ export function LeadMagnet({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const submitterRef = useRef<ReturnType<typeof createLeadSubmissionController> | null>(null);
+  if (submitterRef.current === null) submitterRef.current = createLeadSubmissionController();
+  const submitter = submitterRef.current;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, leadType }),
-      });
-
-      if (!res.ok) throw new Error("Failed");
+      await submitter.submit({ name, email, leadType });
       setStatus("success");
-    } catch {
+    } catch (error) {
+      setErrorMessage(
+        error instanceof LeadSubmissionError ? error.message : LEAD_SUBMISSION_ERROR_MESSAGE,
+      );
       setStatus("error");
     }
   }
@@ -45,7 +52,7 @@ export function LeadMagnet({
         <div role="status" aria-live="polite">
           <h3 className="heading-card text-cabernet">Checklist Requested!</h3>
           <p className="mt-2 text-espresso/90">
-            Thank you! We&apos;ll send your checklist shortly. Ready to talk through your move?
+            Your checklist request was accepted for delivery. The team will follow up after processing it.
           </p>
           <Button href="/contact" className="mt-4" variant="primary">
             Book a Strategy Call
@@ -107,7 +114,7 @@ export function LeadMagnet({
         </Button>
         {status === "error" && (
           <p className="text-sm text-red-600" role="alert">
-            Something went wrong. Please try again.
+            {errorMessage}
           </p>
         )}
       </form>
