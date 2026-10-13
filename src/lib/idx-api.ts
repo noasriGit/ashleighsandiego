@@ -20,6 +20,7 @@
 // Only import this module from Server Components / server code.
 
 import { getIdxSearchConfig } from "@/data/idx-search-config";
+import { selectFamilyHomeListings } from "@/lib/idx-listing-selection";
 import { filterResidentialListings } from "@/lib/idx-residential-filter";
 import { normalizeIdxUrl } from "@/lib/idx-search-url";
 import { cache } from "react";
@@ -240,11 +241,12 @@ function normalizeEnvelope(
   isOnSite: boolean,
 ): IdxListing[] {
   const { listings } = unwrapEnvelope(data);
-  return filterResidentialListings(
+  const normalized = filterResidentialListings(
     listings
       .map((r) => normalizeListing(r, isOnSite))
       .filter((l): l is IdxListing => l !== null),
-  ).slice(0, limit);
+  );
+  return selectFamilyHomeListings(normalized, limit);
 }
 
 function isApiEnabled(): boolean {
@@ -432,14 +434,18 @@ export async function getCommunityListings(
 
   // 2. Featured listings filtered by community zip / city.
   const params = new URLSearchParams();
+  const poolSize = Math.min(250, Math.max(50, limit * 10));
+  params.set("limit", String(poolSize));
   config.cityIds.forEach((id) => params.append("city[]", String(id)));
   config.zipCodes.forEach((zip) => params.append("zipcode[]", zip));
 
   const query = params.toString();
 
   // When the slug is undefined (general homepage case) and there are no zip/city
-  // constraints, fetch all featured listings unfiltered.
-  const path = query ? `/clients/featured?${query}` : "/clients/featured";
+  // constraints, fetch a larger featured pool so family-home selection has options.
+  const path = query
+    ? `/clients/featured?${query}`
+    : `/clients/featured?limit=${poolSize}`;
   const data = await idxApiFetch(path, REVALIDATE_LISTINGS);
 
   // Strict geo guard: return exactly what the filter matched, no fallthrough.
