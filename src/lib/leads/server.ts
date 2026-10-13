@@ -1,5 +1,8 @@
+import { siteConfig } from "@/data/site-config";
+
 const MAX_BODY_BYTES = 32_000;
 const DEFAULT_TIMEOUT_MS = 5_000;
+const RESEND_API_URL = "https://api.resend.com/emails";
 
 const LEAD_TYPES = new Set([
   "buyer-questionnaire",
@@ -36,10 +39,16 @@ type LeadLogger = Pick<Console, "info" | "warn" | "error">;
 type LeadFetch = (input: string | URL | Request, init?: RequestInit) => Promise<Response>;
 
 type LeadHandlerOptions = {
-  getWebhookUrl?: () => string | undefined;
+  getResendConfig?: () => ResendConfig;
   fetchImpl?: LeadFetch;
   logger?: LeadLogger;
   timeoutMs?: number;
+};
+
+type ResendConfig = {
+  apiKey?: string;
+  from?: string;
+  to: string;
 };
 
 class InvalidLeadError extends Error {}
@@ -63,16 +72,26 @@ function getIdempotencyKey(request: Request) {
   return requestId;
 }
 
-function getWebhookUrl(rawUrl: string | undefined) {
-  if (!rawUrl?.trim()) return null;
+function getDefaultResendConfig(): ResendConfig {
+  return {
+    apiKey: process.env.RESEND_API_KEY,
+    from: process.env.RESEND_FROM_EMAIL,
+    to: siteConfig.agent.email,
+  };
+}
 
-  try {
-    const url = new URL(rawUrl);
-    if (url.protocol !== "https:" || url.username || url.password) return null;
-    return url.toString();
-  } catch {
-    return null;
-  }
+function getConfiguredResend(config: ResendConfig) {
+  const apiKey = config.apiKey?.trim();
+  const from = config.from?.trim();
+  const to = config.to.trim();
+  if (!apiKey || !from || !isEmailAddress(from) || !isEmailAddress(to)) return null;
+  return { apiKey, from, to };
+}
+
+function isEmailAddress(value: string) {
+  const bracketedAddress = value.match(/<([^<>]+)>\s*$/)?.[1];
+  const address = bracketedAddress ?? value;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
 }
 
 async function parseLead(request: Request): Promise<LeadPayload> {
@@ -151,7 +170,7 @@ async function parseLead(request: Request): Promise<LeadPayload> {
 }
 
 export function createLeadHandler({
-  getWebhookUrl: readWebhookUrl = () => process.env.CRM_WEBHOOK_URL,
+  getResendConfig: readResendConfig = getDefaultResendConfig,
   fetchImpl = fetch,
   logger = console,
   timeoutMs = DEFAULT_TIMEOUT_MS,
@@ -172,8 +191,8 @@ export function createLeadHandler({
 
     const correlationId = globalThis.crypto.randomUUID();
     const logContext = { correlationId, leadType: lead.leadType };
-    const webhookUrl = getWebhookUrl(readWebhookUrl());
-    if (!webhookUrl) {
+    const resend = getConfiguredResend(readResendConfig());
+    if (!resend) {
       logger.error("[lead-delivery] destination unavailable", logContext);
       return jsonError(
         503,
@@ -186,14 +205,16 @@ export function createLeadHandler({
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
-      const upstream = await fetchImpl(webhookUrl, {
+      const upstream = await fetchImpl(RESEND_API_URL, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${resend.apiKey}`,
           "Content-Type": "application/json",
           Accept: "application/json",
           "Idempotency-Key": idempotencyKey,
+          "User-Agent": "sdcommunities.com/lead-delivery",
         },
-        body: JSON.stringify(lead),
+        body: JSON.stringify(createResendEmail(lead, resend.from, resend.to)),
         cache: "no-store",
         redirect: "error",
         signal: controller.signal,
@@ -207,6 +228,29 @@ export function createLeadHandler({
         return jsonError(
           502,
           "delivery_rejected",
+          "We could not confirm delivery. Please try again.",
+        );
+      }
+
+      let providerMessageId: string | undefined;
+      try {
+        const acknowledgement: unknown = await upstream.json();
+        if (acknowledgement && typeof acknowledgement === "object") {
+          const id = (acknowledgement as Record<string, unknown>).id;
+          if (typeof id === "string" && id.trim()) providerMessageId = id;
+        }
+      } catch {
+        // A successful HTTP status without Resend's message id is not a confirmed acceptance.
+      }
+
+      if (!providerMessageId) {
+        logger.error("[lead-delivery] destination returned an invalid acknowledgement", {
+          ...logContext,
+          upstreamStatus: upstream.status,
+        });
+        return jsonError(
+          502,
+          "delivery_failed",
           "We could not confirm delivery. Please try again.",
         );
       }
@@ -234,4 +278,63 @@ export function createLeadHandler({
       clearTimeout(timeout);
     }
   };
+}
+
+const SUBJECTS: Record<string, string> = {
+  "buyer-questionnaire": "New buyer questionnaire submission",
+  "custom-search": "New custom home search request",
+  "first-time-checklist": "First-time buyer checklist request",
+  "military-checklist": "Military / VA buyer checklist request",
+  "relocation-checklist": "Relocation buyer checklist request",
+};
+
+const FIELD_LABELS: Record<string, string> = {
+  name: "Name",
+  email: "Email",
+  phone: "Phone",
+  outOfArea: "Moving from out of area",
+  currentLocation: "Current location",
+  timeline: "Timeline",
+  budget: "Budget",
+  preferredAreas: "Preferred areas",
+  vaFinancing: "Using VA financing",
+  firstTimeBuyer: "First-time buyer",
+  lenderIntro: "Needs lender introduction",
+  priorities: "Priorities",
+  message: "Message",
+};
+
+function createResendEmail(lead: LeadPayload, from: string, to: string) {
+  const details = Object.entries(lead)
+    .filter(([field]) => field !== "leadType")
+    .map(([field, value]) => ({
+      label: FIELD_LABELS[field] ?? field,
+      value: Array.isArray(value) ? value.join(", ") : value,
+    }));
+  const subject = SUBJECTS[lead.leadType];
+  const text = [subject, "", ...details.map(({ label, value }) => `${label}: ${value}`)].join("\n");
+  const htmlRows = details
+    .map(
+      ({ label, value }) =>
+        `<tr><th align="left" valign="top" style="padding:6px 12px 6px 0">${escapeHtml(label)}</th><td style="padding:6px 0">${escapeHtml(value).replace(/\n/g, "<br>")}</td></tr>`,
+    )
+    .join("");
+
+  return {
+    from,
+    to: [to],
+    reply_to: lead.email,
+    subject,
+    text,
+    html: `<h1>${escapeHtml(subject)}</h1><table>${htmlRows}</table>`,
+  };
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }

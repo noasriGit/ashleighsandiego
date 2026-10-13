@@ -5,11 +5,13 @@ import { act } from "react";
 import type { Root } from "react-dom/client";
 import { LEAD_SUBMISSION_ERROR_MESSAGE } from "@/lib/leads/client";
 
-describe("LeadMagnet browser behavior", () => {
+describe("lead form browser behavior", () => {
   let dom: JSDOM;
   let container: HTMLDivElement;
   let root: Root;
   let LeadMagnet: typeof import("./LeadMagnet").LeadMagnet;
+  let BuyerQuestionnaire: typeof import("@/components/forms/BuyerQuestionnaire").BuyerQuestionnaire;
+  let CustomSearchForm: typeof import("@/components/forms/CustomSearchForm").CustomSearchForm;
 
   beforeEach(async () => {
     dom = new JSDOM("<!doctype html><html><body><div id='root'></div></body></html>", {
@@ -17,20 +19,26 @@ describe("LeadMagnet browser behavior", () => {
     });
     Object.defineProperties(globalThis, {
       window: { configurable: true, value: dom.window },
+      self: { configurable: true, value: dom.window },
       document: { configurable: true, value: dom.window.document },
       navigator: { configurable: true, value: dom.window.navigator },
       HTMLElement: { configurable: true, value: dom.window.HTMLElement },
       HTMLInputElement: { configurable: true, value: dom.window.HTMLInputElement },
       Event: { configurable: true, value: dom.window.Event },
+      FormData: { configurable: true, value: dom.window.FormData },
     });
     (globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean })
       .IS_REACT_ACT_ENVIRONMENT = true;
     container = dom.window.document.querySelector("#root") as HTMLDivElement;
-    const [{ createRoot }, leadMagnetModule] = await Promise.all([
+    const [{ createRoot }, leadMagnetModule, buyerModule, customSearchModule] = await Promise.all([
       import("react-dom/client"),
       import("./LeadMagnet"),
+      import("@/components/forms/BuyerQuestionnaire"),
+      import("@/components/forms/CustomSearchForm"),
     ]);
     LeadMagnet = leadMagnetModule.LeadMagnet;
+    BuyerQuestionnaire = buyerModule.BuyerQuestionnaire;
+    CustomSearchForm = customSearchModule.CustomSearchForm;
     root = createRoot(container);
   });
 
@@ -90,6 +98,70 @@ describe("LeadMagnet browser behavior", () => {
       globalThis.fetch = originalFetch;
     }
   });
+
+  it("submits BuyerQuestionnaire through the shared lead endpoint", async () => {
+    const submissions: Record<string, unknown>[] = [];
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async (_input, init) => {
+      submissions.push(JSON.parse(String(init?.body)) as Record<string, unknown>);
+      const requestId = new Headers(init?.headers).get("Idempotency-Key");
+      return Response.json({ success: true, delivery: "accepted", requestId }, { status: 202 });
+    };
+
+    try {
+      await act(async () => root.render(<BuyerQuestionnaire />));
+      setInputValue(getInput("name"), "Buyer Test");
+      setInputValue(getInput("email"), "buyer@example.invalid");
+      setInputValue(getInput("phone"), "555-0101");
+      await submitCurrentForm();
+
+      assert.equal(submissions.length, 1);
+      assert.equal(submissions[0].leadType, "buyer-questionnaire");
+      assert.equal(submissions[0].email, "buyer@example.invalid");
+      assert.match(container.textContent ?? "", /accepted for delivery/i);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
+  });
+
+  it("submits CustomSearchForm through the shared lead endpoint", async () => {
+    const submissions: Record<string, unknown>[] = [];
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async (_input, init) => {
+      submissions.push(JSON.parse(String(init?.body)) as Record<string, unknown>);
+      const requestId = new Headers(init?.headers).get("Idempotency-Key");
+      return Response.json({ success: true, delivery: "accepted", requestId }, { status: 202 });
+    };
+
+    try {
+      await act(async () => root.render(<CustomSearchForm defaultArea="La Jolla" />));
+      setInputValue(getInput("name"), "Search Test");
+      setInputValue(getInput("email"), "search@example.invalid");
+      await submitCurrentForm();
+
+      assert.equal(submissions.length, 1);
+      assert.equal(submissions[0].leadType, "custom-search");
+      assert.equal(submissions[0].preferredAreas, "La Jolla");
+      assert.match(container.textContent ?? "", /accepted for delivery/i);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
+  });
+
+  function getInput(name: string) {
+    const input = container.querySelector<HTMLInputElement>(`input[name="${name}"]`);
+    assert.ok(input);
+    return input;
+  }
+
+  async function submitCurrentForm() {
+    const form = container.querySelector("form");
+    assert.ok(form);
+    await act(async () => {
+      form.dispatchEvent(new dom.window.Event("submit", { bubbles: true, cancelable: true }));
+      await Promise.resolve();
+    });
+  }
 });
 
 function setInputValue(input: HTMLInputElement, value: string) {
